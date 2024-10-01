@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Groq": {
+      "commandName": "Project"
+    }
+  }
+}

@@ -1,0 +1,1511 @@
+openapi: 3.0.1
+info:
+  title: GroqCloud API Swagger
+  description: Specification of the Groq cloud API
+  termsOfService: TBD
+  contact:
+    name: Groq Support
+    email: support@groq.com
+  version: '2.0'
+servers:
+  - url: https://api.groq.com
+paths:
+  /openai/v1/audio/transcriptions:
+    post:
+      tags:
+        - Audio
+      summary: Transcribes audio into the input language.
+      operationId: createTranscription
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateTranscriptionRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateTranscriptionResponseJson'
+      x-groq-metadata:
+        examples:
+          - request:
+              js:
+                path: library-transcription-default.js
+              py:
+                path: library-transcription-default.py
+            response:
+              path: library-transcription-response.json
+            title: Default
+        returns: Returns an audio transcription object
+  /openai/v1/audio/translations:
+    post:
+      tags:
+        - Audio
+      summary: Translates audio into English.
+      operationId: createTranslation
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateTranslationRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateTranslationResponseJson'
+            text/plain:
+              schema:
+                type: string
+      x-groq-metadata:
+        examples:
+          - request:
+              js:
+                path: library-translation-default.js
+              py:
+                path: library-translation-default.py
+            response:
+              path: library-translation-response.json
+            title: Default
+        returns: Returns an audio translation object
+  /openai/v1/chat/completions:
+    post:
+      tags:
+        - Chat
+      summary: Creates a model response for the given chat conversation.
+      operationId: createChatCompletion
+      requestBody:
+        description: The chat prompt and parameters
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateChatCompletionRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateChatCompletionResponse'
+      x-groq-metadata:
+        examples:
+          - request:
+              js:
+                path: library-usage-default.js
+              py:
+                path: library-usage-default.py
+            response:
+              path: library-usage-response.json
+            title: Default
+        returns: 'Returns a [chat completion](/docs/api-reference#chat-create) object, or a streamed sequence of [chat completion chunk](/docs/api-reference#chat-create) objects if the request is streamed.'
+  /openai/v1/embeddings:
+    post:
+      tags:
+        - Embeddings
+      summary: Creates an embedding vector representing the input text.
+      operationId: createEmbedding
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEmbeddingRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateEmbeddingResponse'
+  /openai/v1/models:
+    get:
+      tags:
+        - Models
+      summary: List models
+      description: get all available models
+      operationId: listModels
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListModelsResponse'
+      x-groq-metadata:
+        examples:
+          - response:
+              path: models-list-response.json
+            title: Default
+        returns: A list of models
+  '/openai/v1/models/{model}':
+    delete:
+      tags:
+        - Models
+      summary: Delete model
+      description: Delete a model
+      operationId: deleteModel
+      parameters:
+        - name: model
+          in: path
+          description: The model to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteModelResponse'
+    get:
+      tags:
+        - Models
+      summary: Get model
+      description: Get a specific model
+      operationId: retrieveModel
+      parameters:
+        - name: model
+          in: path
+          description: The model to get
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Model'
+      x-groq-metadata:
+        examples:
+          - response:
+              path: model-response.json
+            title: Default
+        returns: A model object
+components:
+  schemas:
+    ChatCompletionFunctionCallOption:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the function to call.
+      description: "Specifying a particular function via `{\"name\": \"my_function\"}` forces the model to call that function.\n"
+    ChatCompletionFunctions:
+      required:
+        - name
+      type: object
+      properties:
+        description:
+          type: string
+          description: 'A description of what the function does, used by the model to choose when and how to call the function.'
+        name:
+          type: string
+          description: 'The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.'
+        parameters:
+          $ref: '#/components/schemas/FunctionParameters'
+      deprecated: true
+    ChatCompletionMessageToolCall:
+      required:
+        - id
+        - type
+        - function
+      type: object
+      properties:
+        function:
+          required:
+            - name
+            - arguments
+          type: object
+          properties:
+            arguments:
+              type: string
+              description: 'The arguments to call the function with, as generated by the model in JSON format. Note that the model does not always generate valid JSON, and may hallucinate parameters not defined by your function schema. Validate the arguments in your code before calling your function.'
+            name:
+              type: string
+              description: The name of the function to call.
+          description: The function that the model called.
+        id:
+          type: string
+          description: The ID of the tool call.
+        type:
+          enum:
+            - function
+          type: string
+          description: 'The type of the tool. Currently, only `function` is supported.'
+    ChatCompletionMessageToolCallChunk:
+      required:
+        - index
+      type: object
+      properties:
+        function:
+          type: object
+          properties:
+            arguments:
+              type: string
+              description: 'The arguments to call the function with, as generated by the model in JSON format. Note that the model does not always generate valid JSON, and may hallucinate parameters not defined by your function schema. Validate the arguments in your code before calling your function.'
+            name:
+              type: string
+              description: The name of the function to call.
+        id:
+          type: string
+          description: The ID of the tool call.
+        index:
+          type: integer
+        type:
+          enum:
+            - function
+          type: string
+          description: 'The type of the tool. Currently, only `function` is supported.'
+    ChatCompletionMessageToolCalls:
+      type: array
+      items:
+        $ref: '#/components/schemas/ChatCompletionMessageToolCall'
+      description: 'The tool calls generated by the model, such as function calls.'
+    ChatCompletionNamedToolChoice:
+      required:
+        - type
+        - function
+      type: object
+      properties:
+        function:
+          required:
+            - name
+          type: object
+          properties:
+            name:
+              type: string
+              description: The name of the function to call.
+        type:
+          enum:
+            - function
+          type: string
+          description: 'The type of the tool. Currently, only `function` is supported.'
+      description: Specifies a tool the model should use. Use to force the model to call a specific function.
+    ChatCompletionRequestAssistantMessage:
+      title: Assistant message
+      required:
+        - role
+      type: object
+      properties:
+        content:
+          type: string
+          description: "The contents of the assistant message. Required unless `tool_calls` or `function_call` is specified.\n"
+          nullable: true
+        function_call:
+          type: object
+          properties:
+            arguments:
+              type: string
+              description: 'The arguments to call the function with, as generated by the model in JSON format. Note that the model does not always generate valid JSON, and may hallucinate parameters not defined by your function schema. Validate the arguments in your code before calling your function.'
+            name:
+              type: string
+              description: The name of the function to call.
+          description: 'Deprecated and replaced by `tool_calls`. The name and arguments of a function that should be called, as generated by the model.'
+          deprecated: true
+        name:
+          type: string
+          description: An optional name for the participant. Provides the model information to differentiate between participants of the same role.
+        role:
+          enum:
+            - assistant
+          type: string
+          description: 'The role of the messages author, in this case `assistant`.'
+        tool_calls:
+          $ref: '#/components/schemas/ChatCompletionMessageToolCalls'
+      additionalProperties: false
+    ChatCompletionRequestFunctionMessage:
+      title: Function message
+      required:
+        - role
+        - content
+        - name
+      type: object
+      properties:
+        content:
+          type: string
+          description: The contents of the function message.
+          nullable: true
+        name:
+          type: string
+          description: The name of the function to call.
+        role:
+          enum:
+            - function
+          type: string
+          description: 'The role of the messages author, in this case `function`.'
+      additionalProperties: false
+      deprecated: true
+    ChatCompletionRequestMessage:
+      oneOf:
+        - $ref: '#/components/schemas/ChatCompletionRequestSystemMessage'
+        - $ref: '#/components/schemas/ChatCompletionRequestUserMessage'
+        - $ref: '#/components/schemas/ChatCompletionRequestAssistantMessage'
+        - $ref: '#/components/schemas/ChatCompletionRequestToolMessage'
+        - $ref: '#/components/schemas/ChatCompletionRequestFunctionMessage'
+      discriminator:
+        propertyName: role
+        mapping:
+          assistant: '#/components/schemas/ChatCompletionRequestAssistantMessage'
+          function: '#/components/schemas/ChatCompletionRequestFunctionMessage'
+          system: '#/components/schemas/ChatCompletionRequestSystemMessage'
+          tool: '#/components/schemas/ChatCompletionRequestToolMessage'
+          user: '#/components/schemas/ChatCompletionRequestUserMessage'
+    ChatCompletionRequestMessageContentPart:
+      oneOf:
+        - $ref: '#/components/schemas/ChatCompletionRequestMessageContentPartText'
+        - $ref: '#/components/schemas/ChatCompletionRequestMessageContentPartImage'
+    ChatCompletionRequestMessageContentPartImage:
+      title: Image content part
+      required:
+        - type
+        - image_url
+      type: object
+      properties:
+        image_url:
+          required:
+            - url
+          type: object
+          properties:
+            detail:
+              enum:
+                - auto
+                - low
+                - high
+              type: string
+              description: Specifies the detail level of the image.
+              default: auto
+            url:
+              type: string
+              description: Either a URL of the image or the base64 encoded image data.
+              format: uri
+        type:
+          enum:
+            - image_url
+          type: string
+          description: The type of the content part.
+    ChatCompletionRequestMessageContentPartText:
+      title: Text content part
+      required:
+        - type
+        - text
+      type: object
+      properties:
+        text:
+          type: string
+          description: The text content.
+        type:
+          enum:
+            - text
+          type: string
+          description: The type of the content part.
+    ChatCompletionRequestSystemMessage:
+      title: System message
+      required:
+        - content
+        - role
+      type: object
+      properties:
+        content:
+          type: string
+          description: The contents of the system message.
+        name:
+          type: string
+          description: An optional name for the participant. Provides the model information to differentiate between participants of the same role.
+        role:
+          enum:
+            - system
+          type: string
+          description: 'The role of the messages author, in this case `system`.'
+      additionalProperties: false
+    ChatCompletionRequestToolMessage:
+      title: Tool message
+      required:
+        - role
+        - content
+        - tool_call_id
+      type: object
+      properties:
+        content:
+          type: string
+          description: The contents of the tool message.
+        role:
+          enum:
+            - tool
+          type: string
+          description: 'The role of the messages author, in this case `tool`.'
+        tool_call_id:
+          type: string
+          description: Tool call that this message is responding to.
+      additionalProperties: false
+    ChatCompletionRequestUserMessage:
+      title: User message
+      required:
+        - content
+        - role
+      type: object
+      properties:
+        content:
+          oneOf:
+            - title: Text content
+              type: string
+              description: The text contents of the message.
+            - title: Array of content parts
+              minItems: 1
+              type: array
+              items:
+                $ref: '#/components/schemas/ChatCompletionRequestMessageContentPart'
+              description: 'An array of content parts with a defined type, each can be of type `text` or `image_url` when passing in images. You can pass multiple images by adding multiple `image_url` content parts. Image input is only supported when using the `gpt-4-visual-preview` model.'
+          description: "The contents of the user message.\n"
+        name:
+          type: string
+          description: An optional name for the participant. Provides the model information to differentiate between participants of the same role.
+        role:
+          enum:
+            - user
+          type: string
+          description: 'The role of the messages author, in this case `user`.'
+      additionalProperties: false
+    ChatCompletionResponseMessage:
+      required:
+        - role
+        - content
+      type: object
+      properties:
+        content:
+          type: string
+          description: The contents of the message.
+          nullable: true
+        function_call:
+          required:
+            - name
+            - arguments
+          type: object
+          properties:
+            arguments:
+              type: string
+              description: 'The arguments to call the function with, as generated by the model in JSON format. Note that the model does not always generate valid JSON, and may hallucinate parameters not defined by your function schema. Validate the arguments in your code before calling your function.'
+            name:
+              type: string
+              description: The name of the function to call.
+          description: 'Deprecated and replaced by `tool_calls`. The name and arguments of a function that should be called, as generated by the model.'
+          deprecated: true
+        role:
+          enum:
+            - assistant
+          type: string
+          description: The role of the author of this message.
+        tool_calls:
+          $ref: '#/components/schemas/ChatCompletionMessageToolCalls'
+      description: A chat completion message generated by the model.
+    ChatCompletionRole:
+      enum:
+        - system
+        - user
+        - assistant
+        - tool
+        - function
+      type: string
+      description: The role of the author of a message
+    ChatCompletionStreamOptions:
+      type: object
+      properties:
+        include_usage:
+          type: boolean
+          description: This field is unused
+      description: "Options for streaming response. Only set this when you set `stream: true`.\n"
+      default: 
+      nullable: true
+    ChatCompletionStreamResponseDelta:
+      type: object
+      properties:
+        content:
+          type: string
+          description: The contents of the chunk message.
+          nullable: true
+        function_call:
+          type: object
+          properties:
+            arguments:
+              type: string
+              description: 'The arguments to call the function with, as generated by the model in JSON format. Note that the model does not always generate valid JSON, and may hallucinate parameters not defined by your function schema. Validate the arguments in your code before calling your function.'
+            name:
+              type: string
+              description: The name of the function to call.
+          description: 'Deprecated and replaced by `tool_calls`. The name and arguments of a function that should be called, as generated by the model.'
+          deprecated: true
+        role:
+          enum:
+            - system
+            - user
+            - assistant
+            - tool
+          type: string
+          description: The role of the author of this message.
+        tool_calls:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatCompletionMessageToolCallChunk'
+      description: A chat completion delta generated by streamed model responses.
+    ChatCompletionTokenLogprob:
+      required:
+        - token
+        - logprob
+        - bytes
+        - top_logprobs
+      type: object
+      properties:
+        bytes:
+          type: array
+          items:
+            type: integer
+          description: A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be `null` if there is no bytes representation for the token.
+          nullable: true
+        logprob:
+          type: number
+          description: 'The log probability of this token, if it is within the top 20 most likely tokens. Otherwise, the value `-9999.0` is used to signify that the token is very unlikely.'
+        token:
+          type: string
+          description: The token.
+        top_logprobs:
+          type: array
+          items:
+            required:
+              - token
+              - logprob
+              - bytes
+            type: object
+            properties:
+              bytes:
+                type: array
+                items:
+                  type: integer
+                description: A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be `null` if there is no bytes representation for the token.
+                nullable: true
+              logprob:
+                type: number
+                description: 'The log probability of this token, if it is within the top 20 most likely tokens. Otherwise, the value `-9999.0` is used to signify that the token is very unlikely.'
+              token:
+                type: string
+                description: The token.
+          description: 'List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.'
+    ChatCompletionTool:
+      required:
+        - type
+        - function
+      type: object
+      properties:
+        function:
+          $ref: '#/components/schemas/FunctionObject'
+        type:
+          enum:
+            - function
+          type: string
+          description: 'The type of the tool. Currently, only `function` is supported.'
+    ChatCompletionToolChoiceOption:
+      oneOf:
+        - enum:
+            - none
+            - auto
+            - required
+          type: string
+          description: "`none` means the model will not call any tool and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools.\n"
+        - $ref: '#/components/schemas/ChatCompletionNamedToolChoice'
+      description: "Controls which (if any) tool is called by the model.\n`none` means the model will not call any tool and instead generates a message.\n`auto` means the model can pick between generating a message or calling one or more tools.\n`required` means the model must call one or more tools.\nSpecifying a particular tool via `{\"type\": \"function\", \"function\": {\"name\": \"my_function\"}}` forces the model to call that tool.\n\n`none` is the default when no tools are present. `auto` is the default if tools are present.\n"
+      nullable: true
+      x-groq-meta:
+        validator: ChatCompletionToolChoiceOption
+    CompletionUsage:
+      required:
+        - prompt_tokens
+        - completion_tokens
+        - total_tokens
+      type: object
+      properties:
+        completion_time:
+          type: number
+          description: Time spent generating tokens
+        completion_tokens:
+          type: integer
+          description: Number of tokens in the generated completion.
+        prompt_time:
+          type: number
+          description: Time spent processing input tokens
+        prompt_tokens:
+          type: integer
+          description: Number of tokens in the prompt.
+        queue_time:
+          type: number
+          description: Time the requests was spent queued
+        total_time:
+          type: number
+          description: completion time and prompt time combined
+        total_tokens:
+          type: integer
+          description: Total number of tokens used in the request (prompt + completion).
+      description: Usage statistics for the completion request.
+    CreateChatCompletionRequest:
+      required:
+        - model
+        - messages
+      type: object
+      properties:
+        frequency_penalty:
+          maximum: 2
+          minimum: -2
+          type: number
+          description: 'Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model''s likelihood to repeat the same line verbatim.'
+          default: 0
+          nullable: true
+        function_call:
+          oneOf:
+            - enum:
+                - none
+                - auto
+                - required
+              type: string
+              description: "`none` means the model will not call a function and instead generates a message. `auto` means the model can pick between generating a message or calling a function.\n"
+            - $ref: '#/components/schemas/ChatCompletionFunctionCallOption'
+          description: "Deprecated in favor of `tool_choice`.\n\nControls which (if any) function is called by the model.\n`none` means the model will not call a function and instead generates a message.\n`auto` means the model can pick between generating a message or calling a function.\nSpecifying a particular function via `{\"name\": \"my_function\"}` forces the model to call that function.\n\n`none` is the default when no functions are present. `auto` is the default if functions are present.\n"
+          nullable: true
+          deprecated: true
+        functions:
+          maxItems: 128
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatCompletionFunctions'
+          description: "Deprecated in favor of `tools`.\n\nA list of functions the model may generate JSON inputs for.\n"
+          nullable: true
+          deprecated: true
+        logit_bias:
+          type: object
+          additionalProperties:
+            type: integer
+          description: "This is not yet supported by any of our models.\nModify the likelihood of specified tokens appearing in the completion.\n"
+          default: 
+          nullable: true
+        logprobs:
+          type: boolean
+          description: "This is not yet supported by any of our models.\nWhether to return log probabilities of the output tokens or not. If true, returns the log probabilities of each output token returned in the `content` of `message`.\n"
+          default: false
+          nullable: true
+        max_tokens:
+          type: integer
+          description: "The maximum number of tokens that can be generated in the chat completion. The total length of input tokens and generated tokens is limited by the model's context length.\n"
+          nullable: true
+        messages:
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatCompletionRequestMessage'
+          description: A list of messages comprising the conversation so far.
+        model:
+          anyOf:
+            - type: string
+            - enum:
+                - gemma-7b-it
+                - llama3-70b-8192
+                - llama3-8b-8192
+                - mixtral-8x7b-32768
+              type: string
+          description: 'ID of the model to use. For details on which models are compatible with the Chat API, see available [models](/docs/models)'
+        n:
+          maximum: 1
+          minimum: 1
+          type: integer
+          description: 'How many chat completion choices to generate for each input message. Note that the current moment, only n=1 is supported. Other values will result in a 400 response.'
+          default: 1
+          nullable: true
+          example: 1
+        parallel_tool_calls:
+          type: boolean
+          description: "Whether to enable parallel function calling during tool use.\n"
+          default: true
+          nullable: true
+        presence_penalty:
+          maximum: 2
+          minimum: -2
+          type: number
+          description: 'Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model''s likelihood to talk about new topics.'
+          default: 0
+          nullable: true
+        response_format:
+          type: object
+          properties:
+            type:
+              enum:
+                - text
+                - json_object
+              type: string
+              description: Must be one of `text` or `json_object`.
+              default: text
+              example: json_object
+          description: "An object specifying the format that the model must output. \n\nSetting to `{ \"type\": \"json_object\" }` enables JSON mode, which guarantees the message the model generates is valid JSON.\n\n**Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message.\n"
+          nullable: true
+        seed:
+          type: integer
+          description: "If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same `seed` and parameters should return the same result.\nDeterminism is not guaranteed, and you should refer to the `system_fingerprint` response parameter to monitor changes in the backend.\n"
+          nullable: true
+        stop:
+          oneOf:
+            - type: string
+              nullable: true
+              example: "\n"
+            - maxItems: 4
+              minItems: 0
+              type: array
+              items:
+                type: string
+                example: '["\n"]'
+          description: "Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence.\n"
+          default: 
+          nullable: true
+        stream:
+          type: boolean
+          description: "If set, partial message deltas will be sent. Tokens will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available, with the stream terminated by a `data: [DONE]` message. [Example code](/docs/text-chat#streaming-a-chat-completion).\n"
+          default: false
+          nullable: true
+        temperature:
+          maximum: 2
+          minimum: 0
+          type: number
+          description: 'What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both'
+          default: 1
+          nullable: true
+          example: 1
+        tool_choice:
+          $ref: '#/components/schemas/ChatCompletionToolChoiceOption'
+        tools:
+          maxItems: 128
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatCompletionTool'
+          description: "A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.\n"
+          nullable: true
+        top_logprobs:
+          maximum: 20
+          minimum: 0
+          type: integer
+          description: "This is not yet supported by any of our models.\nAn integer between 0 and 20 specifying the number of most likely tokens to return at each token position, each with an associated log probability. `logprobs` must be set to `true` if this parameter is used.\n"
+          nullable: true
+        top_p:
+          maximum: 1
+          minimum: 0
+          type: number
+          description: 'An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. We generally recommend altering this or temperature but not both.'
+          default: 1
+          nullable: true
+          example: 1
+        user:
+          type: string
+          description: 'A unique identifier representing your end-user, which can help us monitor and detect abuse.'
+          nullable: true
+      additionalProperties: false
+    CreateChatCompletionResponse:
+      required:
+        - choices
+        - created
+        - id
+        - model
+        - object
+      type: object
+      properties:
+        choices:
+          type: array
+          items:
+            required:
+              - finish_reason
+              - index
+              - message
+              - logprobs
+            type: object
+            properties:
+              finish_reason:
+                enum:
+                  - stop
+                  - length
+                  - tool_calls
+                  - function_call
+                type: string
+                description: "The reason the model stopped generating tokens. This will be `stop` if the model hit a natural stop point or a provided stop sequence,\n`length` if the maximum number of tokens specified in the request was reached,\n`tool_calls` if the model called a tool, or `function_call` (deprecated) if the model called a function.\n"
+              index:
+                type: integer
+                description: The index of the choice in the list of choices.
+              logprobs:
+                required:
+                  - content
+                type: object
+                properties:
+                  content:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ChatCompletionTokenLogprob'
+                    description: A list of message content tokens with log probability information.
+                    nullable: true
+                description: Log probability information for the choice.
+                nullable: true
+              message:
+                $ref: '#/components/schemas/ChatCompletionResponseMessage'
+          description: A list of chat completion choices. Can be more than one if `n` is greater than 1.
+        created:
+          type: integer
+          description: The Unix timestamp (in seconds) of when the chat completion was created.
+        id:
+          type: string
+          description: A unique identifier for the chat completion.
+        model:
+          type: string
+          description: The model used for the chat completion.
+        object:
+          enum:
+            - chat.completion
+          type: string
+          description: 'The object type, which is always `chat.completion`.'
+        system_fingerprint:
+          type: string
+          description: "This fingerprint represents the backend configuration that the model runs with.\n\nCan be used in conjunction with the `seed` request parameter to understand when backend changes have been made that might impact determinism.\n"
+        usage:
+          $ref: '#/components/schemas/CompletionUsage'
+      description: 'Represents a chat completion response returned by model, based on the provided input.'
+    CreateChatCompletionStreamResponse:
+      required:
+        - choices
+        - created
+        - id
+        - model
+        - object
+      type: object
+      properties:
+        choices:
+          type: array
+          items:
+            required:
+              - delta
+              - finish_reason
+              - index
+            type: object
+            properties:
+              delta:
+                $ref: '#/components/schemas/ChatCompletionStreamResponseDelta'
+              finish_reason:
+                enum:
+                  - stop
+                  - length
+                  - tool_calls
+                  - content_filter
+                  - function_call
+                type: string
+                description: "The reason the model stopped generating tokens. This will be `stop` if the model hit a natural stop point or a provided stop sequence,\n`length` if the maximum number of tokens specified in the request was reached,\n`tool_calls` if the model called a tool, or `function_call` (deprecated) if the model called a function.\n"
+                nullable: true
+              index:
+                type: integer
+                description: The index of the choice in the list of choices.
+              logprobs:
+                required:
+                  - content
+                type: object
+                properties:
+                  content:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ChatCompletionTokenLogprob'
+                    description: A list of message content tokens with log probability information.
+                    nullable: true
+                description: Log probability information for the choice.
+                nullable: true
+          description: "A list of chat completion choices. Can contain more than one elements if `n` is greater than 1.\n"
+        created:
+          type: integer
+          description: The Unix timestamp (in seconds) of when the chat completion was created. Each chunk has the same timestamp.
+        id:
+          type: string
+          description: A unique identifier for the chat completion. Each chunk has the same ID.
+        model:
+          type: string
+          description: The model to generate the completion.
+        object:
+          enum:
+            - chat.completion.chunk
+          type: string
+          description: 'The object type, which is always `chat.completion.chunk`.'
+        system_fingerprint:
+          type: string
+          description: "This fingerprint represents the backend configuration that the model runs with.\nCan be used in conjunction with the `seed` request parameter to understand when backend changes have been made that might impact determinism.\n"
+        x_groq:
+          $ref: '#/components/schemas/XGroq'
+      description: 'Represents a streamed chunk of a chat completion response returned by model, based on the provided input.'
+    CreateEmbeddingRequest:
+      required:
+        - model
+        - input
+      type: object
+      properties:
+        encoding_format:
+          enum:
+            - float
+            - base64
+          type: string
+          description: The format to return the embeddings in. Can only be `float` or `base64`.
+          default: float
+          example: float
+        input:
+          oneOf:
+            - title: string
+              type: string
+              description: The string that will be turned into an embedding.
+              default: ''
+              example: This is a test.
+            - title: array
+              maxItems: 2048
+              minItems: 1
+              type: array
+              items:
+                type: string
+                default: ''
+                example: '[''This is a test.'']'
+              description: The array of strings that will be turned into an embeddings.
+          description: "Input text to embed, encoded as a string or array of tokens. To embed multiple inputs in a single request, pass an array of strings or array of token arrays. The input must not exceed the max input tokens for the model, cannot be an empty string, and any array must be 2048 dimensions or less.\n"
+          example: The quick brown fox jumped over the lazy dog
+          x-groq-meta:
+            validator: EmbeddingInput
+        model:
+          anyOf:
+            - type: string
+            - enum:
+                - nomic-embed-text-v1_5
+              type: string
+          description: "ID of the model to use.\n"
+          example: nomic-embed-text-v1_5
+        user:
+          type: string
+          description: 'A unique identifier representing your end-user, which can help us monitor and detect abuse.'
+          nullable: true
+      additionalProperties: false
+    CreateEmbeddingResponse:
+      required:
+        - object
+        - model
+        - data
+        - usage
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Embedding'
+          description: The list of embeddings generated by the model.
+        model:
+          type: string
+          description: The name of the model used to generate the embedding.
+        object:
+          enum:
+            - list
+          type: string
+          description: 'The object type, which is always "list".'
+        usage:
+          required:
+            - prompt_tokens
+            - total_tokens
+          type: object
+          properties:
+            prompt_tokens:
+              type: integer
+              description: The number of tokens used by the prompt.
+            total_tokens:
+              type: integer
+              description: The total number of tokens used by the request.
+          description: The usage information for the request.
+    CreateTranscriptionRequest:
+      required:
+        - file
+        - model
+      type: object
+      properties:
+        file:
+          type: string
+          description: "The audio file object (not file name) to transcribe, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.\n"
+          format: binary
+        language:
+          anyOf:
+            - type: string
+            - enum:
+                - en
+                - zh
+                - de
+                - es
+                - ru
+                - ko
+                - fr
+                - ja
+                - pt
+                - tr
+                - pl
+                - ca
+                - nl
+                - ar
+                - sv
+                - it
+                - id
+                - hi
+                - fi
+                - vi
+                - he
+                - uk
+                - el
+                - ms
+                - cs
+                - ro
+                - da
+                - hu
+                - ta
+                - 'false'
+                - th
+                - ur
+                - hr
+                - bg
+                - lt
+                - la
+                - mi
+                - ml
+                - cy
+                - sk
+                - te
+                - fa
+                - lv
+                - bn
+                - sr
+                - az
+                - sl
+                - kn
+                - et
+                - mk
+                - br
+                - eu
+                - is
+                - hy
+                - ne
+                - mn
+                - bs
+                - kk
+                - sq
+                - sw
+                - gl
+                - mr
+                - pa
+                - si
+                - km
+                - sn
+                - yo
+                - so
+                - af
+                - oc
+                - ka
+                - be
+                - tg
+                - sd
+                - gu
+                - am
+                - yi
+                - lo
+                - uz
+                - fo
+                - ht
+                - ps
+                - tk
+                - nn
+                - mt
+                - sa
+                - lb
+                - my
+                - bo
+                - tl
+                - mg
+                - as
+                - tt
+                - haw
+                - ln
+                - ha
+                - ba
+                - jv
+                - su
+                - yue
+              type: string
+          description: "The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.\n"
+        model:
+          anyOf:
+            - type: string
+            - enum:
+                - whisper-large-v3
+              type: string
+          description: "ID of the model to use. Only `whisper-large-v3` is currently available.\n"
+          example: whisper-large-v3
+        prompt:
+          type: string
+          description: "An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should match the audio language.\n"
+        response_format:
+          enum:
+            - json
+            - text
+            - verbose_json
+          type: string
+          description: "The format of the transcript output, in one of these options: `json`, `text`, or `verbose_json`.\n"
+          default: json
+        temperature:
+          type: number
+          description: "The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.\n"
+          default: 0
+        timestamp_granularities:
+          type: array
+          items:
+            enum:
+              - word
+              - segment
+            type: string
+          description: "The timestamp granularities to populate for this transcription. `response_format` must be set `verbose_json` to use timestamp granularities. Either or both of these options are supported: `word`, or `segment`. Note: There is no additional latency for segment timestamps, but generating word timestamps incurs additional latency.\n"
+          default:
+            - segment
+      additionalProperties: false
+    CreateTranscriptionResponseJson:
+      required:
+        - text
+      type: object
+      properties:
+        text:
+          type: string
+          description: The transcribed text.
+      description: 'Represents a transcription response returned by model, based on the provided input.'
+    CreateTranscriptionResponseVerboseJson:
+      required:
+        - language
+        - duration
+        - text
+      type: object
+      properties:
+        duration:
+          type: string
+          description: The duration of the input audio.
+        language:
+          type: string
+          description: The language of the input audio.
+        segments:
+          type: array
+          items:
+            $ref: '#/components/schemas/TranscriptionSegment'
+          description: Segments of the transcribed text and their corresponding details.
+        text:
+          type: string
+          description: The transcribed text.
+        words:
+          type: array
+          items:
+            $ref: '#/components/schemas/TranscriptionWord'
+          description: Extracted words and their corresponding timestamps.
+      description: 'Represents a verbose json transcription response returned by model, based on the provided input.'
+    CreateTranslationRequest:
+      required:
+        - file
+        - model
+      type: object
+      properties:
+        file:
+          type: string
+          description: "The audio file object (not file name) translate, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.\n"
+          format: binary
+        model:
+          anyOf:
+            - type: string
+            - enum:
+                - whisper-large-v3
+              type: string
+          description: "ID of the model to use. Only `whisper-large-v3` is currently available.\n"
+          example: whisper-1
+        prompt:
+          type: string
+          description: "An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should be in English.\n"
+        response_format:
+          enum:
+            - json
+            - text
+            - verbose_json
+          type: string
+          description: "The format of the transcript output, in one of these options: `json`, `text`, or `verbose_json`.\n"
+          default: json
+        temperature:
+          type: number
+          description: "The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.\n"
+          default: 0
+      additionalProperties: false
+    CreateTranslationResponseJson:
+      required:
+        - text
+      type: object
+      properties:
+        text:
+          type: string
+    CreateTranslationResponseVerboseJson:
+      required:
+        - language
+        - duration
+        - text
+      type: object
+      properties:
+        duration:
+          type: string
+          description: The duration of the input audio.
+        language:
+          type: string
+          description: The language of the output translation (always `english`).
+        segments:
+          type: array
+          items:
+            $ref: '#/components/schemas/TranscriptionSegment'
+          description: Segments of the translated text and their corresponding details.
+        text:
+          type: string
+          description: The translated text.
+    DeleteModelResponse:
+      required:
+        - id
+        - object
+        - deleted
+      type: object
+      properties:
+        deleted:
+          type: boolean
+        id:
+          type: string
+        object:
+          type: string
+    Embedding:
+      required:
+        - index
+        - object
+        - embedding
+      type: object
+      properties:
+        embedding:
+          oneOf:
+            - type: array
+              items:
+                type: number
+              description: "The embedding vector, which is a list of floats. The length of vector depends on the model as listed in the [embedding guide](/docs/guides/embeddings).\n"
+            - type: string
+              description: "The embedding vector, which is a base64 encoded string. The length of vector depends on the model as listed in the [embedding guide](/docs/guides/embeddings).\n"
+        index:
+          type: integer
+          description: The index of the embedding in the list of embeddings.
+        object:
+          enum:
+            - embedding
+          type: string
+          description: 'The object type, which is always "embedding".'
+      description: "Represents an embedding vector returned by embedding endpoint.\n"
+    Error:
+      required:
+        - type
+        - message
+        - param
+        - code
+      type: object
+      properties:
+        code:
+          type: string
+          nullable: true
+        message:
+          type: string
+        param:
+          type: string
+          nullable: true
+        type:
+          type: string
+    ErrorResponse:
+      required:
+        - error
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/Error'
+    FunctionObject:
+      required:
+        - name
+      type: object
+      properties:
+        description:
+          type: string
+          description: 'A description of what the function does, used by the model to choose when and how to call the function.'
+        name:
+          type: string
+          description: 'The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.'
+        parameters:
+          $ref: '#/components/schemas/FunctionParameters'
+    FunctionParameters:
+      type: object
+      description: "The parameters the functions accepts, described as a JSON Schema object. See the docs on [tool use](/docs/tool-use) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. \n\nOmitting `parameters` defines a function with an empty parameter list."
+    ListModelsResponse:
+      required:
+        - object
+        - data
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model'
+        object:
+          enum:
+            - list
+          type: string
+    Model:
+      title: Model
+      required:
+        - id
+        - object
+        - created
+        - owned_by
+      properties:
+        created:
+          type: integer
+          description: The Unix timestamp (in seconds) when the model was created.
+        id:
+          type: string
+          description: 'The model identifier, which can be referenced in the API endpoints.'
+        object:
+          enum:
+            - model
+          type: string
+          description: 'The object type, which is always "model".'
+        owned_by:
+          type: string
+          description: The organization that owns the model.
+      description: Describes an OpenAI model offering that can be used with the API.
+    TranscriptionSegment:
+      required:
+        - id
+        - seek
+        - start
+        - end
+        - text
+        - tokens
+        - temperature
+        - avg_logprob
+        - compression_ratio
+        - no_speech_prob
+      type: object
+      properties:
+        avg_logprob:
+          type: number
+          description: 'Average logprob of the segment. If the value is lower than -1, consider the logprobs failed.'
+          format: float
+        compression_ratio:
+          type: number
+          description: 'Compression ratio of the segment. If the value is greater than 2.4, consider the compression failed.'
+          format: float
+        end:
+          type: number
+          description: End time of the segment in seconds.
+          format: float
+        id:
+          type: integer
+          description: Unique identifier of the segment.
+        no_speech_prob:
+          type: number
+          description: 'Probability of no speech in the segment. If the value is higher than 1.0 and the `avg_logprob` is below -1, consider this segment silent.'
+          format: float
+        seek:
+          type: integer
+          description: Seek offset of the segment.
+        start:
+          type: number
+          description: Start time of the segment in seconds.
+          format: float
+        temperature:
+          type: number
+          description: Temperature parameter used for generating the segment.
+          format: float
+        text:
+          type: string
+          description: Text content of the segment.
+        tokens:
+          type: array
+          items:
+            type: integer
+          description: Array of token IDs for the text content.
+    TranscriptionWord:
+      required:
+        - word
+        - start
+        - end
+      type: object
+      properties:
+        end:
+          type: number
+          description: End time of the word in seconds.
+          format: float
+        start:
+          type: number
+          description: Start time of the word in seconds.
+          format: float
+        word:
+          type: string
+          description: The text content of the word.
+    XGroq:
+      type: object
+      properties:
+        error:
+          type: string
+          description: An error string indicating why a stream was stopped early
+        id:
+          type: string
+          description: "A groq request ID which can be used by to refer to a specific request to groq support \nOnly sent with the first chunk\n"
+        usage:
+          $ref: '#/components/schemas/CompletionUsage'
+  securitySchemes:
+    api_key:
+      type: http
+      scheme: bearer
+      bearerFormat: apiKey
+security:
+  - api_key: [ ]
+x-groq-metadata:
+  groups:
+    - description: 
+      id: chat
+      sections:
+        - key: createChatCompletion
+          path: create
+          type: endpoint
+      title: Chat
+      type: endpoints
+    - description: 
+      id: audio
+      sections:
+        - key: createTranscription
+          path: transcription
+          type: endpoint
+        - key: createTranslation
+          path: translation
+          type: endpoint
+      title: Audio
+      type: endpoints
+    - description: 
+      id: models
+      sections:
+        - key: listModels
+          path: list
+          type: endpoint
+        - key: retrieveModel
+          path: retrieve
+          type: endpoint
+      title: Models
+      type: endpoints
