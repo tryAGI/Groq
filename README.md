@@ -1,8 +1,8 @@
 # Groq
 
 [![Nuget package](https://img.shields.io/nuget/vpre/Groq)](https://www.nuget.org/packages/Groq/)
-[![dotnet](https://github.com/Groq/Groq/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/Groq/Groq/actions/workflows/dotnet.yml)
-[![License: MIT](https://img.shields.io/github/license/Groq/Groq)](https://github.com/Groq/Groq/blob/main/LICENSE.txt)
+[![dotnet](https://github.com/tryAGI/Groq/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/tryAGI/Groq/actions/workflows/dotnet.yml)
+[![License: MIT](https://img.shields.io/github/license/tryAGI/Groq)](https://github.com/tryAGI/Groq/blob/main/LICENSE.txt)
 [![Discord](https://img.shields.io/discord/1115206893015662663?label=Discord&logo=discord&logoColor=white&color=d82679)](https://discord.gg/Ca2xhfBf3v)
 
 ## Features 🔥
@@ -17,12 +17,23 @@
 using Groq;
 
 using var client = new GroqClient(apiKey);
+IList<ChatCompletionRequestMessage> messages = [ 
+    new ChatCompletionRequestUserMessage {
+        Role = ChatCompletionRequestUserMessageRole.User,
+        Content = "Generate a random name"
+    }];
+CreateChatCompletionRequest request = new() { 
+    Messages = messages, 
+    Model = CreateChatCompletionRequestModel.Llama370b8192 
+};
+var response = await client.Chat.CreateChatCompletionAsync(request);
+Console.WriteLine(response.Choices[0].Message.Content);
 ```
 
 ## Support
 
-Priority place for bugs: https://github.com/Groq/Groq/issues  
-Priority place for ideas and general questions: https://github.com/Groq/Groq/discussions  
+Priority place for bugs: https://github.com/tryAGI/Groq/issues  
+Priority place for ideas and general questions: https://github.com/tryAGI/Groq/discussions  
 Discord: https://discord.gg/Ca2xhfBf3v  
 
 ## Acknowledgments
