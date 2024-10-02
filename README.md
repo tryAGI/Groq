@@ -6,7 +6,7 @@
 [![Discord](https://img.shields.io/discord/1115206893015662663?label=Discord&logo=discord&logoColor=white&color=d82679)](https://discord.gg/Ca2xhfBf3v)
 
 ## Features 🔥
-- Fully generated C# SDK based on [official Groq OpenAPI specification](https://raw.githubusercontent.com/Groq/assemblyai-api-spec/main/openapi.yml) using [AutoSDK](https://github.com/HavenDV/AutoSDK)
+- Fully generated C# SDK based on [official Groq OpenAPI specification](https://storage.googleapis.com/stainless-sdk-openapi-specs/groqcloud%2Fgroqcloud-1f0d266ba97b03672f10d33a6dc6e324af9a95646f978ffbff6a31f3907bbfe7.yml) using [AutoSDK](https://github.com/TryAGI/AutoSDK)
 - Same day update to support new features
 - Updated and supported automatically if there are no breaking changes
 - All modern .NET features - nullability, trimming, NativeAOT, etc.

@@ -13,4 +13,15 @@ public partial class Tests
         
         return client;
     }
+
+    private static async Task<string> DownloadFileToTempAsync(string url)
+    {
+        string tempFilePath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName() + Path.GetExtension(url));
+        using (HttpClient client = new())
+        {
+            byte[] fileBytes = await client.GetByteArrayAsync(url);
+            await File.WriteAllBytesAsync(tempFilePath, fileBytes);
+        }
+        return tempFilePath;
+    }
 }
