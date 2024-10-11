@@ -30,7 +30,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.FunctionParameters? Type3 { get; set; }
+        public object? Type3 { get; set; }
         /// <summary>
         /// 
         /// </summary>
