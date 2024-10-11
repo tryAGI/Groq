@@ -26,7 +26,7 @@ namespace Groq
         /// Omitting `parameters` defines a function with an empty parameter list.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("parameters")]
-        public global::Groq.FunctionParameters? Parameters { get; set; }
+        public object? Parameters { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
