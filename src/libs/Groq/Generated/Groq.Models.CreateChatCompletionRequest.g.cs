@@ -42,7 +42,7 @@ namespace Groq
         /// Modify the likelihood of specified tokens appearing in the completion.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("logit_bias")]
-        public global::Groq.CreateChatCompletionRequestLogitBias? LogitBias { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, int>? LogitBias { get; set; }
 
         /// <summary>
         /// This is not yet supported by any of our models.<br/>

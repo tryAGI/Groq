@@ -262,7 +262,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionRequestLogitBias? Type61 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, int>? Type61 { get; set; }
         /// <summary>
         /// 
         /// </summary>
