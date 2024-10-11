@@ -202,7 +202,7 @@ namespace Groq
             global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessage> messages,
             global::Groq.AnyOf<string, global::Groq.CreateChatCompletionRequestModel?> model,
             double? frequencyPenalty = 0,
-            global::Groq.CreateChatCompletionRequestLogitBias? logitBias = default,
+            global::System.Collections.Generic.Dictionary<string, int>? logitBias = default,
             bool? logprobs = false,
             int? maxTokens = default,
             int? n = 1,
