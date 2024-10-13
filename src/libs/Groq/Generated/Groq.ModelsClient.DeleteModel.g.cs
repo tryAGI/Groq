@@ -103,7 +103,7 @@ namespace Groq
             }
 
             return
-                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::Groq.DeleteModelResponse), JsonSerializerContext) as global::Groq.DeleteModelResponse ??
+                global::Groq.DeleteModelResponse.FromJson(__content, JsonSerializerContext) ??
                 throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
         }
     }
