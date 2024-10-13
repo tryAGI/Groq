@@ -137,7 +137,7 @@ namespace Groq
             }
 
             return
-                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::Groq.CreateTranslationResponseJson), JsonSerializerContext) as global::Groq.CreateTranslationResponseJson ??
+                global::Groq.CreateTranslationResponseJson.FromJson(__content, JsonSerializerContext) ??
                 throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
         }
 
