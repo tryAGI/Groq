@@ -23,6 +23,8 @@ namespace Groq
             typeof(global::Groq.JsonConverters.ChatCompletionRequestAssistantMessageRoleNullableJsonConverter),
             typeof(global::Groq.JsonConverters.ChatCompletionRequestFunctionMessageRoleJsonConverter),
             typeof(global::Groq.JsonConverters.ChatCompletionRequestFunctionMessageRoleNullableJsonConverter),
+            typeof(global::Groq.JsonConverters.ChatCompletionRequestMessageDiscriminatorRoleJsonConverter),
+            typeof(global::Groq.JsonConverters.ChatCompletionRequestMessageDiscriminatorRoleNullableJsonConverter),
             typeof(global::Groq.JsonConverters.ChatCompletionRequestSystemMessageRoleJsonConverter),
             typeof(global::Groq.JsonConverters.ChatCompletionRequestSystemMessageRoleNullableJsonConverter),
             typeof(global::Groq.JsonConverters.ChatCompletionRequestMessageContentPartTextTypeJsonConverter),
