@@ -13,6 +13,11 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
+        public global::Groq.ChatCompletionRequestMessageDiscriminatorRole? Role { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Groq.ChatCompletionRequestSystemMessage? System { get; init; }
 #else
@@ -189,6 +194,7 @@ namespace Groq
         /// 
         /// </summary>
         public ChatCompletionRequestMessage(
+            global::Groq.ChatCompletionRequestMessageDiscriminatorRole? role,
             global::Groq.ChatCompletionRequestSystemMessage? system,
             global::Groq.ChatCompletionRequestUserMessage? user,
             global::Groq.ChatCompletionRequestAssistantMessage? assistant,
@@ -196,6 +202,8 @@ namespace Groq
             global::Groq.ChatCompletionRequestFunctionMessage? function
             )
         {
+            Role = role;
+
             System = system;
             User = user;
             Assistant = assistant;
