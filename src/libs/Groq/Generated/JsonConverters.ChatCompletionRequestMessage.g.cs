@@ -16,11 +16,10 @@ namespace Groq.JsonConverters
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
 
-            global::Groq.ChatCompletionRequestMessageDiscriminator? discriminator = default;
             var readerCopy = reader;
             var discriminatorTypeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ChatCompletionRequestMessageDiscriminator), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ChatCompletionRequestMessageDiscriminator> ??
                             throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Groq.ChatCompletionRequestMessageDiscriminator)}");
-            discriminator = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, discriminatorTypeInfo);
+            var discriminator = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, discriminatorTypeInfo);
 
             global::Groq.ChatCompletionRequestSystemMessage? system = default;
             if (discriminator?.Role == global::Groq.ChatCompletionRequestMessageDiscriminatorRole.System)
@@ -59,6 +58,7 @@ namespace Groq.JsonConverters
             }
 
             var result = new global::Groq.ChatCompletionRequestMessage(
+                discriminator?.Role,
                 system,
                 user,
                 assistant,

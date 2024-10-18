@@ -13,6 +13,11 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
+        public global::Groq.ChatCompletionRequestMessageContentPartDiscriminatorType? Type { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Groq.ChatCompletionRequestMessageContentPartText? Text { get; init; }
 #else
@@ -84,10 +89,13 @@ namespace Groq
         /// 
         /// </summary>
         public ChatCompletionRequestMessageContentPart(
+            global::Groq.ChatCompletionRequestMessageContentPartDiscriminatorType? type,
             global::Groq.ChatCompletionRequestMessageContentPartText? text,
             global::Groq.ChatCompletionRequestMessageContentPartImage? image
             )
         {
+            Type = type;
+
             Text = text;
             Image = image;
         }
