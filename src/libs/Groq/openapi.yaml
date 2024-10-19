@@ -524,7 +524,7 @@ components:
           type: boolean
           description: This field is unused
       description: "Options for streaming response. Only set this when you set `stream: true`.\n"
-      default: 
+      default: ''
       nullable: true
     ChatCompletionStreamResponseDelta:
       type: object
@@ -693,7 +693,7 @@ components:
           additionalProperties:
             type: integer
           description: "This is not yet supported by any of our models.\nModify the likelihood of specified tokens appearing in the completion.\n"
-          default: 
+          default: ''
           nullable: true
         logprobs:
           type: boolean
@@ -769,7 +769,7 @@ components:
                 type: string
                 example: '["\n"]'
           description: "Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence.\n"
-          default: 
+          default: ''
           nullable: true
         stream:
           type: boolean
@@ -1479,7 +1479,7 @@ security:
   - api_key: [ ]
 x-groq-metadata:
   groups:
-    - description: 
+    - description: ''
       id: chat
       sections:
         - key: createChatCompletion
@@ -1487,7 +1487,7 @@ x-groq-metadata:
           type: endpoint
       title: Chat
       type: endpoints
-    - description: 
+    - description: ''
       id: audio
       sections:
         - key: createTranscription
@@ -1498,7 +1498,7 @@ x-groq-metadata:
           type: endpoint
       title: Audio
       type: endpoints
-    - description: 
+    - description: ''
       id: models
       sections:
         - key: listModels
