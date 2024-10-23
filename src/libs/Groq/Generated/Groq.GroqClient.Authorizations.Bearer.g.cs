@@ -14,8 +14,8 @@ namespace Groq
         {
             apiKey = apiKey ?? throw new global::System.ArgumentNullException(nameof(apiKey));
 
-            _authorizations.Clear();
-            _authorizations.Add(new global::Groq.EndPointAuthorization
+            Authorizations.Clear();
+            Authorizations.Add(new global::Groq.EndPointAuthorization
             {
                 Type = "Http",
                 Location = "Header",
