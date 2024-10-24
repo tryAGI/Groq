@@ -17,7 +17,7 @@ namespace Groq
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateChatCompletionRequestResponseFormatTypeJsonConverter))]
-        public global::Groq.CreateChatCompletionRequestResponseFormatType? Type { get; set; } = global::Groq.CreateChatCompletionRequestResponseFormatType.Text;
+        public global::Groq.CreateChatCompletionRequestResponseFormatType? Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

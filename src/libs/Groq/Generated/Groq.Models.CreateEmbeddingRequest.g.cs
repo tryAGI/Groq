@@ -17,7 +17,7 @@ namespace Groq
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("encoding_format")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateEmbeddingRequestEncodingFormatJsonConverter))]
-        public global::Groq.CreateEmbeddingRequestEncodingFormat? EncodingFormat { get; set; } = global::Groq.CreateEmbeddingRequestEncodingFormat.Float;
+        public global::Groq.CreateEmbeddingRequestEncodingFormat? EncodingFormat { get; set; }
 
         /// <summary>
         /// Input text to embed, encoded as a string or array of tokens. To embed multiple inputs in a single request, pass an array of strings or array of token arrays. The input must not exceed the max input tokens for the model, cannot be an empty string, and any array must be 2048 dimensions or less.<br/>
