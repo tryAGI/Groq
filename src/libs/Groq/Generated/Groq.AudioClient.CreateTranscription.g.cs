@@ -88,13 +88,13 @@ namespace Groq
                     content: new global::System.Net.Http.StringContent($"{request.Prompt}"),
                     name: "prompt");
             } 
-            if (request.ResponseFormat != global::Groq.CreateTranscriptionRequestResponseFormat.Json)
+            if (request.ResponseFormat != default)
             {
                 __httpRequestContent.Add(
                     content: new global::System.Net.Http.StringContent($"{request.ResponseFormat?.ToValueString()}"),
                     name: "response_format");
             } 
-            if (request.Temperature != 0)
+            if (request.Temperature != default)
             {
                 __httpRequestContent.Add(
                     content: new global::System.Net.Http.StringContent($"{request.Temperature}"),
@@ -192,8 +192,8 @@ namespace Groq
             global::Groq.AnyOf<string, global::Groq.CreateTranscriptionRequestModel?> model,
             global::Groq.AnyOf<string, global::Groq.CreateTranscriptionRequestLanguage?>? language = default,
             string? prompt = default,
-            global::Groq.CreateTranscriptionRequestResponseFormat? responseFormat = global::Groq.CreateTranscriptionRequestResponseFormat.Json,
-            double? temperature = 0,
+            global::Groq.CreateTranscriptionRequestResponseFormat? responseFormat = default,
+            double? temperature = default,
             global::System.Collections.Generic.IList<global::Groq.CreateTranscriptionRequestTimestampGranularitie>? timestampGranularities = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

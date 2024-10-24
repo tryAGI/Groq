@@ -38,7 +38,7 @@ namespace Groq
         global::System.Threading.Tasks.Task<global::Groq.CreateEmbeddingResponse> CreateEmbeddingAsync(
             global::Groq.OneOf<string, global::System.Collections.Generic.IList<string>> input,
             global::Groq.AnyOf<string, global::Groq.CreateEmbeddingRequestModel?> model,
-            global::Groq.CreateEmbeddingRequestEncodingFormat? encodingFormat = global::Groq.CreateEmbeddingRequestEncodingFormat.Float,
+            global::Groq.CreateEmbeddingRequestEncodingFormat? encodingFormat = default,
             string? user = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

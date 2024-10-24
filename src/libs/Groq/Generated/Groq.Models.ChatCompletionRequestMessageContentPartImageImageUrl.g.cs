@@ -14,7 +14,7 @@ namespace Groq
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("detail")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ChatCompletionRequestMessageContentPartImageImageUrlDetailJsonConverter))]
-        public global::Groq.ChatCompletionRequestMessageContentPartImageImageUrlDetail? Detail { get; set; } = global::Groq.ChatCompletionRequestMessageContentPartImageImageUrlDetail.Auto;
+        public global::Groq.ChatCompletionRequestMessageContentPartImageImageUrlDetail? Detail { get; set; }
 
         /// <summary>
         /// Either a URL of the image or the base64 encoded image data.

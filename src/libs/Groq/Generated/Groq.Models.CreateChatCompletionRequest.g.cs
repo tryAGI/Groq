@@ -15,7 +15,7 @@ namespace Groq
         /// Default Value: 0
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("frequency_penalty")]
-        public double? FrequencyPenalty { get; set; } = 0;
+        public double? FrequencyPenalty { get; set; }
 
         /// <summary>
         /// Deprecated in favor of `tool_choice`.<br/>
@@ -50,7 +50,7 @@ namespace Groq
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("logprobs")]
-        public bool? Logprobs { get; set; } = false;
+        public bool? Logprobs { get; set; }
 
         /// <summary>
         /// The maximum number of tokens that can be generated in the chat completion. The total length of input tokens and generated tokens is limited by the model's context length.
@@ -79,21 +79,21 @@ namespace Groq
         /// Example: 1
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("n")]
-        public int? N { get; set; } = 1;
+        public int? N { get; set; }
 
         /// <summary>
         /// Whether to enable parallel function calling during tool use.<br/>
         /// Default Value: true
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("parallel_tool_calls")]
-        public bool? ParallelToolCalls { get; set; } = true;
+        public bool? ParallelToolCalls { get; set; }
 
         /// <summary>
         /// Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.<br/>
         /// Default Value: 0
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("presence_penalty")]
-        public double? PresencePenalty { get; set; } = 0;
+        public double? PresencePenalty { get; set; }
 
         /// <summary>
         /// An object specifying the format that the model must output. <br/>
@@ -122,7 +122,7 @@ namespace Groq
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stream")]
-        public bool? Stream { get; set; } = false;
+        public bool? Stream { get; set; }
 
         /// <summary>
         /// What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both<br/>
@@ -130,7 +130,7 @@ namespace Groq
         /// Example: 1
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("temperature")]
-        public double? Temperature { get; set; } = 1;
+        public double? Temperature { get; set; }
 
         /// <summary>
         /// Controls which (if any) tool is called by the model.<br/>
@@ -163,7 +163,7 @@ namespace Groq
         /// Example: 1
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("top_p")]
-        public double? TopP { get; set; } = 1;
+        public double? TopP { get; set; }
 
         /// <summary>
         /// A unique identifier representing your end-user, which can help us monitor and detect abuse.

@@ -45,8 +45,8 @@ namespace Groq
             string filename,
             global::Groq.AnyOf<string, global::Groq.CreateTranslationRequestModel?> model,
             string? prompt = default,
-            global::Groq.CreateTranslationRequestResponseFormat? responseFormat = global::Groq.CreateTranslationRequestResponseFormat.Json,
-            double? temperature = 0,
+            global::Groq.CreateTranslationRequestResponseFormat? responseFormat = default,
+            double? temperature = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
