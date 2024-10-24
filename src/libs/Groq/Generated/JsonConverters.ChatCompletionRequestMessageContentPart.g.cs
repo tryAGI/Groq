@@ -26,14 +26,14 @@ namespace Groq.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ChatCompletionRequestMessageContentPartText), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ChatCompletionRequestMessageContentPartText> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Groq.ChatCompletionRequestMessageContentPartText)}");
-                _ = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+                text = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
             global::Groq.ChatCompletionRequestMessageContentPartImage? image = default;
             if (discriminator?.Type == global::Groq.ChatCompletionRequestMessageContentPartDiscriminatorType.ImageUrl)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ChatCompletionRequestMessageContentPartImage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ChatCompletionRequestMessageContentPartImage> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Groq.ChatCompletionRequestMessageContentPartImage)}");
-                _ = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+                image = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
             var result = new global::Groq.ChatCompletionRequestMessageContentPart(
