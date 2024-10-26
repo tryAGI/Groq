@@ -54,18 +54,18 @@ namespace Groq
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Groq.ChatCompletionRequestMessageContentPartImage? Image { get; init; }
+        public global::Groq.ChatCompletionRequestMessageContentPartImage? ImageUrl { get; init; }
 #else
-        public global::Groq.ChatCompletionRequestMessageContentPartImage? Image { get; }
+        public global::Groq.ChatCompletionRequestMessageContentPartImage? ImageUrl { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Image))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ImageUrl))]
 #endif
-        public bool IsImage => Image != null;
+        public bool IsImageUrl => ImageUrl != null;
 
         /// <summary>
         /// 
@@ -75,14 +75,14 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Groq.ChatCompletionRequestMessageContentPartImage?(ChatCompletionRequestMessageContentPart @this) => @this.Image;
+        public static implicit operator global::Groq.ChatCompletionRequestMessageContentPartImage?(ChatCompletionRequestMessageContentPart @this) => @this.ImageUrl;
 
         /// <summary>
         /// 
         /// </summary>
         public ChatCompletionRequestMessageContentPart(global::Groq.ChatCompletionRequestMessageContentPartImage? value)
         {
-            Image = value;
+            ImageUrl = value;
         }
 
         /// <summary>
@@ -91,20 +91,20 @@ namespace Groq
         public ChatCompletionRequestMessageContentPart(
             global::Groq.ChatCompletionRequestMessageContentPartDiscriminatorType? type,
             global::Groq.ChatCompletionRequestMessageContentPartText? text,
-            global::Groq.ChatCompletionRequestMessageContentPartImage? image
+            global::Groq.ChatCompletionRequestMessageContentPartImage? imageUrl
             )
         {
             Type = type;
 
             Text = text;
-            Image = image;
+            ImageUrl = imageUrl;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Image as object ??
+            ImageUrl as object ??
             Text as object 
             ;
 
@@ -113,7 +113,7 @@ namespace Groq
         /// </summary>
         public bool Validate()
         {
-            return IsText && !IsImage || !IsText && IsImage;
+            return IsText && !IsImageUrl || !IsText && IsImageUrl;
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Groq
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Groq.ChatCompletionRequestMessageContentPartText?, TResult>? text = null,
-            global::System.Func<global::Groq.ChatCompletionRequestMessageContentPartImage?, TResult>? image = null,
+            global::System.Func<global::Groq.ChatCompletionRequestMessageContentPartImage?, TResult>? imageUrl = null,
             bool validate = true)
         {
             if (validate)
@@ -133,9 +133,9 @@ namespace Groq
             {
                 return text(Text!);
             }
-            else if (IsImage && image != null)
+            else if (IsImageUrl && imageUrl != null)
             {
-                return image(Image!);
+                return imageUrl(ImageUrl!);
             }
 
             return default(TResult);
@@ -146,7 +146,7 @@ namespace Groq
         /// </summary>
         public void Match(
             global::System.Action<global::Groq.ChatCompletionRequestMessageContentPartText?>? text = null,
-            global::System.Action<global::Groq.ChatCompletionRequestMessageContentPartImage?>? image = null,
+            global::System.Action<global::Groq.ChatCompletionRequestMessageContentPartImage?>? imageUrl = null,
             bool validate = true)
         {
             if (validate)
@@ -158,9 +158,9 @@ namespace Groq
             {
                 text?.Invoke(Text!);
             }
-            else if (IsImage)
+            else if (IsImageUrl)
             {
-                image?.Invoke(Image!);
+                imageUrl?.Invoke(ImageUrl!);
             }
         }
 
@@ -173,7 +173,7 @@ namespace Groq
             {
                 Text,
                 typeof(global::Groq.ChatCompletionRequestMessageContentPartText),
-                Image,
+                ImageUrl,
                 typeof(global::Groq.ChatCompletionRequestMessageContentPartImage),
             };
             const int offset = unchecked((int)2166136261);
@@ -191,7 +191,7 @@ namespace Groq
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Groq.ChatCompletionRequestMessageContentPartText?>.Default.Equals(Text, other.Text) &&
-                global::System.Collections.Generic.EqualityComparer<global::Groq.ChatCompletionRequestMessageContentPartImage?>.Default.Equals(Image, other.Image) 
+                global::System.Collections.Generic.EqualityComparer<global::Groq.ChatCompletionRequestMessageContentPartImage?>.Default.Equals(ImageUrl, other.ImageUrl) 
                 ;
         }
 
