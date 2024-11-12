@@ -63,91 +63,53 @@ namespace Groq
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
+        /// Initializes a new instance of the <see cref="CreateChatCompletionStreamResponse" /> class.
         /// </summary>
-        public string ToJson(
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
+        /// <param name="choices">
+        /// A list of chat completion choices. Can contain more than one elements if `n` is greater than 1.
+        /// </param>
+        /// <param name="created">
+        /// The Unix timestamp (in seconds) of when the chat completion was created. Each chunk has the same timestamp.
+        /// </param>
+        /// <param name="id">
+        /// A unique identifier for the chat completion. Each chunk has the same ID.
+        /// </param>
+        /// <param name="model">
+        /// The model to generate the completion.
+        /// </param>
+        /// <param name="object">
+        /// The object type, which is always `chat.completion.chunk`.
+        /// </param>
+        /// <param name="systemFingerprint">
+        /// This fingerprint represents the backend configuration that the model runs with.<br/>
+        /// Can be used in conjunction with the `seed` request parameter to understand when backend changes have been made that might impact determinism.
+        /// </param>
+        /// <param name="xGroq"></param>
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+        public CreateChatCompletionStreamResponse(
+            global::System.Collections.Generic.IList<global::Groq.CreateChatCompletionStreamResponseChoice> choices,
+            global::System.DateTimeOffset created,
+            string id,
+            string model,
+            global::Groq.CreateChatCompletionStreamResponseObject @object,
+            string? systemFingerprint,
+            global::Groq.XGroq? xGroq)
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                this.GetType(),
-                jsonSerializerContext);
+            this.Choices = choices ?? throw new global::System.ArgumentNullException(nameof(choices));
+            this.Created = created;
+            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
+            this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
+            this.Object = @object;
+            this.SystemFingerprint = systemFingerprint;
+            this.XGroq = xGroq;
         }
 
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerOptions.
+        /// Initializes a new instance of the <see cref="CreateChatCompletionStreamResponse" /> class.
         /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public string ToJson(
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
+        public CreateChatCompletionStreamResponse()
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                jsonSerializerOptions);
         }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerContext.
-        /// </summary>
-        public static global::Groq.CreateChatCompletionStreamResponse? FromJson(
-            string json,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize(
-                json,
-                typeof(global::Groq.CreateChatCompletionStreamResponse),
-                jsonSerializerContext) as global::Groq.CreateChatCompletionStreamResponse;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::Groq.CreateChatCompletionStreamResponse? FromJson(
-            string json,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Groq.CreateChatCompletionStreamResponse>(
-                json,
-                jsonSerializerOptions);
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerContext.
-        /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Groq.CreateChatCompletionStreamResponse?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
-                jsonStream,
-                typeof(global::Groq.CreateChatCompletionStreamResponse),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Groq.CreateChatCompletionStreamResponse;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::System.Threading.Tasks.ValueTask<global::Groq.CreateChatCompletionStreamResponse?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Groq.CreateChatCompletionStreamResponse?>(
-                jsonStream,
-                jsonSerializerOptions);
-        }
-
     }
 }

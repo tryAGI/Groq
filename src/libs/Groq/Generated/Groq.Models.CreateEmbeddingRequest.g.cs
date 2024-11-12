@@ -15,6 +15,7 @@ namespace Groq
         /// Default Value: float<br/>
         /// Example: float
         /// </summary>
+        /// <example>float</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("encoding_format")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateEmbeddingRequestEncodingFormatJsonConverter))]
         public global::Groq.CreateEmbeddingRequestEncodingFormat? EncodingFormat { get; set; }
@@ -23,6 +24,7 @@ namespace Groq
         /// Input text to embed, encoded as a string or array of tokens. To embed multiple inputs in a single request, pass an array of strings or array of token arrays. The input must not exceed the max input tokens for the model, cannot be an empty string, and any array must be 2048 dimensions or less.<br/>
         /// Example: The quick brown fox jumped over the lazy dog
         /// </summary>
+        /// <example>The quick brown fox jumped over the lazy dog</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.OneOfJsonConverterFactory2))]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -32,6 +34,7 @@ namespace Groq
         /// ID of the model to use.<br/>
         /// Example: nomic-embed-text-v1_5
         /// </summary>
+        /// <example>nomic-embed-text-v1_5</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverterFactory2))]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -49,91 +52,43 @@ namespace Groq
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
+        /// Initializes a new instance of the <see cref="CreateEmbeddingRequest" /> class.
         /// </summary>
-        public string ToJson(
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
+        /// <param name="encodingFormat">
+        /// The format to return the embeddings in. Can only be `float` or `base64`.<br/>
+        /// Default Value: float<br/>
+        /// Example: float
+        /// </param>
+        /// <param name="input">
+        /// Input text to embed, encoded as a string or array of tokens. To embed multiple inputs in a single request, pass an array of strings or array of token arrays. The input must not exceed the max input tokens for the model, cannot be an empty string, and any array must be 2048 dimensions or less.<br/>
+        /// Example: The quick brown fox jumped over the lazy dog
+        /// </param>
+        /// <param name="model">
+        /// ID of the model to use.<br/>
+        /// Example: nomic-embed-text-v1_5
+        /// </param>
+        /// <param name="user">
+        /// A unique identifier representing your end-user, which can help us monitor and detect abuse.
+        /// </param>
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+        public CreateEmbeddingRequest(
+            global::Groq.OneOf<string, global::System.Collections.Generic.IList<string>> input,
+            global::Groq.AnyOf<string, global::Groq.CreateEmbeddingRequestModel?> model,
+            global::Groq.CreateEmbeddingRequestEncodingFormat? encodingFormat,
+            string? user)
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                this.GetType(),
-                jsonSerializerContext);
+            this.Input = input;
+            this.Model = model;
+            this.EncodingFormat = encodingFormat;
+            this.User = user;
         }
 
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerOptions.
+        /// Initializes a new instance of the <see cref="CreateEmbeddingRequest" /> class.
         /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public string ToJson(
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
+        public CreateEmbeddingRequest()
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                jsonSerializerOptions);
         }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerContext.
-        /// </summary>
-        public static global::Groq.CreateEmbeddingRequest? FromJson(
-            string json,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize(
-                json,
-                typeof(global::Groq.CreateEmbeddingRequest),
-                jsonSerializerContext) as global::Groq.CreateEmbeddingRequest;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::Groq.CreateEmbeddingRequest? FromJson(
-            string json,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Groq.CreateEmbeddingRequest>(
-                json,
-                jsonSerializerOptions);
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerContext.
-        /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Groq.CreateEmbeddingRequest?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
-                jsonStream,
-                typeof(global::Groq.CreateEmbeddingRequest),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Groq.CreateEmbeddingRequest;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::System.Threading.Tasks.ValueTask<global::Groq.CreateEmbeddingRequest?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Groq.CreateEmbeddingRequest?>(
-                jsonStream,
-                jsonSerializerOptions);
-        }
-
     }
 }
