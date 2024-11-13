@@ -28,7 +28,7 @@ namespace Groq
         /// The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateTranscriptionRequestLanguage?>))]
         public global::Groq.AnyOf<string, global::Groq.CreateTranscriptionRequestLanguage?>? Language { get; set; }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Groq
         /// </summary>
         /// <example>whisper-large-v3</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateTranscriptionRequestModel?>))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Groq.AnyOf<string, global::Groq.CreateTranscriptionRequestModel?> Model { get; set; }
 

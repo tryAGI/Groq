@@ -26,7 +26,7 @@ namespace Groq
         /// `none` is the default when no functions are present. `auto` is the default if functions are present.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("function_call")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.OneOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.OneOfJsonConverter<global::Groq.CreateChatCompletionRequestFunctionCall?, global::Groq.ChatCompletionFunctionCallOption>))]
         public global::Groq.OneOf<global::Groq.CreateChatCompletionRequestFunctionCall?, global::Groq.ChatCompletionFunctionCallOption>? FunctionCall { get; set; }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Groq
         /// ID of the model to use. For details on which models are compatible with the Chat API, see available [models](/docs/models)
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateChatCompletionRequestModel?>))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Groq.AnyOf<string, global::Groq.CreateChatCompletionRequestModel?> Model { get; set; }
 
@@ -115,7 +115,7 @@ namespace Groq
         /// Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stop")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.OneOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>))]
         public global::Groq.OneOf<string, global::System.Collections.Generic.IList<string>>? Stop { get; set; }
 
         /// <summary>

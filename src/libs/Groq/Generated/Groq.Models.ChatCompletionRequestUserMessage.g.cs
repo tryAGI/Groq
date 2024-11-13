@@ -14,7 +14,7 @@ namespace Groq
         /// The contents of the user message.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.OneOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessageContentPart>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessageContentPart>> Content { get; set; }
 

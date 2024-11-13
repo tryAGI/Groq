@@ -30,7 +30,7 @@ namespace Groq
         /// </summary>
         /// <example>whisper-1</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateTranslationRequestModel?>))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Groq.AnyOf<string, global::Groq.CreateTranslationRequestModel?> Model { get; set; }
 
