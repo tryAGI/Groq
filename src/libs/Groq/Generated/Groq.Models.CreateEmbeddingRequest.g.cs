@@ -26,7 +26,7 @@ namespace Groq
         /// </summary>
         /// <example>The quick brown fox jumped over the lazy dog</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.OneOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Groq.OneOf<string, global::System.Collections.Generic.IList<string>> Input { get; set; }
 
@@ -36,7 +36,7 @@ namespace Groq
         /// </summary>
         /// <example>nomic-embed-text-v1_5</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateEmbeddingRequestModel?>))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Groq.AnyOf<string, global::Groq.CreateEmbeddingRequestModel?> Model { get; set; }
 

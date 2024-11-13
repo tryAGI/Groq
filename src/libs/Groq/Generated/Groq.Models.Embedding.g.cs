@@ -14,7 +14,7 @@ namespace Groq
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("embedding")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.OneOfJsonConverterFactory2))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<double>, string>))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Groq.OneOf<global::System.Collections.Generic.IList<double>, string> Embedding1 { get; set; }
 

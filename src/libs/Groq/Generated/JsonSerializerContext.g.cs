@@ -88,10 +88,18 @@ namespace Groq
             typeof(global::Groq.JsonConverters.ListModelsResponseObjectJsonConverter),
             typeof(global::Groq.JsonConverters.ListModelsResponseObjectNullableJsonConverter),
             typeof(global::Groq.JsonConverters.ChatCompletionRequestMessageJsonConverter),
-            typeof(global::Groq.JsonConverters.OneOfJsonConverterFactory2),
             typeof(global::Groq.JsonConverters.ChatCompletionRequestMessageContentPartJsonConverter),
             typeof(global::Groq.JsonConverters.ChatCompletionToolChoiceOptionJsonConverter),
-            typeof(global::Groq.JsonConverters.AnyOfJsonConverterFactory2),
+            typeof(global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessageContentPart>>),
+            typeof(global::Groq.JsonConverters.OneOfJsonConverter<global::Groq.CreateChatCompletionRequestFunctionCall?, global::Groq.ChatCompletionFunctionCallOption>),
+            typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateChatCompletionRequestModel?>),
+            typeof(global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>),
+            typeof(global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>),
+            typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateEmbeddingRequestModel?>),
+            typeof(global::Groq.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<double>, string>),
+            typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateTranscriptionRequestLanguage?>),
+            typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateTranscriptionRequestModel?>),
+            typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateTranslationRequestModel?>),
         })]
 
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.JsonSerializerContextTypes))]
