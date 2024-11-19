@@ -100,6 +100,7 @@ namespace Groq
             typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateTranscriptionRequestLanguage?>),
             typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateTranscriptionRequestModel?>),
             typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateTranslationRequestModel?>),
+            typeof(global::Groq.JsonConverters.UnixTimestampJsonConverter),
         })]
 
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.JsonSerializerContextTypes))]
