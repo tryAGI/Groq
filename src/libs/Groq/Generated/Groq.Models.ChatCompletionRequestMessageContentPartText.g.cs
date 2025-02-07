@@ -37,7 +37,9 @@ namespace Groq
         /// <param name="type">
         /// The type of the content part.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ChatCompletionRequestMessageContentPartText(
             string text,
             global::Groq.ChatCompletionRequestMessageContentPartTextType type)

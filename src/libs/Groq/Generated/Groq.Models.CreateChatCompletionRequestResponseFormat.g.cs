@@ -34,7 +34,9 @@ namespace Groq
         /// Default Value: text<br/>
         /// Example: json_object
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public CreateChatCompletionRequestResponseFormat(
             global::Groq.CreateChatCompletionRequestResponseFormatType? type)
         {

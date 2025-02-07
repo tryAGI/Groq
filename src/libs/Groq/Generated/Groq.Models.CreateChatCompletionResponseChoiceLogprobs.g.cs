@@ -27,7 +27,9 @@ namespace Groq
         /// <param name="content">
         /// A list of message content tokens with log probability information.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public CreateChatCompletionResponseChoiceLogprobs(
             global::System.Collections.Generic.IList<global::Groq.ChatCompletionTokenLogprob>? content)
         {

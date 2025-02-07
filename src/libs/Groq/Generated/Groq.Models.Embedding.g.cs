@@ -48,7 +48,9 @@ namespace Groq
         /// <param name="object">
         /// The object type, which is always "embedding".
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Embedding(
             global::Groq.OneOf<global::System.Collections.Generic.IList<double>, string> embedding1,
             int index,

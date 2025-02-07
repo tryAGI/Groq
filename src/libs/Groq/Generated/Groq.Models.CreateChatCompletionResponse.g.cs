@@ -88,7 +88,9 @@ namespace Groq
         /// <param name="usage">
         /// Usage statistics for the completion request.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public CreateChatCompletionResponse(
             global::System.Collections.Generic.IList<global::Groq.CreateChatCompletionResponseChoice> choices,
             global::System.DateTimeOffset created,

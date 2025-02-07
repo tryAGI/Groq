@@ -61,7 +61,9 @@ namespace Groq
         /// <param name="logprobs">
         /// Log probability information for the choice.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public CreateChatCompletionStreamResponseChoice(
             global::Groq.ChatCompletionStreamResponseDelta delta,
             global::Groq.CreateChatCompletionStreamResponseChoiceFinishReason? finishReason,

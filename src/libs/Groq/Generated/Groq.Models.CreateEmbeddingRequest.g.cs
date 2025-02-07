@@ -71,7 +71,9 @@ namespace Groq
         /// <param name="user">
         /// A unique identifier representing your end-user, which can help us monitor and detect abuse.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public CreateEmbeddingRequest(
             global::Groq.OneOf<string, global::System.Collections.Generic.IList<string>> input,
             global::Groq.AnyOf<string, global::Groq.CreateEmbeddingRequestModel?> model,

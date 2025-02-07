@@ -86,7 +86,9 @@ namespace Groq
         /// Can be used in conjunction with the `seed` request parameter to understand when backend changes have been made that might impact determinism.
         /// </param>
         /// <param name="xGroq"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public CreateChatCompletionStreamResponse(
             global::System.Collections.Generic.IList<global::Groq.CreateChatCompletionStreamResponseChoice> choices,
             global::System.DateTimeOffset created,

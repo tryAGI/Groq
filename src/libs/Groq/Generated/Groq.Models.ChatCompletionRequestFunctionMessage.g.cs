@@ -51,7 +51,9 @@ namespace Groq
         /// <param name="role">
         /// The role of the messages author, in this case `function`.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ChatCompletionRequestFunctionMessage(
             string? content,
             string name,

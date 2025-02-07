@@ -56,7 +56,9 @@ namespace Groq
         /// <param name="text">
         /// The translated text.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public CreateTranslationResponseVerboseJson(
             string duration,
             string language,

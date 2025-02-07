@@ -262,7 +262,9 @@ namespace Groq
         /// <param name="user">
         /// A unique identifier representing your end-user, which can help us monitor and detect abuse.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public CreateChatCompletionRequest(
             global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessage> messages,
             global::Groq.AnyOf<string, global::Groq.CreateChatCompletionRequestModel?> model,
