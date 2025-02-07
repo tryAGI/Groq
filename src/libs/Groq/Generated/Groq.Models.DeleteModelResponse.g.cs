@@ -41,7 +41,9 @@ namespace Groq
         /// <param name="deleted"></param>
         /// <param name="id"></param>
         /// <param name="object"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public DeleteModelResponse(
             bool deleted,
             string id,

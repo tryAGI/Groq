@@ -47,7 +47,9 @@ namespace Groq
         /// <param name="token">
         /// The token.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ChatCompletionTokenLogprobTopLogprob(
             global::System.Collections.Generic.IList<int>? bytes,
             double logprob,

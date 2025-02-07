@@ -38,7 +38,9 @@ namespace Groq
         /// <param name="name">
         /// The name of the function to call.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ChatCompletionRequestAssistantMessageFunctionCall(
             string? arguments,
             string? name)

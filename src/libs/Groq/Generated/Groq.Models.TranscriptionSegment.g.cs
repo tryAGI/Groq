@@ -117,7 +117,9 @@ namespace Groq
         /// <param name="tokens">
         /// Array of token IDs for the text content.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TranscriptionSegment(
             float avgLogprob,
             float compressionRatio,

@@ -50,7 +50,9 @@ namespace Groq
         /// The role of the author of this message.
         /// </param>
         /// <param name="toolCalls"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ChatCompletionStreamResponseDelta(
             string? content,
             global::Groq.ChatCompletionStreamResponseDeltaRole? role,

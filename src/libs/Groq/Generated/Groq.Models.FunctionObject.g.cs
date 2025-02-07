@@ -47,7 +47,9 @@ namespace Groq
         /// The parameters the functions accepts, described as a JSON Schema object. See the docs on [tool use](/docs/tool-use) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. <br/>
         /// Omitting `parameters` defines a function with an empty parameter list.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public FunctionObject(
             string name,
             string? description,

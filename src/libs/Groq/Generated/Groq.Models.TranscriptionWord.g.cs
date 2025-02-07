@@ -47,7 +47,9 @@ namespace Groq
         /// <param name="word">
         /// The text content of the word.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TranscriptionWord(
             float end,
             float start,

@@ -49,7 +49,9 @@ namespace Groq
         /// <param name="role">
         /// The role of the messages author, in this case `user`.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ChatCompletionRequestUserMessage(
             global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessageContentPart>> content,
             string? name,

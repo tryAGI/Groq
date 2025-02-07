@@ -58,7 +58,9 @@ namespace Groq
         /// <param name="ownedBy">
         /// The organization that owns the model.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Model5(
             global::System.DateTimeOffset created,
             string id,

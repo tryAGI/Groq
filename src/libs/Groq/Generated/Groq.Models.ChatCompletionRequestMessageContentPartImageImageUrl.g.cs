@@ -39,7 +39,9 @@ namespace Groq
         /// <param name="url">
         /// Either a URL of the image or the base64 encoded image data.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ChatCompletionRequestMessageContentPartImageImageUrl(
             string url,
             global::Groq.ChatCompletionRequestMessageContentPartImageImageUrlDetail? detail)

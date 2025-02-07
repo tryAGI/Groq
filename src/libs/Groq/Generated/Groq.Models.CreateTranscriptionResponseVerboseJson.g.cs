@@ -65,7 +65,9 @@ namespace Groq
         /// <param name="words">
         /// Extracted words and their corresponding timestamps.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public CreateTranscriptionResponseVerboseJson(
             string duration,
             string language,

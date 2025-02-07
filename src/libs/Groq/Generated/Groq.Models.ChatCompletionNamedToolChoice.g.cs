@@ -35,7 +35,9 @@ namespace Groq
         /// <param name="type">
         /// The type of the tool. Currently, only `function` is supported.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ChatCompletionNamedToolChoice(
             global::Groq.ChatCompletionNamedToolChoiceFunction function,
             global::Groq.ChatCompletionNamedToolChoiceType type)
