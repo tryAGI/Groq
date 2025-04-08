@@ -31,8 +31,6 @@ namespace Groq
             typeof(global::Groq.JsonConverters.ChatCompletionRequestMessageContentPartImageImageUrlDetailNullableJsonConverter),
             typeof(global::Groq.JsonConverters.ChatCompletionRequestMessageContentPartImageTypeJsonConverter),
             typeof(global::Groq.JsonConverters.ChatCompletionRequestMessageContentPartImageTypeNullableJsonConverter),
-            typeof(global::Groq.JsonConverters.ChatCompletionRequestMessageContentPartDiscriminatorTypeJsonConverter),
-            typeof(global::Groq.JsonConverters.ChatCompletionRequestMessageContentPartDiscriminatorTypeNullableJsonConverter),
             typeof(global::Groq.JsonConverters.ChatCompletionRequestUserMessageRoleJsonConverter),
             typeof(global::Groq.JsonConverters.ChatCompletionRequestUserMessageRoleNullableJsonConverter),
             typeof(global::Groq.JsonConverters.ChatCompletionRequestToolMessageRoleJsonConverter),
