@@ -74,11 +74,11 @@ namespace Groq
             if (request.Language != default)
             {
                 __httpRequestContent.Add(
-                    content: new global::System.Net.Http.StringContent(request.Language?.Value1?.ToString() ?? request.Language?.Value2?.ToValueString() ?? string.Empty),
+                    content: new global::System.Net.Http.StringContent(request.Language?.ToString() ?? string.Empty),
                     name: "language");
             } 
             __httpRequestContent.Add(
-                content: new global::System.Net.Http.StringContent(request.Model.Value1?.ToString() ?? request.Model.Value2?.ToValueString() ?? string.Empty),
+                content: new global::System.Net.Http.StringContent(request.Model.ToString() ?? string.Empty),
                 name: "model");
             if (request.Prompt != default)
             {
