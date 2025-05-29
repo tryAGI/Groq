@@ -28,6 +28,10 @@ namespace Groq.JsonConverters
                     var numValue = reader.GetInt32();
                     return (global::Groq.CreateEmbeddingRequestEncodingFormat)numValue;
                 }
+                case global::System.Text.Json.JsonTokenType.Null:
+                {
+                    return default(global::Groq.CreateEmbeddingRequestEncodingFormat);
+                }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
             }
