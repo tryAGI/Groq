@@ -28,6 +28,10 @@ namespace Groq.JsonConverters
                     var numValue = reader.GetInt32();
                     return (global::Groq.CreateChatCompletionStreamResponseChoiceFinishReason)numValue;
                 }
+                case global::System.Text.Json.JsonTokenType.Null:
+                {
+                    return default(global::Groq.CreateChatCompletionStreamResponseChoiceFinishReason);
+                }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
             }
