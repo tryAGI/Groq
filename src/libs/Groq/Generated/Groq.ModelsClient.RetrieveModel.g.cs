@@ -38,7 +38,7 @@ namespace Groq
                 httpClient: HttpClient,
                 model: ref model);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Groq.PathBuilder(
                 path: $"/openai/v1/models/{model}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
