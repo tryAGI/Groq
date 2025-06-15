@@ -39,7 +39,7 @@ namespace Groq
                 httpClient: HttpClient,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Groq.PathBuilder(
                 path: "/openai/v1/embeddings",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
