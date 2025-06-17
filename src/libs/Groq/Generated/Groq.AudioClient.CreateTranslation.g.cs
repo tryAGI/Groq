@@ -39,7 +39,7 @@ namespace Groq
                 httpClient: HttpClient,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Groq.PathBuilder(
                 path: "/openai/v1/audio/translations",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
@@ -72,7 +72,7 @@ namespace Groq
                 name: "file",
                 fileName: request.Filename ?? string.Empty);
             __httpRequestContent.Add(
-                content: new global::System.Net.Http.StringContent(request.Model.Value1?.ToString() ?? request.Model.Value2?.ToValueString() ?? string.Empty),
+                content: new global::System.Net.Http.StringContent(request.Model.ToString() ?? string.Empty),
                 name: "model");
             if (request.Prompt != default)
             {
