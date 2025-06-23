@@ -34,7 +34,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestSystemMessage value) => new ChatCompletionRequestMessage(value);
+        public static implicit operator ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestSystemMessage value) => new ChatCompletionRequestMessage((global::Groq.ChatCompletionRequestSystemMessage?)value);
 
         /// <summary>
         /// 
@@ -69,7 +69,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestUserMessage value) => new ChatCompletionRequestMessage(value);
+        public static implicit operator ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestUserMessage value) => new ChatCompletionRequestMessage((global::Groq.ChatCompletionRequestUserMessage?)value);
 
         /// <summary>
         /// 
@@ -104,7 +104,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestAssistantMessage value) => new ChatCompletionRequestMessage(value);
+        public static implicit operator ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestAssistantMessage value) => new ChatCompletionRequestMessage((global::Groq.ChatCompletionRequestAssistantMessage?)value);
 
         /// <summary>
         /// 
@@ -139,7 +139,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestToolMessage value) => new ChatCompletionRequestMessage(value);
+        public static implicit operator ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestToolMessage value) => new ChatCompletionRequestMessage((global::Groq.ChatCompletionRequestToolMessage?)value);
 
         /// <summary>
         /// 
@@ -174,7 +174,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestFunctionMessage value) => new ChatCompletionRequestMessage(value);
+        public static implicit operator ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestFunctionMessage value) => new ChatCompletionRequestMessage((global::Groq.ChatCompletionRequestFunctionMessage?)value);
 
         /// <summary>
         /// 
@@ -219,6 +219,17 @@ namespace Groq
             Assistant as object ??
             User as object ??
             System as object 
+            ;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override string? ToString() =>
+            System?.ToString() ??
+            User?.ToString() ??
+            Assistant?.ToString() ??
+            Tool?.ToString() ??
+            Function?.ToString() 
             ;
 
         /// <summary>
