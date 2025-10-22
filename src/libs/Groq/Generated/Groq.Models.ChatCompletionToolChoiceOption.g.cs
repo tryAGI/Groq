@@ -34,7 +34,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator ChatCompletionToolChoiceOption(global::Groq.ChatCompletionToolChoiceOptionEnum value) => new ChatCompletionToolChoiceOption(value);
+        public static implicit operator ChatCompletionToolChoiceOption(global::Groq.ChatCompletionToolChoiceOptionEnum value) => new ChatCompletionToolChoiceOption((global::Groq.ChatCompletionToolChoiceOptionEnum?)value);
 
         /// <summary>
         /// 
@@ -69,7 +69,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator ChatCompletionToolChoiceOption(global::Groq.ChatCompletionNamedToolChoice value) => new ChatCompletionToolChoiceOption(value);
+        public static implicit operator ChatCompletionToolChoiceOption(global::Groq.ChatCompletionNamedToolChoice value) => new ChatCompletionToolChoiceOption((global::Groq.ChatCompletionNamedToolChoice?)value);
 
         /// <summary>
         /// 
@@ -102,6 +102,14 @@ namespace Groq
         public object? Object =>
             Value2 as object ??
             Value1 as object 
+            ;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override string? ToString() =>
+            Value1?.ToValueString() ??
+            Value2?.ToString() 
             ;
 
         /// <summary>
