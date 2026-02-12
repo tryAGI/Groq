@@ -32,24 +32,6 @@ namespace Groq
         public bool IsValue1 => Value1 != null;
 
         /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator ChatCompletionToolChoiceOption(global::Groq.ChatCompletionToolChoiceOptionEnum value) => new ChatCompletionToolChoiceOption(value);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator global::Groq.ChatCompletionToolChoiceOptionEnum?(ChatCompletionToolChoiceOption @this) => @this.Value1;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public ChatCompletionToolChoiceOption(global::Groq.ChatCompletionToolChoiceOptionEnum? value)
-        {
-            Value1 = value;
-        }
-
-        /// <summary>
         /// Specifies a tool the model should use. Use to force the model to call a specific function.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -65,11 +47,28 @@ namespace Groq
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
 #endif
         public bool IsValue2 => Value2 != null;
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator ChatCompletionToolChoiceOption(global::Groq.ChatCompletionToolChoiceOptionEnum value) => new ChatCompletionToolChoiceOption((global::Groq.ChatCompletionToolChoiceOptionEnum?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator ChatCompletionToolChoiceOption(global::Groq.ChatCompletionNamedToolChoice value) => new ChatCompletionToolChoiceOption(value);
+        public static implicit operator global::Groq.ChatCompletionToolChoiceOptionEnum?(ChatCompletionToolChoiceOption @this) => @this.Value1;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ChatCompletionToolChoiceOption(global::Groq.ChatCompletionToolChoiceOptionEnum? value)
+        {
+            Value1 = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator ChatCompletionToolChoiceOption(global::Groq.ChatCompletionNamedToolChoice value) => new ChatCompletionToolChoiceOption((global::Groq.ChatCompletionNamedToolChoice?)value);
 
         /// <summary>
         /// 
@@ -102,6 +101,14 @@ namespace Groq
         public object? Object =>
             Value2 as object ??
             Value1 as object 
+            ;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override string? ToString() =>
+            Value1?.ToValueString() ??
+            Value2?.ToString() 
             ;
 
         /// <summary>
