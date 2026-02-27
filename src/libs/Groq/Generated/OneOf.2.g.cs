@@ -28,7 +28,23 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator OneOf<T1, T2>(T1 value) => new OneOf<T1, T2>(value);
+#if NET6_0_OR_GREATER
+        public T2? Value2 { get; init; }
+#else
+        public T2? Value2 { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+#endif
+        public bool IsValue2 => Value2 != null;
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator OneOf<T1, T2>(T1 value) => new OneOf<T1, T2>((T1?)value);
 
         /// <summary>
         /// 
@@ -46,24 +62,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-#if NET6_0_OR_GREATER
-        public T2? Value2 { get; init; }
-#else
-        public T2? Value2 { get; }
-#endif
-
-        /// <summary>
-        /// 
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
-#endif
-        public bool IsValue2 => Value2 != null;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator OneOf<T1, T2>(T2 value) => new OneOf<T1, T2>(value);
+        public static implicit operator OneOf<T1, T2>(T2 value) => new OneOf<T1, T2>((T2?)value);
 
         /// <summary>
         /// 
@@ -96,6 +95,14 @@ namespace Groq
         public object? Object =>
             Value2 as object ??
             Value1 as object 
+            ;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override string? ToString() =>
+            Value1?.ToString() ??
+            Value2?.ToString() 
             ;
 
         /// <summary>
