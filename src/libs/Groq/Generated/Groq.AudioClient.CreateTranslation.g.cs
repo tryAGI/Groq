@@ -39,7 +39,7 @@ namespace Groq
                 httpClient: HttpClient,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Groq.PathBuilder(
                 path: "/openai/v1/audio/translations",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
@@ -72,7 +72,7 @@ namespace Groq
                 name: "file",
                 fileName: request.Filename ?? string.Empty);
             __httpRequestContent.Add(
-                content: new global::System.Net.Http.StringContent(request.Model.Value1?.ToString() ?? request.Model.Value2?.ToValueString() ?? string.Empty),
+                content: new global::System.Net.Http.StringContent(request.Model.ToString() ?? string.Empty),
                 name: "model");
             if (request.Prompt != default)
             {
@@ -134,8 +134,12 @@ namespace Groq
                 try
                 {
                     __response.EnsureSuccessStatusCode();
+
+                    return
+                        global::Groq.CreateTranslationResponseJson.FromJson(__content, JsonSerializerContext) ??
+                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
-                catch (global::System.Net.Http.HttpRequestException __ex)
+                catch (global::System.Exception __ex)
                 {
                     throw new global::Groq.ApiException(
                         message: __content ?? __response.ReasonPhrase ?? string.Empty,
@@ -149,18 +153,24 @@ namespace Groq
                             h => h.Value),
                     };
                 }
-
-                return
-                    global::Groq.CreateTranslationResponseJson.FromJson(__content, JsonSerializerContext) ??
-                    throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
             {
                 try
                 {
                     __response.EnsureSuccessStatusCode();
+
+                    using var __content = await __response.Content.ReadAsStreamAsync(
+#if NET5_0_OR_GREATER
+                        cancellationToken
+#endif
+                    ).ConfigureAwait(false);
+
+                    return
+                        await global::Groq.CreateTranslationResponseJson.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
-                catch (global::System.Net.Http.HttpRequestException __ex)
+                catch (global::System.Exception __ex)
                 {
                     throw new global::Groq.ApiException(
                         message: __response.ReasonPhrase ?? string.Empty,
@@ -173,16 +183,6 @@ namespace Groq
                             h => h.Value),
                     };
                 }
-
-                using var __content = await __response.Content.ReadAsStreamAsync(
-#if NET5_0_OR_GREATER
-                    cancellationToken
-#endif
-                ).ConfigureAwait(false);
-
-                return
-                    await global::Groq.CreateTranslationResponseJson.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
-                    throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
 
