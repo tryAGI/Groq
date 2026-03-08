@@ -34,24 +34,6 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestSystemMessage value) => new ChatCompletionRequestMessage(value);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator global::Groq.ChatCompletionRequestSystemMessage?(ChatCompletionRequestMessage @this) => @this.System;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestSystemMessage? value)
-        {
-            System = value;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Groq.ChatCompletionRequestUserMessage? User { get; init; }
 #else
@@ -65,24 +47,6 @@ namespace Groq
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(User))]
 #endif
         public bool IsUser => User != null;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestUserMessage value) => new ChatCompletionRequestMessage(value);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator global::Groq.ChatCompletionRequestUserMessage?(ChatCompletionRequestMessage @this) => @this.User;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestUserMessage? value)
-        {
-            User = value;
-        }
 
         /// <summary>
         /// 
@@ -104,24 +68,6 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestAssistantMessage value) => new ChatCompletionRequestMessage(value);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator global::Groq.ChatCompletionRequestAssistantMessage?(ChatCompletionRequestMessage @this) => @this.Assistant;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestAssistantMessage? value)
-        {
-            Assistant = value;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Groq.ChatCompletionRequestToolMessage? Tool { get; init; }
 #else
@@ -139,7 +85,77 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestToolMessage value) => new ChatCompletionRequestMessage(value);
+#if NET6_0_OR_GREATER
+        public global::Groq.ChatCompletionRequestFunctionMessage? Function { get; init; }
+#else
+        public global::Groq.ChatCompletionRequestFunctionMessage? Function { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Function))]
+#endif
+        public bool IsFunction => Function != null;
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestSystemMessage value) => new ChatCompletionRequestMessage((global::Groq.ChatCompletionRequestSystemMessage?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Groq.ChatCompletionRequestSystemMessage?(ChatCompletionRequestMessage @this) => @this.System;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestSystemMessage? value)
+        {
+            System = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestUserMessage value) => new ChatCompletionRequestMessage((global::Groq.ChatCompletionRequestUserMessage?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Groq.ChatCompletionRequestUserMessage?(ChatCompletionRequestMessage @this) => @this.User;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestUserMessage? value)
+        {
+            User = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestAssistantMessage value) => new ChatCompletionRequestMessage((global::Groq.ChatCompletionRequestAssistantMessage?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Groq.ChatCompletionRequestAssistantMessage?(ChatCompletionRequestMessage @this) => @this.Assistant;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestAssistantMessage? value)
+        {
+            Assistant = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestToolMessage value) => new ChatCompletionRequestMessage((global::Groq.ChatCompletionRequestToolMessage?)value);
 
         /// <summary>
         /// 
@@ -157,24 +173,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-#if NET6_0_OR_GREATER
-        public global::Groq.ChatCompletionRequestFunctionMessage? Function { get; init; }
-#else
-        public global::Groq.ChatCompletionRequestFunctionMessage? Function { get; }
-#endif
-
-        /// <summary>
-        /// 
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Function))]
-#endif
-        public bool IsFunction => Function != null;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestFunctionMessage value) => new ChatCompletionRequestMessage(value);
+        public static implicit operator ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestFunctionMessage value) => new ChatCompletionRequestMessage((global::Groq.ChatCompletionRequestFunctionMessage?)value);
 
         /// <summary>
         /// 
@@ -219,6 +218,17 @@ namespace Groq
             Assistant as object ??
             User as object ??
             System as object 
+            ;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override string? ToString() =>
+            System?.ToString() ??
+            User?.ToString() ??
+            Assistant?.ToString() ??
+            Tool?.ToString() ??
+            Function?.ToString() 
             ;
 
         /// <summary>
