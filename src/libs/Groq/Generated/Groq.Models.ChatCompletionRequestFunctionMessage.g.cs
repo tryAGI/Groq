@@ -13,9 +13,8 @@ namespace Groq
         /// The contents of the function message.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content")]
-        [global::System.Text.Json.Serialization.JsonRequired]
         [global::System.Obsolete("This property marked as deprecated.")]
-        public required string? Content { get; set; }
+        public string? Content { get; set; }
 
         /// <summary>
         /// The name of the function to call.
@@ -55,12 +54,12 @@ namespace Groq
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ChatCompletionRequestFunctionMessage(
-            string? content,
             string name,
+            string? content,
             global::Groq.ChatCompletionRequestFunctionMessageRole role)
         {
-            this.Content = content ?? throw new global::System.ArgumentNullException(nameof(content));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.Content = content;
             this.Role = role;
         }
 
