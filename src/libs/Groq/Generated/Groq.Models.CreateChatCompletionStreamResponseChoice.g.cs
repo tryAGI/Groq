@@ -22,8 +22,7 @@ namespace Groq
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("finish_reason")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateChatCompletionStreamResponseChoiceFinishReasonJsonConverter))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Groq.CreateChatCompletionStreamResponseChoiceFinishReason? FinishReason { get; set; }
+        public global::Groq.CreateChatCompletionStreamResponseChoiceFinishReason? FinishReason { get; set; }
 
         /// <summary>
         /// The index of the choice in the list of choices.
@@ -66,13 +65,13 @@ namespace Groq
 #endif
         public CreateChatCompletionStreamResponseChoice(
             global::Groq.ChatCompletionStreamResponseDelta delta,
-            global::Groq.CreateChatCompletionStreamResponseChoiceFinishReason? finishReason,
             int index,
+            global::Groq.CreateChatCompletionStreamResponseChoiceFinishReason? finishReason,
             global::Groq.CreateChatCompletionStreamResponseChoiceLogprobs? logprobs)
         {
             this.Delta = delta ?? throw new global::System.ArgumentNullException(nameof(delta));
-            this.FinishReason = finishReason;
             this.Index = index;
+            this.FinishReason = finishReason;
             this.Logprobs = logprobs;
         }
 
