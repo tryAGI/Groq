@@ -11,6 +11,7 @@ namespace Groq
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Groq.CreateEmbeddingResponse> CreateEmbeddingAsync(
+
             global::Groq.CreateEmbeddingRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
