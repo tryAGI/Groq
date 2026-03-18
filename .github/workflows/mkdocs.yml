@@ -6,7 +6,6 @@ on:
     paths:
       - 'docs/**'
       - 'mkdocs.yml'
-      - 'src/helpers/GenerateDocs/**'
       - '.github/workflows/mkdocs.yml'
       - 'src/tests/IntegrationTests/**'
       - 'README.md'
@@ -28,22 +27,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-        
+        uses: actions/checkout@v6
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Install dependencies
         run: pip install mkdocs-material
-        
-      - name: Generate docs
-        run: dotnet run --project src/helpers/GenerateDocs/GenerateDocs.csproj .
 
       - name: Build with MkDocs
         run: mkdocs build -d ./_site
-          
+
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
 
   deploy:
     environment:
