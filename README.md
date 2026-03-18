@@ -17,17 +17,38 @@
 using Groq;
 
 using var client = new GroqClient(apiKey);
-IList<ChatCompletionRequestMessage> messages = [ 
+IList<ChatCompletionRequestMessage> messages = [
     new ChatCompletionRequestUserMessage {
         Role = ChatCompletionRequestUserMessageRole.User,
         Content = "Generate a random name"
     }];
-CreateChatCompletionRequest request = new() { 
-    Messages = messages, 
-    Model = CreateChatCompletionRequestModel.Llama370b8192 
+CreateChatCompletionRequest request = new() {
+    Messages = messages,
+    Model = CreateChatCompletionRequestModel.Llama370b8192
 };
 var response = await client.Chat.CreateChatCompletionAsync(request);
 Console.WriteLine(response.Choices[0].Message.Content);
+```
+
+### Microsoft.Extensions.AI (MEAI) Support
+
+Groq provides an OpenAI-compatible API. For `IChatClient` and `IEmbeddingGenerator` support via [Microsoft.Extensions.AI](https://www.nuget.org/packages/Microsoft.Extensions.AI.Abstractions), use the `tryAGI.OpenAI` package:
+```
+dotnet add package tryAGI.OpenAI
+```
+```csharp
+using OpenAI;
+using Microsoft.Extensions.AI;
+
+using var client = CustomProviders.Groq(apiKey);
+
+// IChatClient
+IChatClient chatClient = client;
+var response = await chatClient.GetResponseAsync("Hello!");
+
+// IEmbeddingGenerator
+IEmbeddingGenerator<string, Embedding<float>> generator = client;
+var embeddings = await generator.GenerateAsync(["Hello, world!"]);
 ```
 
 ## Support
