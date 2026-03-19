@@ -41,7 +41,7 @@ The SDK code is **entirely auto-generated** -- do not manually edit files in `sr
 
 ### Build Configuration
 
-- **Target:** `netstandard2.0`, `net4.6.2`, `net6.0`, `net8.0`
+- **Target:** `net10.0`
 - **Language:** C# preview with nullable reference types
 - **Signing:** Strong-named assemblies via `src/key.snk`
 - **Versioning:** Semantic versioning from git tags (`v` prefix) via MinVer
