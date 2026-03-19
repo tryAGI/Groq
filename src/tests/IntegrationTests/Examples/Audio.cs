@@ -1,3 +1,9 @@
+/*
+order: 10
+title: Audio
+slug: audio
+*/
+
 namespace Groq.IntegrationTests;
 
 public partial class Tests

@@ -1,7 +1,10 @@
 site_name: Groq .NET Documentation
 nav:
 - Overview: index.md
-# EXAMPLES #
+- Examples:
+  - Audio: examples/audio.md
+  - Chat: examples/chat.md
+  - Embeddings: examples/embeddings.md
         
 theme:
   name: material

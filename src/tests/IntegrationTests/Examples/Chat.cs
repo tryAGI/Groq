@@ -1,3 +1,9 @@
+/*
+order: 20
+title: Chat
+slug: chat
+*/
+
 namespace Groq.IntegrationTests;
 
 public partial class Tests

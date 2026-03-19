@@ -1,3 +1,9 @@
+/*
+order: 30
+title: Embeddings
+slug: embeddings
+*/
+
 namespace Groq.IntegrationTests;
 
 public partial class Tests
