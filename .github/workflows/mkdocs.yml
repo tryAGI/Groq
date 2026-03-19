@@ -6,6 +6,8 @@ on:
     paths:
       - 'docs/**'
       - 'mkdocs.yml'
+      - 'examples/**'
+      - 'autosdk.docs.json'
       - '.github/workflows/mkdocs.yml'
       - 'src/tests/IntegrationTests/**'
       - 'README.md'
@@ -32,11 +34,23 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Install dependencies
-        run: pip install mkdocs-material
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Install AutoSDK CLI
+        run: dotnet tool install --global autosdk.cli --prerelease
+
+      - name: Generate docs
+        run: autosdk docs sync .
 
       - name: Build with MkDocs
-        run: mkdocs build -d ./_site
+        run: |
+          python -m venv myenv
+          source myenv/bin/activate
+          pip install mkdocs-material
+          mkdocs build -d ./_site
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
