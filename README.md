@@ -52,6 +52,9 @@ IEmbeddingGenerator<string, Embedding<float>> generator = client;
 var embeddings = await generator.GenerateAsync(["Hello, world!"]);
 ```
 
+<!-- EXAMPLES:START -->
+<!-- EXAMPLES:END -->
+
 ## Support
 
 Priority place for bugs: https://github.com/tryAGI/Groq/issues  
