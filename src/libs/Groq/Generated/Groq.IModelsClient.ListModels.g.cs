@@ -4,6 +4,7 @@ namespace Groq
 {
     public partial interface IModelsClient
     {
+
         /// <summary>
         /// List all available [models](https://console.groq.com/docs/models).<br/>
         /// get all available models

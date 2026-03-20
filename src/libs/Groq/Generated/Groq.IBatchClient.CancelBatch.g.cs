@@ -4,6 +4,7 @@ namespace Groq
 {
     public partial interface IBatchClient
     {
+
         /// <summary>
         /// Cancels a batch.
         /// </summary>

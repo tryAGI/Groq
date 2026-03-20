@@ -4,9 +4,11 @@ namespace Groq
 {
     public partial interface IFineTuningClient
     {
+
         /// <summary>
         /// Creates a new fine tuning for the already uploaded files This endpoint is in closed beta. [Contact us](https://groq.com/contact) for more information.
         /// </summary>
+
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
