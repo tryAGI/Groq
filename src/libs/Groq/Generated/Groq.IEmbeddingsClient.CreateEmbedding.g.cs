@@ -4,11 +4,9 @@ namespace Groq
 {
     public partial interface IEmbeddingsClient
     {
-
         /// <summary>
         /// Creates an embedding vector representing the input text.
         /// </summary>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
@@ -16,7 +14,6 @@ namespace Groq
 
             global::Groq.CreateEmbeddingRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Creates an embedding vector representing the input text.
         /// </summary>

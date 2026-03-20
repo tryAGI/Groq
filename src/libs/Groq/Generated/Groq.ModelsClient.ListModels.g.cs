@@ -19,7 +19,6 @@ namespace Groq
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// List all available [models](https://console.groq.com/docs/models).<br/>
         /// get all available models
