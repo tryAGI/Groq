@@ -54,8 +54,6 @@ var embeddings = await generator.GenerateAsync(["Hello, world!"]);
 
 <!-- EXAMPLES:START -->
 ### Audio
-
-
 ```csharp
 using var client = new GroqClient(apiKey);
 var url = "https://speech.zone/simple4all/wp-content/uploads/2012/10/nina_01_071.wav";
@@ -72,8 +70,6 @@ Console.WriteLine(response);
 ```
 
 ### Chat
-
-
 ```csharp
 using var client = new GroqClient(apiKey);
 IList<ChatCompletionRequestMessage> messages = [
@@ -90,8 +86,6 @@ Console.WriteLine(response.Choices[0].Message.Content);
 ```
 
 ### Embeddings
-
-
 ```csharp
 using var client = new GroqClient(apiKey);
 CreateEmbeddingRequest request = new() {
@@ -114,7 +108,3 @@ Discord: https://discord.gg/Ca2xhfBf3v
 ![JetBrains logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.png)
 
 This project is supported by JetBrains through the [Open Source Support Program](https://jb.gg/OpenSourceSupport).
-
-![CodeRabbit logo](https://opengraph.githubassets.com/1c51002d7d0bbe0c4fd72ff8f2e58192702f73a7037102f77e4dbb98ac00ea8f/marketplace/coderabbitai)
-
-This project is supported by CodeRabbit through the [Open Source Support Program](https://github.com/marketplace/coderabbitai).
