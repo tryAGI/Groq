@@ -4,6 +4,7 @@ namespace Groq
 {
     public partial interface IModelsClient
     {
+
         /// <summary>
         /// Get detailed information about a [model](https://console.groq.com/docs/models).<br/>
         /// Get a specific model

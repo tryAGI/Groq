@@ -4,6 +4,7 @@ namespace Groq
 {
     public partial interface IFineTuningClient
     {
+
         /// <summary>
         /// Retrieves an existing fine tuning by id This endpoint is in closed beta. [Contact us](https://groq.com/contact) for more information.
         /// </summary>

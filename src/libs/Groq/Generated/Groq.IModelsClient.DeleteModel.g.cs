@@ -4,6 +4,7 @@ namespace Groq
 {
     public partial interface IModelsClient
     {
+
         /// <summary>
         /// Delete model<br/>
         /// Delete a model

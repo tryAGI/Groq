@@ -4,9 +4,11 @@ namespace Groq
 {
     public partial interface IBatchClient
     {
+
         /// <summary>
         /// Creates and executes a batch from an uploaded file of requests. [Learn more](/docs/batch).
         /// </summary>
+
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>

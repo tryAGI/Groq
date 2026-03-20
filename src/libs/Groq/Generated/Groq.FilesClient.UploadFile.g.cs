@@ -21,11 +21,13 @@ namespace Groq
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
+
         /// <summary>
         /// Upload a file that can be used across various endpoints.<br/>
         /// The Batch API only supports `.jsonl` files up to 100 MB in size. The input also has a specific required [format](/docs/batch).<br/>
         /// Please contact us if you need to increase these storage limits.
         /// </summary>
+
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
@@ -83,7 +85,7 @@ namespace Groq
             {
 
                 __httpRequestContent.Add(
-                    content: new global::System.Net.Http.StringContent($"{request.Purpose.ToValueString()}"),
+                    content: new global::System.Net.Http.StringContent($"{request.Purpose?.ToValueString()}"),
                     name: "\"purpose\"");
             }
             __httpRequest.Content = __httpRequestContent;

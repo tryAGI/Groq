@@ -21,6 +21,7 @@ namespace Groq
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
+
         /// <summary>
         /// Get detailed information about a [model](https://console.groq.com/docs/models).<br/>
         /// Get a specific model
