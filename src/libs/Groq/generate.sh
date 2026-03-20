@@ -31,5 +31,6 @@ autosdk generate openapi.yaml \
 
 # Workaround: AutoSDK generates `?.` operator on non-nullable enum, causing CS0023.
 # Fix: replace `request.Purpose?.ToValueString()` with `request.Purpose.ToValueString()`.
-sed -i '' 's/request\.Purpose?\.ToValueString()/request.Purpose.ToValueString()/g' \
-  Generated/Groq.FilesClient.UploadFile.g.cs 2>/dev/null || true
+# Use sed -i.bak + rm for cross-platform compatibility (macOS BSD sed vs Linux GNU sed).
+sed -i.bak 's/request\.Purpose?\.ToValueString()/request.Purpose.ToValueString()/g' \
+  Generated/Groq.FilesClient.UploadFile.g.cs && rm -f Generated/Groq.FilesClient.UploadFile.g.cs.bak

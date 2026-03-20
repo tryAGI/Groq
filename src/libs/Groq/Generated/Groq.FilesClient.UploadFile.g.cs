@@ -85,7 +85,7 @@ namespace Groq
             {
 
                 __httpRequestContent.Add(
-                    content: new global::System.Net.Http.StringContent($"{request.Purpose?.ToValueString()}"),
+                    content: new global::System.Net.Http.StringContent($"{request.Purpose.ToValueString()}"),
                     name: "\"purpose\"");
             }
             __httpRequest.Content = __httpRequestContent;
