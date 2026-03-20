@@ -6,6 +6,9 @@ nav:
   - Audio: examples/audio.md
   - Chat: examples/chat.md
   - Embeddings: examples/embeddings.md
+  - Text to Speech: examples/text-to-speech.md
+  - Files: examples/files.md
+  - Batches: examples/batches.md
 # EXAMPLES:END
         
 theme:

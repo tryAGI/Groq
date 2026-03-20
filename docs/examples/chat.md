@@ -13,7 +13,7 @@ IList<ChatCompletionRequestMessage> messages = [
     }];
 CreateChatCompletionRequest request = new() {
     Messages = messages,
-    Model = CreateChatCompletionRequestModel.Llama370b8192
+    Model = CreateChatCompletionRequestModel.Llama3370bVersatile
 };
 var response = await client.Chat.CreateChatCompletionAsync(request);
 Console.WriteLine(response.Choices[0].Message.Content);

@@ -54,6 +54,8 @@ var embeddings = await generator.GenerateAsync(["Hello, world!"]);
 
 <!-- EXAMPLES:START -->
 ### Audio
+
+
 ```csharp
 using var client = new GroqClient(apiKey);
 var url = "https://speech.zone/simple4all/wp-content/uploads/2012/10/nina_01_071.wav";
@@ -61,7 +63,7 @@ string tempFilePath = await DownloadFileToTempAsync(url);
 
 var request = new CreateTranscriptionRequest {
     Filename = "sample",
-    File = File.ReadAllBytes(tempFilePath),
+    File = System.IO.File.ReadAllBytes(tempFilePath),
     Model = CreateTranscriptionRequestModel.WhisperLargeV3,
     Language = "en",
 };
@@ -70,6 +72,8 @@ Console.WriteLine(response);
 ```
 
 ### Chat
+
+
 ```csharp
 using var client = new GroqClient(apiKey);
 IList<ChatCompletionRequestMessage> messages = [
@@ -79,13 +83,15 @@ IList<ChatCompletionRequestMessage> messages = [
     }];
 CreateChatCompletionRequest request = new() {
     Messages = messages,
-    Model = CreateChatCompletionRequestModel.Llama370b8192
+    Model = CreateChatCompletionRequestModel.Llama3370bVersatile
 };
 var response = await client.Chat.CreateChatCompletionAsync(request);
 Console.WriteLine(response.Choices[0].Message.Content);
 ```
 
 ### Embeddings
+
+
 ```csharp
 using var client = new GroqClient(apiKey);
 CreateEmbeddingRequest request = new() {
@@ -94,6 +100,40 @@ CreateEmbeddingRequest request = new() {
 };
 var response = await client.Embeddings.CreateEmbeddingAsync(request);
 Console.WriteLine(response.Data[0].Embedding1);
+```
+
+### Text to Speech
+Generate speech audio from text using the Groq TTS API.
+
+```csharp
+using var client = new GroqClient(apiKey);
+
+// Generate speech from text using PlayAI TTS.
+var audioBytes = await client.Audio.CreateSpeechAsync(
+    model: CreateSpeechRequestModel.PlayaiTts,
+    input: "Hello from Groq text to speech!",
+    voice: "Arista-PlayAI",
+    responseFormat: CreateSpeechRequestResponseFormat.Wav);
+```
+
+### Files
+Upload and manage files for use with the Groq Batch API.
+
+```csharp
+using var client = new GroqClient(apiKey);
+
+// List all uploaded files.
+var response = await client.Files.ListFilesAsync();
+```
+
+### Batches
+List and manage batch processing jobs.
+
+```csharp
+using var client = new GroqClient(apiKey);
+
+// List all batch processing jobs.
+var response = await client.Batch.ListBatchesAsync();
 ```
 <!-- EXAMPLES:END -->
 
