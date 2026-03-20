@@ -11,6 +11,7 @@ namespace Groq
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Groq.CreateTranscriptionResponseJson> CreateTranscriptionAsync(
+
             global::Groq.CreateTranscriptionRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
@@ -18,20 +19,26 @@ namespace Groq
         /// Transcribes audio into the input language.
         /// </summary>
         /// <param name="file">
-        /// The audio file object (not file name) to transcribe, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
+        /// The audio file object (not file name) to transcribe, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.<br/>
+        /// Either a file or a URL must be provided. Note that the file field is not supported in Batch API requests.
         /// </param>
         /// <param name="filename">
-        /// The audio file object (not file name) to transcribe, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
+        /// The audio file object (not file name) to transcribe, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.<br/>
+        /// Either a file or a URL must be provided. Note that the file field is not supported in Batch API requests.
+        /// </param>
+        /// <param name="url">
+        /// The audio URL to translate/transcribe (supports Base64URL).<br/>
+        /// Either a file or a URL must be provided. For Batch API requests, the URL field is required since the file field is not supported.
+        /// </param>
+        /// <param name="model">
+        /// ID of the model to use. `whisper-large-v3` and `whisper-large-v3-turbo` are currently available.<br/>
+        /// Example: whisper-large-v3-turbo
         /// </param>
         /// <param name="language">
         /// The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.
         /// </param>
-        /// <param name="model">
-        /// ID of the model to use. Only `whisper-large-v3` is currently available.<br/>
-        /// Example: whisper-large-v3
-        /// </param>
         /// <param name="prompt">
-        /// An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should match the audio language.
+        /// An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/speech-text) should match the audio language.
         /// </param>
         /// <param name="responseFormat">
         /// The format of the transcript output, in one of these options: `json`, `text`, or `verbose_json`.<br/>
@@ -48,9 +55,10 @@ namespace Groq
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Groq.CreateTranscriptionResponseJson> CreateTranscriptionAsync(
-            byte[] file,
-            string filename,
             global::Groq.AnyOf<string, global::Groq.CreateTranscriptionRequestModel?> model,
+            byte[]? file = default,
+            string? filename = default,
+            string? url = default,
             global::Groq.AnyOf<string, global::Groq.CreateTranscriptionRequestLanguage?>? language = default,
             string? prompt = default,
             global::Groq.CreateTranscriptionRequestResponseFormat? responseFormat = default,

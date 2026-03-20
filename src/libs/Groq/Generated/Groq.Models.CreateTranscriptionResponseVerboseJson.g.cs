@@ -9,13 +9,6 @@ namespace Groq
     public sealed partial class CreateTranscriptionResponseVerboseJson
     {
         /// <summary>
-        /// The duration of the input audio.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Duration { get; set; }
-
-        /// <summary>
         /// The language of the input audio.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language")]
@@ -23,10 +16,11 @@ namespace Groq
         public required string Language { get; set; }
 
         /// <summary>
-        /// Segments of the transcribed text and their corresponding details.
+        /// The duration of the input audio.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("segments")]
-        public global::System.Collections.Generic.IList<global::Groq.TranscriptionSegment>? Segments { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Duration { get; set; }
 
         /// <summary>
         /// The transcribed text.
@@ -42,6 +36,12 @@ namespace Groq
         public global::System.Collections.Generic.IList<global::Groq.TranscriptionWord>? Words { get; set; }
 
         /// <summary>
+        /// Segments of the transcribed text and their corresponding details.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("segments")]
+        public global::System.Collections.Generic.IList<global::Groq.TranscriptionSegment>? Segments { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -50,14 +50,11 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateTranscriptionResponseVerboseJson" /> class.
         /// </summary>
-        /// <param name="duration">
-        /// The duration of the input audio.
-        /// </param>
         /// <param name="language">
         /// The language of the input audio.
         /// </param>
-        /// <param name="segments">
-        /// Segments of the transcribed text and their corresponding details.
+        /// <param name="duration">
+        /// The duration of the input audio.
         /// </param>
         /// <param name="text">
         /// The transcribed text.
@@ -65,21 +62,24 @@ namespace Groq
         /// <param name="words">
         /// Extracted words and their corresponding timestamps.
         /// </param>
+        /// <param name="segments">
+        /// Segments of the transcribed text and their corresponding details.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateTranscriptionResponseVerboseJson(
-            string duration,
             string language,
+            string duration,
             string text,
-            global::System.Collections.Generic.IList<global::Groq.TranscriptionSegment>? segments,
-            global::System.Collections.Generic.IList<global::Groq.TranscriptionWord>? words)
+            global::System.Collections.Generic.IList<global::Groq.TranscriptionWord>? words,
+            global::System.Collections.Generic.IList<global::Groq.TranscriptionSegment>? segments)
         {
-            this.Duration = duration ?? throw new global::System.ArgumentNullException(nameof(duration));
             this.Language = language ?? throw new global::System.ArgumentNullException(nameof(language));
+            this.Duration = duration ?? throw new global::System.ArgumentNullException(nameof(duration));
             this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
-            this.Segments = segments;
             this.Words = words;
+            this.Segments = segments;
         }
 
         /// <summary>

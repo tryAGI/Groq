@@ -19,11 +19,8 @@ dotnet tool update --global autosdk.cli --prerelease || dotnet tool install --gl
 rm -rf Generated
 curl --fail --silent --show-error --location "$openapi_url" -o openapi.yaml
 
-dotnet run --project ../../helpers/FixOpenApiSpec openapi.yaml
-if [ $? -ne 0 ]; then
-  echo "Failed, exiting..."
-  exit 1
-fi
+# Note: The Groq spec already uses standard HTTP bearer auth and top-level security,
+# so no FixOpenApiSpec step is needed.
 
 autosdk generate openapi.yaml \
   --namespace Groq \
@@ -31,3 +28,8 @@ autosdk generate openapi.yaml \
   --targetFramework net10.0 \
   --output Generated \
   --exclude-deprecated-operations
+
+# Workaround: AutoSDK generates `?.` operator on non-nullable enum, causing CS0023.
+# Fix: replace `request.Purpose?.ToValueString()` with `request.Purpose.ToValueString()`.
+sed -i '' 's/request\.Purpose?\.ToValueString()/request.Purpose.ToValueString()/g' \
+  Generated/Groq.FilesClient.UploadFile.g.cs 2>/dev/null || true

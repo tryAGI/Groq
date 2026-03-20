@@ -14,21 +14,26 @@ namespace Groq
         /// The audio file object (not file name) translate, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("file")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required byte[] File { get; set; }
+        public byte[]? File { get; set; }
 
         /// <summary>
         /// The audio file object (not file name) translate, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("filename")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Filename { get; set; }
+        public string? Filename { get; set; }
 
         /// <summary>
-        /// ID of the model to use. Only `whisper-large-v3` is currently available.<br/>
-        /// Example: whisper-1
+        /// The audio URL to translate/transcribe (supports Base64URL). Either file or url must be provided.<br/>
+        /// When using the Batch API only url is supported.
         /// </summary>
-        /// <example>whisper-1</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        public string? Url { get; set; }
+
+        /// <summary>
+        /// ID of the model to use. `whisper-large-v3` and `whisper-large-v3-turbo` are currently available.<br/>
+        /// Example: whisper-large-v3-turbo
+        /// </summary>
+        /// <example>whisper-large-v3-turbo</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateTranslationRequestModel?>))]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -70,9 +75,13 @@ namespace Groq
         /// <param name="filename">
         /// The audio file object (not file name) translate, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
         /// </param>
+        /// <param name="url">
+        /// The audio URL to translate/transcribe (supports Base64URL). Either file or url must be provided.<br/>
+        /// When using the Batch API only url is supported.
+        /// </param>
         /// <param name="model">
-        /// ID of the model to use. Only `whisper-large-v3` is currently available.<br/>
-        /// Example: whisper-1
+        /// ID of the model to use. `whisper-large-v3` and `whisper-large-v3-turbo` are currently available.<br/>
+        /// Example: whisper-large-v3-turbo
         /// </param>
         /// <param name="prompt">
         /// An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should be in English.
@@ -89,16 +98,18 @@ namespace Groq
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateTranslationRequest(
-            byte[] file,
-            string filename,
             global::Groq.AnyOf<string, global::Groq.CreateTranslationRequestModel?> model,
+            byte[]? file,
+            string? filename,
+            string? url,
             string? prompt,
             global::Groq.CreateTranslationRequestResponseFormat? responseFormat,
             double? temperature)
         {
-            this.File = file ?? throw new global::System.ArgumentNullException(nameof(file));
-            this.Filename = filename ?? throw new global::System.ArgumentNullException(nameof(filename));
             this.Model = model;
+            this.File = file;
+            this.Filename = filename;
+            this.Url = url;
             this.Prompt = prompt;
             this.ResponseFormat = responseFormat;
             this.Temperature = temperature;

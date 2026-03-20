@@ -5,7 +5,7 @@ namespace Groq
     public partial interface IModelsClient
     {
         /// <summary>
-        /// List models<br/>
+        /// List all available [models](https://console.groq.com/docs/models).<br/>
         /// get all available models
         /// </summary>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

@@ -19,7 +19,7 @@ public partial class Tests
             }];
         CreateChatCompletionRequest request = new() { 
             Messages = messages, 
-            Model = CreateChatCompletionRequestModel.Llama370b8192
+            Model = CreateChatCompletionRequestModel.Llama3370bVersatile
         };
         var response = await client.Chat.CreateChatCompletionAsync(request);
         Assert.IsNotNull(response);

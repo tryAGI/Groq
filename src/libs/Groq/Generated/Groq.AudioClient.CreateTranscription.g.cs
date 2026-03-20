@@ -28,6 +28,7 @@ namespace Groq
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Groq.CreateTranscriptionResponseJson> CreateTranscriptionAsync(
+
             global::Groq.CreateTranscriptionRequest request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -39,7 +40,7 @@ namespace Groq
                 httpClient: HttpClient,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Groq.PathBuilder(
                 path: "/openai/v1/audio/transcriptions",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
@@ -67,42 +68,63 @@ namespace Groq
                 }
             }
             using var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
+            if (request.File != default)
+            {
+
+                var __contentFile = new global::System.Net.Http.ByteArrayContent(request.File ?? global::System.Array.Empty<byte>());
+                __httpRequestContent.Add(
+                    content: __contentFile,
+                    name: "\"file\"",
+                    fileName: request.Filename != null ? $"\"{request.Filename}\"" : string.Empty);
+                if (__contentFile.Headers.ContentDisposition != null)
+                {
+                    __contentFile.Headers.ContentDisposition.FileNameStar = null;
+                }
+            } 
+            if (request.Url != default)
+            {
+
+                __httpRequestContent.Add(
+                    content: new global::System.Net.Http.StringContent($"{request.Url}"),
+                    name: "\"url\"");
+            }
             __httpRequestContent.Add(
-                content: new global::System.Net.Http.ByteArrayContent(request.File ?? global::System.Array.Empty<byte>()),
-                name: "file",
-                fileName: request.Filename ?? string.Empty);
+                content: new global::System.Net.Http.StringContent(request.Model.ToString() ?? string.Empty),
+                name: "\"model\"");
             if (request.Language != default)
             {
+
                 __httpRequestContent.Add(
-                    content: new global::System.Net.Http.StringContent(request.Language?.Value1?.ToString() ?? request.Language?.Value2?.ToValueString() ?? string.Empty),
-                    name: "language");
+                    content: new global::System.Net.Http.StringContent(request.Language?.ToString() ?? string.Empty),
+                    name: "\"language\"");
             } 
-            __httpRequestContent.Add(
-                content: new global::System.Net.Http.StringContent(request.Model.Value1?.ToString() ?? request.Model.Value2?.ToValueString() ?? string.Empty),
-                name: "model");
             if (request.Prompt != default)
             {
+
                 __httpRequestContent.Add(
                     content: new global::System.Net.Http.StringContent($"{request.Prompt}"),
-                    name: "prompt");
+                    name: "\"prompt\"");
             } 
             if (request.ResponseFormat != default)
             {
+
                 __httpRequestContent.Add(
                     content: new global::System.Net.Http.StringContent($"{request.ResponseFormat?.ToValueString()}"),
-                    name: "response_format");
+                    name: "\"response_format\"");
             } 
             if (request.Temperature != default)
             {
+
                 __httpRequestContent.Add(
                     content: new global::System.Net.Http.StringContent($"{request.Temperature}"),
-                    name: "temperature");
+                    name: "\"temperature\"");
             } 
             if (request.TimestampGranularities != default)
             {
+
                 __httpRequestContent.Add(
                     content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.TimestampGranularities, x => x.ToValueString()))}]"),
-                    name: "timestamp_granularities");
+                    name: "\"timestamp_granularities\"");
             }
             __httpRequest.Content = __httpRequestContent;
 
@@ -146,8 +168,12 @@ namespace Groq
                 try
                 {
                     __response.EnsureSuccessStatusCode();
+
+                    return
+                        global::Groq.CreateTranscriptionResponseJson.FromJson(__content, JsonSerializerContext) ??
+                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
-                catch (global::System.Net.Http.HttpRequestException __ex)
+                catch (global::System.Exception __ex)
                 {
                     throw new global::Groq.ApiException(
                         message: __content ?? __response.ReasonPhrase ?? string.Empty,
@@ -161,40 +187,50 @@ namespace Groq
                             h => h.Value),
                     };
                 }
-
-                return
-                    global::Groq.CreateTranscriptionResponseJson.FromJson(__content, JsonSerializerContext) ??
-                    throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
             {
                 try
                 {
                     __response.EnsureSuccessStatusCode();
+
+                    using var __content = await __response.Content.ReadAsStreamAsync(
+#if NET5_0_OR_GREATER
+                        cancellationToken
+#endif
+                    ).ConfigureAwait(false);
+
+                    return
+                        await global::Groq.CreateTranscriptionResponseJson.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
-                catch (global::System.Net.Http.HttpRequestException __ex)
+                catch (global::System.Exception __ex)
                 {
+                    string? __content = null;
+                    try
+                    {
+                        __content = await __response.Content.ReadAsStringAsync(
+#if NET5_0_OR_GREATER
+                            cancellationToken
+#endif
+                        ).ConfigureAwait(false);
+                    }
+                    catch (global::System.Exception)
+                    {
+                    }
+
                     throw new global::Groq.ApiException(
-                        message: __response.ReasonPhrase ?? string.Empty,
+                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
                         innerException: __ex,
                         statusCode: __response.StatusCode)
                     {
+                        ResponseBody = __content,
                         ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
                             __response.Headers,
                             h => h.Key,
                             h => h.Value),
                     };
                 }
-
-                using var __content = await __response.Content.ReadAsStreamAsync(
-#if NET5_0_OR_GREATER
-                    cancellationToken
-#endif
-                ).ConfigureAwait(false);
-
-                return
-                    await global::Groq.CreateTranscriptionResponseJson.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
-                    throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
 
@@ -202,20 +238,26 @@ namespace Groq
         /// Transcribes audio into the input language.
         /// </summary>
         /// <param name="file">
-        /// The audio file object (not file name) to transcribe, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
+        /// The audio file object (not file name) to transcribe, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.<br/>
+        /// Either a file or a URL must be provided. Note that the file field is not supported in Batch API requests.
         /// </param>
         /// <param name="filename">
-        /// The audio file object (not file name) to transcribe, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
+        /// The audio file object (not file name) to transcribe, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.<br/>
+        /// Either a file or a URL must be provided. Note that the file field is not supported in Batch API requests.
+        /// </param>
+        /// <param name="url">
+        /// The audio URL to translate/transcribe (supports Base64URL).<br/>
+        /// Either a file or a URL must be provided. For Batch API requests, the URL field is required since the file field is not supported.
+        /// </param>
+        /// <param name="model">
+        /// ID of the model to use. `whisper-large-v3` and `whisper-large-v3-turbo` are currently available.<br/>
+        /// Example: whisper-large-v3-turbo
         /// </param>
         /// <param name="language">
         /// The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.
         /// </param>
-        /// <param name="model">
-        /// ID of the model to use. Only `whisper-large-v3` is currently available.<br/>
-        /// Example: whisper-large-v3
-        /// </param>
         /// <param name="prompt">
-        /// An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should match the audio language.
+        /// An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/speech-text) should match the audio language.
         /// </param>
         /// <param name="responseFormat">
         /// The format of the transcript output, in one of these options: `json`, `text`, or `verbose_json`.<br/>
@@ -232,9 +274,10 @@ namespace Groq
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Groq.CreateTranscriptionResponseJson> CreateTranscriptionAsync(
-            byte[] file,
-            string filename,
             global::Groq.AnyOf<string, global::Groq.CreateTranscriptionRequestModel?> model,
+            byte[]? file = default,
+            string? filename = default,
+            string? url = default,
             global::Groq.AnyOf<string, global::Groq.CreateTranscriptionRequestLanguage?>? language = default,
             string? prompt = default,
             global::Groq.CreateTranscriptionRequestResponseFormat? responseFormat = default,
@@ -246,8 +289,9 @@ namespace Groq
             {
                 File = file,
                 Filename = filename,
-                Language = language,
+                Url = url,
                 Model = model,
+                Language = language,
                 Prompt = prompt,
                 ResponseFormat = responseFormat,
                 Temperature = temperature,

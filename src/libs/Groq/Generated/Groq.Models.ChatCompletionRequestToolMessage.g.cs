@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Groq
@@ -9,18 +11,19 @@ namespace Groq
     public sealed partial class ChatCompletionRequestToolMessage
     {
         /// <summary>
-        /// The contents of the tool message.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Content { get; set; }
-
-        /// <summary>
         /// The role of the messages author, in this case `tool`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("role")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ChatCompletionRequestToolMessageRoleJsonConverter))]
         public global::Groq.ChatCompletionRequestToolMessageRole Role { get; set; }
+
+        /// <summary>
+        /// The contents of the tool message.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessageContentPart>>))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessageContentPart>> Content { get; set; }
 
         /// <summary>
         /// Tool call that this message is responding to.
@@ -38,11 +41,11 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ChatCompletionRequestToolMessage" /> class.
         /// </summary>
-        /// <param name="content">
-        /// The contents of the tool message.
-        /// </param>
         /// <param name="role">
         /// The role of the messages author, in this case `tool`.
+        /// </param>
+        /// <param name="content">
+        /// The contents of the tool message.
         /// </param>
         /// <param name="toolCallId">
         /// Tool call that this message is responding to.
@@ -51,11 +54,11 @@ namespace Groq
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ChatCompletionRequestToolMessage(
-            string content,
+            global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessageContentPart>> content,
             string toolCallId,
             global::Groq.ChatCompletionRequestToolMessageRole role)
         {
-            this.Content = content ?? throw new global::System.ArgumentNullException(nameof(content));
+            this.Content = content;
             this.ToolCallId = toolCallId ?? throw new global::System.ArgumentNullException(nameof(toolCallId));
             this.Role = role;
         }

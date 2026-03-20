@@ -28,6 +28,7 @@ namespace Groq
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Groq.CreateEmbeddingResponse> CreateEmbeddingAsync(
+
             global::Groq.CreateEmbeddingRequest request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -39,7 +40,7 @@ namespace Groq
                 httpClient: HttpClient,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Groq.PathBuilder(
                 path: "/openai/v1/embeddings",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
@@ -113,8 +114,12 @@ namespace Groq
                 try
                 {
                     __response.EnsureSuccessStatusCode();
+
+                    return
+                        global::Groq.CreateEmbeddingResponse.FromJson(__content, JsonSerializerContext) ??
+                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
-                catch (global::System.Net.Http.HttpRequestException __ex)
+                catch (global::System.Exception __ex)
                 {
                     throw new global::Groq.ApiException(
                         message: __content ?? __response.ReasonPhrase ?? string.Empty,
@@ -128,51 +133,56 @@ namespace Groq
                             h => h.Value),
                     };
                 }
-
-                return
-                    global::Groq.CreateEmbeddingResponse.FromJson(__content, JsonSerializerContext) ??
-                    throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
             {
                 try
                 {
                     __response.EnsureSuccessStatusCode();
+
+                    using var __content = await __response.Content.ReadAsStreamAsync(
+#if NET5_0_OR_GREATER
+                        cancellationToken
+#endif
+                    ).ConfigureAwait(false);
+
+                    return
+                        await global::Groq.CreateEmbeddingResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
-                catch (global::System.Net.Http.HttpRequestException __ex)
+                catch (global::System.Exception __ex)
                 {
+                    string? __content = null;
+                    try
+                    {
+                        __content = await __response.Content.ReadAsStringAsync(
+#if NET5_0_OR_GREATER
+                            cancellationToken
+#endif
+                        ).ConfigureAwait(false);
+                    }
+                    catch (global::System.Exception)
+                    {
+                    }
+
                     throw new global::Groq.ApiException(
-                        message: __response.ReasonPhrase ?? string.Empty,
+                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
                         innerException: __ex,
                         statusCode: __response.StatusCode)
                     {
+                        ResponseBody = __content,
                         ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
                             __response.Headers,
                             h => h.Key,
                             h => h.Value),
                     };
                 }
-
-                using var __content = await __response.Content.ReadAsStreamAsync(
-#if NET5_0_OR_GREATER
-                    cancellationToken
-#endif
-                ).ConfigureAwait(false);
-
-                return
-                    await global::Groq.CreateEmbeddingResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
-                    throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
 
         /// <summary>
         /// Creates an embedding vector representing the input text.
         /// </summary>
-        /// <param name="encodingFormat">
-        /// The format to return the embeddings in. Can only be `float` or `base64`.<br/>
-        /// Default Value: float<br/>
-        /// Example: float
-        /// </param>
         /// <param name="input">
         /// Input text to embed, encoded as a string or array of tokens. To embed multiple inputs in a single request, pass an array of strings or array of token arrays. The input must not exceed the max input tokens for the model, cannot be an empty string, and any array must be 2048 dimensions or less.<br/>
         /// Example: The quick brown fox jumped over the lazy dog
@@ -180,6 +190,11 @@ namespace Groq
         /// <param name="model">
         /// ID of the model to use.<br/>
         /// Example: nomic-embed-text-v1_5
+        /// </param>
+        /// <param name="encodingFormat">
+        /// The format to return the embeddings in. Can only be `float` or `base64`.<br/>
+        /// Default Value: float<br/>
+        /// Example: float
         /// </param>
         /// <param name="user">
         /// A unique identifier representing your end-user, which can help us monitor and detect abuse.
@@ -195,9 +210,9 @@ namespace Groq
         {
             var __request = new global::Groq.CreateEmbeddingRequest
             {
-                EncodingFormat = encodingFormat,
                 Input = input,
                 Model = model,
+                EncodingFormat = encodingFormat,
                 User = user,
             };
 

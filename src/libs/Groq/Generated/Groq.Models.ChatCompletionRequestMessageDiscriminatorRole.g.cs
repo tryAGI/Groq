@@ -11,15 +11,19 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        Assistant,
-        /// <summary>
-        /// 
-        /// </summary>
-        Function,
-        /// <summary>
-        /// 
-        /// </summary>
         System,
+        /// <summary>
+        /// 
+        /// </summary>
+        Developer,
+        /// <summary>
+        /// 
+        /// </summary>
+        User,
+        /// <summary>
+        /// 
+        /// </summary>
+        Assistant,
         /// <summary>
         /// 
         /// </summary>
@@ -27,7 +31,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        User,
+        Function,
     }
 
     /// <summary>
@@ -42,11 +46,12 @@ namespace Groq
         {
             return value switch
             {
-                ChatCompletionRequestMessageDiscriminatorRole.Assistant => "assistant",
-                ChatCompletionRequestMessageDiscriminatorRole.Function => "function",
                 ChatCompletionRequestMessageDiscriminatorRole.System => "system",
-                ChatCompletionRequestMessageDiscriminatorRole.Tool => "tool",
+                ChatCompletionRequestMessageDiscriminatorRole.Developer => "developer",
                 ChatCompletionRequestMessageDiscriminatorRole.User => "user",
+                ChatCompletionRequestMessageDiscriminatorRole.Assistant => "assistant",
+                ChatCompletionRequestMessageDiscriminatorRole.Tool => "tool",
+                ChatCompletionRequestMessageDiscriminatorRole.Function => "function",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -57,11 +62,12 @@ namespace Groq
         {
             return value switch
             {
-                "assistant" => ChatCompletionRequestMessageDiscriminatorRole.Assistant,
-                "function" => ChatCompletionRequestMessageDiscriminatorRole.Function,
                 "system" => ChatCompletionRequestMessageDiscriminatorRole.System,
-                "tool" => ChatCompletionRequestMessageDiscriminatorRole.Tool,
+                "developer" => ChatCompletionRequestMessageDiscriminatorRole.Developer,
                 "user" => ChatCompletionRequestMessageDiscriminatorRole.User,
+                "assistant" => ChatCompletionRequestMessageDiscriminatorRole.Assistant,
+                "tool" => ChatCompletionRequestMessageDiscriminatorRole.Tool,
+                "function" => ChatCompletionRequestMessageDiscriminatorRole.Function,
                 _ => null,
             };
         }

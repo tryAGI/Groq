@@ -11,13 +11,6 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("code")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string? Code { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("message")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Message { get; set; }
@@ -25,16 +18,57 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("param")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string? Param { get; set; }
+        public required string Type { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("param")]
+        public string? Param { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("code")]
+        public string? Code { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("failed_generation")]
+        public string? FailedGeneration { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("schema_path")]
+        public string? SchemaPath { get; set; }
+
+        /// <summary>
+        /// Segments of the schema path relevant to validation errors.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("schema_path_segments")]
+        public global::System.Collections.Generic.IList<string>? SchemaPathSegments { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("schema_kind")]
+        public string? SchemaKind { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("schema_code")]
+        public string? SchemaCode { get; set; }
+
+        /// <summary>
+        /// Debug information including input and output token IDs and strings. Only present when debug=true in the request.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("debug")]
+        public global::Groq.DebugData? Debug { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -45,23 +79,45 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="Error" /> class.
         /// </summary>
-        /// <param name="code"></param>
         /// <param name="message"></param>
-        /// <param name="param"></param>
         /// <param name="type"></param>
+        /// <param name="param"></param>
+        /// <param name="code"></param>
+        /// <param name="failedGeneration"></param>
+        /// <param name="schemaPath"></param>
+        /// <param name="schemaPathSegments">
+        /// Segments of the schema path relevant to validation errors.
+        /// </param>
+        /// <param name="schemaKind"></param>
+        /// <param name="schemaCode"></param>
+        /// <param name="debug">
+        /// Debug information including input and output token IDs and strings. Only present when debug=true in the request.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Error(
-            string? code,
             string message,
+            string type,
             string? param,
-            string type)
+            string? code,
+            string? failedGeneration,
+            string? schemaPath,
+            global::System.Collections.Generic.IList<string>? schemaPathSegments,
+            string? schemaKind,
+            string? schemaCode,
+            global::Groq.DebugData? debug)
         {
-            this.Code = code ?? throw new global::System.ArgumentNullException(nameof(code));
             this.Message = message ?? throw new global::System.ArgumentNullException(nameof(message));
-            this.Param = param ?? throw new global::System.ArgumentNullException(nameof(param));
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.Param = param;
+            this.Code = code;
+            this.FailedGeneration = failedGeneration;
+            this.SchemaPath = schemaPath;
+            this.SchemaPathSegments = schemaPathSegments;
+            this.SchemaKind = schemaKind;
+            this.SchemaCode = schemaCode;
+            this.Debug = debug;
         }
 
         /// <summary>

@@ -4,28 +4,46 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    /// Groq-specific metadata for streaming responses. Different fields appear in different chunks.
     /// </summary>
     public sealed partial class XGroq
     {
         /// <summary>
-        /// An error string indicating why a stream was stopped early
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("error")]
-        public string? Error { get; set; }
-
-        /// <summary>
-        /// A groq request ID which can be used by to refer to a specific request to groq support <br/>
-        /// Only sent with the first chunk
+        /// A groq request ID which can be used to refer to a specific request to groq support.<br/>
+        /// Sent only in the first and final chunk.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// Usage statistics for the completion request.
+        /// The seed used for the request. Sent in the final chunk.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("seed")]
+        public int? Seed { get; set; }
+
+        /// <summary>
+        /// Usage information for the stream. Only sent in the final chunk.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
         public global::Groq.CompletionUsage? Usage { get; set; }
+
+        /// <summary>
+        /// Detailed usage breakdown by model when multiple models are used in the request for compound AI systems. Only sent in the final chunk.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("usage_breakdown")]
+        public global::Groq.ChatCompletionUsageBreakdown? UsageBreakdown { get; set; }
+
+        /// <summary>
+        /// An error string indicating why a stream was stopped early.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("error")]
+        public string? Error { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("debug")]
+        public global::Groq.DebugData? Debug { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -36,27 +54,40 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="XGroq" /> class.
         /// </summary>
-        /// <param name="error">
-        /// An error string indicating why a stream was stopped early
-        /// </param>
         /// <param name="id">
-        /// A groq request ID which can be used by to refer to a specific request to groq support <br/>
-        /// Only sent with the first chunk
+        /// A groq request ID which can be used to refer to a specific request to groq support.<br/>
+        /// Sent only in the first and final chunk.
+        /// </param>
+        /// <param name="seed">
+        /// The seed used for the request. Sent in the final chunk.
         /// </param>
         /// <param name="usage">
-        /// Usage statistics for the completion request.
+        /// Usage information for the stream. Only sent in the final chunk.
         /// </param>
+        /// <param name="usageBreakdown">
+        /// Detailed usage breakdown by model when multiple models are used in the request for compound AI systems. Only sent in the final chunk.
+        /// </param>
+        /// <param name="error">
+        /// An error string indicating why a stream was stopped early.
+        /// </param>
+        /// <param name="debug"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public XGroq(
-            string? error,
             string? id,
-            global::Groq.CompletionUsage? usage)
+            int? seed,
+            global::Groq.CompletionUsage? usage,
+            global::Groq.ChatCompletionUsageBreakdown? usageBreakdown,
+            string? error,
+            global::Groq.DebugData? debug)
         {
-            this.Error = error;
             this.Id = id;
+            this.Seed = seed;
             this.Usage = usage;
+            this.UsageBreakdown = usageBreakdown;
+            this.Error = error;
+            this.Debug = debug;
         }
 
         /// <summary>

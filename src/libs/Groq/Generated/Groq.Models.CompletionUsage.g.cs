@@ -9,6 +9,12 @@ namespace Groq
     public sealed partial class CompletionUsage
     {
         /// <summary>
+        /// Time the requests was spent queued
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("queue_time")]
+        public double? QueueTime { get; set; }
+
+        /// <summary>
         /// Time spent generating tokens
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("completion_time")]
@@ -35,12 +41,6 @@ namespace Groq
         public required int PromptTokens { get; set; }
 
         /// <summary>
-        /// Time the requests was spent queued
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("queue_time")]
-        public double? QueueTime { get; set; }
-
-        /// <summary>
         /// completion time and prompt time combined
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total_time")]
@@ -54,6 +54,18 @@ namespace Groq
         public required int TotalTokens { get; set; }
 
         /// <summary>
+        /// Breakdown of tokens in the prompt.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("prompt_tokens_details")]
+        public global::Groq.CompletionUsagePromptTokensDetails? PromptTokensDetails { get; set; }
+
+        /// <summary>
+        /// Breakdown of tokens in the completion.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("completion_tokens_details")]
+        public global::Groq.CompletionUsageCompletionTokensDetails? CompletionTokensDetails { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -62,6 +74,9 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="CompletionUsage" /> class.
         /// </summary>
+        /// <param name="queueTime">
+        /// Time the requests was spent queued
+        /// </param>
         /// <param name="completionTime">
         /// Time spent generating tokens
         /// </param>
@@ -74,14 +89,17 @@ namespace Groq
         /// <param name="promptTokens">
         /// Number of tokens in the prompt.
         /// </param>
-        /// <param name="queueTime">
-        /// Time the requests was spent queued
-        /// </param>
         /// <param name="totalTime">
         /// completion time and prompt time combined
         /// </param>
         /// <param name="totalTokens">
         /// Total number of tokens used in the request (prompt + completion).
+        /// </param>
+        /// <param name="promptTokensDetails">
+        /// Breakdown of tokens in the prompt.
+        /// </param>
+        /// <param name="completionTokensDetails">
+        /// Breakdown of tokens in the completion.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -90,18 +108,22 @@ namespace Groq
             int completionTokens,
             int promptTokens,
             int totalTokens,
+            double? queueTime,
             double? completionTime,
             double? promptTime,
-            double? queueTime,
-            double? totalTime)
+            double? totalTime,
+            global::Groq.CompletionUsagePromptTokensDetails? promptTokensDetails,
+            global::Groq.CompletionUsageCompletionTokensDetails? completionTokensDetails)
         {
             this.CompletionTokens = completionTokens;
             this.PromptTokens = promptTokens;
             this.TotalTokens = totalTokens;
+            this.QueueTime = queueTime;
             this.CompletionTime = completionTime;
             this.PromptTime = promptTime;
-            this.QueueTime = queueTime;
             this.TotalTime = totalTime;
+            this.PromptTokensDetails = promptTokensDetails;
+            this.CompletionTokensDetails = completionTokensDetails;
         }
 
         /// <summary>

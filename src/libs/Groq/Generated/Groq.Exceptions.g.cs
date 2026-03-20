@@ -13,7 +13,9 @@ namespace Groq
         /// </summary>
         public global::System.Net.HttpStatusCode StatusCode { get; }
         /// <summary>
-        /// The response body.
+        /// The response body as a string, or <c>null</c> if the body could not be read.
+        /// This is always populated for error responses regardless of the <c>ReadResponseAsString</c> setting.
+        /// For success-path failures (e.g. deserialization errors), the client attempts a best-effort read.
         /// </summary>
         public string? ResponseBody { get; set; }
         /// <summary>
@@ -43,7 +45,7 @@ namespace Groq
         /// <param name="message">The error message that explains the reason for the exception.</param>
         /// <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
         /// <param name="statusCode">The HTTP status code of the response.</param>
-        public ApiException(string message, global::System.Exception innerException, global::System.Net.HttpStatusCode statusCode) : base(message, innerException)
+        public ApiException(string message, global::System.Exception? innerException, global::System.Net.HttpStatusCode statusCode) : base(message, innerException)
         {
             StatusCode = statusCode;
         }
@@ -83,7 +85,7 @@ namespace Groq
         /// <param name="message">The error message that explains the reason for the exception.</param>
         /// <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
         /// <param name="statusCode">The HTTP status code of the response.</param>
-        public ApiException(string message, global::System.Exception innerException, global::System.Net.HttpStatusCode statusCode) : base(message, innerException, statusCode)
+        public ApiException(string message, global::System.Exception? innerException, global::System.Net.HttpStatusCode statusCode) : base(message, innerException, statusCode)
         {
         }
     }

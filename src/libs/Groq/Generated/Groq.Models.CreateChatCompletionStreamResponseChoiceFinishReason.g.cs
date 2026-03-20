@@ -25,10 +25,6 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        ContentFilter,
-        /// <summary>
-        /// 
-        /// </summary>
         FunctionCall,
     }
 
@@ -47,7 +43,6 @@ namespace Groq
                 CreateChatCompletionStreamResponseChoiceFinishReason.Stop => "stop",
                 CreateChatCompletionStreamResponseChoiceFinishReason.Length => "length",
                 CreateChatCompletionStreamResponseChoiceFinishReason.ToolCalls => "tool_calls",
-                CreateChatCompletionStreamResponseChoiceFinishReason.ContentFilter => "content_filter",
                 CreateChatCompletionStreamResponseChoiceFinishReason.FunctionCall => "function_call",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -62,7 +57,6 @@ namespace Groq
                 "stop" => CreateChatCompletionStreamResponseChoiceFinishReason.Stop,
                 "length" => CreateChatCompletionStreamResponseChoiceFinishReason.Length,
                 "tool_calls" => CreateChatCompletionStreamResponseChoiceFinishReason.ToolCalls,
-                "content_filter" => CreateChatCompletionStreamResponseChoiceFinishReason.ContentFilter,
                 "function_call" => CreateChatCompletionStreamResponseChoiceFinishReason.FunctionCall,
                 _ => null,
             };

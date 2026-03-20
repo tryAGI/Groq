@@ -11,16 +11,6 @@ namespace Groq
     public sealed partial class CreateEmbeddingRequest
     {
         /// <summary>
-        /// The format to return the embeddings in. Can only be `float` or `base64`.<br/>
-        /// Default Value: float<br/>
-        /// Example: float
-        /// </summary>
-        /// <example>float</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("encoding_format")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateEmbeddingRequestEncodingFormatJsonConverter))]
-        public global::Groq.CreateEmbeddingRequestEncodingFormat? EncodingFormat { get; set; }
-
-        /// <summary>
         /// Input text to embed, encoded as a string or array of tokens. To embed multiple inputs in a single request, pass an array of strings or array of token arrays. The input must not exceed the max input tokens for the model, cannot be an empty string, and any array must be 2048 dimensions or less.<br/>
         /// Example: The quick brown fox jumped over the lazy dog
         /// </summary>
@@ -41,6 +31,16 @@ namespace Groq
         public required global::Groq.AnyOf<string, global::Groq.CreateEmbeddingRequestModel?> Model { get; set; }
 
         /// <summary>
+        /// The format to return the embeddings in. Can only be `float` or `base64`.<br/>
+        /// Default Value: float<br/>
+        /// Example: float
+        /// </summary>
+        /// <example>float</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("encoding_format")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateEmbeddingRequestEncodingFormatJsonConverter))]
+        public global::Groq.CreateEmbeddingRequestEncodingFormat? EncodingFormat { get; set; }
+
+        /// <summary>
         /// A unique identifier representing your end-user, which can help us monitor and detect abuse.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("user")]
@@ -55,11 +55,6 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateEmbeddingRequest" /> class.
         /// </summary>
-        /// <param name="encodingFormat">
-        /// The format to return the embeddings in. Can only be `float` or `base64`.<br/>
-        /// Default Value: float<br/>
-        /// Example: float
-        /// </param>
         /// <param name="input">
         /// Input text to embed, encoded as a string or array of tokens. To embed multiple inputs in a single request, pass an array of strings or array of token arrays. The input must not exceed the max input tokens for the model, cannot be an empty string, and any array must be 2048 dimensions or less.<br/>
         /// Example: The quick brown fox jumped over the lazy dog
@@ -67,6 +62,11 @@ namespace Groq
         /// <param name="model">
         /// ID of the model to use.<br/>
         /// Example: nomic-embed-text-v1_5
+        /// </param>
+        /// <param name="encodingFormat">
+        /// The format to return the embeddings in. Can only be `float` or `base64`.<br/>
+        /// Default Value: float<br/>
+        /// Example: float
         /// </param>
         /// <param name="user">
         /// A unique identifier representing your end-user, which can help us monitor and detect abuse.

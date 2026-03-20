@@ -11,18 +11,35 @@ namespace Groq
     public sealed partial class CreateTranscriptionRequest
     {
         /// <summary>
-        /// The audio file object (not file name) to transcribe, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
+        /// The audio file object (not file name) to transcribe, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.<br/>
+        /// Either a file or a URL must be provided. Note that the file field is not supported in Batch API requests.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("file")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required byte[] File { get; set; }
+        public byte[]? File { get; set; }
 
         /// <summary>
-        /// The audio file object (not file name) to transcribe, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
+        /// The audio file object (not file name) to transcribe, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.<br/>
+        /// Either a file or a URL must be provided. Note that the file field is not supported in Batch API requests.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("filename")]
+        public string? Filename { get; set; }
+
+        /// <summary>
+        /// The audio URL to translate/transcribe (supports Base64URL).<br/>
+        /// Either a file or a URL must be provided. For Batch API requests, the URL field is required since the file field is not supported.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        public string? Url { get; set; }
+
+        /// <summary>
+        /// ID of the model to use. `whisper-large-v3` and `whisper-large-v3-turbo` are currently available.<br/>
+        /// Example: whisper-large-v3-turbo
+        /// </summary>
+        /// <example>whisper-large-v3-turbo</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateTranscriptionRequestModel?>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Filename { get; set; }
+        public required global::Groq.AnyOf<string, global::Groq.CreateTranscriptionRequestModel?> Model { get; set; }
 
         /// <summary>
         /// The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.
@@ -32,17 +49,7 @@ namespace Groq
         public global::Groq.AnyOf<string, global::Groq.CreateTranscriptionRequestLanguage?>? Language { get; set; }
 
         /// <summary>
-        /// ID of the model to use. Only `whisper-large-v3` is currently available.<br/>
-        /// Example: whisper-large-v3
-        /// </summary>
-        /// <example>whisper-large-v3</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateTranscriptionRequestModel?>))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Groq.AnyOf<string, global::Groq.CreateTranscriptionRequestModel?> Model { get; set; }
-
-        /// <summary>
-        /// An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should match the audio language.
+        /// An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/speech-text) should match the audio language.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("prompt")]
         public string? Prompt { get; set; }
@@ -79,20 +86,26 @@ namespace Groq
         /// Initializes a new instance of the <see cref="CreateTranscriptionRequest" /> class.
         /// </summary>
         /// <param name="file">
-        /// The audio file object (not file name) to transcribe, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
+        /// The audio file object (not file name) to transcribe, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.<br/>
+        /// Either a file or a URL must be provided. Note that the file field is not supported in Batch API requests.
         /// </param>
         /// <param name="filename">
-        /// The audio file object (not file name) to transcribe, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
+        /// The audio file object (not file name) to transcribe, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.<br/>
+        /// Either a file or a URL must be provided. Note that the file field is not supported in Batch API requests.
+        /// </param>
+        /// <param name="url">
+        /// The audio URL to translate/transcribe (supports Base64URL).<br/>
+        /// Either a file or a URL must be provided. For Batch API requests, the URL field is required since the file field is not supported.
+        /// </param>
+        /// <param name="model">
+        /// ID of the model to use. `whisper-large-v3` and `whisper-large-v3-turbo` are currently available.<br/>
+        /// Example: whisper-large-v3-turbo
         /// </param>
         /// <param name="language">
         /// The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.
         /// </param>
-        /// <param name="model">
-        /// ID of the model to use. Only `whisper-large-v3` is currently available.<br/>
-        /// Example: whisper-large-v3
-        /// </param>
         /// <param name="prompt">
-        /// An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should match the audio language.
+        /// An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/speech-text) should match the audio language.
         /// </param>
         /// <param name="responseFormat">
         /// The format of the transcript output, in one of these options: `json`, `text`, or `verbose_json`.<br/>
@@ -110,18 +123,20 @@ namespace Groq
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateTranscriptionRequest(
-            byte[] file,
-            string filename,
             global::Groq.AnyOf<string, global::Groq.CreateTranscriptionRequestModel?> model,
+            byte[]? file,
+            string? filename,
+            string? url,
             global::Groq.AnyOf<string, global::Groq.CreateTranscriptionRequestLanguage?>? language,
             string? prompt,
             global::Groq.CreateTranscriptionRequestResponseFormat? responseFormat,
             double? temperature,
             global::System.Collections.Generic.IList<global::Groq.CreateTranscriptionRequestTimestampGranularitie>? timestampGranularities)
         {
-            this.File = file ?? throw new global::System.ArgumentNullException(nameof(file));
-            this.Filename = filename ?? throw new global::System.ArgumentNullException(nameof(filename));
             this.Model = model;
+            this.File = file;
+            this.Filename = filename;
+            this.Url = url;
             this.Language = language;
             this.Prompt = prompt;
             this.ResponseFormat = responseFormat;

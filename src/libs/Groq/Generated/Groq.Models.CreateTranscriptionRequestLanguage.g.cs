@@ -127,7 +127,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        False,
+        No,
         /// <summary>
         /// 
         /// </summary>
@@ -451,7 +451,7 @@ namespace Groq
                 CreateTranscriptionRequestLanguage.Da => "da",
                 CreateTranscriptionRequestLanguage.Hu => "hu",
                 CreateTranscriptionRequestLanguage.Ta => "ta",
-                CreateTranscriptionRequestLanguage.False => "false",
+                CreateTranscriptionRequestLanguage.No => "no",
                 CreateTranscriptionRequestLanguage.Th => "th",
                 CreateTranscriptionRequestLanguage.Ur => "ur",
                 CreateTranscriptionRequestLanguage.Hr => "hr",
@@ -561,7 +561,7 @@ namespace Groq
                 "da" => CreateTranscriptionRequestLanguage.Da,
                 "hu" => CreateTranscriptionRequestLanguage.Hu,
                 "ta" => CreateTranscriptionRequestLanguage.Ta,
-                "false" => CreateTranscriptionRequestLanguage.False,
+                "no" => CreateTranscriptionRequestLanguage.No,
                 "th" => CreateTranscriptionRequestLanguage.Th,
                 "ur" => CreateTranscriptionRequestLanguage.Ur,
                 "hr" => CreateTranscriptionRequestLanguage.Hr,

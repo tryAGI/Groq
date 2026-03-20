@@ -28,6 +28,9 @@ namespace Groq
         /// <summary>
         /// Gets or sets a value indicating whether the response content should be read as a string.
         /// True by default in debug builds, false otherwise.
+        /// When false, successful responses are deserialized directly from the response stream for better performance.
+        /// Error responses are always read as strings regardless of this setting,
+        /// ensuring <see cref="ApiException.ResponseBody"/> is populated.
         /// </summary>
         public bool ReadResponseAsString { get; set; }
 
@@ -45,6 +48,11 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
+        public BatchClient Batch { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public ChatClient Chat { get; }
 
         /// <summary>
@@ -55,7 +63,27 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
+        public FilesClient Files { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public FineTuningClient FineTuning { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public ModelsClient Models { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public RerankingClient Reranking { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ResponsesClient Responses { get; }
 
     }
 }

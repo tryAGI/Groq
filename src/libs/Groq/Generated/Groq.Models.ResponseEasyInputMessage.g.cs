@@ -1,0 +1,62 @@
+
+#pragma warning disable CS0618 // Type or member is obsolete
+
+#nullable enable
+
+namespace Groq
+{
+    /// <summary>
+    /// A message input to the model with a role indicating instruction following hierarchy.
+    /// </summary>
+    public sealed partial class ResponseEasyInputMessage
+    {
+        /// <summary>
+        /// The role of the message input. One of `user`, `assistant`, `system`, or `developer`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("role")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseEasyInputMessageRoleJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Groq.ResponseEasyInputMessageRole Role { get; set; }
+
+        /// <summary>
+        /// Text input to the model.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<global::Groq.ResponseInputContent>>))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ResponseInputContent>> Content { get; set; }
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ResponseEasyInputMessage" /> class.
+        /// </summary>
+        /// <param name="role">
+        /// The role of the message input. One of `user`, `assistant`, `system`, or `developer`.
+        /// </param>
+        /// <param name="content">
+        /// Text input to the model.
+        /// </param>
+#if NET7_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
+        public ResponseEasyInputMessage(
+            global::Groq.ResponseEasyInputMessageRole role,
+            global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ResponseInputContent>> content)
+        {
+            this.Role = role;
+            this.Content = content;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ResponseEasyInputMessage" /> class.
+        /// </summary>
+        public ResponseEasyInputMessage()
+        {
+        }
+    }
+}

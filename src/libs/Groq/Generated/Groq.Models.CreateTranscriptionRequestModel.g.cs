@@ -12,6 +12,10 @@ namespace Groq
         /// 
         /// </summary>
         WhisperLargeV3,
+        /// <summary>
+        /// 
+        /// </summary>
+        WhisperLargeV3Turbo,
     }
 
     /// <summary>
@@ -27,6 +31,7 @@ namespace Groq
             return value switch
             {
                 CreateTranscriptionRequestModel.WhisperLargeV3 => "whisper-large-v3",
+                CreateTranscriptionRequestModel.WhisperLargeV3Turbo => "whisper-large-v3-turbo",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -38,6 +43,7 @@ namespace Groq
             return value switch
             {
                 "whisper-large-v3" => CreateTranscriptionRequestModel.WhisperLargeV3,
+                "whisper-large-v3-turbo" => CreateTranscriptionRequestModel.WhisperLargeV3Turbo,
                 _ => null,
             };
         }

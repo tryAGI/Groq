@@ -17,7 +17,7 @@ public partial class Tests
 
         var request = new CreateTranscriptionRequest { 
             Filename = "sample", 
-            File = File.ReadAllBytes(tempFilePath),
+            File = System.IO.File.ReadAllBytes(tempFilePath),
             Model = CreateTranscriptionRequestModel.WhisperLargeV3,
             Language = "en",    
         };

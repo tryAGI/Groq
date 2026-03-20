@@ -21,7 +21,7 @@ public partial class Tests
         using (HttpClient client = new())
         {
             byte[] fileBytes = await client.GetByteArrayAsync(url);
-            await File.WriteAllBytesAsync(tempFilePath, fileBytes);
+            await System.IO.File.WriteAllBytesAsync(tempFilePath, fileBytes);
         }
         return tempFilePath;
     }

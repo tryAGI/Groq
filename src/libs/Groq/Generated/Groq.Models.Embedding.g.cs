@@ -11,19 +11,19 @@ namespace Groq
     public sealed partial class Embedding
     {
         /// <summary>
+        /// The index of the embedding in the list of embeddings.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("index")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required int Index { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("embedding")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<double>, string>))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Groq.OneOf<global::System.Collections.Generic.IList<double>, string> Embedding1 { get; set; }
-
-        /// <summary>
-        /// The index of the embedding in the list of embeddings.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("index")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int Index { get; set; }
 
         /// <summary>
         /// The object type, which is always "embedding".
@@ -41,10 +41,10 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="Embedding" /> class.
         /// </summary>
-        /// <param name="embedding1"></param>
         /// <param name="index">
         /// The index of the embedding in the list of embeddings.
         /// </param>
+        /// <param name="embedding1"></param>
         /// <param name="object">
         /// The object type, which is always "embedding".
         /// </param>
@@ -52,12 +52,12 @@ namespace Groq
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Embedding(
-            global::Groq.OneOf<global::System.Collections.Generic.IList<double>, string> embedding1,
             int index,
+            global::Groq.OneOf<global::System.Collections.Generic.IList<double>, string> embedding1,
             global::Groq.EmbeddingObject @object)
         {
-            this.Embedding1 = embedding1;
             this.Index = index;
+            this.Embedding1 = embedding1;
             this.Object = @object;
         }
 

@@ -28,6 +28,7 @@ namespace Groq
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Groq.CreateTranslationResponseJson> CreateTranslationAsync(
+
             global::Groq.CreateTranslationRequest request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -39,7 +40,7 @@ namespace Groq
                 httpClient: HttpClient,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Groq.PathBuilder(
                 path: "/openai/v1/audio/translations",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
@@ -67,30 +68,49 @@ namespace Groq
                 }
             }
             using var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
+            if (request.File != default)
+            {
+
+                var __contentFile = new global::System.Net.Http.ByteArrayContent(request.File ?? global::System.Array.Empty<byte>());
+                __httpRequestContent.Add(
+                    content: __contentFile,
+                    name: "\"file\"",
+                    fileName: request.Filename != null ? $"\"{request.Filename}\"" : string.Empty);
+                if (__contentFile.Headers.ContentDisposition != null)
+                {
+                    __contentFile.Headers.ContentDisposition.FileNameStar = null;
+                }
+            } 
+            if (request.Url != default)
+            {
+
+                __httpRequestContent.Add(
+                    content: new global::System.Net.Http.StringContent($"{request.Url}"),
+                    name: "\"url\"");
+            }
             __httpRequestContent.Add(
-                content: new global::System.Net.Http.ByteArrayContent(request.File ?? global::System.Array.Empty<byte>()),
-                name: "file",
-                fileName: request.Filename ?? string.Empty);
-            __httpRequestContent.Add(
-                content: new global::System.Net.Http.StringContent(request.Model.Value1?.ToString() ?? request.Model.Value2?.ToValueString() ?? string.Empty),
-                name: "model");
+                content: new global::System.Net.Http.StringContent(request.Model.ToString() ?? string.Empty),
+                name: "\"model\"");
             if (request.Prompt != default)
             {
+
                 __httpRequestContent.Add(
                     content: new global::System.Net.Http.StringContent($"{request.Prompt}"),
-                    name: "prompt");
+                    name: "\"prompt\"");
             } 
             if (request.ResponseFormat != default)
             {
+
                 __httpRequestContent.Add(
                     content: new global::System.Net.Http.StringContent($"{request.ResponseFormat?.ToValueString()}"),
-                    name: "response_format");
+                    name: "\"response_format\"");
             } 
             if (request.Temperature != default)
             {
+
                 __httpRequestContent.Add(
                     content: new global::System.Net.Http.StringContent($"{request.Temperature}"),
-                    name: "temperature");
+                    name: "\"temperature\"");
             }
             __httpRequest.Content = __httpRequestContent;
 
@@ -134,8 +154,12 @@ namespace Groq
                 try
                 {
                     __response.EnsureSuccessStatusCode();
+
+                    return
+                        global::Groq.CreateTranslationResponseJson.FromJson(__content, JsonSerializerContext) ??
+                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
-                catch (global::System.Net.Http.HttpRequestException __ex)
+                catch (global::System.Exception __ex)
                 {
                     throw new global::Groq.ApiException(
                         message: __content ?? __response.ReasonPhrase ?? string.Empty,
@@ -149,40 +173,50 @@ namespace Groq
                             h => h.Value),
                     };
                 }
-
-                return
-                    global::Groq.CreateTranslationResponseJson.FromJson(__content, JsonSerializerContext) ??
-                    throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
             {
                 try
                 {
                     __response.EnsureSuccessStatusCode();
+
+                    using var __content = await __response.Content.ReadAsStreamAsync(
+#if NET5_0_OR_GREATER
+                        cancellationToken
+#endif
+                    ).ConfigureAwait(false);
+
+                    return
+                        await global::Groq.CreateTranslationResponseJson.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
-                catch (global::System.Net.Http.HttpRequestException __ex)
+                catch (global::System.Exception __ex)
                 {
+                    string? __content = null;
+                    try
+                    {
+                        __content = await __response.Content.ReadAsStringAsync(
+#if NET5_0_OR_GREATER
+                            cancellationToken
+#endif
+                        ).ConfigureAwait(false);
+                    }
+                    catch (global::System.Exception)
+                    {
+                    }
+
                     throw new global::Groq.ApiException(
-                        message: __response.ReasonPhrase ?? string.Empty,
+                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
                         innerException: __ex,
                         statusCode: __response.StatusCode)
                     {
+                        ResponseBody = __content,
                         ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
                             __response.Headers,
                             h => h.Key,
                             h => h.Value),
                     };
                 }
-
-                using var __content = await __response.Content.ReadAsStreamAsync(
-#if NET5_0_OR_GREATER
-                    cancellationToken
-#endif
-                ).ConfigureAwait(false);
-
-                return
-                    await global::Groq.CreateTranslationResponseJson.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
-                    throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
 
@@ -195,9 +229,13 @@ namespace Groq
         /// <param name="filename">
         /// The audio file object (not file name) translate, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
         /// </param>
+        /// <param name="url">
+        /// The audio URL to translate/transcribe (supports Base64URL). Either file or url must be provided.<br/>
+        /// When using the Batch API only url is supported.
+        /// </param>
         /// <param name="model">
-        /// ID of the model to use. Only `whisper-large-v3` is currently available.<br/>
-        /// Example: whisper-1
+        /// ID of the model to use. `whisper-large-v3` and `whisper-large-v3-turbo` are currently available.<br/>
+        /// Example: whisper-large-v3-turbo
         /// </param>
         /// <param name="prompt">
         /// An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should be in English.
@@ -213,9 +251,10 @@ namespace Groq
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Groq.CreateTranslationResponseJson> CreateTranslationAsync(
-            byte[] file,
-            string filename,
             global::Groq.AnyOf<string, global::Groq.CreateTranslationRequestModel?> model,
+            byte[]? file = default,
+            string? filename = default,
+            string? url = default,
             string? prompt = default,
             global::Groq.CreateTranslationRequestResponseFormat? responseFormat = default,
             double? temperature = default,
@@ -225,6 +264,7 @@ namespace Groq
             {
                 File = file,
                 Filename = filename,
+                Url = url,
                 Model = model,
                 Prompt = prompt,
                 ResponseFormat = responseFormat,

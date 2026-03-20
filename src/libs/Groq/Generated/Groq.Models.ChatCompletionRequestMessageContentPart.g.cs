@@ -12,99 +12,137 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionRequestMessageContentPartDiscriminatorType? Type { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Groq.ChatCompletionRequestMessageContentPartText? Text { get; init; }
+        public global::Groq.ChatCompletionRequestMessageContentPartText? TextContentPart { get; init; }
 #else
-        public global::Groq.ChatCompletionRequestMessageContentPartText? Text { get; }
+        public global::Groq.ChatCompletionRequestMessageContentPartText? TextContentPart { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Text))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TextContentPart))]
 #endif
-        public bool IsText => Text != null;
+        public bool IsTextContentPart => TextContentPart != null;
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator ChatCompletionRequestMessageContentPart(global::Groq.ChatCompletionRequestMessageContentPartText value) => new ChatCompletionRequestMessageContentPart(value);
+#if NET6_0_OR_GREATER
+        public global::Groq.ChatCompletionRequestMessageContentPartImage? ImageContentPart { get; init; }
+#else
+        public global::Groq.ChatCompletionRequestMessageContentPartImage? ImageContentPart { get; }
+#endif
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Groq.ChatCompletionRequestMessageContentPartText?(ChatCompletionRequestMessageContentPart @this) => @this.Text;
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ImageContentPart))]
+#endif
+        public bool IsImageContentPart => ImageContentPart != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Groq.ChatCompletionRequestMessageContentPartDocument? DocumentContentPart { get; init; }
+#else
+        public global::Groq.ChatCompletionRequestMessageContentPartDocument? DocumentContentPart { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(DocumentContentPart))]
+#endif
+        public bool IsDocumentContentPart => DocumentContentPart != null;
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator ChatCompletionRequestMessageContentPart(global::Groq.ChatCompletionRequestMessageContentPartText value) => new ChatCompletionRequestMessageContentPart((global::Groq.ChatCompletionRequestMessageContentPartText?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Groq.ChatCompletionRequestMessageContentPartText?(ChatCompletionRequestMessageContentPart @this) => @this.TextContentPart;
 
         /// <summary>
         /// 
         /// </summary>
         public ChatCompletionRequestMessageContentPart(global::Groq.ChatCompletionRequestMessageContentPartText? value)
         {
-            Text = value;
+            TextContentPart = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
-#if NET6_0_OR_GREATER
-        public global::Groq.ChatCompletionRequestMessageContentPartImage? ImageUrl { get; init; }
-#else
-        public global::Groq.ChatCompletionRequestMessageContentPartImage? ImageUrl { get; }
-#endif
+        public static implicit operator ChatCompletionRequestMessageContentPart(global::Groq.ChatCompletionRequestMessageContentPartImage value) => new ChatCompletionRequestMessageContentPart((global::Groq.ChatCompletionRequestMessageContentPartImage?)value);
 
         /// <summary>
         /// 
         /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ImageUrl))]
-#endif
-        public bool IsImageUrl => ImageUrl != null;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator ChatCompletionRequestMessageContentPart(global::Groq.ChatCompletionRequestMessageContentPartImage value) => new ChatCompletionRequestMessageContentPart(value);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator global::Groq.ChatCompletionRequestMessageContentPartImage?(ChatCompletionRequestMessageContentPart @this) => @this.ImageUrl;
+        public static implicit operator global::Groq.ChatCompletionRequestMessageContentPartImage?(ChatCompletionRequestMessageContentPart @this) => @this.ImageContentPart;
 
         /// <summary>
         /// 
         /// </summary>
         public ChatCompletionRequestMessageContentPart(global::Groq.ChatCompletionRequestMessageContentPartImage? value)
         {
-            ImageUrl = value;
+            ImageContentPart = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator ChatCompletionRequestMessageContentPart(global::Groq.ChatCompletionRequestMessageContentPartDocument value) => new ChatCompletionRequestMessageContentPart((global::Groq.ChatCompletionRequestMessageContentPartDocument?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Groq.ChatCompletionRequestMessageContentPartDocument?(ChatCompletionRequestMessageContentPart @this) => @this.DocumentContentPart;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ChatCompletionRequestMessageContentPart(global::Groq.ChatCompletionRequestMessageContentPartDocument? value)
+        {
+            DocumentContentPart = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public ChatCompletionRequestMessageContentPart(
-            global::Groq.ChatCompletionRequestMessageContentPartDiscriminatorType? type,
-            global::Groq.ChatCompletionRequestMessageContentPartText? text,
-            global::Groq.ChatCompletionRequestMessageContentPartImage? imageUrl
+            global::Groq.ChatCompletionRequestMessageContentPartText? textContentPart,
+            global::Groq.ChatCompletionRequestMessageContentPartImage? imageContentPart,
+            global::Groq.ChatCompletionRequestMessageContentPartDocument? documentContentPart
             )
         {
-            Type = type;
-
-            Text = text;
-            ImageUrl = imageUrl;
+            TextContentPart = textContentPart;
+            ImageContentPart = imageContentPart;
+            DocumentContentPart = documentContentPart;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            ImageUrl as object ??
-            Text as object 
+            DocumentContentPart as object ??
+            ImageContentPart as object ??
+            TextContentPart as object 
+            ;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override string? ToString() =>
+            TextContentPart?.ToString() ??
+            ImageContentPart?.ToString() ??
+            DocumentContentPart?.ToString() 
             ;
 
         /// <summary>
@@ -112,15 +150,16 @@ namespace Groq
         /// </summary>
         public bool Validate()
         {
-            return IsText && !IsImageUrl || !IsText && IsImageUrl;
+            return IsTextContentPart && !IsImageContentPart && !IsDocumentContentPart || !IsTextContentPart && IsImageContentPart && !IsDocumentContentPart || !IsTextContentPart && !IsImageContentPart && IsDocumentContentPart;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Groq.ChatCompletionRequestMessageContentPartText?, TResult>? text = null,
-            global::System.Func<global::Groq.ChatCompletionRequestMessageContentPartImage?, TResult>? imageUrl = null,
+            global::System.Func<global::Groq.ChatCompletionRequestMessageContentPartText?, TResult>? textContentPart = null,
+            global::System.Func<global::Groq.ChatCompletionRequestMessageContentPartImage?, TResult>? imageContentPart = null,
+            global::System.Func<global::Groq.ChatCompletionRequestMessageContentPartDocument?, TResult>? documentContentPart = null,
             bool validate = true)
         {
             if (validate)
@@ -128,13 +167,17 @@ namespace Groq
                 Validate();
             }
 
-            if (IsText && text != null)
+            if (IsTextContentPart && textContentPart != null)
             {
-                return text(Text!);
+                return textContentPart(TextContentPart!);
             }
-            else if (IsImageUrl && imageUrl != null)
+            else if (IsImageContentPart && imageContentPart != null)
             {
-                return imageUrl(ImageUrl!);
+                return imageContentPart(ImageContentPart!);
+            }
+            else if (IsDocumentContentPart && documentContentPart != null)
+            {
+                return documentContentPart(DocumentContentPart!);
             }
 
             return default(TResult);
@@ -144,8 +187,9 @@ namespace Groq
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Groq.ChatCompletionRequestMessageContentPartText?>? text = null,
-            global::System.Action<global::Groq.ChatCompletionRequestMessageContentPartImage?>? imageUrl = null,
+            global::System.Action<global::Groq.ChatCompletionRequestMessageContentPartText?>? textContentPart = null,
+            global::System.Action<global::Groq.ChatCompletionRequestMessageContentPartImage?>? imageContentPart = null,
+            global::System.Action<global::Groq.ChatCompletionRequestMessageContentPartDocument?>? documentContentPart = null,
             bool validate = true)
         {
             if (validate)
@@ -153,13 +197,17 @@ namespace Groq
                 Validate();
             }
 
-            if (IsText)
+            if (IsTextContentPart)
             {
-                text?.Invoke(Text!);
+                textContentPart?.Invoke(TextContentPart!);
             }
-            else if (IsImageUrl)
+            else if (IsImageContentPart)
             {
-                imageUrl?.Invoke(ImageUrl!);
+                imageContentPart?.Invoke(ImageContentPart!);
+            }
+            else if (IsDocumentContentPart)
+            {
+                documentContentPart?.Invoke(DocumentContentPart!);
             }
         }
 
@@ -170,10 +218,12 @@ namespace Groq
         {
             var fields = new object?[]
             {
-                Text,
+                TextContentPart,
                 typeof(global::Groq.ChatCompletionRequestMessageContentPartText),
-                ImageUrl,
+                ImageContentPart,
                 typeof(global::Groq.ChatCompletionRequestMessageContentPartImage),
+                DocumentContentPart,
+                typeof(global::Groq.ChatCompletionRequestMessageContentPartDocument),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -190,8 +240,9 @@ namespace Groq
         public bool Equals(ChatCompletionRequestMessageContentPart other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Groq.ChatCompletionRequestMessageContentPartText?>.Default.Equals(Text, other.Text) &&
-                global::System.Collections.Generic.EqualityComparer<global::Groq.ChatCompletionRequestMessageContentPartImage?>.Default.Equals(ImageUrl, other.ImageUrl) 
+                global::System.Collections.Generic.EqualityComparer<global::Groq.ChatCompletionRequestMessageContentPartText?>.Default.Equals(TextContentPart, other.TextContentPart) &&
+                global::System.Collections.Generic.EqualityComparer<global::Groq.ChatCompletionRequestMessageContentPartImage?>.Default.Equals(ImageContentPart, other.ImageContentPart) &&
+                global::System.Collections.Generic.EqualityComparer<global::Groq.ChatCompletionRequestMessageContentPartDocument?>.Default.Equals(DocumentContentPart, other.DocumentContentPart) 
                 ;
         }
 

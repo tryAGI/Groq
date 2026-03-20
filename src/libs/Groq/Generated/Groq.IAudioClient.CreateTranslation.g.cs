@@ -11,6 +11,7 @@ namespace Groq
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Groq.CreateTranslationResponseJson> CreateTranslationAsync(
+
             global::Groq.CreateTranslationRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
@@ -23,9 +24,13 @@ namespace Groq
         /// <param name="filename">
         /// The audio file object (not file name) translate, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
         /// </param>
+        /// <param name="url">
+        /// The audio URL to translate/transcribe (supports Base64URL). Either file or url must be provided.<br/>
+        /// When using the Batch API only url is supported.
+        /// </param>
         /// <param name="model">
-        /// ID of the model to use. Only `whisper-large-v3` is currently available.<br/>
-        /// Example: whisper-1
+        /// ID of the model to use. `whisper-large-v3` and `whisper-large-v3-turbo` are currently available.<br/>
+        /// Example: whisper-large-v3-turbo
         /// </param>
         /// <param name="prompt">
         /// An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should be in English.
@@ -41,9 +46,10 @@ namespace Groq
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Groq.CreateTranslationResponseJson> CreateTranslationAsync(
-            byte[] file,
-            string filename,
             global::Groq.AnyOf<string, global::Groq.CreateTranslationRequestModel?> model,
+            byte[]? file = default,
+            string? filename = default,
+            string? url = default,
             string? prompt = default,
             global::Groq.CreateTranslationRequestResponseFormat? responseFormat = default,
             double? temperature = default,

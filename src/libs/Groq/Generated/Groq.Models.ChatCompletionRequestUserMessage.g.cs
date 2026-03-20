@@ -19,17 +19,17 @@ namespace Groq
         public required global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessageContentPart>> Content { get; set; }
 
         /// <summary>
-        /// An optional name for the participant. Provides the model information to differentiate between participants of the same role.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
         /// The role of the messages author, in this case `user`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("role")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ChatCompletionRequestUserMessageRoleJsonConverter))]
         public global::Groq.ChatCompletionRequestUserMessageRole Role { get; set; }
+
+        /// <summary>
+        /// An optional name for the participant. Provides the model information to differentiate between participants of the same role.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -43,23 +43,23 @@ namespace Groq
         /// <param name="content">
         /// The contents of the user message.
         /// </param>
-        /// <param name="name">
-        /// An optional name for the participant. Provides the model information to differentiate between participants of the same role.
-        /// </param>
         /// <param name="role">
         /// The role of the messages author, in this case `user`.
+        /// </param>
+        /// <param name="name">
+        /// An optional name for the participant. Provides the model information to differentiate between participants of the same role.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ChatCompletionRequestUserMessage(
             global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessageContentPart>> content,
-            string? name,
-            global::Groq.ChatCompletionRequestUserMessageRole role)
+            global::Groq.ChatCompletionRequestUserMessageRole role,
+            string? name)
         {
             this.Content = content;
-            this.Name = name;
             this.Role = role;
+            this.Name = name;
         }
 
         /// <summary>

@@ -10,12 +10,19 @@ namespace Groq
     public sealed partial class ChatCompletionRequestFunctionMessage
     {
         /// <summary>
+        /// The role of the messages author, in this case `function`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("role")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ChatCompletionRequestFunctionMessageRoleJsonConverter))]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public global::Groq.ChatCompletionRequestFunctionMessageRole Role { get; set; }
+
+        /// <summary>
         /// The contents of the function message.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content")]
-        [global::System.Text.Json.Serialization.JsonRequired]
         [global::System.Obsolete("This property marked as deprecated.")]
-        public required string? Content { get; set; }
+        public string? Content { get; set; }
 
         /// <summary>
         /// The name of the function to call.
@@ -26,14 +33,6 @@ namespace Groq
         public required string Name { get; set; }
 
         /// <summary>
-        /// The role of the messages author, in this case `function`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("role")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ChatCompletionRequestFunctionMessageRoleJsonConverter))]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public global::Groq.ChatCompletionRequestFunctionMessageRole Role { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -42,26 +41,26 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ChatCompletionRequestFunctionMessage" /> class.
         /// </summary>
+        /// <param name="role">
+        /// The role of the messages author, in this case `function`.
+        /// </param>
         /// <param name="content">
         /// The contents of the function message.
         /// </param>
         /// <param name="name">
         /// The name of the function to call.
         /// </param>
-        /// <param name="role">
-        /// The role of the messages author, in this case `function`.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ChatCompletionRequestFunctionMessage(
-            string? content,
             string name,
-            global::Groq.ChatCompletionRequestFunctionMessageRole role)
+            global::Groq.ChatCompletionRequestFunctionMessageRole role,
+            string? content)
         {
-            this.Content = content ?? throw new global::System.ArgumentNullException(nameof(content));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Role = role;
+            this.Content = content;
         }
 
         /// <summary>

@@ -12,8 +12,7 @@ namespace Groq
         /// A list of message content tokens with log probability information.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Groq.ChatCompletionTokenLogprob>? Content { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionTokenLogprob>? Content { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -33,7 +32,7 @@ namespace Groq
         public CreateChatCompletionResponseChoiceLogprobs(
             global::System.Collections.Generic.IList<global::Groq.ChatCompletionTokenLogprob>? content)
         {
-            this.Content = content ?? throw new global::System.ArgumentNullException(nameof(content));
+            this.Content = content;
         }
 
         /// <summary>
