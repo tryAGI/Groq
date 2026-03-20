@@ -53,6 +53,54 @@ var embeddings = await generator.GenerateAsync(["Hello, world!"]);
 ```
 
 <!-- EXAMPLES:START -->
+### Audio
+
+
+```csharp
+using var client = new GroqClient(apiKey);
+var url = "https://speech.zone/simple4all/wp-content/uploads/2012/10/nina_01_071.wav";
+string tempFilePath = await DownloadFileToTempAsync(url);
+
+var request = new CreateTranscriptionRequest {
+    Filename = "sample",
+    File = File.ReadAllBytes(tempFilePath),
+    Model = CreateTranscriptionRequestModel.WhisperLargeV3,
+    Language = "en",
+};
+var response = await client.Audio.CreateTranscriptionAsync(request);
+Console.WriteLine(response);
+```
+
+### Chat
+
+
+```csharp
+using var client = new GroqClient(apiKey);
+IList<ChatCompletionRequestMessage> messages = [
+    new ChatCompletionRequestUserMessage {
+        Role = ChatCompletionRequestUserMessageRole.User,
+        Content = "Generate five random words."
+    }];
+CreateChatCompletionRequest request = new() {
+    Messages = messages,
+    Model = CreateChatCompletionRequestModel.Llama370b8192
+};
+var response = await client.Chat.CreateChatCompletionAsync(request);
+Console.WriteLine(response.Choices[0].Message.Content);
+```
+
+### Embeddings
+
+
+```csharp
+using var client = new GroqClient(apiKey);
+CreateEmbeddingRequest request = new() {
+    Input = "Hello, world",
+    Model = CreateEmbeddingRequestModel.NomicEmbedTextV15
+};
+var response = await client.Embeddings.CreateEmbeddingAsync(request);
+Console.WriteLine(response.Data[0].Embedding1);
+```
 <!-- EXAMPLES:END -->
 
 ## Support
