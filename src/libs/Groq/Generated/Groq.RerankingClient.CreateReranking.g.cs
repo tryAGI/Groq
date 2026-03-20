@@ -21,13 +21,11 @@ namespace Groq
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Reranks documents based on their relevance to a query.<br/>
         /// Given a query and a list of documents, returns the documents ranked by their relevance to the query.<br/>
         /// The documents are scored and sorted in descending order of relevance.
         /// </summary>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
@@ -183,7 +181,6 @@ namespace Groq
                 }
             }
         }
-
         /// <summary>
         /// Reranks documents based on their relevance to a query.<br/>
         /// Given a query and a list of documents, returns the documents ranked by their relevance to the query.<br/>

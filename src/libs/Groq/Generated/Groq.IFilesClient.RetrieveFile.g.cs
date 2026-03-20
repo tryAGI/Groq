@@ -4,7 +4,6 @@ namespace Groq
 {
     public partial interface IFilesClient
     {
-
         /// <summary>
         /// Returns information about a file.
         /// </summary>

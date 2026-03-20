@@ -4,11 +4,9 @@ namespace Groq
 {
     public partial interface IAudioClient
     {
-
         /// <summary>
         /// Translates audio into English.
         /// </summary>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
@@ -16,7 +14,6 @@ namespace Groq
 
             global::Groq.CreateTranslationRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Translates audio into English.
         /// </summary>

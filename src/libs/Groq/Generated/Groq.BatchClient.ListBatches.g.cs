@@ -19,7 +19,6 @@ namespace Groq
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// List your organization's batches.
         /// </summary>

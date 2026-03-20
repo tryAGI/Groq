@@ -21,11 +21,9 @@ namespace Groq
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Creates and executes a batch from an uploaded file of requests. [Learn more](/docs/batch).
         /// </summary>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
@@ -181,7 +179,6 @@ namespace Groq
                 }
             }
         }
-
         /// <summary>
         /// Creates and executes a batch from an uploaded file of requests. [Learn more](/docs/batch).
         /// </summary>

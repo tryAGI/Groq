@@ -4,7 +4,6 @@ namespace Groq
 {
     public partial interface IBatchClient
     {
-
         /// <summary>
         /// Retrieves a batch.
         /// </summary>
