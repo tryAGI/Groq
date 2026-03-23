@@ -11,15 +11,15 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
+        High,
+        /// <summary>
+        /// 
+        /// </summary>
         Low,
         /// <summary>
         /// 
         /// </summary>
         Medium,
-        /// <summary>
-        /// 
-        /// </summary>
-        High,
     }
 
     /// <summary>
@@ -34,9 +34,9 @@ namespace Groq
         {
             return value switch
             {
+                CreateResponseResponseReasoningEffort.High => "high",
                 CreateResponseResponseReasoningEffort.Low => "low",
                 CreateResponseResponseReasoningEffort.Medium => "medium",
-                CreateResponseResponseReasoningEffort.High => "high",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -47,9 +47,9 @@ namespace Groq
         {
             return value switch
             {
+                "high" => CreateResponseResponseReasoningEffort.High,
                 "low" => CreateResponseResponseReasoningEffort.Low,
                 "medium" => CreateResponseResponseReasoningEffort.Medium,
-                "high" => CreateResponseResponseReasoningEffort.High,
                 _ => null,
             };
         }

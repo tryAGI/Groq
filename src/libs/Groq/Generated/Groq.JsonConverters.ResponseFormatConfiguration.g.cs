@@ -31,11 +31,11 @@ namespace Groq.JsonConverters
             var __score1 = 0;
             if (__jsonProps.Contains("type")) __score1++;
             var __score2 = 0;
-            if (__jsonProps.Contains("type")) __score2++;
-            if (__jsonProps.Contains("name")) __score2++;
             if (__jsonProps.Contains("description")) __score2++;
+            if (__jsonProps.Contains("name")) __score2++;
             if (__jsonProps.Contains("schema")) __score2++;
             if (__jsonProps.Contains("strict")) __score2++;
+            if (__jsonProps.Contains("type")) __score2++;
             var __bestScore = 0;
             var __bestIndex = -1;
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }

@@ -11,11 +11,11 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        Message,
+        FunctionCall,
         /// <summary>
         /// 
         /// </summary>
-        FunctionCall,
+        Message,
         /// <summary>
         /// 
         /// </summary>
@@ -34,8 +34,8 @@ namespace Groq
         {
             return value switch
             {
-                ResponseOutputItemDiscriminatorType.Message => "message",
                 ResponseOutputItemDiscriminatorType.FunctionCall => "function_call",
+                ResponseOutputItemDiscriminatorType.Message => "message",
                 ResponseOutputItemDiscriminatorType.Reasoning => "reasoning",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -47,8 +47,8 @@ namespace Groq
         {
             return value switch
             {
-                "message" => ResponseOutputItemDiscriminatorType.Message,
                 "function_call" => ResponseOutputItemDiscriminatorType.FunctionCall,
+                "message" => ResponseOutputItemDiscriminatorType.Message,
                 "reasoning" => ResponseOutputItemDiscriminatorType.Reasoning,
                 _ => null,
             };

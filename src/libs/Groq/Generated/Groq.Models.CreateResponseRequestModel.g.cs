@@ -15,11 +15,11 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        Llama3370bVersatile,
+        Llama318bInstant,
         /// <summary>
         /// 
         /// </summary>
-        Llama318bInstant,
+        Llama3370bVersatile,
         /// <summary>
         /// 
         /// </summary>
@@ -47,8 +47,8 @@ namespace Groq
             return value switch
             {
                 CreateResponseRequestModel.Gemma29bIt => "gemma2-9b-it",
-                CreateResponseRequestModel.Llama3370bVersatile => "llama-3.3-70b-versatile",
                 CreateResponseRequestModel.Llama318bInstant => "llama-3.1-8b-instant",
+                CreateResponseRequestModel.Llama3370bVersatile => "llama-3.3-70b-versatile",
                 CreateResponseRequestModel.LlamaGuard38b => "llama-guard-3-8b",
                 CreateResponseRequestModel.Llama370b8192 => "llama3-70b-8192",
                 CreateResponseRequestModel.Llama38b8192 => "llama3-8b-8192",
@@ -63,8 +63,8 @@ namespace Groq
             return value switch
             {
                 "gemma2-9b-it" => CreateResponseRequestModel.Gemma29bIt,
-                "llama-3.3-70b-versatile" => CreateResponseRequestModel.Llama3370bVersatile,
                 "llama-3.1-8b-instant" => CreateResponseRequestModel.Llama318bInstant,
+                "llama-3.3-70b-versatile" => CreateResponseRequestModel.Llama3370bVersatile,
                 "llama-guard-3-8b" => CreateResponseRequestModel.LlamaGuard38b,
                 "llama3-70b-8192" => CreateResponseRequestModel.Llama370b8192,
                 "llama3-8b-8192" => CreateResponseRequestModel.Llama38b8192,

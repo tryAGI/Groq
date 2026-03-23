@@ -11,19 +11,19 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        System,
-        /// <summary>
-        /// 
-        /// </summary>
-        User,
-        /// <summary>
-        /// 
-        /// </summary>
         Assistant,
         /// <summary>
         /// 
         /// </summary>
+        System,
+        /// <summary>
+        /// 
+        /// </summary>
         Tool,
+        /// <summary>
+        /// 
+        /// </summary>
+        User,
     }
 
     /// <summary>
@@ -38,10 +38,10 @@ namespace Groq
         {
             return value switch
             {
-                ChatCompletionStreamResponseDeltaRole.System => "system",
-                ChatCompletionStreamResponseDeltaRole.User => "user",
                 ChatCompletionStreamResponseDeltaRole.Assistant => "assistant",
+                ChatCompletionStreamResponseDeltaRole.System => "system",
                 ChatCompletionStreamResponseDeltaRole.Tool => "tool",
+                ChatCompletionStreamResponseDeltaRole.User => "user",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -52,10 +52,10 @@ namespace Groq
         {
             return value switch
             {
-                "system" => ChatCompletionStreamResponseDeltaRole.System,
-                "user" => ChatCompletionStreamResponseDeltaRole.User,
                 "assistant" => ChatCompletionStreamResponseDeltaRole.Assistant,
+                "system" => ChatCompletionStreamResponseDeltaRole.System,
                 "tool" => ChatCompletionStreamResponseDeltaRole.Tool,
+                "user" => ChatCompletionStreamResponseDeltaRole.User,
                 _ => null,
             };
         }

@@ -12,11 +12,11 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        Enabled,
+        Disabled,
         /// <summary>
         /// 
         /// </summary>
-        Disabled,
+        Enabled,
     }
 
     /// <summary>
@@ -31,8 +31,8 @@ namespace Groq
         {
             return value switch
             {
-                CreateChatCompletionRequestCitationOptions.Enabled => "enabled",
                 CreateChatCompletionRequestCitationOptions.Disabled => "disabled",
+                CreateChatCompletionRequestCitationOptions.Enabled => "enabled",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -43,8 +43,8 @@ namespace Groq
         {
             return value switch
             {
-                "enabled" => CreateChatCompletionRequestCitationOptions.Enabled,
                 "disabled" => CreateChatCompletionRequestCitationOptions.Disabled,
+                "enabled" => CreateChatCompletionRequestCitationOptions.Enabled,
                 _ => null,
             };
         }

@@ -11,11 +11,11 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        None,
+        Auto,
         /// <summary>
         /// 
         /// </summary>
-        Auto,
+        None,
         /// <summary>
         /// 
         /// </summary>
@@ -34,8 +34,8 @@ namespace Groq
         {
             return value switch
             {
-                ChatCompletionToolChoiceOptionEnum.None => "none",
                 ChatCompletionToolChoiceOptionEnum.Auto => "auto",
+                ChatCompletionToolChoiceOptionEnum.None => "none",
                 ChatCompletionToolChoiceOptionEnum.Required => "required",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -47,8 +47,8 @@ namespace Groq
         {
             return value switch
             {
-                "none" => ChatCompletionToolChoiceOptionEnum.None,
                 "auto" => ChatCompletionToolChoiceOptionEnum.Auto,
+                "none" => ChatCompletionToolChoiceOptionEnum.None,
                 "required" => ChatCompletionToolChoiceOptionEnum.Required,
                 _ => null,
             };
