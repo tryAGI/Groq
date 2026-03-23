@@ -11,11 +11,11 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        User,
+        Assistant,
         /// <summary>
         /// 
         /// </summary>
-        Assistant,
+        Developer,
         /// <summary>
         /// 
         /// </summary>
@@ -23,7 +23,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        Developer,
+        User,
     }
 
     /// <summary>
@@ -38,10 +38,10 @@ namespace Groq
         {
             return value switch
             {
-                ResponseEasyInputMessageRole.User => "user",
                 ResponseEasyInputMessageRole.Assistant => "assistant",
-                ResponseEasyInputMessageRole.System => "system",
                 ResponseEasyInputMessageRole.Developer => "developer",
+                ResponseEasyInputMessageRole.System => "system",
+                ResponseEasyInputMessageRole.User => "user",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -52,10 +52,10 @@ namespace Groq
         {
             return value switch
             {
-                "user" => ResponseEasyInputMessageRole.User,
                 "assistant" => ResponseEasyInputMessageRole.Assistant,
-                "system" => ResponseEasyInputMessageRole.System,
                 "developer" => ResponseEasyInputMessageRole.Developer,
+                "system" => ResponseEasyInputMessageRole.System,
+                "user" => ResponseEasyInputMessageRole.User,
                 _ => null,
             };
         }

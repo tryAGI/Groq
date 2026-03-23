@@ -11,11 +11,11 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        System,
+        Developer,
         /// <summary>
         /// 
         /// </summary>
-        Developer,
+        System,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Groq
         {
             return value switch
             {
-                ChatCompletionRequestSystemMessageRole.System => "system",
                 ChatCompletionRequestSystemMessageRole.Developer => "developer",
+                ChatCompletionRequestSystemMessageRole.System => "system",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Groq
         {
             return value switch
             {
-                "system" => ChatCompletionRequestSystemMessageRole.System,
                 "developer" => ChatCompletionRequestSystemMessageRole.Developer,
+                "system" => ChatCompletionRequestSystemMessageRole.System,
                 _ => null,
             };
         }

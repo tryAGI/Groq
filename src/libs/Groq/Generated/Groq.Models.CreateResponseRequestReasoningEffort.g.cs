@@ -12,15 +12,15 @@ namespace Groq
         /// <summary>
         /// `low`, `medium`, `high`. Lower values provide faster responses with less reasoning depth.
         /// </summary>
+        High,
+        /// <summary>
+        /// `low`, `medium`, `high`. Lower values provide faster responses with less reasoning depth.
+        /// </summary>
         Low,
         /// <summary>
         /// `low`, `medium`, `high`. Lower values provide faster responses with less reasoning depth.
         /// </summary>
         Medium,
-        /// <summary>
-        /// `low`, `medium`, `high`. Lower values provide faster responses with less reasoning depth.
-        /// </summary>
-        High,
     }
 
     /// <summary>
@@ -35,9 +35,9 @@ namespace Groq
         {
             return value switch
             {
+                CreateResponseRequestReasoningEffort.High => "high",
                 CreateResponseRequestReasoningEffort.Low => "low",
                 CreateResponseRequestReasoningEffort.Medium => "medium",
-                CreateResponseRequestReasoningEffort.High => "high",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -48,9 +48,9 @@ namespace Groq
         {
             return value switch
             {
+                "high" => CreateResponseRequestReasoningEffort.High,
                 "low" => CreateResponseRequestReasoningEffort.Low,
                 "medium" => CreateResponseRequestReasoningEffort.Medium,
-                "high" => CreateResponseRequestReasoningEffort.High,
                 _ => null,
             };
         }

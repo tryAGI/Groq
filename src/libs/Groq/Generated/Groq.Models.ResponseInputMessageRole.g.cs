@@ -11,7 +11,7 @@ namespace Groq
         /// <summary>
         /// assistant role is not supported with explicit type.
         /// </summary>
-        User,
+        Developer,
         /// <summary>
         /// assistant role is not supported with explicit type.
         /// </summary>
@@ -19,7 +19,7 @@ namespace Groq
         /// <summary>
         /// assistant role is not supported with explicit type.
         /// </summary>
-        Developer,
+        User,
     }
 
     /// <summary>
@@ -34,9 +34,9 @@ namespace Groq
         {
             return value switch
             {
-                ResponseInputMessageRole.User => "user",
-                ResponseInputMessageRole.System => "system",
                 ResponseInputMessageRole.Developer => "developer",
+                ResponseInputMessageRole.System => "system",
+                ResponseInputMessageRole.User => "user",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -47,9 +47,9 @@ namespace Groq
         {
             return value switch
             {
-                "user" => ResponseInputMessageRole.User,
-                "system" => ResponseInputMessageRole.System,
                 "developer" => ResponseInputMessageRole.Developer,
+                "system" => ResponseInputMessageRole.System,
+                "user" => ResponseInputMessageRole.User,
                 _ => null,
             };
         }

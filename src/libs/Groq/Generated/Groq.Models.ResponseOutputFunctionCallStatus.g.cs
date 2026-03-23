@@ -11,11 +11,11 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        InProgress,
+        Completed,
         /// <summary>
         /// 
         /// </summary>
-        Completed,
+        InProgress,
         /// <summary>
         /// 
         /// </summary>
@@ -34,8 +34,8 @@ namespace Groq
         {
             return value switch
             {
-                ResponseOutputFunctionCallStatus.InProgress => "in_progress",
                 ResponseOutputFunctionCallStatus.Completed => "completed",
+                ResponseOutputFunctionCallStatus.InProgress => "in_progress",
                 ResponseOutputFunctionCallStatus.Incomplete => "incomplete",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -47,8 +47,8 @@ namespace Groq
         {
             return value switch
             {
-                "in_progress" => ResponseOutputFunctionCallStatus.InProgress,
                 "completed" => ResponseOutputFunctionCallStatus.Completed,
+                "in_progress" => ResponseOutputFunctionCallStatus.InProgress,
                 "incomplete" => ResponseOutputFunctionCallStatus.Incomplete,
                 _ => null,
             };

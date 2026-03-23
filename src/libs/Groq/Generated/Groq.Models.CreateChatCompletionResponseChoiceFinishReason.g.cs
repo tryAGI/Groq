@@ -13,7 +13,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        Stop,
+        FunctionCall,
         /// <summary>
         /// 
         /// </summary>
@@ -21,11 +21,11 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        ToolCalls,
+        Stop,
         /// <summary>
         /// 
         /// </summary>
-        FunctionCall,
+        ToolCalls,
     }
 
     /// <summary>
@@ -40,10 +40,10 @@ namespace Groq
         {
             return value switch
             {
-                CreateChatCompletionResponseChoiceFinishReason.Stop => "stop",
-                CreateChatCompletionResponseChoiceFinishReason.Length => "length",
-                CreateChatCompletionResponseChoiceFinishReason.ToolCalls => "tool_calls",
                 CreateChatCompletionResponseChoiceFinishReason.FunctionCall => "function_call",
+                CreateChatCompletionResponseChoiceFinishReason.Length => "length",
+                CreateChatCompletionResponseChoiceFinishReason.Stop => "stop",
+                CreateChatCompletionResponseChoiceFinishReason.ToolCalls => "tool_calls",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -54,10 +54,10 @@ namespace Groq
         {
             return value switch
             {
-                "stop" => CreateChatCompletionResponseChoiceFinishReason.Stop,
-                "length" => CreateChatCompletionResponseChoiceFinishReason.Length,
-                "tool_calls" => CreateChatCompletionResponseChoiceFinishReason.ToolCalls,
                 "function_call" => CreateChatCompletionResponseChoiceFinishReason.FunctionCall,
+                "length" => CreateChatCompletionResponseChoiceFinishReason.Length,
+                "stop" => CreateChatCompletionResponseChoiceFinishReason.Stop,
+                "tool_calls" => CreateChatCompletionResponseChoiceFinishReason.ToolCalls,
                 _ => null,
             };
         }

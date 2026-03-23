@@ -13,7 +13,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        Stop,
+        FunctionCall,
         /// <summary>
         /// 
         /// </summary>
@@ -21,11 +21,11 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        ToolCalls,
+        Stop,
         /// <summary>
         /// 
         /// </summary>
-        FunctionCall,
+        ToolCalls,
     }
 
     /// <summary>
@@ -40,10 +40,10 @@ namespace Groq
         {
             return value switch
             {
-                CreateChatCompletionStreamResponseChoiceFinishReason.Stop => "stop",
-                CreateChatCompletionStreamResponseChoiceFinishReason.Length => "length",
-                CreateChatCompletionStreamResponseChoiceFinishReason.ToolCalls => "tool_calls",
                 CreateChatCompletionStreamResponseChoiceFinishReason.FunctionCall => "function_call",
+                CreateChatCompletionStreamResponseChoiceFinishReason.Length => "length",
+                CreateChatCompletionStreamResponseChoiceFinishReason.Stop => "stop",
+                CreateChatCompletionStreamResponseChoiceFinishReason.ToolCalls => "tool_calls",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -54,10 +54,10 @@ namespace Groq
         {
             return value switch
             {
-                "stop" => CreateChatCompletionStreamResponseChoiceFinishReason.Stop,
-                "length" => CreateChatCompletionStreamResponseChoiceFinishReason.Length,
-                "tool_calls" => CreateChatCompletionStreamResponseChoiceFinishReason.ToolCalls,
                 "function_call" => CreateChatCompletionStreamResponseChoiceFinishReason.FunctionCall,
+                "length" => CreateChatCompletionStreamResponseChoiceFinishReason.Length,
+                "stop" => CreateChatCompletionStreamResponseChoiceFinishReason.Stop,
+                "tool_calls" => CreateChatCompletionStreamResponseChoiceFinishReason.ToolCalls,
                 _ => null,
             };
         }

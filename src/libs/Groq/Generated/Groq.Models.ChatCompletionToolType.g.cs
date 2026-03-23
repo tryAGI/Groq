@@ -11,15 +11,15 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        Function,
-        /// <summary>
-        /// 
-        /// </summary>
         BrowserSearch,
         /// <summary>
         /// 
         /// </summary>
         CodeInterpreter,
+        /// <summary>
+        /// 
+        /// </summary>
+        Function,
     }
 
     /// <summary>
@@ -34,9 +34,9 @@ namespace Groq
         {
             return value switch
             {
-                ChatCompletionToolType.Function => "function",
                 ChatCompletionToolType.BrowserSearch => "browser_search",
                 ChatCompletionToolType.CodeInterpreter => "code_interpreter",
+                ChatCompletionToolType.Function => "function",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -47,9 +47,9 @@ namespace Groq
         {
             return value switch
             {
-                "function" => ChatCompletionToolType.Function,
                 "browser_search" => ChatCompletionToolType.BrowserSearch,
                 "code_interpreter" => ChatCompletionToolType.CodeInterpreter,
+                "function" => ChatCompletionToolType.Function,
                 _ => null,
             };
         }

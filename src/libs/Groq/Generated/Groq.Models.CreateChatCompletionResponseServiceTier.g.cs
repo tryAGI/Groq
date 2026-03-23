@@ -15,19 +15,19 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        OnDemand,
-        /// <summary>
-        /// 
-        /// </summary>
         Flex,
         /// <summary>
         /// 
         /// </summary>
-        Performance,
+        OnDemand,
         /// <summary>
         /// 
         /// </summary>
         OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
+        /// <summary>
+        /// 
+        /// </summary>
+        Performance,
     }
 
     /// <summary>
@@ -43,10 +43,10 @@ namespace Groq
             return value switch
             {
                 CreateChatCompletionResponseServiceTier.Auto => "auto",
-                CreateChatCompletionResponseServiceTier.OnDemand => "on_demand",
                 CreateChatCompletionResponseServiceTier.Flex => "flex",
-                CreateChatCompletionResponseServiceTier.Performance => "performance",
+                CreateChatCompletionResponseServiceTier.OnDemand => "on_demand",
                 CreateChatCompletionResponseServiceTier.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464 => "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464",
+                CreateChatCompletionResponseServiceTier.Performance => "performance",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -58,10 +58,10 @@ namespace Groq
             return value switch
             {
                 "auto" => CreateChatCompletionResponseServiceTier.Auto,
-                "on_demand" => CreateChatCompletionResponseServiceTier.OnDemand,
                 "flex" => CreateChatCompletionResponseServiceTier.Flex,
-                "performance" => CreateChatCompletionResponseServiceTier.Performance,
+                "on_demand" => CreateChatCompletionResponseServiceTier.OnDemand,
                 "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464" => CreateChatCompletionResponseServiceTier.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
+                "performance" => CreateChatCompletionResponseServiceTier.Performance,
                 _ => null,
             };
         }

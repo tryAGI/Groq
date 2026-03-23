@@ -27,29 +27,29 @@ namespace Groq.JsonConverters
             }
 
             var __score0 = 0;
-            if (__jsonProps.Contains("role")) __score0++;
             if (__jsonProps.Contains("content")) __score0++;
+            if (__jsonProps.Contains("role")) __score0++;
             var __score1 = 0;
-            if (__jsonProps.Contains("type")) __score1++;
-            if (__jsonProps.Contains("role")) __score1++;
             if (__jsonProps.Contains("content")) __score1++;
+            if (__jsonProps.Contains("role")) __score1++;
             if (__jsonProps.Contains("status")) __score1++;
+            if (__jsonProps.Contains("type")) __score1++;
             var __score2 = 0;
-            if (__jsonProps.Contains("type")) __score2++;
             if (__jsonProps.Contains("id")) __score2++;
+            if (__jsonProps.Contains("type")) __score2++;
             var __score3 = 0;
-            if (__jsonProps.Contains("type")) __score3++;
-            if (__jsonProps.Contains("id")) __score3++;
-            if (__jsonProps.Contains("call_id")) __score3++;
-            if (__jsonProps.Contains("name")) __score3++;
             if (__jsonProps.Contains("arguments")) __score3++;
+            if (__jsonProps.Contains("call_id")) __score3++;
+            if (__jsonProps.Contains("id")) __score3++;
+            if (__jsonProps.Contains("name")) __score3++;
             if (__jsonProps.Contains("status")) __score3++;
+            if (__jsonProps.Contains("type")) __score3++;
             var __score4 = 0;
-            if (__jsonProps.Contains("type")) __score4++;
-            if (__jsonProps.Contains("id")) __score4++;
             if (__jsonProps.Contains("call_id")) __score4++;
+            if (__jsonProps.Contains("id")) __score4++;
             if (__jsonProps.Contains("output")) __score4++;
             if (__jsonProps.Contains("status")) __score4++;
+            if (__jsonProps.Contains("type")) __score4++;
             var __bestScore = 0;
             var __bestIndex = -1;
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }

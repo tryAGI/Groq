@@ -16,11 +16,11 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        None,
+        Default,
         /// <summary>
         /// 
         /// </summary>
-        Default,
+        High,
         /// <summary>
         /// 
         /// </summary>
@@ -32,7 +32,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        High,
+        None,
     }
 
     /// <summary>
@@ -47,11 +47,11 @@ namespace Groq
         {
             return value switch
             {
-                CreateChatCompletionRequestReasoningEffort.None => "none",
                 CreateChatCompletionRequestReasoningEffort.Default => "default",
+                CreateChatCompletionRequestReasoningEffort.High => "high",
                 CreateChatCompletionRequestReasoningEffort.Low => "low",
                 CreateChatCompletionRequestReasoningEffort.Medium => "medium",
-                CreateChatCompletionRequestReasoningEffort.High => "high",
+                CreateChatCompletionRequestReasoningEffort.None => "none",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -62,11 +62,11 @@ namespace Groq
         {
             return value switch
             {
-                "none" => CreateChatCompletionRequestReasoningEffort.None,
                 "default" => CreateChatCompletionRequestReasoningEffort.Default,
+                "high" => CreateChatCompletionRequestReasoningEffort.High,
                 "low" => CreateChatCompletionRequestReasoningEffort.Low,
                 "medium" => CreateChatCompletionRequestReasoningEffort.Medium,
-                "high" => CreateChatCompletionRequestReasoningEffort.High,
+                "none" => CreateChatCompletionRequestReasoningEffort.None,
                 _ => null,
             };
         }

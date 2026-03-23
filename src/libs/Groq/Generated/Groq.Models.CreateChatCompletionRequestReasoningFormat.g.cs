@@ -17,11 +17,11 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        Raw,
+        Parsed,
         /// <summary>
         /// 
         /// </summary>
-        Parsed,
+        Raw,
     }
 
     /// <summary>
@@ -37,8 +37,8 @@ namespace Groq
             return value switch
             {
                 CreateChatCompletionRequestReasoningFormat.Hidden => "hidden",
-                CreateChatCompletionRequestReasoningFormat.Raw => "raw",
                 CreateChatCompletionRequestReasoningFormat.Parsed => "parsed",
+                CreateChatCompletionRequestReasoningFormat.Raw => "raw",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -50,8 +50,8 @@ namespace Groq
             return value switch
             {
                 "hidden" => CreateChatCompletionRequestReasoningFormat.Hidden,
-                "raw" => CreateChatCompletionRequestReasoningFormat.Raw,
                 "parsed" => CreateChatCompletionRequestReasoningFormat.Parsed,
+                "raw" => CreateChatCompletionRequestReasoningFormat.Raw,
                 _ => null,
             };
         }

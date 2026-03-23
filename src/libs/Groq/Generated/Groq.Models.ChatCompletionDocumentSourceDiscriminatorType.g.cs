@@ -11,11 +11,11 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        Text,
+        Json,
         /// <summary>
         /// 
         /// </summary>
-        Json,
+        Text,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Groq
         {
             return value switch
             {
-                ChatCompletionDocumentSourceDiscriminatorType.Text => "text",
                 ChatCompletionDocumentSourceDiscriminatorType.Json => "json",
+                ChatCompletionDocumentSourceDiscriminatorType.Text => "text",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Groq
         {
             return value switch
             {
-                "text" => ChatCompletionDocumentSourceDiscriminatorType.Text,
                 "json" => ChatCompletionDocumentSourceDiscriminatorType.Json,
+                "text" => ChatCompletionDocumentSourceDiscriminatorType.Text,
                 _ => null,
             };
         }
