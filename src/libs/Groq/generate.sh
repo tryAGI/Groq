@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# OpenAPI spec: resolved from groq/groq-python/.stats.yml (Stainless-hosted)
+
 # Groq spec is hosted on Stainless GCS with hash-based URLs that change each update.
 # We dynamically resolve the latest URL from groq/groq-python/.stats.yml.
 readonly stats_url="https://raw.githubusercontent.com/groq/groq-python/main/.stats.yml"
