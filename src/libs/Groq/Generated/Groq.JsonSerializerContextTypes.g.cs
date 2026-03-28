@@ -384,943 +384,951 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionFunctions? Type89 { get; set; }
+        public global::Groq.FunctionParameters? Type89 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionFunctionCallOption? Type90 { get; set; }
+        public global::Groq.ChatCompletionFunctions? Type90 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionTool? Type91 { get; set; }
+        public global::Groq.ChatCompletionFunctionCallOption? Type91 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.AnyOf<global::Groq.ChatCompletionToolType?, string>? Type92 { get; set; }
+        public global::Groq.ChatCompletionTool? Type92 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionToolType? Type93 { get; set; }
+        public global::Groq.AnyOf<global::Groq.ChatCompletionToolType?, string>? Type93 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.FunctionObject? Type94 { get; set; }
+        public global::Groq.ChatCompletionToolType? Type94 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public bool? Type95 { get; set; }
+        public global::Groq.FunctionObject? Type95 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionToolChoiceOption? Type96 { get; set; }
+        public bool? Type96 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionToolChoiceOptionEnum? Type97 { get; set; }
+        public global::Groq.ChatCompletionToolChoiceOption? Type97 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionNamedToolChoice? Type98 { get; set; }
+        public global::Groq.ChatCompletionToolChoiceOptionEnum? Type98 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionNamedToolChoiceType? Type99 { get; set; }
+        public global::Groq.ChatCompletionNamedToolChoice? Type99 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionNamedToolChoiceFunction? Type100 { get; set; }
+        public global::Groq.ChatCompletionNamedToolChoiceType? Type100 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionMessageToolCall? Type101 { get; set; }
+        public global::Groq.ChatCompletionNamedToolChoiceFunction? Type101 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionMessageToolCallType? Type102 { get; set; }
+        public global::Groq.ChatCompletionMessageToolCall? Type102 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionMessageToolCallFunction? Type103 { get; set; }
+        public global::Groq.ChatCompletionMessageToolCallType? Type103 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionMessageToolCallChunk? Type104 { get; set; }
+        public global::Groq.ChatCompletionMessageToolCallFunction? Type104 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionMessageToolCallChunkType? Type105 { get; set; }
+        public global::Groq.ChatCompletionMessageToolCallChunk? Type105 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionMessageToolCallChunkFunction? Type106 { get; set; }
+        public global::Groq.ChatCompletionMessageToolCallChunkType? Type106 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionRole? Type107 { get; set; }
+        public global::Groq.ChatCompletionMessageToolCallChunkFunction? Type107 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionStreamOptions? Type108 { get; set; }
+        public global::Groq.ChatCompletionRole? Type108 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionResponseMessage? Type109 { get; set; }
+        public global::Groq.ChatCompletionStreamOptions? Type109 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionMessageExecutedTool>? Type110 { get; set; }
+        public global::Groq.ChatCompletionResponseMessage? Type110 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionResponseMessageRole? Type111 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionMessageExecutedTool>? Type111 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionResponseMessageFunctionCall? Type112 { get; set; }
+        public global::Groq.ChatCompletionResponseMessageRole? Type112 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.Annotation>? Type113 { get; set; }
+        public global::Groq.ChatCompletionResponseMessageFunctionCall? Type113 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.Annotation? Type114 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.Annotation>? Type114 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionMessageExecutedTool? Type115 { get; set; }
+        public global::Groq.Annotation? Type115 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionMessageExecutedToolSearchResults? Type116 { get; set; }
+        public global::Groq.ChatCompletionMessageExecutedTool? Type116 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionMessageExecutedToolSearchResultsResult>? Type117 { get; set; }
+        public global::Groq.ChatCompletionMessageExecutedToolSearchResults? Type117 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionMessageExecutedToolSearchResultsResult? Type118 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionMessageExecutedToolSearchResultsResult>? Type118 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.CodeExecutionResult>? Type119 { get; set; }
+        public global::Groq.ChatCompletionMessageExecutedToolSearchResultsResult? Type119 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CodeExecutionResult? Type120 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.CodeExecutionResult>? Type120 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.BrowserResult>? Type121 { get; set; }
+        public global::Groq.CodeExecutionResult? Type121 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.BrowserResult? Type122 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.BrowserResult>? Type122 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionStreamResponseDelta? Type123 { get; set; }
+        public global::Groq.BrowserResult? Type123 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionStreamResponseDeltaFunctionCall? Type124 { get; set; }
+        public global::Groq.ChatCompletionStreamResponseDelta? Type124 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionMessageToolCallChunk>? Type125 { get; set; }
+        public global::Groq.ChatCompletionStreamResponseDeltaFunctionCall? Type125 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionStreamResponseDeltaRole? Type126 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionMessageToolCallChunk>? Type126 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionRequest? Type127 { get; set; }
+        public global::Groq.ChatCompletionStreamResponseDeltaRole? Type127 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessage>? Type128 { get; set; }
+        public global::Groq.CreateChatCompletionRequest? Type128 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.AnyOf<string, global::Groq.CreateChatCompletionRequestModel?>? Type129 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessage>? Type129 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionRequestModel? Type130 { get; set; }
+        public global::Groq.AnyOf<string, global::Groq.CreateChatCompletionRequestModel?>? Type130 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, int>? Type131 { get; set; }
+        public global::Groq.CreateChatCompletionRequestModel? Type131 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.OneOf<global::Groq.ResponseFormatText, global::Groq.ResponseFormatJsonSchema, global::Groq.ResponseFormatJsonObject>? Type132 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, int>? Type132 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseFormatText? Type133 { get; set; }
+        public global::Groq.OneOf<global::Groq.ResponseFormatText, global::Groq.ResponseFormatJsonSchema, global::Groq.ResponseFormatJsonObject>? Type133 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseFormatJsonSchema? Type134 { get; set; }
+        public global::Groq.ResponseFormatText? Type134 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseFormatJsonObject? Type135 { get; set; }
+        public global::Groq.ResponseFormatJsonSchema? Type135 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionRequestServiceTier? Type136 { get; set; }
+        public global::Groq.ResponseFormatJsonObject? Type136 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.OneOf<string, global::System.Collections.Generic.IList<string>>? Type137 { get; set; }
+        public global::Groq.CreateChatCompletionRequestServiceTier? Type137 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionRequestReasoningEffort? Type138 { get; set; }
+        public global::Groq.OneOf<string, global::System.Collections.Generic.IList<string>>? Type138 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionRequestReasoningFormat? Type139 { get; set; }
+        public global::Groq.CreateChatCompletionRequestReasoningEffort? Type139 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionTool>? Type140 { get; set; }
+        public global::Groq.CreateChatCompletionRequestReasoningFormat? Type140 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.OneOf<global::Groq.CreateChatCompletionRequestFunctionCall?, global::Groq.ChatCompletionFunctionCallOption>? Type141 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionTool>? Type141 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionRequestFunctionCall? Type142 { get; set; }
+        public global::Groq.OneOf<global::Groq.CreateChatCompletionRequestFunctionCall?, global::Groq.ChatCompletionFunctionCallOption>? Type142 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionFunctions>? Type143 { get; set; }
+        public global::Groq.CreateChatCompletionRequestFunctionCall? Type143 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, string>? Type144 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionFunctions>? Type144 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionRequestSearchSettings? Type145 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? Type145 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionRequestCompoundCustom? Type146 { get; set; }
+        public global::Groq.CreateChatCompletionRequestSearchSettings? Type146 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionRequestCompoundCustomModels? Type147 { get; set; }
+        public global::Groq.CreateChatCompletionRequestCompoundCustom? Type147 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionRequestCompoundCustomTools? Type148 { get; set; }
+        public global::Groq.CreateChatCompletionRequestCompoundCustomModels? Type148 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionRequestCompoundCustomToolsWolframSettings? Type149 { get; set; }
+        public global::Groq.CreateChatCompletionRequestCompoundCustomTools? Type149 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionDocument>? Type150 { get; set; }
+        public global::Groq.CreateChatCompletionRequestCompoundCustomToolsWolframSettings? Type150 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionRequestCitationOptions? Type151 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionDocument>? Type151 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseFormatJsonObjectType? Type152 { get; set; }
+        public global::Groq.CreateChatCompletionRequestCitationOptions? Type152 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseFormatJsonSchemaType? Type153 { get; set; }
+        public global::Groq.ResponseFormatJsonObjectType? Type153 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseFormatJsonSchemaJsonSchema? Type154 { get; set; }
+        public global::Groq.ResponseFormatJsonSchemaType? Type154 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseFormatTextType? Type155 { get; set; }
+        public global::Groq.ResponseFormatJsonSchemaJsonSchema? Type155 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionResponse? Type156 { get; set; }
+        public global::Groq.ResponseFormatJsonSchemaSchema? Type156 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.CreateChatCompletionResponseChoice>? Type157 { get; set; }
+        public global::Groq.ResponseFormatTextType? Type157 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionResponseChoice? Type158 { get; set; }
+        public global::Groq.CreateChatCompletionResponse? Type158 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionResponseChoiceFinishReason? Type159 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.CreateChatCompletionResponseChoice>? Type159 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionResponseChoiceLogprobs? Type160 { get; set; }
+        public global::Groq.CreateChatCompletionResponseChoice? Type160 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionTokenLogprob>? Type161 { get; set; }
+        public global::Groq.CreateChatCompletionResponseChoiceFinishReason? Type161 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionTokenLogprob? Type162 { get; set; }
+        public global::Groq.CreateChatCompletionResponseChoiceLogprobs? Type162 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionResponseObject? Type163 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionTokenLogprob>? Type163 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CompletionUsage? Type164 { get; set; }
+        public global::Groq.ChatCompletionTokenLogprob? Type164 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionUsageBreakdown? Type165 { get; set; }
+        public global::Groq.CreateChatCompletionResponseObject? Type165 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionResponseServiceTier? Type166 { get; set; }
+        public global::Groq.CompletionUsage? Type166 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.CreateChatCompletionResponseMcpListTool>? Type167 { get; set; }
+        public global::Groq.ChatCompletionUsageBreakdown? Type167 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionResponseMcpListTool? Type168 { get; set; }
+        public global::Groq.CreateChatCompletionResponseServiceTier? Type168 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.CreateChatCompletionResponseMcpListToolTool>? Type169 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.CreateChatCompletionResponseMcpListTool>? Type169 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionResponseMcpListToolTool? Type170 { get; set; }
+        public global::Groq.CreateChatCompletionResponseMcpListTool? Type170 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.XGroqNonStreaming? Type171 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.CreateChatCompletionResponseMcpListToolTool>? Type171 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<long>? Type172 { get; set; }
+        public global::Groq.CreateChatCompletionResponseMcpListToolTool? Type172 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public long? Type173 { get; set; }
+        public global::Groq.XGroqNonStreaming? Type173 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionTokenLogprobTopLogprob>? Type174 { get; set; }
+        public global::System.Collections.Generic.IList<long>? Type174 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionTokenLogprobTopLogprob? Type175 { get; set; }
+        public long? Type175 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.XGroqNonStreamingUsage? Type176 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionTokenLogprobTopLogprob>? Type176 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.XGroq? Type177 { get; set; }
+        public global::Groq.ChatCompletionTokenLogprobTopLogprob? Type177 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionStreamResponse? Type178 { get; set; }
+        public global::Groq.XGroqNonStreamingUsage? Type178 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.CreateChatCompletionStreamResponseChoice>? Type179 { get; set; }
+        public global::Groq.XGroq? Type179 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionStreamResponseChoice? Type180 { get; set; }
+        public global::Groq.CreateChatCompletionStreamResponse? Type180 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionStreamResponseChoiceLogprobs? Type181 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.CreateChatCompletionStreamResponseChoice>? Type181 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionStreamResponseChoiceFinishReason? Type182 { get; set; }
+        public global::Groq.CreateChatCompletionStreamResponseChoice? Type182 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateChatCompletionStreamResponseObject? Type183 { get; set; }
+        public global::Groq.CreateChatCompletionStreamResponseChoiceLogprobs? Type183 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CompletionUsagePromptTokensDetails? Type184 { get; set; }
+        public global::Groq.CreateChatCompletionStreamResponseChoiceFinishReason? Type184 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CompletionUsageCompletionTokensDetails? Type185 { get; set; }
+        public global::Groq.CreateChatCompletionStreamResponseObject? Type185 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionUsageBreakdownModel>? Type186 { get; set; }
+        public global::Groq.CompletionUsagePromptTokensDetails? Type186 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChatCompletionUsageBreakdownModel? Type187 { get; set; }
+        public global::Groq.CompletionUsageCompletionTokensDetails? Type187 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.Chart? Type188 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionUsageBreakdownModel>? Type188 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChartType? Type189 { get; set; }
+        public global::Groq.ChatCompletionUsageBreakdownModel? Type189 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<double>? Type190 { get; set; }
+        public global::Groq.Chart? Type190 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.ChartElement>? Type191 { get; set; }
+        public global::Groq.ChartType? Type191 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ChartElement? Type192 { get; set; }
+        public global::System.Collections.Generic.IList<double>? Type192 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>? Type193 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.ChartElement>? Type193 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.Chart>? Type194 { get; set; }
+        public global::Groq.ChartElement? Type194 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.AnnotationType? Type195 { get; set; }
+        public global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>? Type195 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.DocumentCitation? Type196 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.Chart>? Type196 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.FunctionCitation? Type197 { get; set; }
+        public global::Groq.AnnotationType? Type197 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.Embedding? Type198 { get; set; }
+        public global::Groq.DocumentCitation? Type198 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.OneOf<global::System.Collections.Generic.IList<double>, string>? Type199 { get; set; }
+        public global::Groq.FunctionCitation? Type199 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.EmbeddingObject? Type200 { get; set; }
+        public global::Groq.Embedding? Type200 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateEmbeddingRequest? Type201 { get; set; }
+        public global::Groq.OneOf<global::System.Collections.Generic.IList<double>, string>? Type201 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.AnyOf<string, global::Groq.CreateEmbeddingRequestModel?>? Type202 { get; set; }
+        public global::Groq.EmbeddingObject? Type202 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateEmbeddingRequestModel? Type203 { get; set; }
+        public global::Groq.CreateEmbeddingRequest? Type203 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateEmbeddingRequestEncodingFormat? Type204 { get; set; }
+        public global::Groq.AnyOf<string, global::Groq.CreateEmbeddingRequestModel?>? Type204 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateEmbeddingResponse? Type205 { get; set; }
+        public global::Groq.CreateEmbeddingRequestModel? Type205 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.Embedding>? Type206 { get; set; }
+        public global::Groq.CreateEmbeddingRequestEncodingFormat? Type206 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateEmbeddingResponseObject? Type207 { get; set; }
+        public global::Groq.CreateEmbeddingResponse? Type207 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateEmbeddingResponseUsage? Type208 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.Embedding>? Type208 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.File? Type209 { get; set; }
+        public global::Groq.CreateEmbeddingResponseObject? Type209 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.FileObject? Type210 { get; set; }
+        public global::Groq.CreateEmbeddingResponseUsage? Type210 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.FilePurpose? Type211 { get; set; }
+        public global::Groq.File? Type211 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateFileRequest? Type212 { get; set; }
+        public global::Groq.FileObject? Type212 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateFileRequestPurpose? Type213 { get; set; }
+        public global::Groq.FilePurpose? Type213 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.DeleteFileResponse? Type214 { get; set; }
+        public global::Groq.CreateFileRequest? Type214 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.DeleteFileResponseObject? Type215 { get; set; }
+        public global::Groq.CreateFileRequestPurpose? Type215 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ListFilesResponse? Type216 { get; set; }
+        public global::Groq.DeleteFileResponse? Type216 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ListFilesResponseObject? Type217 { get; set; }
+        public global::Groq.DeleteFileResponseObject? Type217 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.File>? Type218 { get; set; }
+        public global::Groq.ListFilesResponse? Type218 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateFineTuningRequest? Type219 { get; set; }
+        public global::Groq.ListFilesResponseObject? Type219 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.DeleteFineTuningResponse? Type220 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.File>? Type220 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ListFineTuningsResponse? Type221 { get; set; }
+        public global::Groq.CreateFineTuningRequest? Type221 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.ListFineTuningsResponseDataItem>? Type222 { get; set; }
+        public global::Groq.DeleteFineTuningResponse? Type222 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ListFineTuningsResponseDataItem? Type223 { get; set; }
+        public global::Groq.ListFineTuningsResponse? Type223 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ReadFineTuningResponse? Type224 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.ListFineTuningsResponseDataItem>? Type224 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ReadFineTuningResponseData? Type225 { get; set; }
+        public global::Groq.ListFineTuningsResponseDataItem? Type225 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.Model6? Type226 { get; set; }
+        public global::Groq.ReadFineTuningResponse? Type226 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ModelObject? Type227 { get; set; }
+        public global::Groq.ReadFineTuningResponseData? Type227 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ListModelsResponse? Type228 { get; set; }
+        public global::Groq.Model6? Type228 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ListModelsResponseObject? Type229 { get; set; }
+        public global::Groq.ModelObject? Type229 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.Model6>? Type230 { get; set; }
+        public global::Groq.ListModelsResponse? Type230 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.DeleteModelResponse? Type231 { get; set; }
+        public global::Groq.ListModelsResponseObject? Type231 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.RerankingRequest? Type232 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.Model6>? Type232 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.RerankingResponse? Type233 { get; set; }
+        public global::Groq.DeleteModelResponse? Type233 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.RerankingResult>? Type234 { get; set; }
+        public global::Groq.RerankingRequest? Type234 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.RerankingResult? Type235 { get; set; }
+        public global::Groq.RerankingResponse? Type235 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateResponseRequest? Type236 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.RerankingResult>? Type236 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.AnyOf<string, global::Groq.CreateResponseRequestModel?>? Type237 { get; set; }
+        public global::Groq.RerankingResult? Type237 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateResponseRequestModel? Type238 { get; set; }
+        public global::Groq.CreateResponseRequest? Type238 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ResponseInputItem>>? Type239 { get; set; }
+        public global::Groq.AnyOf<string, global::Groq.CreateResponseRequestModel?>? Type239 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.ResponseInputItem>? Type240 { get; set; }
+        public global::Groq.CreateResponseRequestModel? Type240 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseInputItem? Type241 { get; set; }
+        public global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ResponseInputItem>>? Type241 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.ResponseTool>? Type242 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.ResponseInputItem>? Type242 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseTool? Type243 { get; set; }
+        public global::Groq.ResponseInputItem? Type243 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseToolChoiceOption? Type244 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.ResponseTool>? Type244 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateResponseRequestText? Type245 { get; set; }
+        public global::Groq.ResponseTool? Type245 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseFormatConfiguration? Type246 { get; set; }
+        public global::Groq.ResponseToolChoiceOption? Type246 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateResponseRequestReasoning? Type247 { get; set; }
+        public global::Groq.CreateResponseRequestText? Type247 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateResponseRequestReasoningEffort? Type248 { get; set; }
+        public global::Groq.ResponseFormatConfiguration? Type248 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateResponseRequestServiceTier? Type249 { get; set; }
+        public global::Groq.CreateResponseRequestReasoning? Type249 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateResponseRequestTruncation? Type250 { get; set; }
+        public global::Groq.CreateResponseRequestReasoningEffort? Type250 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseEasyInputMessage? Type251 { get; set; }
+        public global::Groq.CreateResponseRequestServiceTier? Type251 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseInputMessage? Type252 { get; set; }
+        public global::Groq.CreateResponseRequestTruncation? Type252 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseItemReference? Type253 { get; set; }
+        public global::Groq.ResponseEasyInputMessage? Type253 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseFunctionCall? Type254 { get; set; }
+        public global::Groq.ResponseInputMessage? Type254 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseFunctionCallOutput? Type255 { get; set; }
+        public global::Groq.ResponseItemReference? Type255 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseInputItemDiscriminator? Type256 { get; set; }
+        public global::Groq.ResponseFunctionCall? Type256 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseInputItemDiscriminatorType? Type257 { get; set; }
+        public global::Groq.ResponseFunctionCallOutput? Type257 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseEasyInputMessageRole? Type258 { get; set; }
+        public global::Groq.ResponseInputItemDiscriminator? Type258 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ResponseInputContent>>? Type259 { get; set; }
+        public global::Groq.ResponseInputItemDiscriminatorType? Type259 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.ResponseInputContent>? Type260 { get; set; }
+        public global::Groq.ResponseEasyInputMessageRole? Type260 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseInputContent? Type261 { get; set; }
+        public global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ResponseInputContent>>? Type261 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseInputMessageType? Type262 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.ResponseInputContent>? Type262 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseInputMessageRole? Type263 { get; set; }
+        public global::Groq.ResponseInputContent? Type263 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseInputMessageStatus? Type264 { get; set; }
+        public global::Groq.ResponseInputMessageType? Type264 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseInputTextContent? Type265 { get; set; }
+        public global::Groq.ResponseInputMessageRole? Type265 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseInputContentDiscriminator? Type266 { get; set; }
+        public global::Groq.ResponseInputMessageStatus? Type266 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseInputContentDiscriminatorType? Type267 { get; set; }
+        public global::Groq.ResponseInputTextContent? Type267 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseInputTextContentType? Type268 { get; set; }
+        public global::Groq.ResponseInputContentDiscriminator? Type268 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseItemReferenceType? Type269 { get; set; }
+        public global::Groq.ResponseInputContentDiscriminatorType? Type269 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseFunctionCallType? Type270 { get; set; }
+        public global::Groq.ResponseInputTextContentType? Type270 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseFunctionCallStatus? Type271 { get; set; }
+        public global::Groq.ResponseItemReferenceType? Type271 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseFunctionCallOutputType? Type272 { get; set; }
+        public global::Groq.ResponseFunctionCallType? Type272 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseFunctionCallOutputStatus? Type273 { get; set; }
+        public global::Groq.ResponseFunctionCallStatus? Type273 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseToolType? Type274 { get; set; }
+        public global::Groq.ResponseFunctionCallOutputType? Type274 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseToolChoiceOptionEnum? Type275 { get; set; }
+        public global::Groq.ResponseFunctionCallOutputStatus? Type275 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseNamedToolChoice? Type276 { get; set; }
+        public global::Groq.ResponseToolType? Type276 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseNamedToolChoiceType? Type277 { get; set; }
+        public global::Groq.ResponseToolChoiceOptionEnum? Type277 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseNamedToolChoiceFunction? Type278 { get; set; }
+        public global::Groq.ResponseNamedToolChoice? Type278 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.TextResponseFormatJsonSchema? Type279 { get; set; }
+        public global::Groq.ResponseNamedToolChoiceType? Type279 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.TextResponseFormatJsonSchemaType? Type280 { get; set; }
+        public global::Groq.ResponseNamedToolChoiceFunction? Type280 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateResponseResponse? Type281 { get; set; }
+        public global::Groq.TextResponseFormatJsonSchema? Type281 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateResponseResponseObject? Type282 { get; set; }
+        public global::Groq.TextResponseFormatJsonSchemaType? Type282 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateResponseResponseStatus? Type283 { get; set; }
+        public global::Groq.CreateResponseResponse? Type283 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.ResponseOutputItem>? Type284 { get; set; }
+        public global::Groq.CreateResponseResponseObject? Type284 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseOutputItem? Type285 { get; set; }
+        public global::Groq.CreateResponseResponseStatus? Type285 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateResponseResponseReasoning? Type286 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.ResponseOutputItem>? Type286 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateResponseResponseReasoningEffort? Type287 { get; set; }
+        public global::Groq.ResponseOutputItem? Type287 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateResponseResponseText? Type288 { get; set; }
+        public global::Groq.CreateResponseResponseReasoning? Type288 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateResponseResponseTruncation? Type289 { get; set; }
+        public global::Groq.CreateResponseResponseReasoningEffort? Type289 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateResponseResponseServiceTier? Type290 { get; set; }
+        public global::Groq.CreateResponseResponseText? Type290 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateResponseResponseError? Type291 { get; set; }
+        public global::Groq.CreateResponseResponseTruncation? Type291 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateResponseResponseIncompleteDetails? Type292 { get; set; }
+        public global::Groq.CreateResponseResponseServiceTier? Type292 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseUsage? Type293 { get; set; }
+        public global::Groq.CreateResponseResponseError? Type293 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseOutputMessage? Type294 { get; set; }
+        public global::Groq.CreateResponseResponseIncompleteDetails? Type294 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseOutputFunctionCall? Type295 { get; set; }
+        public global::Groq.ResponseUsage? Type295 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseOutputReasoning? Type296 { get; set; }
+        public global::Groq.ResponseOutputMessage? Type296 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseOutputItemDiscriminator? Type297 { get; set; }
+        public global::Groq.ResponseOutputFunctionCall? Type297 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseOutputItemDiscriminatorType? Type298 { get; set; }
+        public global::Groq.ResponseOutputReasoning? Type298 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseOutputMessageType? Type299 { get; set; }
+        public global::Groq.ResponseOutputItemDiscriminator? Type299 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseOutputMessageStatus? Type300 { get; set; }
+        public global::Groq.ResponseOutputItemDiscriminatorType? Type300 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseOutputMessageRole? Type301 { get; set; }
+        public global::Groq.ResponseOutputMessageType? Type301 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.ResponseOutputContent>? Type302 { get; set; }
+        public global::Groq.ResponseOutputMessageStatus? Type302 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseOutputContent? Type303 { get; set; }
+        public global::Groq.ResponseOutputMessageRole? Type303 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseOutputTextContent? Type304 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.ResponseOutputContent>? Type304 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseOutputContentDiscriminator? Type305 { get; set; }
+        public global::Groq.ResponseOutputContent? Type305 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseOutputContentDiscriminatorType? Type306 { get; set; }
+        public global::Groq.ResponseOutputTextContent? Type306 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseOutputTextContentType? Type307 { get; set; }
+        public global::Groq.ResponseOutputContentDiscriminator? Type307 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.ResponseAnnotation>? Type308 { get; set; }
+        public global::Groq.ResponseOutputContentDiscriminatorType? Type308 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseAnnotation? Type309 { get; set; }
+        public global::Groq.ResponseOutputTextContentType? Type309 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseFileCitation? Type310 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.ResponseAnnotation>? Type310 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseUrlCitation? Type311 { get; set; }
+        public global::Groq.ResponseAnnotation? Type311 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseAnnotationDiscriminator? Type312 { get; set; }
+        public global::Groq.ResponseFileCitation? Type312 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseAnnotationDiscriminatorType? Type313 { get; set; }
+        public global::Groq.ResponseUrlCitation? Type313 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseFileCitationType? Type314 { get; set; }
+        public global::Groq.ResponseAnnotationDiscriminator? Type314 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseUrlCitationType? Type315 { get; set; }
+        public global::Groq.ResponseAnnotationDiscriminatorType? Type315 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseOutputFunctionCallType? Type316 { get; set; }
+        public global::Groq.ResponseFileCitationType? Type316 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseOutputFunctionCallStatus? Type317 { get; set; }
+        public global::Groq.ResponseUrlCitationType? Type317 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseOutputReasoningType? Type318 { get; set; }
+        public global::Groq.ResponseOutputFunctionCallType? Type318 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<object>? Type319 { get; set; }
+        public global::Groq.ResponseOutputFunctionCallStatus? Type319 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseUsageInputTokensDetails? Type320 { get; set; }
+        public global::Groq.ResponseOutputReasoningType? Type320 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.ResponseUsageOutputTokensDetails? Type321 { get; set; }
+        public global::System.Collections.Generic.IList<object>? Type321 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateBatchRequest? Type322 { get; set; }
+        public global::Groq.ResponseUsageInputTokensDetails? Type322 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Groq.CreateBatchRequestEndpoint? Type323 { get; set; }
+        public global::Groq.ResponseUsageOutputTokensDetails? Type323 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Groq.CreateBatchRequest? Type324 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Groq.CreateBatchRequestEndpoint? Type325 { get; set; }
 
         /// <summary>
         /// 

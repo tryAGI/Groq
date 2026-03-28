@@ -25,7 +25,7 @@ namespace Groq
         /// Function parameters defined as a JSON Schema object. Refer to https://json-schema.org/understanding-json-schema/ for schema documentation.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("parameters")]
-        public object? Parameters { get; set; }
+        public global::Groq.FunctionParameters? Parameters { get; set; }
 
         /// <summary>
         /// Whether to enable strict schema adherence when generating the output. If set to true, the model will always follow the exact schema defined in the `schema` field. Only a subset of JSON Schema is supported when `strict` is `true`.<br/>
@@ -62,7 +62,7 @@ namespace Groq
         public FunctionObject(
             string name,
             string? description,
-            object? parameters,
+            global::Groq.FunctionParameters? parameters,
             bool? strict)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));

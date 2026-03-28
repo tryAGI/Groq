@@ -29,7 +29,7 @@ namespace Groq
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("parameters")]
         [global::System.Obsolete("This property marked as deprecated.")]
-        public object? Parameters { get; set; }
+        public global::Groq.FunctionParameters? Parameters { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -55,7 +55,7 @@ namespace Groq
         public ChatCompletionFunctions(
             string name,
             string? description,
-            object? parameters)
+            global::Groq.FunctionParameters? parameters)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description;
