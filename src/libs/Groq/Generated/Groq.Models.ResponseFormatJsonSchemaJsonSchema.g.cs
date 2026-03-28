@@ -26,7 +26,7 @@ namespace Groq
         /// Learn how to build JSON schemas [here](https://json-schema.org/).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("schema")]
-        public object? Schema { get; set; }
+        public global::Groq.ResponseFormatJsonSchemaSchema? Schema { get; set; }
 
         /// <summary>
         /// Whether to enable strict schema adherence when generating the output. If set to true, the model will always follow the exact schema defined in the `schema` field. Only a subset of JSON Schema is supported when `strict` is `true`.<br/>
@@ -64,7 +64,7 @@ namespace Groq
         public ResponseFormatJsonSchemaJsonSchema(
             string name,
             string? description,
-            object? schema,
+            global::Groq.ResponseFormatJsonSchemaSchema? schema,
             bool? strict)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
