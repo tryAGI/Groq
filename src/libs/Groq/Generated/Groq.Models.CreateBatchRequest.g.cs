@@ -51,11 +51,11 @@ namespace Groq
         /// See [upload file](/docs/api-reference#files-upload) for how to upload a file.<br/>
         /// Your input file must be formatted as a [JSONL file](/docs/batch), and must be uploaded with the purpose `batch`. The file can be up to 100 MB in size.
         /// </param>
-        /// <param name="endpoint">
-        /// The endpoint to be used for all requests in the batch. Currently `/v1/chat/completions` is supported.
-        /// </param>
         /// <param name="completionWindow">
         /// The time frame within which the batch should be processed. Durations from `24h` to `7d` are supported.
+        /// </param>
+        /// <param name="endpoint">
+        /// The endpoint to be used for all requests in the batch. Currently `/v1/chat/completions` is supported.
         /// </param>
         /// <param name="metadata">
         /// Optional custom metadata for the batch.
@@ -70,8 +70,8 @@ namespace Groq
             global::System.Collections.Generic.Dictionary<string, string>? metadata)
         {
             this.InputFileId = inputFileId ?? throw new global::System.ArgumentNullException(nameof(inputFileId));
-            this.CompletionWindow = completionWindow ?? throw new global::System.ArgumentNullException(nameof(completionWindow));
             this.Endpoint = endpoint;
+            this.CompletionWindow = completionWindow ?? throw new global::System.ArgumentNullException(nameof(completionWindow));
             this.Metadata = metadata;
         }
 

@@ -52,20 +52,20 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ResponseOutputMessage" /> class.
         /// </summary>
-        /// <param name="type">
-        /// The type of the output message. Always `message`.
-        /// </param>
         /// <param name="id">
         /// The unique ID of the output message.
+        /// </param>
+        /// <param name="content">
+        /// The content of the output message.
+        /// </param>
+        /// <param name="type">
+        /// The type of the output message. Always `message`.
         /// </param>
         /// <param name="status">
         /// The status of the message.
         /// </param>
         /// <param name="role">
         /// The role of the output message. Always `assistant`.
-        /// </param>
-        /// <param name="content">
-        /// The content of the output message.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -77,11 +77,11 @@ namespace Groq
             global::Groq.ResponseOutputMessageStatus? status,
             global::Groq.ResponseOutputMessageRole role)
         {
-            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
-            this.Content = content ?? throw new global::System.ArgumentNullException(nameof(content));
             this.Type = type;
+            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Status = status;
             this.Role = role;
+            this.Content = content ?? throw new global::System.ArgumentNullException(nameof(content));
         }
 
         /// <summary>

@@ -74,26 +74,26 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="CompletionUsage" /> class.
         /// </summary>
+        /// <param name="completionTokens">
+        /// Number of tokens in the generated completion.
+        /// </param>
+        /// <param name="promptTokens">
+        /// Number of tokens in the prompt.
+        /// </param>
+        /// <param name="totalTokens">
+        /// Total number of tokens used in the request (prompt + completion).
+        /// </param>
         /// <param name="queueTime">
         /// Time the requests was spent queued
         /// </param>
         /// <param name="completionTime">
         /// Time spent generating tokens
         /// </param>
-        /// <param name="completionTokens">
-        /// Number of tokens in the generated completion.
-        /// </param>
         /// <param name="promptTime">
         /// Time spent processing input tokens
         /// </param>
-        /// <param name="promptTokens">
-        /// Number of tokens in the prompt.
-        /// </param>
         /// <param name="totalTime">
         /// completion time and prompt time combined
-        /// </param>
-        /// <param name="totalTokens">
-        /// Total number of tokens used in the request (prompt + completion).
         /// </param>
         /// <param name="promptTokensDetails">
         /// Breakdown of tokens in the prompt.
@@ -115,13 +115,13 @@ namespace Groq
             global::Groq.CompletionUsagePromptTokensDetails? promptTokensDetails,
             global::Groq.CompletionUsageCompletionTokensDetails? completionTokensDetails)
         {
-            this.CompletionTokens = completionTokens;
-            this.PromptTokens = promptTokens;
-            this.TotalTokens = totalTokens;
             this.QueueTime = queueTime;
             this.CompletionTime = completionTime;
+            this.CompletionTokens = completionTokens;
             this.PromptTime = promptTime;
+            this.PromptTokens = promptTokens;
             this.TotalTime = totalTime;
+            this.TotalTokens = totalTokens;
             this.PromptTokensDetails = promptTokensDetails;
             this.CompletionTokensDetails = completionTokensDetails;
         }

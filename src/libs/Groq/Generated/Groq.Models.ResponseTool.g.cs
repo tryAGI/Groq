@@ -49,11 +49,11 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ResponseTool" /> class.
         /// </summary>
-        /// <param name="type">
-        /// The type of the tool. Currently, only `function` is supported.
-        /// </param>
         /// <param name="name">
         /// The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+        /// </param>
+        /// <param name="type">
+        /// The type of the tool. Currently, only `function` is supported.
         /// </param>
         /// <param name="description">
         /// Describes the function's purpose. The model uses this to determine when to invoke the function.
@@ -74,8 +74,8 @@ namespace Groq
             global::Groq.FunctionParameters? parameters,
             bool? strict)
         {
-            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Type = type;
+            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description;
             this.Parameters = parameters;
             this.Strict = strict;

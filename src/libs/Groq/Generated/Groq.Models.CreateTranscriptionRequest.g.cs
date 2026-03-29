@@ -83,6 +83,10 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateTranscriptionRequest" /> class.
         /// </summary>
+        /// <param name="model">
+        /// ID of the model to use. `whisper-large-v3` and `whisper-large-v3-turbo` are currently available.<br/>
+        /// Example: whisper-large-v3-turbo
+        /// </param>
         /// <param name="file">
         /// The audio file object (not file name) to transcribe, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.<br/>
         /// Either a file or a URL must be provided. Note that the file field is not supported in Batch API requests.
@@ -94,10 +98,6 @@ namespace Groq
         /// <param name="url">
         /// The audio URL to translate/transcribe (supports Base64URL).<br/>
         /// Either a file or a URL must be provided. For Batch API requests, the URL field is required since the file field is not supported.
-        /// </param>
-        /// <param name="model">
-        /// ID of the model to use. `whisper-large-v3` and `whisper-large-v3-turbo` are currently available.<br/>
-        /// Example: whisper-large-v3-turbo
         /// </param>
         /// <param name="language">
         /// The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.
@@ -131,10 +131,10 @@ namespace Groq
             double? temperature,
             global::System.Collections.Generic.IList<global::Groq.CreateTranscriptionRequestTimestampGranularitie>? timestampGranularities)
         {
-            this.Model = model;
             this.File = file;
             this.Filename = filename;
             this.Url = url;
+            this.Model = model;
             this.Language = language;
             this.Prompt = prompt;
             this.ResponseFormat = responseFormat;

@@ -49,11 +49,11 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ResponseUrlCitation" /> class.
         /// </summary>
-        /// <param name="type">
-        /// The type of the annotation. Always `url_citation`.
-        /// </param>
         /// <param name="url">
         /// The URL of the web resource.
+        /// </param>
+        /// <param name="type">
+        /// The type of the annotation. Always `url_citation`.
         /// </param>
         /// <param name="startIndex">
         /// The index of the first character of the URL citation in the message.
@@ -74,8 +74,8 @@ namespace Groq
             int? endIndex,
             string? title)
         {
-            this.Url = url ?? throw new global::System.ArgumentNullException(nameof(url));
             this.Type = type;
+            this.Url = url ?? throw new global::System.ArgumentNullException(nameof(url));
             this.StartIndex = startIndex;
             this.EndIndex = endIndex;
             this.Title = title;

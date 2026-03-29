@@ -31,11 +31,11 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ResponseInputTextContent" /> class.
         /// </summary>
-        /// <param name="type">
-        /// The type of the input item. Always `input_text`.
-        /// </param>
         /// <param name="text">
         /// The text input to the model.
+        /// </param>
+        /// <param name="type">
+        /// The type of the input item. Always `input_text`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -44,8 +44,8 @@ namespace Groq
             string text,
             global::Groq.ResponseInputTextContentType type)
         {
-            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Type = type;
+            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
         }
 
         /// <summary>

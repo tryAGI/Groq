@@ -31,11 +31,11 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ChatCompletionDocumentSourceJSON" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Identifies this document source as JSON data.
-        /// </param>
         /// <param name="data">
         /// The JSON payload associated with the document.
+        /// </param>
+        /// <param name="type">
+        /// Identifies this document source as JSON data.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -44,8 +44,8 @@ namespace Groq
             object data,
             global::Groq.ChatCompletionDocumentSourceJSONType type)
         {
-            this.Data = data ?? throw new global::System.ArgumentNullException(nameof(data));
             this.Type = type;
+            this.Data = data ?? throw new global::System.ArgumentNullException(nameof(data));
         }
 
         /// <summary>

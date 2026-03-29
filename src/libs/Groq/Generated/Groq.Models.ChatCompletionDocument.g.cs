@@ -31,11 +31,11 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ChatCompletionDocument" /> class.
         /// </summary>
-        /// <param name="id">
-        /// Optional unique identifier that can be used for citations in responses.
-        /// </param>
         /// <param name="source">
         /// The source of the document. Only text and JSON sources are currently supported.
+        /// </param>
+        /// <param name="id">
+        /// Optional unique identifier that can be used for citations in responses.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -44,8 +44,8 @@ namespace Groq
             global::Groq.ChatCompletionDocumentSource source,
             string? id)
         {
-            this.Source = source;
             this.Id = id;
+            this.Source = source;
         }
 
         /// <summary>

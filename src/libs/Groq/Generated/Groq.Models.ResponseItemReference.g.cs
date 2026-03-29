@@ -31,11 +31,11 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ResponseItemReference" /> class.
         /// </summary>
-        /// <param name="type">
-        /// The type of item to reference. Always `item_reference`.
-        /// </param>
         /// <param name="id">
         /// The ID of the item to reference.
+        /// </param>
+        /// <param name="type">
+        /// The type of item to reference. Always `item_reference`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -44,8 +44,8 @@ namespace Groq
             string id,
             global::Groq.ResponseItemReferenceType type)
         {
-            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Type = type;
+            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
         }
 
         /// <summary>

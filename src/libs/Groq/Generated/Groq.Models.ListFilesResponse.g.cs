@@ -31,8 +31,8 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ListFilesResponse" /> class.
         /// </summary>
-        /// <param name="object"></param>
         /// <param name="data"></param>
+        /// <param name="object"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -40,8 +40,8 @@ namespace Groq
             global::System.Collections.Generic.IList<global::Groq.File> data,
             global::Groq.ListFilesResponseObject @object)
         {
-            this.Data = data ?? throw new global::System.ArgumentNullException(nameof(data));
             this.Object = @object;
+            this.Data = data ?? throw new global::System.ArgumentNullException(nameof(data));
         }
 
         /// <summary>

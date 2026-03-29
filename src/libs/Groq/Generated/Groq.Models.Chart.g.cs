@@ -101,6 +101,9 @@ namespace Groq
         /// <param name="type">
         /// The type of chart
         /// </param>
+        /// <param name="elements">
+        /// The chart elements (data series, points, etc.)
+        /// </param>
         /// <param name="title">
         /// The title of the chart
         /// </param>
@@ -134,9 +137,6 @@ namespace Groq
         /// <param name="yScale">
         /// The scale type for the y-axis
         /// </param>
-        /// <param name="elements">
-        /// The chart elements (data series, points, etc.)
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -156,7 +156,6 @@ namespace Groq
             string? yScale)
         {
             this.Type = type;
-            this.Elements = elements ?? throw new global::System.ArgumentNullException(nameof(elements));
             this.Title = title;
             this.XLabel = xLabel;
             this.YLabel = yLabel;
@@ -168,6 +167,7 @@ namespace Groq
             this.YTickLabels = yTickLabels;
             this.XScale = xScale;
             this.YScale = yScale;
+            this.Elements = elements ?? throw new global::System.ArgumentNullException(nameof(elements));
         }
 
         /// <summary>
