@@ -31,11 +31,11 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ChatCompletionDocumentSourceText" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Identifies this document source as inline text.
-        /// </param>
         /// <param name="text">
         /// The document contents.
+        /// </param>
+        /// <param name="type">
+        /// Identifies this document source as inline text.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -44,8 +44,8 @@ namespace Groq
             string text,
             global::Groq.ChatCompletionDocumentSourceTextType type)
         {
-            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Type = type;
+            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
         }
 
         /// <summary>

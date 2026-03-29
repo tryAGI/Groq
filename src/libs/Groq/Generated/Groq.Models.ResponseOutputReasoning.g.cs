@@ -38,14 +38,14 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ResponseOutputReasoning" /> class.
         /// </summary>
-        /// <param name="type">
-        /// The type of the reasoning output. Always `reasoning`.
-        /// </param>
         /// <param name="id">
         /// The unique ID of the reasoning output.
         /// </param>
         /// <param name="summary">
         /// Summary items (currently empty).
+        /// </param>
+        /// <param name="type">
+        /// The type of the reasoning output. Always `reasoning`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -55,9 +55,9 @@ namespace Groq
             global::System.Collections.Generic.IList<object> summary,
             global::Groq.ResponseOutputReasoningType type)
         {
+            this.Type = type;
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Summary = summary ?? throw new global::System.ArgumentNullException(nameof(summary));
-            this.Type = type;
         }
 
         /// <summary>

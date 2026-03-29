@@ -44,14 +44,14 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ResponseOutputTextContent" /> class.
         /// </summary>
-        /// <param name="type">
-        /// The type of the output text. Always `output_text`.
-        /// </param>
         /// <param name="text">
         /// The text output from the model.
         /// </param>
         /// <param name="annotations">
         /// The annotations of the text output.
+        /// </param>
+        /// <param name="type">
+        /// The type of the output text. Always `output_text`.
         /// </param>
         /// <param name="logprobs">
         /// Log probability information for the output.
@@ -65,9 +65,9 @@ namespace Groq
             global::Groq.ResponseOutputTextContentType type,
             global::System.Collections.Generic.IList<string>? logprobs)
         {
+            this.Type = type;
             this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Annotations = annotations ?? throw new global::System.ArgumentNullException(nameof(annotations));
-            this.Type = type;
             this.Logprobs = logprobs;
         }
 

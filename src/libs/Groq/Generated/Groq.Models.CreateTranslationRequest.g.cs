@@ -67,6 +67,10 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateTranslationRequest" /> class.
         /// </summary>
+        /// <param name="model">
+        /// ID of the model to use. `whisper-large-v3` and `whisper-large-v3-turbo` are currently available.<br/>
+        /// Example: whisper-large-v3-turbo
+        /// </param>
         /// <param name="file">
         /// The audio file object (not file name) translate, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
         /// </param>
@@ -76,10 +80,6 @@ namespace Groq
         /// <param name="url">
         /// The audio URL to translate/transcribe (supports Base64URL). Either file or url must be provided.<br/>
         /// When using the Batch API only url is supported.
-        /// </param>
-        /// <param name="model">
-        /// ID of the model to use. `whisper-large-v3` and `whisper-large-v3-turbo` are currently available.<br/>
-        /// Example: whisper-large-v3-turbo
         /// </param>
         /// <param name="prompt">
         /// An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should be in English.
@@ -104,10 +104,10 @@ namespace Groq
             global::Groq.CreateTranslationRequestResponseFormat? responseFormat,
             double? temperature)
         {
-            this.Model = model;
             this.File = file;
             this.Filename = filename;
             this.Url = url;
+            this.Model = model;
             this.Prompt = prompt;
             this.ResponseFormat = responseFormat;
             this.Temperature = temperature;

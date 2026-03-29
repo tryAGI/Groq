@@ -31,31 +31,31 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        MetaLlamaLlama4Maverick17b128eInstruct,
+        MetaLlamaDividellama4Maverick17b128eInstruct,
         /// <summary>
         /// 
         /// </summary>
-        MetaLlamaLlama4Scout17b16eInstruct,
+        MetaLlamaDividellama4Scout17b16eInstruct,
         /// <summary>
         /// 
         /// </summary>
-        MetaLlamaLlamaGuard412b,
+        MetaLlamaDividellamaGuard412b,
         /// <summary>
         /// 
         /// </summary>
-        MoonshotaiKimiK2Instruct,
+        MoonshotaiDividekimiK2Instruct,
         /// <summary>
         /// 
         /// </summary>
-        OpenaiGptOss120b,
+        OpenaiDividegptOss120b,
         /// <summary>
         /// 
         /// </summary>
-        OpenaiGptOss20b,
+        OpenaiDividegptOss20b,
         /// <summary>
         /// 
         /// </summary>
-        QwenQwen332b,
+        QwenDivideqwen332b,
     }
 
     /// <summary>
@@ -75,13 +75,13 @@ namespace Groq
                 CreateChatCompletionRequestModel.Gemma29bIt => "gemma2-9b-it",
                 CreateChatCompletionRequestModel.Llama318bInstant => "llama-3.1-8b-instant",
                 CreateChatCompletionRequestModel.Llama3370bVersatile => "llama-3.3-70b-versatile",
-                CreateChatCompletionRequestModel.MetaLlamaLlama4Maverick17b128eInstruct => "meta-llama/llama-4-maverick-17b-128e-instruct",
-                CreateChatCompletionRequestModel.MetaLlamaLlama4Scout17b16eInstruct => "meta-llama/llama-4-scout-17b-16e-instruct",
-                CreateChatCompletionRequestModel.MetaLlamaLlamaGuard412b => "meta-llama/llama-guard-4-12b",
-                CreateChatCompletionRequestModel.MoonshotaiKimiK2Instruct => "moonshotai/kimi-k2-instruct",
-                CreateChatCompletionRequestModel.OpenaiGptOss120b => "openai/gpt-oss-120b",
-                CreateChatCompletionRequestModel.OpenaiGptOss20b => "openai/gpt-oss-20b",
-                CreateChatCompletionRequestModel.QwenQwen332b => "qwen/qwen3-32b",
+                CreateChatCompletionRequestModel.MetaLlamaDividellama4Maverick17b128eInstruct => "meta-llama/llama-4-maverick-17b-128e-instruct",
+                CreateChatCompletionRequestModel.MetaLlamaDividellama4Scout17b16eInstruct => "meta-llama/llama-4-scout-17b-16e-instruct",
+                CreateChatCompletionRequestModel.MetaLlamaDividellamaGuard412b => "meta-llama/llama-guard-4-12b",
+                CreateChatCompletionRequestModel.MoonshotaiDividekimiK2Instruct => "moonshotai/kimi-k2-instruct",
+                CreateChatCompletionRequestModel.OpenaiDividegptOss120b => "openai/gpt-oss-120b",
+                CreateChatCompletionRequestModel.OpenaiDividegptOss20b => "openai/gpt-oss-20b",
+                CreateChatCompletionRequestModel.QwenDivideqwen332b => "qwen/qwen3-32b",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -97,13 +97,13 @@ namespace Groq
                 "gemma2-9b-it" => CreateChatCompletionRequestModel.Gemma29bIt,
                 "llama-3.1-8b-instant" => CreateChatCompletionRequestModel.Llama318bInstant,
                 "llama-3.3-70b-versatile" => CreateChatCompletionRequestModel.Llama3370bVersatile,
-                "meta-llama/llama-4-maverick-17b-128e-instruct" => CreateChatCompletionRequestModel.MetaLlamaLlama4Maverick17b128eInstruct,
-                "meta-llama/llama-4-scout-17b-16e-instruct" => CreateChatCompletionRequestModel.MetaLlamaLlama4Scout17b16eInstruct,
-                "meta-llama/llama-guard-4-12b" => CreateChatCompletionRequestModel.MetaLlamaLlamaGuard412b,
-                "moonshotai/kimi-k2-instruct" => CreateChatCompletionRequestModel.MoonshotaiKimiK2Instruct,
-                "openai/gpt-oss-120b" => CreateChatCompletionRequestModel.OpenaiGptOss120b,
-                "openai/gpt-oss-20b" => CreateChatCompletionRequestModel.OpenaiGptOss20b,
-                "qwen/qwen3-32b" => CreateChatCompletionRequestModel.QwenQwen332b,
+                "meta-llama/llama-4-maverick-17b-128e-instruct" => CreateChatCompletionRequestModel.MetaLlamaDividellama4Maverick17b128eInstruct,
+                "meta-llama/llama-4-scout-17b-16e-instruct" => CreateChatCompletionRequestModel.MetaLlamaDividellama4Scout17b16eInstruct,
+                "meta-llama/llama-guard-4-12b" => CreateChatCompletionRequestModel.MetaLlamaDividellamaGuard412b,
+                "moonshotai/kimi-k2-instruct" => CreateChatCompletionRequestModel.MoonshotaiDividekimiK2Instruct,
+                "openai/gpt-oss-120b" => CreateChatCompletionRequestModel.OpenaiDividegptOss120b,
+                "openai/gpt-oss-20b" => CreateChatCompletionRequestModel.OpenaiDividegptOss20b,
+                "qwen/qwen3-32b" => CreateChatCompletionRequestModel.QwenDivideqwen332b,
                 _ => null,
             };
         }

@@ -31,10 +31,10 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ChatCompletionRequestMessageContentPartDocument" /> class.
         /// </summary>
+        /// <param name="document"></param>
         /// <param name="type">
         /// The type of the content part.
         /// </param>
-        /// <param name="document"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -42,8 +42,8 @@ namespace Groq
             global::Groq.ChatCompletionRequestMessageContentPartDocumentDocument document,
             global::Groq.ChatCompletionRequestMessageContentPartDocumentType type)
         {
-            this.Document = document ?? throw new global::System.ArgumentNullException(nameof(document));
             this.Type = type;
+            this.Document = document ?? throw new global::System.ArgumentNullException(nameof(document));
         }
 
         /// <summary>

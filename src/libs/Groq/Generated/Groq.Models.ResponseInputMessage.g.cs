@@ -46,14 +46,14 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ResponseInputMessage" /> class.
         /// </summary>
-        /// <param name="type">
-        /// The type of the message input. Always set to `message`.
-        /// </param>
         /// <param name="role">
         /// The role of the message input. One of `user`, `system`, or `developer`. Note: assistant role is not supported with explicit type.
         /// </param>
         /// <param name="content">
         /// A list of one or many input content items.
+        /// </param>
+        /// <param name="type">
+        /// The type of the message input. Always set to `message`.
         /// </param>
         /// <param name="status">
         /// The status of item. Populated when items are returned via API.
@@ -67,9 +67,9 @@ namespace Groq
             global::Groq.ResponseInputMessageType type,
             global::Groq.ResponseInputMessageStatus? status)
         {
+            this.Type = type;
             this.Role = role;
             this.Content = content ?? throw new global::System.ArgumentNullException(nameof(content));
-            this.Type = type;
             this.Status = status;
         }
 

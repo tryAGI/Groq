@@ -37,11 +37,11 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ResponseFileCitation" /> class.
         /// </summary>
-        /// <param name="type">
-        /// The type of the annotation. Always `file_citation`.
-        /// </param>
         /// <param name="fileId">
         /// The ID of the file.
+        /// </param>
+        /// <param name="type">
+        /// The type of the annotation. Always `file_citation`.
         /// </param>
         /// <param name="index">
         /// The index of the citation in the text.
@@ -54,8 +54,8 @@ namespace Groq
             global::Groq.ResponseFileCitationType type,
             int? index)
         {
-            this.FileId = fileId ?? throw new global::System.ArgumentNullException(nameof(fileId));
             this.Type = type;
+            this.FileId = fileId ?? throw new global::System.ArgumentNullException(nameof(fileId));
             this.Index = index;
         }
 

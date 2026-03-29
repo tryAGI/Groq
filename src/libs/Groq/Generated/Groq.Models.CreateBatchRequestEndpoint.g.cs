@@ -11,7 +11,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        V1ChatCompletions,
+        Dividev1DividechatDividecompletions,
     }
 
     /// <summary>
@@ -26,7 +26,7 @@ namespace Groq
         {
             return value switch
             {
-                CreateBatchRequestEndpoint.V1ChatCompletions => "/v1/chat/completions",
+                CreateBatchRequestEndpoint.Dividev1DividechatDividecompletions => "/v1/chat/completions",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -37,7 +37,7 @@ namespace Groq
         {
             return value switch
             {
-                "/v1/chat/completions" => CreateBatchRequestEndpoint.V1ChatCompletions,
+                "/v1/chat/completions" => CreateBatchRequestEndpoint.Dividev1DividechatDividecompletions,
                 _ => null,
             };
         }
