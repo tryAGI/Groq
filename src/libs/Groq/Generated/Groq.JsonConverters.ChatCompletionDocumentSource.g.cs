@@ -59,13 +59,13 @@ namespace Groq.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ChatCompletionDocumentSourceText), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ChatCompletionDocumentSourceText?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.ChatCompletionDocumentSourceText).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Text, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Text!, typeInfo);
             }
             else if (value.IsJson)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ChatCompletionDocumentSourceJSON), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ChatCompletionDocumentSourceJSON?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.ChatCompletionDocumentSourceJSON).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Json, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Json!, typeInfo);
             }
         }
     }

@@ -344,6 +344,7 @@ namespace Groq
             global::Groq.CreateChatCompletionRequestCitationOptions? citationOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+
             var __request = new global::Groq.CreateChatCompletionRequest
             {
                 Messages = messages,

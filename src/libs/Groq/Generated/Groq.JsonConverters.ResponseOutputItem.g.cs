@@ -68,19 +68,19 @@ namespace Groq.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ResponseOutputMessage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ResponseOutputMessage?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.ResponseOutputMessage).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Message, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Message!, typeInfo);
             }
             else if (value.IsFunctionCall)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ResponseOutputFunctionCall), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ResponseOutputFunctionCall?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.ResponseOutputFunctionCall).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.FunctionCall, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.FunctionCall!, typeInfo);
             }
             else if (value.IsReasoning)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ResponseOutputReasoning), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ResponseOutputReasoning?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.ResponseOutputReasoning).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Reasoning, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Reasoning!, typeInfo);
             }
         }
     }

@@ -59,13 +59,13 @@ namespace Groq.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ResponseFileCitation), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ResponseFileCitation?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.ResponseFileCitation).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.FileCitation, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.FileCitation!, typeInfo);
             }
             else if (value.IsUrlCitation)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ResponseUrlCitation), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ResponseUrlCitation?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.ResponseUrlCitation).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.UrlCitation, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.UrlCitation!, typeInfo);
             }
         }
     }

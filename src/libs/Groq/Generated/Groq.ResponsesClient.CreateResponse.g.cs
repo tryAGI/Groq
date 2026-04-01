@@ -271,6 +271,7 @@ namespace Groq
             global::Groq.CreateResponseRequestTruncation? truncation = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+
             var __request = new global::Groq.CreateResponseRequest
             {
                 Model = model,

@@ -50,7 +50,7 @@ namespace Groq.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ResponseOutputTextContent), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ResponseOutputTextContent?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.ResponseOutputTextContent).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.OutputText, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.OutputText!, typeInfo);
             }
         }
     }
