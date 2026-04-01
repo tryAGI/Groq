@@ -86,31 +86,31 @@ namespace Groq.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ChatCompletionRequestSystemMessage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ChatCompletionRequestSystemMessage?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.ChatCompletionRequestSystemMessage).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.System, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.System!, typeInfo);
             }
             else if (value.IsUser)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ChatCompletionRequestUserMessage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ChatCompletionRequestUserMessage?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.ChatCompletionRequestUserMessage).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.User, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.User!, typeInfo);
             }
             else if (value.IsAssistant)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ChatCompletionRequestAssistantMessage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ChatCompletionRequestAssistantMessage?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.ChatCompletionRequestAssistantMessage).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Assistant, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Assistant!, typeInfo);
             }
             else if (value.IsTool)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ChatCompletionRequestToolMessage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ChatCompletionRequestToolMessage?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.ChatCompletionRequestToolMessage).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Tool, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Tool!, typeInfo);
             }
             else if (value.IsFunction)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ChatCompletionRequestFunctionMessage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ChatCompletionRequestFunctionMessage?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.ChatCompletionRequestFunctionMessage).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Function, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Function!, typeInfo);
             }
         }
     }

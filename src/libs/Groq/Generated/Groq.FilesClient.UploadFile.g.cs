@@ -216,6 +216,7 @@ namespace Groq
             global::Groq.CreateFileRequestPurpose purpose = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+
             var __request = new global::Groq.CreateFileRequest
             {
                 File = file,

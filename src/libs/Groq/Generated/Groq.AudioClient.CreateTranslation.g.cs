@@ -259,6 +259,7 @@ namespace Groq
             double? temperature = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+
             var __request = new global::Groq.CreateTranslationRequest
             {
                 File = file,
