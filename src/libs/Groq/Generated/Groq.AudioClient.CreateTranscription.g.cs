@@ -284,7 +284,6 @@ namespace Groq
             global::System.Collections.Generic.IList<global::Groq.CreateTranscriptionRequestTimestampGranularitie>? timestampGranularities = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Groq.CreateTranscriptionRequest
             {
                 File = file,
