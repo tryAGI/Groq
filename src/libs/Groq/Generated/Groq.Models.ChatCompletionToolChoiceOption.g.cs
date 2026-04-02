@@ -18,35 +18,35 @@ namespace Groq
         /// `none` means the model will not call any tool and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Groq.ChatCompletionToolChoiceOptionEnum? Value1 { get; init; }
+        public global::Groq.ChatCompletionToolChoiceOptionEnum? Enum { get; init; }
 #else
-        public global::Groq.ChatCompletionToolChoiceOptionEnum? Value1 { get; }
+        public global::Groq.ChatCompletionToolChoiceOptionEnum? Enum { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Enum))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsEnum => Enum != null;
 
         /// <summary>
         /// Specifies a tool the model should use. Use to force the model to call a specific function.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Groq.ChatCompletionNamedToolChoice? Value2 { get; init; }
+        public global::Groq.ChatCompletionNamedToolChoice? Named { get; init; }
 #else
-        public global::Groq.ChatCompletionNamedToolChoice? Value2 { get; }
+        public global::Groq.ChatCompletionNamedToolChoice? Named { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Named))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsNamed => Named != null;
         /// <summary>
         /// 
         /// </summary>
@@ -55,14 +55,14 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Groq.ChatCompletionToolChoiceOptionEnum?(ChatCompletionToolChoiceOption @this) => @this.Value1;
+        public static implicit operator global::Groq.ChatCompletionToolChoiceOptionEnum?(ChatCompletionToolChoiceOption @this) => @this.Enum;
 
         /// <summary>
         /// 
         /// </summary>
         public ChatCompletionToolChoiceOption(global::Groq.ChatCompletionToolChoiceOptionEnum? value)
         {
-            Value1 = value;
+            Enum = value;
         }
 
         /// <summary>
@@ -73,42 +73,42 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Groq.ChatCompletionNamedToolChoice?(ChatCompletionToolChoiceOption @this) => @this.Value2;
+        public static implicit operator global::Groq.ChatCompletionNamedToolChoice?(ChatCompletionToolChoiceOption @this) => @this.Named;
 
         /// <summary>
         /// 
         /// </summary>
         public ChatCompletionToolChoiceOption(global::Groq.ChatCompletionNamedToolChoice? value)
         {
-            Value2 = value;
+            Named = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public ChatCompletionToolChoiceOption(
-            global::Groq.ChatCompletionToolChoiceOptionEnum? value1,
-            global::Groq.ChatCompletionNamedToolChoice? value2
+            global::Groq.ChatCompletionToolChoiceOptionEnum? @enum,
+            global::Groq.ChatCompletionNamedToolChoice? named
             )
         {
-            Value1 = value1;
-            Value2 = value2;
+            Enum = @enum;
+            Named = named;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
-            Value1 as object 
+            Named as object ??
+            Enum as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToValueString() ??
-            Value2?.ToString() 
+            Enum?.ToValueString() ??
+            Named?.ToString() 
             ;
 
         /// <summary>
@@ -116,15 +116,15 @@ namespace Groq
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && !IsValue2 || !IsValue1 && IsValue2;
+            return IsEnum && !IsNamed || !IsEnum && IsNamed;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Groq.ChatCompletionToolChoiceOptionEnum?, TResult>? value1 = null,
-            global::System.Func<global::Groq.ChatCompletionNamedToolChoice?, TResult>? value2 = null,
+            global::System.Func<global::Groq.ChatCompletionToolChoiceOptionEnum?, TResult>? @enum = null,
+            global::System.Func<global::Groq.ChatCompletionNamedToolChoice?, TResult>? named = null,
             bool validate = true)
         {
             if (validate)
@@ -132,13 +132,13 @@ namespace Groq
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsEnum && @enum != null)
             {
-                return value1(Value1!);
+                return @enum(Enum!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsNamed && named != null)
             {
-                return value2(Value2!);
+                return named(Named!);
             }
 
             return default(TResult);
@@ -148,8 +148,8 @@ namespace Groq
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Groq.ChatCompletionToolChoiceOptionEnum?>? value1 = null,
-            global::System.Action<global::Groq.ChatCompletionNamedToolChoice?>? value2 = null,
+            global::System.Action<global::Groq.ChatCompletionToolChoiceOptionEnum?>? @enum = null,
+            global::System.Action<global::Groq.ChatCompletionNamedToolChoice?>? named = null,
             bool validate = true)
         {
             if (validate)
@@ -157,13 +157,13 @@ namespace Groq
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsEnum)
             {
-                value1?.Invoke(Value1!);
+                @enum?.Invoke(Enum!);
             }
-            else if (IsValue2)
+            else if (IsNamed)
             {
-                value2?.Invoke(Value2!);
+                named?.Invoke(Named!);
             }
         }
 
@@ -174,9 +174,9 @@ namespace Groq
         {
             var fields = new object?[]
             {
-                Value1,
+                Enum,
                 typeof(global::Groq.ChatCompletionToolChoiceOptionEnum),
-                Value2,
+                Named,
                 typeof(global::Groq.ChatCompletionNamedToolChoice),
             };
             const int offset = unchecked((int)2166136261);
@@ -194,8 +194,8 @@ namespace Groq
         public bool Equals(ChatCompletionToolChoiceOption other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Groq.ChatCompletionToolChoiceOptionEnum?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::Groq.ChatCompletionNamedToolChoice?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::Groq.ChatCompletionToolChoiceOptionEnum?>.Default.Equals(Enum, other.Enum) &&
+                global::System.Collections.Generic.EqualityComparer<global::Groq.ChatCompletionNamedToolChoice?>.Default.Equals(Named, other.Named) 
                 ;
         }
 
