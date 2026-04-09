@@ -5,6 +5,25 @@ namespace Groq
 {
     public partial class ModelsClient
     {
+
+
+        private static readonly global::Groq.EndPointSecurityRequirement s_RetrieveModelSecurityRequirement0 =
+            new global::Groq.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Groq.EndPointAuthorizationRequirement[]
+                {                    new global::Groq.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Groq.EndPointSecurityRequirement[] s_RetrieveModelSecurityRequirements =
+            new global::Groq.EndPointSecurityRequirement[]
+            {                s_RetrieveModelSecurityRequirement0,
+            };
         partial void PrepareRetrieveModelArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string model);
@@ -38,9 +57,15 @@ namespace Groq
                 httpClient: HttpClient,
                 model: ref model);
 
+
+            var __authorizations = global::Groq.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_RetrieveModelSecurityRequirements,
+                operationName: "RetrieveModelAsync");
+
             var __pathBuilder = new global::Groq.PathBuilder(
                 path: $"/openai/v1/models/{model}",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -50,7 +75,7 @@ namespace Groq
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

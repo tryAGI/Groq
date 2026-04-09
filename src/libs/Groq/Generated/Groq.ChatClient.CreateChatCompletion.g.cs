@@ -7,6 +7,25 @@ namespace Groq
 {
     public partial class ChatClient
     {
+
+
+        private static readonly global::Groq.EndPointSecurityRequirement s_CreateChatCompletionSecurityRequirement0 =
+            new global::Groq.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Groq.EndPointAuthorizationRequirement[]
+                {                    new global::Groq.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Groq.EndPointSecurityRequirement[] s_CreateChatCompletionSecurityRequirements =
+            new global::Groq.EndPointSecurityRequirement[]
+            {                s_CreateChatCompletionSecurityRequirement0,
+            };
         partial void PrepareCreateChatCompletionArguments(
             global::System.Net.Http.HttpClient httpClient,
             global::Groq.CreateChatCompletionRequest request);
@@ -42,9 +61,15 @@ namespace Groq
                 httpClient: HttpClient,
                 request: request);
 
+
+            var __authorizations = global::Groq.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_CreateChatCompletionSecurityRequirements,
+                operationName: "CreateChatCompletionAsync");
+
             var __pathBuilder = new global::Groq.PathBuilder(
                 path: "/openai/v1/chat/completions",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -54,7 +79,7 @@ namespace Groq
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

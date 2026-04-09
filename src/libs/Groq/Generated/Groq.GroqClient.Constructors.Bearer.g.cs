@@ -6,6 +6,7 @@ namespace Groq
     public sealed partial class GroqClient
     {
         /// <inheritdoc cref="GroqClient(global::System.Net.Http.HttpClient?, global::System.Uri?, global::System.Collections.Generic.List{global::Groq.EndPointAuthorization}?, bool)"/>
+
         public GroqClient(
             string apiKey,
             global::System.Net.Http.HttpClient? httpClient = null,

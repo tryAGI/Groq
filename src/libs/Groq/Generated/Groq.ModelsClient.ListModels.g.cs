@@ -5,6 +5,25 @@ namespace Groq
 {
     public partial class ModelsClient
     {
+
+
+        private static readonly global::Groq.EndPointSecurityRequirement s_ListModelsSecurityRequirement0 =
+            new global::Groq.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Groq.EndPointAuthorizationRequirement[]
+                {                    new global::Groq.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Groq.EndPointSecurityRequirement[] s_ListModelsSecurityRequirements =
+            new global::Groq.EndPointSecurityRequirement[]
+            {                s_ListModelsSecurityRequirement0,
+            };
         partial void PrepareListModelsArguments(
             global::System.Net.Http.HttpClient httpClient);
         partial void PrepareListModelsRequest(
@@ -33,9 +52,15 @@ namespace Groq
             PrepareListModelsArguments(
                 httpClient: HttpClient);
 
+
+            var __authorizations = global::Groq.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ListModelsSecurityRequirements,
+                operationName: "ListModelsAsync");
+
             var __pathBuilder = new global::Groq.PathBuilder(
                 path: "/openai/v1/models",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -45,7 +70,7 @@ namespace Groq
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")
