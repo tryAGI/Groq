@@ -5,6 +5,25 @@ namespace Groq
 {
     public partial class FilesClient
     {
+
+
+        private static readonly global::Groq.EndPointSecurityRequirement s_DeleteFileSecurityRequirement0 =
+            new global::Groq.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Groq.EndPointAuthorizationRequirement[]
+                {                    new global::Groq.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Groq.EndPointSecurityRequirement[] s_DeleteFileSecurityRequirements =
+            new global::Groq.EndPointSecurityRequirement[]
+            {                s_DeleteFileSecurityRequirement0,
+            };
         partial void PrepareDeleteFileArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string fileId);
@@ -37,9 +56,15 @@ namespace Groq
                 httpClient: HttpClient,
                 fileId: ref fileId);
 
+
+            var __authorizations = global::Groq.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_DeleteFileSecurityRequirements,
+                operationName: "DeleteFileAsync");
+
             var __pathBuilder = new global::Groq.PathBuilder(
                 path: $"/openai/v1/files/{fileId}",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Delete,
@@ -49,7 +74,7 @@ namespace Groq
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

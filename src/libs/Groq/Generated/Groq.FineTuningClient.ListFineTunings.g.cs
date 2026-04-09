@@ -5,6 +5,25 @@ namespace Groq
 {
     public partial class FineTuningClient
     {
+
+
+        private static readonly global::Groq.EndPointSecurityRequirement s_ListFineTuningsSecurityRequirement0 =
+            new global::Groq.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Groq.EndPointAuthorizationRequirement[]
+                {                    new global::Groq.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Groq.EndPointSecurityRequirement[] s_ListFineTuningsSecurityRequirements =
+            new global::Groq.EndPointSecurityRequirement[]
+            {                s_ListFineTuningsSecurityRequirement0,
+            };
         partial void PrepareListFineTuningsArguments(
             global::System.Net.Http.HttpClient httpClient);
         partial void PrepareListFineTuningsRequest(
@@ -32,9 +51,15 @@ namespace Groq
             PrepareListFineTuningsArguments(
                 httpClient: HttpClient);
 
+
+            var __authorizations = global::Groq.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ListFineTuningsSecurityRequirements,
+                operationName: "ListFineTuningsAsync");
+
             var __pathBuilder = new global::Groq.PathBuilder(
                 path: "/v1/fine_tunings",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -44,7 +69,7 @@ namespace Groq
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")
