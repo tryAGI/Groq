@@ -8,11 +8,13 @@ namespace Groq
         /// Creates a model response for the given input.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Groq.CreateResponseResponse> CreateResponseAsync(
 
             global::Groq.CreateResponseRequest request,
+            global::Groq.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a model response for the given input.
@@ -84,6 +86,7 @@ namespace Groq
         /// Context truncation strategy. Supported values: `auto` or `disabled`.<br/>
         /// Default Value: disabled
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Groq.CreateResponseResponse> CreateResponseAsync(
@@ -104,6 +107,7 @@ namespace Groq
             string? user = default,
             global::Groq.CreateResponseRequestServiceTier? serviceTier = default,
             global::Groq.CreateResponseRequestTruncation? truncation = default,
+            global::Groq.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

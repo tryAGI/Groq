@@ -10,11 +10,13 @@ namespace Groq
         /// Creates a model response for the given chat conversation.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Groq.CreateChatCompletionResponse> CreateChatCompletionAsync(
 
             global::Groq.CreateChatCompletionRequest request,
+            global::Groq.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a model response for the given chat conversation.
@@ -144,6 +146,7 @@ namespace Groq
         /// Whether to enable citations in the response. When enabled, the model will include citations for information retrieved from provided documents or web searches.<br/>
         /// Default Value: enabled
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Groq.CreateChatCompletionResponse> CreateChatCompletionAsync(
@@ -177,6 +180,7 @@ namespace Groq
             global::Groq.CreateChatCompletionRequestCompoundCustom? compoundCustom = default,
             global::System.Collections.Generic.IList<global::Groq.ChatCompletionDocument>? documents = default,
             global::Groq.CreateChatCompletionRequestCitationOptions? citationOptions = default,
+            global::Groq.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

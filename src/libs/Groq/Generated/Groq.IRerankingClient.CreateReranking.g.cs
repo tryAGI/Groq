@@ -10,11 +10,13 @@ namespace Groq
         /// The documents are scored and sorted in descending order of relevance.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Groq.RerankingResponse> CreateRerankingAsync(
 
             global::Groq.RerankingRequest request,
+            global::Groq.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Reranks documents based on their relevance to a query.<br/>
@@ -39,6 +41,7 @@ namespace Groq
         /// a default instruction will be used.<br/>
         /// Example: Find the most relevant document about AI research
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Groq.RerankingResponse> CreateRerankingAsync(
@@ -46,6 +49,7 @@ namespace Groq
             string query,
             global::System.Collections.Generic.IList<string> docs,
             string? instruction = default,
+            global::Groq.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
