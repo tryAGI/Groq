@@ -25,6 +25,7 @@ namespace Groq
             Authorizations.Add(new global::Groq.EndPointAuthorization
             {
                 Type = "Http",
+                SchemeId = "ApiKey",
                 Location = "Header",
                 Name = "Bearer",
                 Value = apiKey,

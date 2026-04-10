@@ -8,21 +8,25 @@ namespace Groq
         /// Generates audio from the input text.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
         global::System.Threading.Tasks.Task<byte[]> CreateSpeechAsync(
 
             global::Groq.CreateSpeechRequest request,
+            global::Groq.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Generates audio from the input text.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Groq.AutoSDKHttpResponse<byte[]>> CreateSpeechAsResponseAsync(
 
             global::Groq.CreateSpeechRequest request,
+            global::Groq.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Generates audio from the input text.
@@ -53,6 +57,7 @@ namespace Groq
         /// Default Value: 1<br/>
         /// Example: 1
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<byte[]> CreateSpeechAsync(
@@ -62,6 +67,7 @@ namespace Groq
             global::Groq.CreateSpeechRequestResponseFormat? responseFormat = default,
             int? sampleRate = default,
             double? speed = default,
+            global::Groq.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

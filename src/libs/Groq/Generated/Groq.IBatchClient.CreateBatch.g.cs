@@ -8,11 +8,13 @@ namespace Groq
         /// Creates and executes a batch from an uploaded file of requests. [Learn more](/docs/batch).
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Groq.Batch> CreateBatchAsync(
 
             global::Groq.CreateBatchRequest request,
+            global::Groq.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates and executes a batch from an uploaded file of requests. [Learn more](/docs/batch).
@@ -31,6 +33,7 @@ namespace Groq
         /// <param name="metadata">
         /// Optional custom metadata for the batch.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Groq.Batch> CreateBatchAsync(
@@ -38,6 +41,7 @@ namespace Groq
             string completionWindow,
             global::Groq.CreateBatchRequestEndpoint endpoint = default,
             global::System.Collections.Generic.Dictionary<string, string>? metadata = default,
+            global::Groq.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
