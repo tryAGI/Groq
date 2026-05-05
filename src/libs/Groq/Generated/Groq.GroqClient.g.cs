@@ -43,7 +43,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public AudioClient Audio => new AudioClient(HttpClient, authorizations: Authorizations, options: Options)
+        public AudioClient Audio => new AudioClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -52,7 +52,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public BatchClient Batch => new BatchClient(HttpClient, authorizations: Authorizations, options: Options)
+        public BatchClient Batch => new BatchClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -61,7 +61,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public ChatClient Chat => new ChatClient(HttpClient, authorizations: Authorizations, options: Options)
+        public ChatClient Chat => new ChatClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -70,7 +70,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public EmbeddingsClient Embeddings => new EmbeddingsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public EmbeddingsClient Embeddings => new EmbeddingsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -79,7 +79,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public FilesClient Files => new FilesClient(HttpClient, authorizations: Authorizations, options: Options)
+        public FilesClient Files => new FilesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -88,7 +88,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public FineTuningClient FineTuning => new FineTuningClient(HttpClient, authorizations: Authorizations, options: Options)
+        public FineTuningClient FineTuning => new FineTuningClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -97,7 +97,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public ModelsClient Models => new ModelsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public ModelsClient Models => new ModelsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -106,7 +106,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public RerankingClient Reranking => new RerankingClient(HttpClient, authorizations: Authorizations, options: Options)
+        public RerankingClient Reranking => new RerankingClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -115,7 +115,7 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
-        public ResponsesClient Responses => new ResponsesClient(HttpClient, authorizations: Authorizations, options: Options)
+        public ResponsesClient Responses => new ResponsesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -154,10 +154,10 @@ namespace Groq
         /// <param name="options">Client-wide request defaults such as headers, query parameters, retries, and timeout.</param>
         /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
         public GroqClient(
-            global::System.Net.Http.HttpClient? httpClient = null,
-            global::System.Uri? baseUri = null,
-            global::System.Collections.Generic.List<global::Groq.EndPointAuthorization>? authorizations = null,
-            global::Groq.AutoSDKClientOptions? options = null,
+            global::System.Net.Http.HttpClient? httpClient,
+            global::System.Uri? baseUri,
+            global::System.Collections.Generic.List<global::Groq.EndPointAuthorization>? authorizations,
+            global::Groq.AutoSDKClientOptions? options,
             bool disposeHttpClient = true)
         {
 
