@@ -27,6 +27,19 @@ namespace Groq
         public bool IsText => Text != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickText(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Groq.ResponseFormatText? value)
+        {
+            value = Text;
+            return IsText;
+        }
+
+        /// <summary>
         /// JSON object response format. An older method of generating JSON responses. Using `json_schema` is recommended for models that support it. Note that the model will not generate JSON without a system or user message instructing it to do so.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -44,6 +57,19 @@ namespace Groq
         public bool IsJsonObject => JsonObject != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickJsonObject(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Groq.ResponseFormatJsonObject? value)
+        {
+            value = JsonObject;
+            return IsJsonObject;
+        }
+
+        /// <summary>
         /// JSON Schema response format. Used to generate structured JSON responses.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -59,6 +85,19 @@ namespace Groq
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(JsonSchema))]
 #endif
         public bool IsJsonSchema => JsonSchema != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickJsonSchema(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Groq.TextResponseFormatJsonSchema? value)
+        {
+            value = JsonSchema;
+            return IsJsonSchema;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -157,9 +196,9 @@ namespace Groq
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Groq.ResponseFormatText?, TResult>? text = null,
-            global::System.Func<global::Groq.ResponseFormatJsonObject?, TResult>? jsonObject = null,
-            global::System.Func<global::Groq.TextResponseFormatJsonSchema?, TResult>? jsonSchema = null,
+            global::System.Func<global::Groq.ResponseFormatText, TResult>? text = null,
+            global::System.Func<global::Groq.ResponseFormatJsonObject, TResult>? jsonObject = null,
+            global::System.Func<global::Groq.TextResponseFormatJsonSchema, TResult>? jsonSchema = null,
             bool validate = true)
         {
             if (validate)
@@ -187,9 +226,39 @@ namespace Groq
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Groq.ResponseFormatText?>? text = null,
-            global::System.Action<global::Groq.ResponseFormatJsonObject?>? jsonObject = null,
-            global::System.Action<global::Groq.TextResponseFormatJsonSchema?>? jsonSchema = null,
+            global::System.Action<global::Groq.ResponseFormatText>? text = null,
+
+            global::System.Action<global::Groq.ResponseFormatJsonObject>? jsonObject = null,
+
+            global::System.Action<global::Groq.TextResponseFormatJsonSchema>? jsonSchema = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsText)
+            {
+                text?.Invoke(Text!);
+            }
+            else if (IsJsonObject)
+            {
+                jsonObject?.Invoke(JsonObject!);
+            }
+            else if (IsJsonSchema)
+            {
+                jsonSchema?.Invoke(JsonSchema!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Groq.ResponseFormatText>? text = null,
+            global::System.Action<global::Groq.ResponseFormatJsonObject>? jsonObject = null,
+            global::System.Action<global::Groq.TextResponseFormatJsonSchema>? jsonSchema = null,
             bool validate = true)
         {
             if (validate)

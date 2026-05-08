@@ -32,6 +32,19 @@ namespace Groq
         public bool IsEnum => Enum != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickEnum(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Groq.ResponseToolChoiceOptionEnum? value)
+        {
+            value = Enum;
+            return IsEnum;
+        }
+
+        /// <summary>
         /// Specifies a tool the model should use. Use to force the model to call a specific function.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -47,6 +60,19 @@ namespace Groq
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Named))]
 #endif
         public bool IsNamed => Named != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickNamed(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Groq.ResponseNamedToolChoice? value)
+        {
+            value = Named;
+            return IsNamed;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -124,7 +150,7 @@ namespace Groq
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Groq.ResponseToolChoiceOptionEnum?, TResult>? @enum = null,
-            global::System.Func<global::Groq.ResponseNamedToolChoice?, TResult>? named = null,
+            global::System.Func<global::Groq.ResponseNamedToolChoice, TResult>? named = null,
             bool validate = true)
         {
             if (validate)
@@ -149,7 +175,31 @@ namespace Groq
         /// </summary>
         public void Match(
             global::System.Action<global::Groq.ResponseToolChoiceOptionEnum?>? @enum = null,
-            global::System.Action<global::Groq.ResponseNamedToolChoice?>? named = null,
+
+            global::System.Action<global::Groq.ResponseNamedToolChoice>? named = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsEnum)
+            {
+                @enum?.Invoke(Enum!);
+            }
+            else if (IsNamed)
+            {
+                named?.Invoke(Named!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Groq.ResponseToolChoiceOptionEnum?>? @enum = null,
+            global::System.Action<global::Groq.ResponseNamedToolChoice>? named = null,
             bool validate = true)
         {
             if (validate)
