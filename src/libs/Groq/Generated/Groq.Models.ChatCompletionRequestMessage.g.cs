@@ -34,6 +34,19 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickSystem(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Groq.ChatCompletionRequestSystemMessage? value)
+        {
+            value = System;
+            return IsSystem;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Groq.ChatCompletionRequestUserMessage? User { get; init; }
 #else
@@ -47,6 +60,19 @@ namespace Groq
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(User))]
 #endif
         public bool IsUser => User != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickUser(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Groq.ChatCompletionRequestUserMessage? value)
+        {
+            value = User;
+            return IsUser;
+        }
 
         /// <summary>
         /// 
@@ -68,6 +94,19 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickAssistant(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Groq.ChatCompletionRequestAssistantMessage? value)
+        {
+            value = Assistant;
+            return IsAssistant;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Groq.ChatCompletionRequestToolMessage? Tool { get; init; }
 #else
@@ -85,6 +124,19 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickTool(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Groq.ChatCompletionRequestToolMessage? value)
+        {
+            value = Tool;
+            return IsTool;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Groq.ChatCompletionRequestFunctionMessage? Function { get; init; }
 #else
@@ -98,6 +150,19 @@ namespace Groq
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Function))]
 #endif
         public bool IsFunction => Function != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickFunction(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Groq.ChatCompletionRequestFunctionMessage? value)
+        {
+            value = Function;
+            return IsFunction;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -243,11 +308,11 @@ namespace Groq
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Groq.ChatCompletionRequestSystemMessage?, TResult>? system = null,
-            global::System.Func<global::Groq.ChatCompletionRequestUserMessage?, TResult>? user = null,
-            global::System.Func<global::Groq.ChatCompletionRequestAssistantMessage?, TResult>? assistant = null,
-            global::System.Func<global::Groq.ChatCompletionRequestToolMessage?, TResult>? tool = null,
-            global::System.Func<global::Groq.ChatCompletionRequestFunctionMessage?, TResult>? function = null,
+            global::System.Func<global::Groq.ChatCompletionRequestSystemMessage, TResult>? system = null,
+            global::System.Func<global::Groq.ChatCompletionRequestUserMessage, TResult>? user = null,
+            global::System.Func<global::Groq.ChatCompletionRequestAssistantMessage, TResult>? assistant = null,
+            global::System.Func<global::Groq.ChatCompletionRequestToolMessage, TResult>? tool = null,
+            global::System.Func<global::Groq.ChatCompletionRequestFunctionMessage, TResult>? function = null,
             bool validate = true)
         {
             if (validate)
@@ -283,11 +348,53 @@ namespace Groq
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Groq.ChatCompletionRequestSystemMessage?>? system = null,
-            global::System.Action<global::Groq.ChatCompletionRequestUserMessage?>? user = null,
-            global::System.Action<global::Groq.ChatCompletionRequestAssistantMessage?>? assistant = null,
-            global::System.Action<global::Groq.ChatCompletionRequestToolMessage?>? tool = null,
-            global::System.Action<global::Groq.ChatCompletionRequestFunctionMessage?>? function = null,
+            global::System.Action<global::Groq.ChatCompletionRequestSystemMessage>? system = null,
+
+            global::System.Action<global::Groq.ChatCompletionRequestUserMessage>? user = null,
+
+            global::System.Action<global::Groq.ChatCompletionRequestAssistantMessage>? assistant = null,
+
+            global::System.Action<global::Groq.ChatCompletionRequestToolMessage>? tool = null,
+
+            global::System.Action<global::Groq.ChatCompletionRequestFunctionMessage>? function = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsSystem)
+            {
+                system?.Invoke(System!);
+            }
+            else if (IsUser)
+            {
+                user?.Invoke(User!);
+            }
+            else if (IsAssistant)
+            {
+                assistant?.Invoke(Assistant!);
+            }
+            else if (IsTool)
+            {
+                tool?.Invoke(Tool!);
+            }
+            else if (IsFunction)
+            {
+                function?.Invoke(Function!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Groq.ChatCompletionRequestSystemMessage>? system = null,
+            global::System.Action<global::Groq.ChatCompletionRequestUserMessage>? user = null,
+            global::System.Action<global::Groq.ChatCompletionRequestAssistantMessage>? assistant = null,
+            global::System.Action<global::Groq.ChatCompletionRequestToolMessage>? tool = null,
+            global::System.Action<global::Groq.ChatCompletionRequestFunctionMessage>? function = null,
             bool validate = true)
         {
             if (validate)
