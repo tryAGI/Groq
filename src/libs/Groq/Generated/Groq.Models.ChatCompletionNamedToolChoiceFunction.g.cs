@@ -42,5 +42,6 @@ namespace Groq
         public ChatCompletionNamedToolChoiceFunction()
         {
         }
+
     }
 }

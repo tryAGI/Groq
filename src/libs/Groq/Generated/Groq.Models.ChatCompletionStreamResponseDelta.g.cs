@@ -104,5 +104,6 @@ namespace Groq
         public ChatCompletionStreamResponseDelta()
         {
         }
+
     }
 }

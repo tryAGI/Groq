@@ -65,5 +65,6 @@ namespace Groq
         public ResponseFileCitation()
         {
         }
+
     }
 }

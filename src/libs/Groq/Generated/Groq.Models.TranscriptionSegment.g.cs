@@ -190,5 +190,6 @@ namespace Groq
         public TranscriptionSegment()
         {
         }
+
     }
 }

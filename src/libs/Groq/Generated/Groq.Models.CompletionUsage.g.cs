@@ -132,5 +132,6 @@ namespace Groq
         public CompletionUsage()
         {
         }
+
     }
 }

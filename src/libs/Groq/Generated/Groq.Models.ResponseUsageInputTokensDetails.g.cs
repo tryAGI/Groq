@@ -53,5 +53,6 @@ namespace Groq
         public ResponseUsageInputTokensDetails()
         {
         }
+
     }
 }

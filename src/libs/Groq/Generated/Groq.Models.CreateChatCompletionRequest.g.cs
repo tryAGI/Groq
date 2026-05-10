@@ -490,5 +490,6 @@ namespace Groq
         public CreateChatCompletionRequest()
         {
         }
+
     }
 }

@@ -87,5 +87,6 @@ namespace Groq
         public ResponseTool()
         {
         }
+
     }
 }

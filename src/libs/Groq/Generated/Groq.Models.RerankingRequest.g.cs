@@ -93,5 +93,6 @@ namespace Groq
         public RerankingRequest()
         {
         }
+
     }
 }

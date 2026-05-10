@@ -98,5 +98,6 @@ namespace Groq
         public ChatCompletionRequestAssistantMessage()
         {
         }
+
     }
 }

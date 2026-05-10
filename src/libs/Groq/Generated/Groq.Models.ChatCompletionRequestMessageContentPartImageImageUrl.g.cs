@@ -56,5 +56,6 @@ namespace Groq
         public ChatCompletionRequestMessageContentPartImageImageUrl()
         {
         }
+
     }
 }

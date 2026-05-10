@@ -79,5 +79,6 @@ namespace Groq
         public ResponseFormatJsonSchemaJsonSchema()
         {
         }
+
     }
 }

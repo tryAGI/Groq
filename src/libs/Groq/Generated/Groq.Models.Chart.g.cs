@@ -176,5 +176,6 @@ namespace Groq
         public Chart()
         {
         }
+
     }
 }

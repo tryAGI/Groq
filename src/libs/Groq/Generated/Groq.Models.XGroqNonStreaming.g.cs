@@ -73,5 +73,6 @@ namespace Groq
         public XGroqNonStreaming()
         {
         }
+
     }
 }

@@ -88,5 +88,6 @@ namespace Groq
         public CreateTranscriptionResponseVerboseJson()
         {
         }
+
     }
 }

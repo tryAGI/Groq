@@ -122,5 +122,6 @@ namespace Groq
         public CreateSpeechRequest()
         {
         }
+
     }
 }
