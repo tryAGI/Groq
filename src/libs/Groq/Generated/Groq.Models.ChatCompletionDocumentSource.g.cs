@@ -45,6 +45,13 @@ namespace Groq
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Groq.ChatCompletionDocumentSourceText PickText() => IsText
+            ? Text!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Text' but the value was {ToString()}.");
+
+        /// <summary>
         /// A document whose contents are provided inline as JSON data.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -73,6 +80,13 @@ namespace Groq
             value = Json;
             return IsJson;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Groq.ChatCompletionDocumentSourceJSON PickJson() => IsJson
+            ? Json!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Json' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -94,6 +108,11 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
+        public static ChatCompletionDocumentSource FromText(global::Groq.ChatCompletionDocumentSourceText? value) => new ChatCompletionDocumentSource(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ChatCompletionDocumentSource(global::Groq.ChatCompletionDocumentSourceJSON value) => new ChatCompletionDocumentSource((global::Groq.ChatCompletionDocumentSourceJSON?)value);
 
         /// <summary>
@@ -108,6 +127,11 @@ namespace Groq
         {
             Json = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ChatCompletionDocumentSource FromJson(global::Groq.ChatCompletionDocumentSourceJSON? value) => new ChatCompletionDocumentSource(value);
 
         /// <summary>
         /// 

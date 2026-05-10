@@ -43,6 +43,13 @@ namespace Groq
             value = OutputText;
             return IsOutputText;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Groq.ResponseOutputTextContent PickOutputText() => IsOutputText
+            ? OutputText!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'OutputText' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -60,6 +67,11 @@ namespace Groq
         {
             OutputText = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ResponseOutputContent FromOutputText(global::Groq.ResponseOutputTextContent? value) => new ResponseOutputContent(value);
 
         /// <summary>
         /// 

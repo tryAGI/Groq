@@ -45,6 +45,13 @@ namespace Groq
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Groq.ResponseToolChoiceOptionEnum PickEnum() => IsEnum
+            ? Enum!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Enum' but the value was {ToString()}.");
+
+        /// <summary>
         /// Specifies a tool the model should use. Use to force the model to call a specific function.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -73,6 +80,13 @@ namespace Groq
             value = Named;
             return IsNamed;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Groq.ResponseNamedToolChoice PickNamed() => IsNamed
+            ? Named!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Named' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -94,6 +108,11 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
+        public static ResponseToolChoiceOption FromEnum(global::Groq.ResponseToolChoiceOptionEnum? value) => new ResponseToolChoiceOption(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ResponseToolChoiceOption(global::Groq.ResponseNamedToolChoice value) => new ResponseToolChoiceOption((global::Groq.ResponseNamedToolChoice?)value);
 
         /// <summary>
@@ -108,6 +127,11 @@ namespace Groq
         {
             Named = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ResponseToolChoiceOption FromNamed(global::Groq.ResponseNamedToolChoice? value) => new ResponseToolChoiceOption(value);
 
         /// <summary>
         /// 
