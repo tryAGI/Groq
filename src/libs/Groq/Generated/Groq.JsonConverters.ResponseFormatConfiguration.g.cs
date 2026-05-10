@@ -99,6 +99,7 @@ namespace Groq.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ResponseFormatText), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ResponseFormatText> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.ResponseFormatText).Name}");
                     text = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -109,9 +110,13 @@ namespace Groq.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (text == null && jsonObject == null && jsonSchema == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ResponseFormatJsonObject), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ResponseFormatJsonObject> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.ResponseFormatJsonObject).Name}");
                     jsonObject = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -122,9 +127,13 @@ namespace Groq.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (text == null && jsonObject == null && jsonSchema == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.TextResponseFormatJsonSchema), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.TextResponseFormatJsonSchema> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.TextResponseFormatJsonSchema).Name}");
                     jsonSchema = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
