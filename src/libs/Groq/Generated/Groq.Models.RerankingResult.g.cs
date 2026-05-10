@@ -62,5 +62,6 @@ namespace Groq
         public RerankingResult()
         {
         }
+
     }
 }

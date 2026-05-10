@@ -160,5 +160,6 @@ namespace Groq
         public CreateChatCompletionResponse()
         {
         }
+
     }
 }

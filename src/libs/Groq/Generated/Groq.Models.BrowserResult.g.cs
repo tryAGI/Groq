@@ -76,5 +76,6 @@ namespace Groq
         public BrowserResult()
         {
         }
+
     }
 }

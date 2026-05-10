@@ -74,5 +74,6 @@ namespace Groq
         public ChatCompletionMessageExecutedToolSearchResultsResult()
         {
         }
+
     }
 }

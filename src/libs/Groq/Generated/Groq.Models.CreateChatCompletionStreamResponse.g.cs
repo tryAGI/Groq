@@ -115,5 +115,6 @@ namespace Groq
         public CreateChatCompletionStreamResponse()
         {
         }
+
     }
 }

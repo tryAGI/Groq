@@ -81,5 +81,6 @@ namespace Groq
         public CreateBatchRequest()
         {
         }
+
     }
 }

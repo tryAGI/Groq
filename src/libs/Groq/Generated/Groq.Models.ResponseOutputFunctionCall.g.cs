@@ -102,5 +102,6 @@ namespace Groq
         public ResponseOutputFunctionCall()
         {
         }
+
     }
 }

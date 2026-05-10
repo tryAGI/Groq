@@ -260,5 +260,6 @@ namespace Groq
         public CreateResponseRequest()
         {
         }
+
     }
 }

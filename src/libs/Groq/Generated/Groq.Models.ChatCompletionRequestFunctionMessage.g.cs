@@ -69,5 +69,6 @@ namespace Groq
         public ChatCompletionRequestFunctionMessage()
         {
         }
+
     }
 }
