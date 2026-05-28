@@ -147,6 +147,7 @@ namespace Groq.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ResponseEasyInputMessage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ResponseEasyInputMessage> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.ResponseEasyInputMessage).Name}");
                     easyInputMessage = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -157,9 +158,13 @@ namespace Groq.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (easyInputMessage == null && message == null && itemReference == null && functionCall == null && functionCallOutput == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ResponseInputMessage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ResponseInputMessage> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.ResponseInputMessage).Name}");
                     message = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -170,9 +175,13 @@ namespace Groq.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (easyInputMessage == null && message == null && itemReference == null && functionCall == null && functionCallOutput == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ResponseItemReference), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ResponseItemReference> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.ResponseItemReference).Name}");
                     itemReference = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -183,9 +192,13 @@ namespace Groq.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (easyInputMessage == null && message == null && itemReference == null && functionCall == null && functionCallOutput == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ResponseFunctionCall), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ResponseFunctionCall> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.ResponseFunctionCall).Name}");
                     functionCall = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -196,9 +209,13 @@ namespace Groq.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (easyInputMessage == null && message == null && itemReference == null && functionCall == null && functionCallOutput == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ResponseFunctionCallOutput), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ResponseFunctionCallOutput> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.ResponseFunctionCallOutput).Name}");
                     functionCallOutput = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

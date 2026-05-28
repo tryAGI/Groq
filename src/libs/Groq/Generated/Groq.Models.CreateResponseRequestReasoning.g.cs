@@ -44,5 +44,6 @@ namespace Groq
         public CreateResponseRequestReasoning()
         {
         }
+
     }
 }

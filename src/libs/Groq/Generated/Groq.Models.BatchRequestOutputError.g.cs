@@ -52,5 +52,6 @@ namespace Groq
         public BatchRequestOutputError()
         {
         }
+
     }
 }

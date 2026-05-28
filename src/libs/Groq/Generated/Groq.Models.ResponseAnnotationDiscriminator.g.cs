@@ -40,5 +40,6 @@ namespace Groq
         public ResponseAnnotationDiscriminator()
         {
         }
+
     }
 }

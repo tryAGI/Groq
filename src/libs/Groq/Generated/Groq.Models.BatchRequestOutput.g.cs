@@ -70,5 +70,6 @@ namespace Groq
         public BatchRequestOutput()
         {
         }
+
     }
 }

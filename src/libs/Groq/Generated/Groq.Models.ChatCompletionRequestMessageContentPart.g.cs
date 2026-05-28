@@ -42,6 +42,13 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
+        public global::Groq.ChatCompletionRequestMessageContentPartText PickTextContentPart() => IsTextContentPart
+            ? TextContentPart!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'TextContentPart' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Groq.ChatCompletionRequestMessageContentPartImage? ImageContentPart { get; init; }
 #else
@@ -72,6 +79,13 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
+        public global::Groq.ChatCompletionRequestMessageContentPartImage PickImageContentPart() => IsImageContentPart
+            ? ImageContentPart!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ImageContentPart' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Groq.ChatCompletionRequestMessageContentPartDocument? DocumentContentPart { get; init; }
 #else
@@ -98,6 +112,13 @@ namespace Groq
             value = DocumentContentPart;
             return IsDocumentContentPart;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Groq.ChatCompletionRequestMessageContentPartDocument PickDocumentContentPart() => IsDocumentContentPart
+            ? DocumentContentPart!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'DocumentContentPart' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -115,6 +136,11 @@ namespace Groq
         {
             TextContentPart = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ChatCompletionRequestMessageContentPart FromTextContentPart(global::Groq.ChatCompletionRequestMessageContentPartText? value) => new ChatCompletionRequestMessageContentPart(value);
 
         /// <summary>
         /// 
@@ -137,6 +163,11 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
+        public static ChatCompletionRequestMessageContentPart FromImageContentPart(global::Groq.ChatCompletionRequestMessageContentPartImage? value) => new ChatCompletionRequestMessageContentPart(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ChatCompletionRequestMessageContentPart(global::Groq.ChatCompletionRequestMessageContentPartDocument value) => new ChatCompletionRequestMessageContentPart((global::Groq.ChatCompletionRequestMessageContentPartDocument?)value);
 
         /// <summary>
@@ -151,6 +182,11 @@ namespace Groq
         {
             DocumentContentPart = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ChatCompletionRequestMessageContentPart FromDocumentContentPart(global::Groq.ChatCompletionRequestMessageContentPartDocument? value) => new ChatCompletionRequestMessageContentPart(value);
 
         /// <summary>
         /// 

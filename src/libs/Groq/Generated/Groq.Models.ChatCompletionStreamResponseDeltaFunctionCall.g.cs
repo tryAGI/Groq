@@ -55,5 +55,6 @@ namespace Groq
         public ChatCompletionStreamResponseDeltaFunctionCall()
         {
         }
+
     }
 }

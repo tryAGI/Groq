@@ -45,6 +45,13 @@ namespace Groq
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Groq.ResponseFileCitation PickFileCitation() => IsFileCitation
+            ? FileCitation!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'FileCitation' but the value was {ToString()}.");
+
+        /// <summary>
         /// A citation for a web resource.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -73,6 +80,13 @@ namespace Groq
             value = UrlCitation;
             return IsUrlCitation;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Groq.ResponseUrlCitation PickUrlCitation() => IsUrlCitation
+            ? UrlCitation!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'UrlCitation' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -94,6 +108,11 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
+        public static ResponseAnnotation FromFileCitation(global::Groq.ResponseFileCitation? value) => new ResponseAnnotation(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ResponseAnnotation(global::Groq.ResponseUrlCitation value) => new ResponseAnnotation((global::Groq.ResponseUrlCitation?)value);
 
         /// <summary>
@@ -108,6 +127,11 @@ namespace Groq
         {
             UrlCitation = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ResponseAnnotation FromUrlCitation(global::Groq.ResponseUrlCitation? value) => new ResponseAnnotation(value);
 
         /// <summary>
         /// 

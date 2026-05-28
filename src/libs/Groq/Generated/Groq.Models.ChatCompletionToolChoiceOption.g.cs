@@ -45,6 +45,13 @@ namespace Groq
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Groq.ChatCompletionToolChoiceOptionEnum PickEnum() => IsEnum
+            ? Enum!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Enum' but the value was {ToString()}.");
+
+        /// <summary>
         /// Specifies a tool the model should use. Use to force the model to call a specific function.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -73,6 +80,13 @@ namespace Groq
             value = Named;
             return IsNamed;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Groq.ChatCompletionNamedToolChoice PickNamed() => IsNamed
+            ? Named!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Named' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -94,6 +108,11 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
+        public static ChatCompletionToolChoiceOption FromEnum(global::Groq.ChatCompletionToolChoiceOptionEnum? value) => new ChatCompletionToolChoiceOption(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ChatCompletionToolChoiceOption(global::Groq.ChatCompletionNamedToolChoice value) => new ChatCompletionToolChoiceOption((global::Groq.ChatCompletionNamedToolChoice?)value);
 
         /// <summary>
@@ -108,6 +127,11 @@ namespace Groq
         {
             Named = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ChatCompletionToolChoiceOption FromNamed(global::Groq.ChatCompletionNamedToolChoice? value) => new ChatCompletionToolChoiceOption(value);
 
         /// <summary>
         /// 

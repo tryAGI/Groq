@@ -41,5 +41,6 @@ namespace Groq
         public CreateChatCompletionRequestCompoundCustomToolsWolframSettings()
         {
         }
+
     }
 }

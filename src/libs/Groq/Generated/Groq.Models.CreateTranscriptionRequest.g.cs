@@ -148,5 +148,6 @@ namespace Groq
         public CreateTranscriptionRequest()
         {
         }
+
     }
 }

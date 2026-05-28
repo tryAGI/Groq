@@ -82,5 +82,6 @@ namespace Groq
         public CreateChatCompletionResponseChoice()
         {
         }
+
     }
 }

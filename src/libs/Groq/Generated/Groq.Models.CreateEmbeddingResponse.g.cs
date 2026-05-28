@@ -78,5 +78,6 @@ namespace Groq
         public CreateEmbeddingResponse()
         {
         }
+
     }
 }

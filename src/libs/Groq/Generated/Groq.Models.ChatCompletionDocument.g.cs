@@ -54,5 +54,6 @@ namespace Groq
         public ChatCompletionDocument()
         {
         }
+
     }
 }

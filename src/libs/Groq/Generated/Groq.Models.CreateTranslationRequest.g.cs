@@ -119,5 +119,6 @@ namespace Groq
         public CreateTranslationRequest()
         {
         }
+
     }
 }
