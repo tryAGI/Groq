@@ -19,6 +19,18 @@ namespace Groq
         /// <summary>
         /// Creates an embedding vector representing the input text.
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Groq.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Groq.AutoSDKHttpResponse<global::Groq.CreateEmbeddingResponse>> CreateEmbeddingAsResponseAsync(
+
+            global::Groq.CreateEmbeddingRequest request,
+            global::Groq.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Creates an embedding vector representing the input text.
+        /// </summary>
         /// <param name="input">
         /// Input text to embed, encoded as a string or array of tokens. To embed multiple inputs in a single request, pass an array of strings or array of token arrays. The input must not exceed the max input tokens for the model, cannot be an empty string, and any array must be 2048 dimensions or less.<br/>
         /// Example: The quick brown fox jumped over the lazy dog

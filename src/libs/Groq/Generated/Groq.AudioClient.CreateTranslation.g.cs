@@ -54,6 +54,28 @@ namespace Groq
             global::Groq.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await CreateTranslationAsResponseAsync(
+
+                request: request,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Translates audio into English.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Groq.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Groq.AutoSDKHttpResponse<global::Groq.CreateTranslationResponseJson>> CreateTranslationAsResponseAsync(
+
+            global::Groq.CreateTranslationRequest request,
+            global::Groq.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
@@ -80,10 +102,11 @@ namespace Groq
             var __maxAttempts = global::Groq.AutoSDKRequestOptionsSupport.GetMaxAttempts(
                 clientOptions: Options,
                 requestOptions: requestOptions,
-                supportsRetry: true);
+                supportsRetry: false);
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::Groq.PathBuilder(
                                 path: "/openai/v1/audio/translations",
                                 baseUri: HttpClient.BaseAddress);
@@ -116,6 +139,7 @@ namespace Groq
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
+
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
                             if (request.File != default)
                             {
@@ -157,39 +181,47 @@ namespace Groq
                                 {
                                     __contentFile.Headers.ContentDisposition.FileNameStar = null;
                                 }
-                            } 
+
+                            }
                             if (request.Url != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent(request.Url ?? string.Empty),
                                     name: "\"url\"");
+
                             }
                             __httpRequestContent.Add(
                                 content: new global::System.Net.Http.StringContent(request.Model.ToString() ?? string.Empty),
                                 name: "\"model\"");
+
                             if (request.Prompt != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent(request.Prompt ?? string.Empty),
                                     name: "\"prompt\"");
-                            } 
+
+                            }
                             if (request.ResponseFormat != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent((request.ResponseFormat).HasValue ? (request.ResponseFormat).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"response_format\"");
-                            } 
+
+                            }
                             if (request.Temperature != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.Temperature, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
                                     name: "\"temperature\"");
+
                             }
+
                             __httpRequest.Content = __httpRequestContent;
+
                 global::Groq.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -231,6 +263,8 @@ namespace Groq
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -241,6 +275,11 @@ namespace Groq
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::Groq.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::Groq.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -258,6 +297,8 @@ namespace Groq
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -267,8 +308,7 @@ namespace Groq
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Groq.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -277,6 +317,11 @@ namespace Groq
                         __attempt < __maxAttempts &&
                         global::Groq.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::Groq.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::Groq.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Groq.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -293,14 +338,15 @@ namespace Groq
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Groq.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -340,6 +386,8 @@ namespace Groq
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -360,6 +408,554 @@ namespace Groq
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                }
+
+                            if (__effectiveReadResponseAsString)
+                            {
+                                var __content = await __response.Content.ReadAsStringAsync(
+                #if NET5_0_OR_GREATER
+                                    __effectiveCancellationToken
+                #endif
+                                ).ConfigureAwait(false);
+
+                                ProcessResponseContent(
+                                    client: HttpClient,
+                                    response: __response,
+                                    content: ref __content);
+                                ProcessCreateTranslationResponseContent(
+                                    httpClient: HttpClient,
+                                    httpResponseMessage: __response,
+                                    content: ref __content);
+
+                                try
+                                {
+                                    __response.EnsureSuccessStatusCode();
+
+                                    var __value = global::Groq.CreateTranslationResponseJson.FromJson(__content, JsonSerializerContext) ??
+                                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Groq.AutoSDKHttpResponse<global::Groq.CreateTranslationResponseJson>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Groq.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    throw new global::Groq.ApiException(
+                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        innerException: __ex,
+                                        statusCode: __response.StatusCode)
+                                    {
+                                        ResponseBody = __content,
+                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                            __response.Headers,
+                                            h => h.Key,
+                                            h => h.Value),
+                                    };
+                                }
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    __response.EnsureSuccessStatusCode();
+                                    using var __content = await __response.Content.ReadAsStreamAsync(
+                #if NET5_0_OR_GREATER
+                                        __effectiveCancellationToken
+                #endif
+                                    ).ConfigureAwait(false);
+
+                                    var __value = await global::Groq.CreateTranslationResponseJson.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Groq.AutoSDKHttpResponse<global::Groq.CreateTranslationResponseJson>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Groq.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    string? __content = null;
+                                    try
+                                    {
+                                        __content = await __response.Content.ReadAsStringAsync(
+                #if NET5_0_OR_GREATER
+                                            __effectiveCancellationToken
+                #endif
+                                        ).ConfigureAwait(false);
+                                    }
+                                    catch (global::System.Exception)
+                                    {
+                                    }
+
+                                    throw new global::Groq.ApiException(
+                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        innerException: __ex,
+                                        statusCode: __response.StatusCode)
+                                    {
+                                        ResponseBody = __content,
+                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                            __response.Headers,
+                                            h => h.Key,
+                                            h => h.Value),
+                                    };
+                                }
+                            }
+
+                }
+            }
+            finally
+            {
+                __httpRequest?.Dispose();
+            }
+        }
+        /// <summary>
+        /// Translates audio into English.
+        /// </summary>
+        /// <param name="file">
+        /// The audio file object (not file name) translate, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
+        /// </param>
+        /// <param name="filename">
+        /// The audio file object (not file name) translate, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
+        /// </param>
+        /// <param name="url">
+        /// The audio URL to translate/transcribe (supports Base64URL). Either file or url must be provided.<br/>
+        /// When using the Batch API only url is supported.
+        /// </param>
+        /// <param name="model">
+        /// ID of the model to use. `whisper-large-v3` and `whisper-large-v3-turbo` are currently available.<br/>
+        /// Example: whisper-large-v3-turbo
+        /// </param>
+        /// <param name="prompt">
+        /// An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should be in English.
+        /// </param>
+        /// <param name="responseFormat">
+        /// The format of the transcript output, in one of these options: `json`, `text`, or `verbose_json`.<br/>
+        /// Default Value: json
+        /// </param>
+        /// <param name="temperature">
+        /// The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.<br/>
+        /// Default Value: 0
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Groq.CreateTranslationResponseJson> CreateTranslationAsync(
+            global::Groq.AnyOf<string, global::Groq.CreateTranslationRequestModel?> model,
+            byte[]? file = default,
+            string? filename = default,
+            string? url = default,
+            string? prompt = default,
+            global::Groq.CreateTranslationRequestResponseFormat? responseFormat = default,
+            double? temperature = default,
+            global::Groq.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::Groq.CreateTranslationRequest
+            {
+                File = file,
+                Filename = filename,
+                Url = url,
+                Model = model,
+                Prompt = prompt,
+                ResponseFormat = responseFormat,
+                Temperature = temperature,
+            };
+
+            return await CreateTranslationAsync(
+                request: __request,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Translates audio into English.
+        /// </summary>
+        /// <param name="file">
+        /// The audio file object (not file name) translate, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
+        /// </param>
+        /// <param name="filename">
+        /// The audio file object (not file name) translate, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
+        /// </param>
+        /// <param name="url">
+        /// The audio URL to translate/transcribe (supports Base64URL). Either file or url must be provided.<br/>
+        /// When using the Batch API only url is supported.
+        /// </param>
+        /// <param name="model">
+        /// ID of the model to use. `whisper-large-v3` and `whisper-large-v3-turbo` are currently available.<br/>
+        /// Example: whisper-large-v3-turbo
+        /// </param>
+        /// <param name="prompt">
+        /// An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should be in English.
+        /// </param>
+        /// <param name="responseFormat">
+        /// The format of the transcript output, in one of these options: `json`, `text`, or `verbose_json`.<br/>
+        /// Default Value: json
+        /// </param>
+        /// <param name="temperature">
+        /// The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.<br/>
+        /// Default Value: 0
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Groq.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Groq.CreateTranslationResponseJson> CreateTranslationAsync(
+            global::Groq.AnyOf<string, global::Groq.CreateTranslationRequestModel?> model,
+            global::System.IO.Stream? file = default,
+            string? filename = default,
+            string? url = default,
+            string? prompt = default,
+            global::Groq.CreateTranslationRequestResponseFormat? responseFormat = default,
+            double? temperature = default,
+            global::Groq.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+
+            var request = new global::Groq.CreateTranslationRequest
+            {
+                File = global::System.Array.Empty<byte>(),
+                Filename = filename,
+                Url = url,
+                Model = model,
+                Prompt = prompt,
+                ResponseFormat = responseFormat,
+                Temperature = temperature,
+            };
+            PrepareArguments(
+                client: HttpClient);
+            PrepareCreateTranslationArguments(
+                httpClient: HttpClient,
+                request: request);
+
+
+            var __authorizations = global::Groq.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_CreateTranslationSecurityRequirements,
+                operationName: "CreateTranslationAsync");
+
+            using var __timeoutCancellationTokenSource = global::Groq.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
+                clientOptions: Options,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken);
+            var __effectiveCancellationToken = __timeoutCancellationTokenSource?.Token ?? cancellationToken;
+            var __effectiveReadResponseAsString = global::Groq.AutoSDKRequestOptionsSupport.GetReadResponseAsString(
+                clientOptions: Options,
+                requestOptions: requestOptions,
+                fallbackValue: ReadResponseAsString);
+            var __maxAttempts = global::Groq.AutoSDKRequestOptionsSupport.GetMaxAttempts(
+                clientOptions: Options,
+                requestOptions: requestOptions,
+                supportsRetry: false);
+
+            global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
+            {
+
+                            var __pathBuilder = new global::Groq.PathBuilder(
+                                path: "/openai/v1/audio/translations",
+                                baseUri: HttpClient.BaseAddress);
+                            var __path = __pathBuilder.ToString();
+                __path = global::Groq.AutoSDKRequestOptionsSupport.AppendQueryParameters(
+                    path: __path,
+                    clientParameters: Options.QueryParameters,
+                    requestParameters: requestOptions?.QueryParameters);
+                var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
+                    method: global::System.Net.Http.HttpMethod.Post,
+                    requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
+#if NET6_0_OR_GREATER
+                __httpRequest.Version = global::System.Net.HttpVersion.Version11;
+                __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
+#endif
+
+            foreach (var __authorization in __authorizations)
+            {
+                if (__authorization.Type == "Http" ||
+                    __authorization.Type == "OAuth2" ||
+                    __authorization.Type == "OpenIdConnect")
+                {
+                    __httpRequest.Headers.Authorization = new global::System.Net.Http.Headers.AuthenticationHeaderValue(
+                        scheme: __authorization.Name,
+                        parameter: __authorization.Value);
+                }
+                else if (__authorization.Type == "ApiKey" &&
+                         __authorization.Location == "Header")
+                {
+                    __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
+                } 
+            }
+
+                            var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
+                            if (file != default)
+                            {
+
+                                var __contentFile = new global::System.Net.Http.StreamContent(file);
+                                __contentFile.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
+                                    request.Filename is null
+                                        ? "application/octet-stream"
+                                        : (global::System.IO.Path.GetExtension(request.Filename) ?? string.Empty).ToLowerInvariant() switch
+                                        {
+                                            ".aac" => "audio/aac",
+                                            ".flac" => "audio/flac",
+                                            ".gif" => "image/gif",
+                                            ".jpeg" => "image/jpeg",
+                                            ".jpg" => "image/jpeg",
+                                            ".json" => "application/json",
+                                            ".m4a" => "audio/mp4",
+                                            ".mp3" => "audio/mpeg",
+                                            ".mp4" => "video/mp4",
+                                            ".mpeg" => "audio/mpeg",
+                                            ".mpga" => "audio/mpeg",
+                                            ".oga" => "audio/ogg",
+                                            ".ogg" => "audio/ogg",
+                                            ".opus" => "audio/ogg",
+                                            ".pdf" => "application/pdf",
+                                            ".png" => "image/png",
+                                            ".txt" => "text/plain",
+                                            ".wav" => "audio/wav",
+                                            ".weba" => "audio/webm",
+                                            ".webm" => "video/webm",
+                                            ".webp" => "image/webp",
+                                            _ => "application/octet-stream",
+                                        });
+                                __httpRequestContent.Add(
+                                    content: __contentFile,
+                                    name: "\"file\"",
+                                    fileName: request.Filename != null ? $"\"{request.Filename}\"" : string.Empty);
+                                if (__contentFile.Headers.ContentDisposition != null)
+                                {
+                                    __contentFile.Headers.ContentDisposition.FileNameStar = null;
+                                }
+
+                            }
+                            if (request.Url != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(request.Url ?? string.Empty),
+                                    name: "\"url\"");
+
+                            }
+                            __httpRequestContent.Add(
+                                content: new global::System.Net.Http.StringContent(request.Model.ToString() ?? string.Empty),
+                                name: "\"model\"");
+
+                            if (request.Prompt != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(request.Prompt ?? string.Empty),
+                                    name: "\"prompt\"");
+
+                            }
+                            if (request.ResponseFormat != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent((request.ResponseFormat).HasValue ? (request.ResponseFormat).GetValueOrDefault().ToValueString() : string.Empty),
+                                    name: "\"response_format\"");
+
+                            }
+                            if (request.Temperature != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.Temperature, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
+                                    name: "\"temperature\"");
+
+                            }
+
+                            __httpRequest.Content = __httpRequestContent;
+
+                global::Groq.AutoSDKRequestOptionsSupport.ApplyHeaders(
+                    request: __httpRequest,
+                    clientHeaders: Options.Headers,
+                    requestHeaders: requestOptions?.Headers);
+
+                PrepareRequest(
+                    client: HttpClient,
+                    request: __httpRequest);
+                PrepareCreateTranslationRequest(
+                    httpClient: HttpClient,
+                    httpRequestMessage: __httpRequest,
+                    request: request);
+
+                return __httpRequest;
+            }
+
+            global::System.Net.Http.HttpRequestMessage? __httpRequest = null;
+            global::System.Net.Http.HttpResponseMessage? __response = null;
+            var __attemptNumber = 0;
+            try
+            {
+                for (var __attempt = 1; __attempt <= __maxAttempts; __attempt++)
+                {
+                    __attemptNumber = __attempt;
+                    __httpRequest = __CreateHttpRequest();
+                    await global::Groq.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
+                            clientOptions: Options,
+                            context: global::Groq.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "CreateTranslation",
+                                methodName: "CreateTranslationAsync",
+                                pathTemplate: "\"/openai/v1/audio/translations\"",
+                                httpMethod: "POST",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: null,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attempt,
+                                maxAttempts: __maxAttempts,
+                                willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                    try
+                    {
+                        __response = await HttpClient.SendAsync(
+                request: __httpRequest,
+                completionOption: global::System.Net.Http.HttpCompletionOption.ResponseContentRead,
+                cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
+                    }
+                    catch (global::System.Net.Http.HttpRequestException __exception)
+                    {
+                        var __retryDelay = global::Groq.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
+                        var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
+                        await global::Groq.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
+                            clientOptions: Options,
+                            context: global::Groq.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "CreateTranslation",
+                                methodName: "CreateTranslationAsync",
+                                pathTemplate: "\"/openai/v1/audio/translations\"",
+                                httpMethod: "POST",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: null,
+                                exception: __exception,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attempt,
+                                maxAttempts: __maxAttempts,
+                                willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                        if (!__willRetry)
+                        {
+                            throw;
+                        }
+
+                        __httpRequest.Dispose();
+                        __httpRequest = null;
+                        await global::Groq.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
+                            retryDelay: __retryDelay,
+                            cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
+                        continue;
+                    }
+
+                    if (__response != null &&
+                        __attempt < __maxAttempts &&
+                        global::Groq.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
+                    {
+                        var __retryDelay = global::Groq.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
+                        await global::Groq.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
+                            clientOptions: Options,
+                            context: global::Groq.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "CreateTranslation",
+                                methodName: "CreateTranslationAsync",
+                                pathTemplate: "\"/openai/v1/audio/translations\"",
+                                httpMethod: "POST",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: __response,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attempt,
+                                maxAttempts: __maxAttempts,
+                                willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                        __response.Dispose();
+                        __response = null;
+                        __httpRequest.Dispose();
+                        __httpRequest = null;
+                        await global::Groq.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
+                            retryDelay: __retryDelay,
+                            cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
+                        continue;
+                    }
+
+                    break;
+                }
+
+                if (__response == null)
+                {
+                    throw new global::System.InvalidOperationException("No response received.");
+                }
+
+                using (__response)
+                {
+
+                ProcessResponse(
+                    client: HttpClient,
+                    response: __response);
+                ProcessCreateTranslationResponse(
+                    httpClient: HttpClient,
+                    httpResponseMessage: __response);
+                if (__response.IsSuccessStatusCode)
+                {
+                    await global::Groq.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
+                            clientOptions: Options,
+                            context: global::Groq.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "CreateTranslation",
+                                methodName: "CreateTranslationAsync",
+                                pathTemplate: "\"/openai/v1/audio/translations\"",
+                                httpMethod: "POST",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: __response,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attemptNumber,
+                                maxAttempts: __maxAttempts,
+                                willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                }
+                else
+                {
+                    await global::Groq.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
+                            clientOptions: Options,
+                            context: global::Groq.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "CreateTranslation",
+                                methodName: "CreateTranslationAsync",
+                                pathTemplate: "\"/openai/v1/audio/translations\"",
+                                httpMethod: "POST",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: __response,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attemptNumber,
+                                maxAttempts: __maxAttempts,
+                                willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
 
@@ -484,10 +1080,10 @@ namespace Groq
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Groq.CreateTranslationResponseJson> CreateTranslationAsync(
+        /// <exception cref="global::Groq.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Groq.AutoSDKHttpResponse<global::Groq.CreateTranslationResponseJson>> CreateTranslationAsResponseAsync(
             global::Groq.AnyOf<string, global::Groq.CreateTranslationRequestModel?> model,
-            byte[]? file = default,
+            global::System.IO.Stream? file = default,
             string? filename = default,
             string? url = default,
             string? prompt = default,
@@ -496,9 +1092,10 @@ namespace Groq
             global::Groq.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Groq.CreateTranslationRequest
+
+            var request = new global::Groq.CreateTranslationRequest
             {
-                File = file,
+                File = global::System.Array.Empty<byte>(),
                 Filename = filename,
                 Url = url,
                 Model = model,
@@ -506,11 +1103,439 @@ namespace Groq
                 ResponseFormat = responseFormat,
                 Temperature = temperature,
             };
+            PrepareArguments(
+                client: HttpClient);
+            PrepareCreateTranslationArguments(
+                httpClient: HttpClient,
+                request: request);
 
-            return await CreateTranslationAsync(
-                request: __request,
+
+            var __authorizations = global::Groq.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_CreateTranslationSecurityRequirements,
+                operationName: "CreateTranslationAsync");
+
+            using var __timeoutCancellationTokenSource = global::Groq.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
+                clientOptions: Options,
                 requestOptions: requestOptions,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
+                cancellationToken: cancellationToken);
+            var __effectiveCancellationToken = __timeoutCancellationTokenSource?.Token ?? cancellationToken;
+            var __effectiveReadResponseAsString = global::Groq.AutoSDKRequestOptionsSupport.GetReadResponseAsString(
+                clientOptions: Options,
+                requestOptions: requestOptions,
+                fallbackValue: ReadResponseAsString);
+            var __maxAttempts = global::Groq.AutoSDKRequestOptionsSupport.GetMaxAttempts(
+                clientOptions: Options,
+                requestOptions: requestOptions,
+                supportsRetry: false);
+
+            global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
+            {
+
+                            var __pathBuilder = new global::Groq.PathBuilder(
+                                path: "/openai/v1/audio/translations",
+                                baseUri: HttpClient.BaseAddress);
+                            var __path = __pathBuilder.ToString();
+                __path = global::Groq.AutoSDKRequestOptionsSupport.AppendQueryParameters(
+                    path: __path,
+                    clientParameters: Options.QueryParameters,
+                    requestParameters: requestOptions?.QueryParameters);
+                var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
+                    method: global::System.Net.Http.HttpMethod.Post,
+                    requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
+#if NET6_0_OR_GREATER
+                __httpRequest.Version = global::System.Net.HttpVersion.Version11;
+                __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
+#endif
+
+            foreach (var __authorization in __authorizations)
+            {
+                if (__authorization.Type == "Http" ||
+                    __authorization.Type == "OAuth2" ||
+                    __authorization.Type == "OpenIdConnect")
+                {
+                    __httpRequest.Headers.Authorization = new global::System.Net.Http.Headers.AuthenticationHeaderValue(
+                        scheme: __authorization.Name,
+                        parameter: __authorization.Value);
+                }
+                else if (__authorization.Type == "ApiKey" &&
+                         __authorization.Location == "Header")
+                {
+                    __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
+                } 
+            }
+
+                            var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
+                            if (file != default)
+                            {
+
+                                var __contentFile = new global::System.Net.Http.StreamContent(file);
+                                __contentFile.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
+                                    request.Filename is null
+                                        ? "application/octet-stream"
+                                        : (global::System.IO.Path.GetExtension(request.Filename) ?? string.Empty).ToLowerInvariant() switch
+                                        {
+                                            ".aac" => "audio/aac",
+                                            ".flac" => "audio/flac",
+                                            ".gif" => "image/gif",
+                                            ".jpeg" => "image/jpeg",
+                                            ".jpg" => "image/jpeg",
+                                            ".json" => "application/json",
+                                            ".m4a" => "audio/mp4",
+                                            ".mp3" => "audio/mpeg",
+                                            ".mp4" => "video/mp4",
+                                            ".mpeg" => "audio/mpeg",
+                                            ".mpga" => "audio/mpeg",
+                                            ".oga" => "audio/ogg",
+                                            ".ogg" => "audio/ogg",
+                                            ".opus" => "audio/ogg",
+                                            ".pdf" => "application/pdf",
+                                            ".png" => "image/png",
+                                            ".txt" => "text/plain",
+                                            ".wav" => "audio/wav",
+                                            ".weba" => "audio/webm",
+                                            ".webm" => "video/webm",
+                                            ".webp" => "image/webp",
+                                            _ => "application/octet-stream",
+                                        });
+                                __httpRequestContent.Add(
+                                    content: __contentFile,
+                                    name: "\"file\"",
+                                    fileName: request.Filename != null ? $"\"{request.Filename}\"" : string.Empty);
+                                if (__contentFile.Headers.ContentDisposition != null)
+                                {
+                                    __contentFile.Headers.ContentDisposition.FileNameStar = null;
+                                }
+
+                            }
+                            if (request.Url != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(request.Url ?? string.Empty),
+                                    name: "\"url\"");
+
+                            }
+                            __httpRequestContent.Add(
+                                content: new global::System.Net.Http.StringContent(request.Model.ToString() ?? string.Empty),
+                                name: "\"model\"");
+
+                            if (request.Prompt != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(request.Prompt ?? string.Empty),
+                                    name: "\"prompt\"");
+
+                            }
+                            if (request.ResponseFormat != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent((request.ResponseFormat).HasValue ? (request.ResponseFormat).GetValueOrDefault().ToValueString() : string.Empty),
+                                    name: "\"response_format\"");
+
+                            }
+                            if (request.Temperature != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.Temperature, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
+                                    name: "\"temperature\"");
+
+                            }
+
+                            __httpRequest.Content = __httpRequestContent;
+
+                global::Groq.AutoSDKRequestOptionsSupport.ApplyHeaders(
+                    request: __httpRequest,
+                    clientHeaders: Options.Headers,
+                    requestHeaders: requestOptions?.Headers);
+
+                PrepareRequest(
+                    client: HttpClient,
+                    request: __httpRequest);
+                PrepareCreateTranslationRequest(
+                    httpClient: HttpClient,
+                    httpRequestMessage: __httpRequest,
+                    request: request);
+
+                return __httpRequest;
+            }
+
+            global::System.Net.Http.HttpRequestMessage? __httpRequest = null;
+            global::System.Net.Http.HttpResponseMessage? __response = null;
+            var __attemptNumber = 0;
+            try
+            {
+                for (var __attempt = 1; __attempt <= __maxAttempts; __attempt++)
+                {
+                    __attemptNumber = __attempt;
+                    __httpRequest = __CreateHttpRequest();
+                    await global::Groq.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
+                            clientOptions: Options,
+                            context: global::Groq.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "CreateTranslation",
+                                methodName: "CreateTranslationAsync",
+                                pathTemplate: "\"/openai/v1/audio/translations\"",
+                                httpMethod: "POST",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: null,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attempt,
+                                maxAttempts: __maxAttempts,
+                                willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                    try
+                    {
+                        __response = await HttpClient.SendAsync(
+                request: __httpRequest,
+                completionOption: global::System.Net.Http.HttpCompletionOption.ResponseContentRead,
+                cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
+                    }
+                    catch (global::System.Net.Http.HttpRequestException __exception)
+                    {
+                        var __retryDelay = global::Groq.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
+                        var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
+                        await global::Groq.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
+                            clientOptions: Options,
+                            context: global::Groq.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "CreateTranslation",
+                                methodName: "CreateTranslationAsync",
+                                pathTemplate: "\"/openai/v1/audio/translations\"",
+                                httpMethod: "POST",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: null,
+                                exception: __exception,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attempt,
+                                maxAttempts: __maxAttempts,
+                                willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                        if (!__willRetry)
+                        {
+                            throw;
+                        }
+
+                        __httpRequest.Dispose();
+                        __httpRequest = null;
+                        await global::Groq.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
+                            retryDelay: __retryDelay,
+                            cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
+                        continue;
+                    }
+
+                    if (__response != null &&
+                        __attempt < __maxAttempts &&
+                        global::Groq.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
+                    {
+                        var __retryDelay = global::Groq.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
+                        await global::Groq.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
+                            clientOptions: Options,
+                            context: global::Groq.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "CreateTranslation",
+                                methodName: "CreateTranslationAsync",
+                                pathTemplate: "\"/openai/v1/audio/translations\"",
+                                httpMethod: "POST",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: __response,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attempt,
+                                maxAttempts: __maxAttempts,
+                                willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                        __response.Dispose();
+                        __response = null;
+                        __httpRequest.Dispose();
+                        __httpRequest = null;
+                        await global::Groq.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
+                            retryDelay: __retryDelay,
+                            cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
+                        continue;
+                    }
+
+                    break;
+                }
+
+                if (__response == null)
+                {
+                    throw new global::System.InvalidOperationException("No response received.");
+                }
+
+                using (__response)
+                {
+
+                ProcessResponse(
+                    client: HttpClient,
+                    response: __response);
+                ProcessCreateTranslationResponse(
+                    httpClient: HttpClient,
+                    httpResponseMessage: __response);
+                if (__response.IsSuccessStatusCode)
+                {
+                    await global::Groq.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
+                            clientOptions: Options,
+                            context: global::Groq.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "CreateTranslation",
+                                methodName: "CreateTranslationAsync",
+                                pathTemplate: "\"/openai/v1/audio/translations\"",
+                                httpMethod: "POST",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: __response,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attemptNumber,
+                                maxAttempts: __maxAttempts,
+                                willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                }
+                else
+                {
+                    await global::Groq.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
+                            clientOptions: Options,
+                            context: global::Groq.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "CreateTranslation",
+                                methodName: "CreateTranslationAsync",
+                                pathTemplate: "\"/openai/v1/audio/translations\"",
+                                httpMethod: "POST",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: __response,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attemptNumber,
+                                maxAttempts: __maxAttempts,
+                                willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                }
+
+                            if (__effectiveReadResponseAsString)
+                            {
+                                var __content = await __response.Content.ReadAsStringAsync(
+                #if NET5_0_OR_GREATER
+                                    __effectiveCancellationToken
+                #endif
+                                ).ConfigureAwait(false);
+
+                                ProcessResponseContent(
+                                    client: HttpClient,
+                                    response: __response,
+                                    content: ref __content);
+                                ProcessCreateTranslationResponseContent(
+                                    httpClient: HttpClient,
+                                    httpResponseMessage: __response,
+                                    content: ref __content);
+
+                                try
+                                {
+                                    __response.EnsureSuccessStatusCode();
+
+                                    var __value = global::Groq.CreateTranslationResponseJson.FromJson(__content, JsonSerializerContext) ??
+                                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Groq.AutoSDKHttpResponse<global::Groq.CreateTranslationResponseJson>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Groq.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    throw new global::Groq.ApiException(
+                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        innerException: __ex,
+                                        statusCode: __response.StatusCode)
+                                    {
+                                        ResponseBody = __content,
+                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                            __response.Headers,
+                                            h => h.Key,
+                                            h => h.Value),
+                                    };
+                                }
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    __response.EnsureSuccessStatusCode();
+                                    using var __content = await __response.Content.ReadAsStreamAsync(
+                #if NET5_0_OR_GREATER
+                                        __effectiveCancellationToken
+                #endif
+                                    ).ConfigureAwait(false);
+
+                                    var __value = await global::Groq.CreateTranslationResponseJson.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Groq.AutoSDKHttpResponse<global::Groq.CreateTranslationResponseJson>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Groq.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    string? __content = null;
+                                    try
+                                    {
+                                        __content = await __response.Content.ReadAsStringAsync(
+                #if NET5_0_OR_GREATER
+                                            __effectiveCancellationToken
+                #endif
+                                        ).ConfigureAwait(false);
+                                    }
+                                    catch (global::System.Exception)
+                                    {
+                                    }
+
+                                    throw new global::Groq.ApiException(
+                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        innerException: __ex,
+                                        statusCode: __response.StatusCode)
+                                    {
+                                        ResponseBody = __content,
+                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                            __response.Headers,
+                                            h => h.Key,
+                                            h => h.Value),
+                                    };
+                                }
+                            }
+
+                }
+            }
+            finally
+            {
+                __httpRequest?.Dispose();
+            }
         }
     }
 }

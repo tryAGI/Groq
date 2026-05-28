@@ -29,6 +29,19 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickTextContentPart(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Groq.ChatCompletionRequestMessageContentPartText? value)
+        {
+            value = TextContentPart;
+            return IsTextContentPart;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Groq.ChatCompletionRequestMessageContentPartImage? ImageContentPart { get; init; }
 #else
@@ -46,6 +59,19 @@ namespace Groq
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickImageContentPart(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Groq.ChatCompletionRequestMessageContentPartImage? value)
+        {
+            value = ImageContentPart;
+            return IsImageContentPart;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Groq.ChatCompletionRequestMessageContentPartDocument? DocumentContentPart { get; init; }
 #else
@@ -59,6 +85,19 @@ namespace Groq
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(DocumentContentPart))]
 #endif
         public bool IsDocumentContentPart => DocumentContentPart != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickDocumentContentPart(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Groq.ChatCompletionRequestMessageContentPartDocument? value)
+        {
+            value = DocumentContentPart;
+            return IsDocumentContentPart;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -157,9 +196,9 @@ namespace Groq
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Groq.ChatCompletionRequestMessageContentPartText?, TResult>? textContentPart = null,
-            global::System.Func<global::Groq.ChatCompletionRequestMessageContentPartImage?, TResult>? imageContentPart = null,
-            global::System.Func<global::Groq.ChatCompletionRequestMessageContentPartDocument?, TResult>? documentContentPart = null,
+            global::System.Func<global::Groq.ChatCompletionRequestMessageContentPartText, TResult>? textContentPart = null,
+            global::System.Func<global::Groq.ChatCompletionRequestMessageContentPartImage, TResult>? imageContentPart = null,
+            global::System.Func<global::Groq.ChatCompletionRequestMessageContentPartDocument, TResult>? documentContentPart = null,
             bool validate = true)
         {
             if (validate)
@@ -187,9 +226,39 @@ namespace Groq
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Groq.ChatCompletionRequestMessageContentPartText?>? textContentPart = null,
-            global::System.Action<global::Groq.ChatCompletionRequestMessageContentPartImage?>? imageContentPart = null,
-            global::System.Action<global::Groq.ChatCompletionRequestMessageContentPartDocument?>? documentContentPart = null,
+            global::System.Action<global::Groq.ChatCompletionRequestMessageContentPartText>? textContentPart = null,
+
+            global::System.Action<global::Groq.ChatCompletionRequestMessageContentPartImage>? imageContentPart = null,
+
+            global::System.Action<global::Groq.ChatCompletionRequestMessageContentPartDocument>? documentContentPart = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsTextContentPart)
+            {
+                textContentPart?.Invoke(TextContentPart!);
+            }
+            else if (IsImageContentPart)
+            {
+                imageContentPart?.Invoke(ImageContentPart!);
+            }
+            else if (IsDocumentContentPart)
+            {
+                documentContentPart?.Invoke(DocumentContentPart!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Groq.ChatCompletionRequestMessageContentPartText>? textContentPart = null,
+            global::System.Action<global::Groq.ChatCompletionRequestMessageContentPartImage>? imageContentPart = null,
+            global::System.Action<global::Groq.ChatCompletionRequestMessageContentPartDocument>? documentContentPart = null,
             bool validate = true)
         {
             if (validate)

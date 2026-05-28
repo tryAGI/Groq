@@ -29,4 +29,5 @@ autosdk generate openapi.yaml \
   --clientClassName GroqClient \
   --targetFramework net10.0 \
   --output Generated \
+  --auth-env-var GROQ_API_KEY \
   --exclude-deprecated-operations

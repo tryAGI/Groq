@@ -32,6 +32,19 @@ namespace Groq
         public bool IsText => Text != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickText(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Groq.ChatCompletionDocumentSourceText? value)
+        {
+            value = Text;
+            return IsText;
+        }
+
+        /// <summary>
         /// A document whose contents are provided inline as JSON data.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -47,6 +60,19 @@ namespace Groq
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Json))]
 #endif
         public bool IsJson => Json != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickJson(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Groq.ChatCompletionDocumentSourceJSON? value)
+        {
+            value = Json;
+            return IsJson;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -126,8 +152,8 @@ namespace Groq
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Groq.ChatCompletionDocumentSourceText?, TResult>? text = null,
-            global::System.Func<global::Groq.ChatCompletionDocumentSourceJSON?, TResult>? json = null,
+            global::System.Func<global::Groq.ChatCompletionDocumentSourceText, TResult>? text = null,
+            global::System.Func<global::Groq.ChatCompletionDocumentSourceJSON, TResult>? json = null,
             bool validate = true)
         {
             if (validate)
@@ -151,8 +177,32 @@ namespace Groq
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Groq.ChatCompletionDocumentSourceText?>? text = null,
-            global::System.Action<global::Groq.ChatCompletionDocumentSourceJSON?>? json = null,
+            global::System.Action<global::Groq.ChatCompletionDocumentSourceText>? text = null,
+
+            global::System.Action<global::Groq.ChatCompletionDocumentSourceJSON>? json = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsText)
+            {
+                text?.Invoke(Text!);
+            }
+            else if (IsJson)
+            {
+                json?.Invoke(Json!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Groq.ChatCompletionDocumentSourceText>? text = null,
+            global::System.Action<global::Groq.ChatCompletionDocumentSourceJSON>? json = null,
             bool validate = true)
         {
             if (validate)
