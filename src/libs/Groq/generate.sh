@@ -1,6 +1,18 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+install_autosdk_cli() {
+  dotnet tool update --global autosdk.cli --prerelease >/dev/null 2>&1 || \
+    dotnet tool install --global autosdk.cli --prerelease
+}
+
+fetch_spec() {
+  curl "$@" \
+    --fail --silent --show-error --location \
+    --retry 5 --retry-delay 10 --retry-all-errors \
+    --connect-timeout 30 --max-time 300
+}
+
 # OpenAPI spec: resolved from groq/groq-python/.stats.yml (Stainless-hosted)
 
 # Groq spec is hosted on Stainless GCS with hash-based URLs that change each update.
@@ -8,7 +20,7 @@ set -euo pipefail
 readonly stats_url="https://raw.githubusercontent.com/groq/groq-python/main/.stats.yml"
 
 echo "Fetching latest spec URL from .stats.yml..."
-openapi_url=$(curl --fail --silent --show-error --location "$stats_url" | grep 'openapi_spec_url:' | sed 's/openapi_spec_url: *//')
+openapi_url=$(fetch_spec --fail --silent --show-error --location "$stats_url" | grep 'openapi_spec_url:' | sed 's/openapi_spec_url: *//')
 
 if [ -z "$openapi_url" ]; then
   echo "ERROR: Could not extract openapi_spec_url from .stats.yml"
@@ -16,10 +28,9 @@ if [ -z "$openapi_url" ]; then
 fi
 
 echo "Spec URL: $openapi_url"
-
-dotnet tool install --global autosdk.cli --prerelease
+install_autosdk_cli
 rm -rf Generated
-curl --fail --silent --show-error --location "$openapi_url" -o openapi.yaml
+fetch_spec --fail --silent --show-error --location "$openapi_url" -o openapi.yaml
 
 # Note: The Groq spec already uses standard HTTP bearer auth and top-level security,
 # so no FixOpenApiSpec step is needed.
