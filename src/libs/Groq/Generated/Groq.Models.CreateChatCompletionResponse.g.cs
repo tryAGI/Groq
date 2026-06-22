@@ -58,7 +58,7 @@ namespace Groq
         public global::Groq.CompletionUsage? Usage { get; set; }
 
         /// <summary>
-        /// Usage statistics for compound AI completion requests.
+        /// Detailed usage breakdown by model when multiple models are used in the request for compound AI systems.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usage_breakdown")]
         public global::Groq.ChatCompletionUsageBreakdown? UsageBreakdown { get; set; }
@@ -114,7 +114,7 @@ namespace Groq
         /// Usage statistics for the completion request.
         /// </param>
         /// <param name="usageBreakdown">
-        /// Usage statistics for compound AI completion requests.
+        /// Detailed usage breakdown by model when multiple models are used in the request for compound AI systems.
         /// </param>
         /// <param name="serviceTier">
         /// The service tier used for the request.

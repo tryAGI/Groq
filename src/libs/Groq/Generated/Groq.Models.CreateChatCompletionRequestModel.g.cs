@@ -56,6 +56,10 @@ namespace Groq
         /// 
         /// </summary>
         QwenQwen332b,
+        /// <summary>
+        /// 
+        /// </summary>
+        QwenQwen3627b,
     }
 
     /// <summary>
@@ -82,6 +86,7 @@ namespace Groq
                 CreateChatCompletionRequestModel.OpenaiGptOss120b => "openai/gpt-oss-120b",
                 CreateChatCompletionRequestModel.OpenaiGptOss20b => "openai/gpt-oss-20b",
                 CreateChatCompletionRequestModel.QwenQwen332b => "qwen/qwen3-32b",
+                CreateChatCompletionRequestModel.QwenQwen3627b => "qwen/qwen3.6-27b",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -104,6 +109,7 @@ namespace Groq
                 "openai/gpt-oss-120b" => CreateChatCompletionRequestModel.OpenaiGptOss120b,
                 "openai/gpt-oss-20b" => CreateChatCompletionRequestModel.OpenaiGptOss20b,
                 "qwen/qwen3-32b" => CreateChatCompletionRequestModel.QwenQwen332b,
+                "qwen/qwen3.6-27b" => CreateChatCompletionRequestModel.QwenQwen3627b,
                 _ => null,
             };
         }
