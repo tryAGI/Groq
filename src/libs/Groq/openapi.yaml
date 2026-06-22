@@ -3182,6 +3182,7 @@ components:
                 - openai/gpt-oss-120b
                 - openai/gpt-oss-20b
                 - qwen/qwen3-32b
+                - qwen/qwen3.6-27b
         disable_tool_validation:
           type: boolean
           default: false
@@ -3718,10 +3719,11 @@ components:
         usage:
           $ref: '#/components/schemas/CompletionUsage'
         usage_breakdown:
-          $ref: '#/components/schemas/ChatCompletionUsageBreakdown'
           description: >-
             Detailed usage breakdown by model when multiple models are used in the request for compound AI
             systems.
+          allOf:
+            - $ref: '#/components/schemas/ChatCompletionUsageBreakdown'
         service_tier:
           type: string
           nullable: true
