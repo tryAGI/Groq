@@ -7,7 +7,7 @@ namespace Groq
     {
 
 
-        private static readonly global::Groq.EndPointSecurityRequirement s_CreateTranslationSecurityRequirement0 =
+        private static readonly global::Groq.EndPointSecurityRequirement s_CreateTranslationAsTextSecurityRequirement0 =
             new global::Groq.EndPointSecurityRequirement
             {
                 Authorizations = new global::Groq.EndPointAuthorizationRequirement[]
@@ -21,22 +21,22 @@ namespace Groq
                     },
                 },
             };
-        private static readonly global::Groq.EndPointSecurityRequirement[] s_CreateTranslationSecurityRequirements =
+        private static readonly global::Groq.EndPointSecurityRequirement[] s_CreateTranslationAsTextSecurityRequirements =
             new global::Groq.EndPointSecurityRequirement[]
-            {                s_CreateTranslationSecurityRequirement0,
+            {                s_CreateTranslationAsTextSecurityRequirement0,
             };
-        partial void PrepareCreateTranslationArguments(
+        partial void PrepareCreateTranslationAsTextArguments(
             global::System.Net.Http.HttpClient httpClient,
             global::Groq.CreateTranslationRequest request);
-        partial void PrepareCreateTranslationRequest(
+        partial void PrepareCreateTranslationAsTextRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             global::Groq.CreateTranslationRequest request);
-        partial void ProcessCreateTranslationResponse(
+        partial void ProcessCreateTranslationAsTextResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCreateTranslationResponseContent(
+        partial void ProcessCreateTranslationAsTextResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
@@ -48,13 +48,13 @@ namespace Groq
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Groq.CreateTranslationResponseJson> CreateTranslationAsync(
+        public async global::System.Threading.Tasks.Task<string> CreateTranslationAsTextAsync(
 
             global::Groq.CreateTranslationRequest request,
             global::Groq.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await CreateTranslationAsResponseAsync(
+            var __response = await CreateTranslationAsTextAsResponseAsync(
 
                 request: request,
                 requestOptions: requestOptions,
@@ -70,7 +70,7 @@ namespace Groq
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Groq.AutoSDKHttpResponse<global::Groq.CreateTranslationResponseJson>> CreateTranslationAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Groq.AutoSDKHttpResponse<string>> CreateTranslationAsTextAsResponseAsync(
 
             global::Groq.CreateTranslationRequest request,
             global::Groq.AutoSDKRequestOptions? requestOptions = default,
@@ -80,15 +80,15 @@ namespace Groq
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareCreateTranslationArguments(
+            PrepareCreateTranslationAsTextArguments(
                 httpClient: HttpClient,
                 request: request);
 
 
             var __authorizations = global::Groq.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CreateTranslationSecurityRequirements,
-                operationName: "CreateTranslationAsync");
+                securityRequirements: s_CreateTranslationAsTextSecurityRequirements,
+                operationName: "CreateTranslationAsTextAsync");
 
             using var __timeoutCancellationTokenSource = global::Groq.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -125,7 +125,7 @@ namespace Groq
 
                 __httpRequest.Headers.TryAddWithoutValidation(
                     "Accept",
-                    "application/json");
+                    "text/plain");
 
             foreach (var __authorization in __authorizations)
             {
@@ -234,7 +234,7 @@ namespace Groq
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCreateTranslationRequest(
+                PrepareCreateTranslationAsTextRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     request: request);
@@ -254,8 +254,8 @@ namespace Groq
                     await global::Groq.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Groq.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "CreateTranslation",
-                                methodName: "CreateTranslationAsync",
+                                operationId: "CreateTranslationAsText",
+                                methodName: "CreateTranslationAsTextAsync",
                                 pathTemplate: "\"/openai/v1/audio/translations\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
@@ -288,8 +288,8 @@ namespace Groq
                         await global::Groq.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Groq.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "CreateTranslation",
-                                methodName: "CreateTranslationAsync",
+                                operationId: "CreateTranslationAsText",
+                                methodName: "CreateTranslationAsTextAsync",
                                 pathTemplate: "\"/openai/v1/audio/translations\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
@@ -329,8 +329,8 @@ namespace Groq
                         await global::Groq.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Groq.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "CreateTranslation",
-                                methodName: "CreateTranslationAsync",
+                                operationId: "CreateTranslationAsText",
+                                methodName: "CreateTranslationAsTextAsync",
                                 pathTemplate: "\"/openai/v1/audio/translations\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
@@ -369,7 +369,7 @@ namespace Groq
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCreateTranslationResponse(
+                ProcessCreateTranslationAsTextResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -377,8 +377,8 @@ namespace Groq
                     await global::Groq.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Groq.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "CreateTranslation",
-                                methodName: "CreateTranslationAsync",
+                                operationId: "CreateTranslationAsText",
+                                methodName: "CreateTranslationAsTextAsync",
                                 pathTemplate: "\"/openai/v1/audio/translations\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
@@ -399,8 +399,8 @@ namespace Groq
                     await global::Groq.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Groq.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "CreateTranslation",
-                                methodName: "CreateTranslationAsync",
+                                operationId: "CreateTranslationAsText",
+                                methodName: "CreateTranslationAsTextAsync",
                                 pathTemplate: "\"/openai/v1/audio/translations\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
@@ -429,7 +429,7 @@ namespace Groq
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCreateTranslationResponseContent(
+                                ProcessCreateTranslationAsTextResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -438,13 +438,11 @@ namespace Groq
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Groq.CreateTranslationResponseJson.FromJson(__content, JsonSerializerContext) ??
-                                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Groq.AutoSDKHttpResponse<global::Groq.CreateTranslationResponseJson>(
+                                    return new global::Groq.AutoSDKHttpResponse<string>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Groq.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
-                                        body: __value);
+                                        body: __content);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -464,19 +462,17 @@ namespace Groq
                                 try
                                 {
                                     __response.EnsureSuccessStatusCode();
-                                    using var __content = await __response.Content.ReadAsStreamAsync(
+                                    var __content = await __response.Content.ReadAsStringAsync(
                 #if NET5_0_OR_GREATER
                                         __effectiveCancellationToken
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Groq.CreateTranslationResponseJson.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
-                                        throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Groq.AutoSDKHttpResponse<global::Groq.CreateTranslationResponseJson>(
+                                    return new global::Groq.AutoSDKHttpResponse<string>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Groq.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
-                                        body: __value);
+                                        body: __content);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -543,7 +539,7 @@ namespace Groq
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Groq.CreateTranslationResponseJson> CreateTranslationAsync(
+        public async global::System.Threading.Tasks.Task<string> CreateTranslationAsTextAsync(
             global::Groq.AnyOf<string, global::Groq.CreateTranslationRequestModel?> model,
             byte[]? file = default,
             string? filename = default,
@@ -565,7 +561,7 @@ namespace Groq
                 Temperature = temperature,
             };
 
-            return await CreateTranslationAsync(
+            return await CreateTranslationAsTextAsync(
                 request: __request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
