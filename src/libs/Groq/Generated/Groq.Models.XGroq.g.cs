@@ -40,7 +40,7 @@ namespace Groq
         public string? Error { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("debug")]
         public global::Groq.DebugData? Debug { get; set; }

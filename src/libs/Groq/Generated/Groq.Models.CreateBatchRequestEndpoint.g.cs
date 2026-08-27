@@ -9,7 +9,7 @@ namespace Groq
     public enum CreateBatchRequestEndpoint
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         V1ChatCompletions,
     }

@@ -9,7 +9,7 @@ namespace Groq
     public enum TextResponseFormatJsonSchemaType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JsonSchema,
     }

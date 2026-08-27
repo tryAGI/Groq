@@ -11,15 +11,15 @@ namespace Groq
     public enum CreateChatCompletionRequestReasoningFormat
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Hidden,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Parsed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Raw,
     }

@@ -9,7 +9,7 @@ namespace Groq
     public enum EmbeddingObject
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Embedding,
     }

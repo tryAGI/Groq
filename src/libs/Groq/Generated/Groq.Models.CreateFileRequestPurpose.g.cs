@@ -10,7 +10,7 @@ namespace Groq
     public enum CreateFileRequestPurpose
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Batch,
     }

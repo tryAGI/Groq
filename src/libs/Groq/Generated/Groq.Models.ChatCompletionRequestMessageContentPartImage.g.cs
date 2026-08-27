@@ -4,7 +4,7 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ChatCompletionRequestMessageContentPartImage
     {
@@ -16,7 +16,7 @@ namespace Groq
         public global::Groq.ChatCompletionRequestMessageContentPartImageType Type { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("image_url")]
         [global::System.Text.Json.Serialization.JsonRequired]

@@ -4,7 +4,7 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CodeExecutionResult
     {
@@ -21,7 +21,7 @@ namespace Groq
         public string? Png { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chart")]
         public global::Groq.Chart? Chart { get; set; }

@@ -9,7 +9,7 @@ namespace Groq
     public enum ResponseFunctionCallType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FunctionCall,
     }

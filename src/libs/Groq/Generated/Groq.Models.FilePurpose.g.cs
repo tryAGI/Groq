@@ -9,11 +9,11 @@ namespace Groq
     public enum FilePurpose
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Batch,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BatchOutput,
     }

@@ -9,7 +9,7 @@ namespace Groq
     public enum ResponseFormatJsonObjectType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JsonObject,
     }

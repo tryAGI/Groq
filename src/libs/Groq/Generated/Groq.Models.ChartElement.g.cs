@@ -4,7 +4,7 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ChartElement
     {
@@ -70,7 +70,7 @@ namespace Groq
         public double? ThirdQuartile { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max")]
         public double? Max { get; set; }

@@ -9,7 +9,7 @@ namespace Groq
     public enum ResponseItemReferenceType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ItemReference,
     }

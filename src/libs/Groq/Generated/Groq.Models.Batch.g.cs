@@ -4,12 +4,12 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class Batch
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -30,7 +30,7 @@ namespace Groq
         public required string Endpoint { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("errors")]
         public global::Groq.BatchErrors? Errors { get; set; }

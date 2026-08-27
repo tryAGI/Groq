@@ -9,7 +9,7 @@ namespace Groq
     public enum ChatCompletionResponseMessageRole
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Assistant,
     }

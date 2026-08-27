@@ -5,12 +5,12 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct ResponseOutputContent : global::System.IEquatable<ResponseOutputContent>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Groq.ResponseOutputContentDiscriminatorType? Type { get; }
 
@@ -24,7 +24,7 @@ namespace Groq
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(OutputText))]
@@ -32,7 +32,7 @@ namespace Groq
         public bool IsOutputText => OutputText != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickOutputText(
 #if NET6_0_OR_GREATER
@@ -45,23 +45,23 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Groq.ResponseOutputTextContent PickOutputText() => IsOutputText
             ? OutputText!
             : throw new global::System.InvalidOperationException($"Expected union variant 'OutputText' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ResponseOutputContent(global::Groq.ResponseOutputTextContent value) => new ResponseOutputContent((global::Groq.ResponseOutputTextContent?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Groq.ResponseOutputTextContent?(ResponseOutputContent @this) => @this.OutputText;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseOutputContent(global::Groq.ResponseOutputTextContent? value)
         {
@@ -69,12 +69,12 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ResponseOutputContent FromOutputText(global::Groq.ResponseOutputTextContent? value) => new ResponseOutputContent(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseOutputContent(
             global::Groq.ResponseOutputContentDiscriminatorType? type,
@@ -87,21 +87,21 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
-            OutputText as object 
+            OutputText as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
-            OutputText?.ToString() 
+            OutputText?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -109,7 +109,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Groq.ResponseOutputTextContent, TResult>? outputText = null,
@@ -129,7 +129,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Groq.ResponseOutputTextContent>? outputText = null,
@@ -147,7 +147,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Groq.ResponseOutputTextContent>? outputText = null,
@@ -165,7 +165,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -184,17 +184,17 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ResponseOutputContent other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Groq.ResponseOutputTextContent?>.Default.Equals(OutputText, other.OutputText) 
+                global::System.Collections.Generic.EqualityComparer<global::Groq.ResponseOutputTextContent?>.Default.Equals(OutputText, other.OutputText)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ResponseOutputContent obj1, ResponseOutputContent obj2)
         {
@@ -202,7 +202,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ResponseOutputContent obj1, ResponseOutputContent obj2)
         {
@@ -210,7 +210,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

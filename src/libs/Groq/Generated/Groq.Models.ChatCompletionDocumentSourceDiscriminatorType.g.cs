@@ -4,16 +4,16 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ChatCompletionDocumentSourceDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Json,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Text,
     }

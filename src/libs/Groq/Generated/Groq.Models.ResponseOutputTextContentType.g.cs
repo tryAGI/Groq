@@ -9,7 +9,7 @@ namespace Groq
     public enum ResponseOutputTextContentType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OutputText,
     }

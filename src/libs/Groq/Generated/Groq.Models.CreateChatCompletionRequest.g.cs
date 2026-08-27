@@ -6,7 +6,7 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateChatCompletionRequest
     {

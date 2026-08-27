@@ -9,7 +9,7 @@ namespace Groq
     public enum ResponseNamedToolChoiceType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Function,
     }

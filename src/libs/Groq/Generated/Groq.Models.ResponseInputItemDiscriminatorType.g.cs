@@ -4,24 +4,24 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ResponseInputItemDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FunctionCall,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FunctionCallOutput,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ItemReference,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Message,
     }

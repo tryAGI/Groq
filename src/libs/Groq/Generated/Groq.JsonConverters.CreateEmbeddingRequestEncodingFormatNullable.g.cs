@@ -20,7 +20,7 @@ namespace Groq.JsonConverters
                     {
                         return global::Groq.CreateEmbeddingRequestEncodingFormatExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

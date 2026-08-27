@@ -4,12 +4,12 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ChatCompletionTool
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverter<global::Groq.ChatCompletionToolType?, string>))]
@@ -17,7 +17,7 @@ namespace Groq
         public required global::Groq.AnyOf<global::Groq.ChatCompletionToolType?, string> Type { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("function")]
         public global::Groq.FunctionObject? Function { get; set; }

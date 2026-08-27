@@ -9,23 +9,23 @@ namespace Groq
     public enum CreateChatCompletionResponseServiceTier
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Auto,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Flex,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OnDemand,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Performance,
     }

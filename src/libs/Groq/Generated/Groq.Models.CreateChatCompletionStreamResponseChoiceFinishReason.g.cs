@@ -11,19 +11,19 @@ namespace Groq
     public enum CreateChatCompletionStreamResponseChoiceFinishReason
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FunctionCall,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Length,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Stop,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ToolCalls,
     }

@@ -9,7 +9,7 @@ namespace Groq
     public enum ChatCompletionRequestMessageContentPartTextType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Text,
     }

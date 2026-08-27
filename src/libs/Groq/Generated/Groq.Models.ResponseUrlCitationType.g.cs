@@ -9,7 +9,7 @@ namespace Groq
     public enum ResponseUrlCitationType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UrlCitation,
     }

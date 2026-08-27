@@ -9,7 +9,7 @@ namespace Groq
     public enum CreateEmbeddingResponseObject
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         List,
     }

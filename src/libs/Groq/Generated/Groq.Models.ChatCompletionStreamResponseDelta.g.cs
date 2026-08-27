@@ -30,7 +30,7 @@ namespace Groq
         public global::Groq.ChatCompletionStreamResponseDeltaFunctionCall? FunctionCall { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tool_calls")]
         public global::System.Collections.Generic.IList<global::Groq.ChatCompletionMessageToolCallChunk>? ToolCalls { get; set; }

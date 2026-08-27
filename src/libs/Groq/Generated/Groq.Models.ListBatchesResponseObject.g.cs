@@ -4,12 +4,12 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ListBatchesResponseObject
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         List,
     }

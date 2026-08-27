@@ -4,32 +4,32 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateResponseRequestModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gemma29bIt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Llama318bInstant,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Llama3370bVersatile,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         LlamaGuard38b,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Llama370b8192,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Llama38b8192,
     }

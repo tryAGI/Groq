@@ -9,7 +9,7 @@ namespace Groq
     public enum ChatCompletionRequestMessageContentPartImageType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ImageUrl,
     }

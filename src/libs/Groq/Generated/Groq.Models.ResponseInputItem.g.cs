@@ -5,7 +5,7 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct ResponseInputItem : global::System.IEquatable<ResponseInputItem>
     {
@@ -19,7 +19,7 @@ namespace Groq
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(EasyInputMessage))]
@@ -27,7 +27,7 @@ namespace Groq
         public bool IsEasyInputMessage => EasyInputMessage != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickEasyInputMessage(
 #if NET6_0_OR_GREATER
@@ -40,7 +40,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Groq.ResponseEasyInputMessage PickEasyInputMessage() => IsEasyInputMessage
             ? EasyInputMessage!
@@ -56,7 +56,7 @@ namespace Groq
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Message))]
@@ -64,7 +64,7 @@ namespace Groq
         public bool IsMessage => Message != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickMessage(
 #if NET6_0_OR_GREATER
@@ -77,7 +77,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Groq.ResponseInputMessage PickMessage() => IsMessage
             ? Message!
@@ -93,7 +93,7 @@ namespace Groq
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ItemReference))]
@@ -101,7 +101,7 @@ namespace Groq
         public bool IsItemReference => ItemReference != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickItemReference(
 #if NET6_0_OR_GREATER
@@ -114,7 +114,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Groq.ResponseItemReference PickItemReference() => IsItemReference
             ? ItemReference!
@@ -130,7 +130,7 @@ namespace Groq
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(FunctionCall))]
@@ -138,7 +138,7 @@ namespace Groq
         public bool IsFunctionCall => FunctionCall != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickFunctionCall(
 #if NET6_0_OR_GREATER
@@ -151,7 +151,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Groq.ResponseFunctionCall PickFunctionCall() => IsFunctionCall
             ? FunctionCall!
@@ -167,7 +167,7 @@ namespace Groq
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(FunctionCallOutput))]
@@ -175,7 +175,7 @@ namespace Groq
         public bool IsFunctionCallOutput => FunctionCallOutput != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickFunctionCallOutput(
 #if NET6_0_OR_GREATER
@@ -188,23 +188,23 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Groq.ResponseFunctionCallOutput PickFunctionCallOutput() => IsFunctionCallOutput
             ? FunctionCallOutput!
             : throw new global::System.InvalidOperationException($"Expected union variant 'FunctionCallOutput' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ResponseInputItem(global::Groq.ResponseEasyInputMessage value) => new ResponseInputItem((global::Groq.ResponseEasyInputMessage?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Groq.ResponseEasyInputMessage?(ResponseInputItem @this) => @this.EasyInputMessage;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseInputItem(global::Groq.ResponseEasyInputMessage? value)
         {
@@ -212,22 +212,22 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ResponseInputItem FromEasyInputMessage(global::Groq.ResponseEasyInputMessage? value) => new ResponseInputItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ResponseInputItem(global::Groq.ResponseInputMessage value) => new ResponseInputItem((global::Groq.ResponseInputMessage?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Groq.ResponseInputMessage?(ResponseInputItem @this) => @this.Message;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseInputItem(global::Groq.ResponseInputMessage? value)
         {
@@ -235,22 +235,22 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ResponseInputItem FromMessage(global::Groq.ResponseInputMessage? value) => new ResponseInputItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ResponseInputItem(global::Groq.ResponseItemReference value) => new ResponseInputItem((global::Groq.ResponseItemReference?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Groq.ResponseItemReference?(ResponseInputItem @this) => @this.ItemReference;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseInputItem(global::Groq.ResponseItemReference? value)
         {
@@ -258,22 +258,22 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ResponseInputItem FromItemReference(global::Groq.ResponseItemReference? value) => new ResponseInputItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ResponseInputItem(global::Groq.ResponseFunctionCall value) => new ResponseInputItem((global::Groq.ResponseFunctionCall?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Groq.ResponseFunctionCall?(ResponseInputItem @this) => @this.FunctionCall;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseInputItem(global::Groq.ResponseFunctionCall? value)
         {
@@ -281,22 +281,22 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ResponseInputItem FromFunctionCall(global::Groq.ResponseFunctionCall? value) => new ResponseInputItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ResponseInputItem(global::Groq.ResponseFunctionCallOutput value) => new ResponseInputItem((global::Groq.ResponseFunctionCallOutput?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Groq.ResponseFunctionCallOutput?(ResponseInputItem @this) => @this.FunctionCallOutput;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseInputItem(global::Groq.ResponseFunctionCallOutput? value)
         {
@@ -304,12 +304,12 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ResponseInputItem FromFunctionCallOutput(global::Groq.ResponseFunctionCallOutput? value) => new ResponseInputItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseInputItem(
             global::Groq.ResponseEasyInputMessage? easyInputMessage,
@@ -327,29 +327,29 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             FunctionCallOutput as object ??
             FunctionCall as object ??
             ItemReference as object ??
             Message as object ??
-            EasyInputMessage as object 
+            EasyInputMessage as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             EasyInputMessage?.ToString() ??
             Message?.ToString() ??
             ItemReference?.ToString() ??
             FunctionCall?.ToString() ??
-            FunctionCallOutput?.ToString() 
+            FunctionCallOutput?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -357,7 +357,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Groq.ResponseEasyInputMessage, TResult>? easyInputMessage = null,
@@ -397,7 +397,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Groq.ResponseEasyInputMessage>? easyInputMessage = null,
@@ -439,7 +439,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Groq.ResponseEasyInputMessage>? easyInputMessage = null,
@@ -477,7 +477,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -504,7 +504,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ResponseInputItem other)
         {
@@ -513,12 +513,12 @@ namespace Groq
                 global::System.Collections.Generic.EqualityComparer<global::Groq.ResponseInputMessage?>.Default.Equals(Message, other.Message) &&
                 global::System.Collections.Generic.EqualityComparer<global::Groq.ResponseItemReference?>.Default.Equals(ItemReference, other.ItemReference) &&
                 global::System.Collections.Generic.EqualityComparer<global::Groq.ResponseFunctionCall?>.Default.Equals(FunctionCall, other.FunctionCall) &&
-                global::System.Collections.Generic.EqualityComparer<global::Groq.ResponseFunctionCallOutput?>.Default.Equals(FunctionCallOutput, other.FunctionCallOutput) 
+                global::System.Collections.Generic.EqualityComparer<global::Groq.ResponseFunctionCallOutput?>.Default.Equals(FunctionCallOutput, other.FunctionCallOutput)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ResponseInputItem obj1, ResponseInputItem obj2)
         {
@@ -526,7 +526,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ResponseInputItem obj1, ResponseInputItem obj2)
         {
@@ -534,7 +534,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

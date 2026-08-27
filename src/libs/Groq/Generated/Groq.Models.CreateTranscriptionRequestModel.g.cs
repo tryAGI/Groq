@@ -4,16 +4,16 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateTranscriptionRequestModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WhisperLargeV3,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WhisperLargeV3Turbo,
     }

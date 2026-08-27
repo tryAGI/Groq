@@ -19,7 +19,7 @@ namespace Groq
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Text))]
@@ -27,7 +27,7 @@ namespace Groq
         public bool IsText => Text != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickText(
 #if NET6_0_OR_GREATER
@@ -40,7 +40,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Groq.ResponseFormatText PickText() => IsText
             ? Text!
@@ -56,7 +56,7 @@ namespace Groq
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(JsonObject))]
@@ -64,7 +64,7 @@ namespace Groq
         public bool IsJsonObject => JsonObject != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickJsonObject(
 #if NET6_0_OR_GREATER
@@ -77,7 +77,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Groq.ResponseFormatJsonObject PickJsonObject() => IsJsonObject
             ? JsonObject!
@@ -93,7 +93,7 @@ namespace Groq
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(JsonSchema))]
@@ -101,7 +101,7 @@ namespace Groq
         public bool IsJsonSchema => JsonSchema != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickJsonSchema(
 #if NET6_0_OR_GREATER
@@ -114,23 +114,23 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Groq.TextResponseFormatJsonSchema PickJsonSchema() => IsJsonSchema
             ? JsonSchema!
             : throw new global::System.InvalidOperationException($"Expected union variant 'JsonSchema' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ResponseFormatConfiguration(global::Groq.ResponseFormatText value) => new ResponseFormatConfiguration((global::Groq.ResponseFormatText?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Groq.ResponseFormatText?(ResponseFormatConfiguration @this) => @this.Text;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseFormatConfiguration(global::Groq.ResponseFormatText? value)
         {
@@ -138,22 +138,22 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ResponseFormatConfiguration FromText(global::Groq.ResponseFormatText? value) => new ResponseFormatConfiguration(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ResponseFormatConfiguration(global::Groq.ResponseFormatJsonObject value) => new ResponseFormatConfiguration((global::Groq.ResponseFormatJsonObject?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Groq.ResponseFormatJsonObject?(ResponseFormatConfiguration @this) => @this.JsonObject;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseFormatConfiguration(global::Groq.ResponseFormatJsonObject? value)
         {
@@ -161,22 +161,22 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ResponseFormatConfiguration FromJsonObject(global::Groq.ResponseFormatJsonObject? value) => new ResponseFormatConfiguration(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ResponseFormatConfiguration(global::Groq.TextResponseFormatJsonSchema value) => new ResponseFormatConfiguration((global::Groq.TextResponseFormatJsonSchema?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Groq.TextResponseFormatJsonSchema?(ResponseFormatConfiguration @this) => @this.JsonSchema;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseFormatConfiguration(global::Groq.TextResponseFormatJsonSchema? value)
         {
@@ -184,12 +184,12 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ResponseFormatConfiguration FromJsonSchema(global::Groq.TextResponseFormatJsonSchema? value) => new ResponseFormatConfiguration(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseFormatConfiguration(
             global::Groq.ResponseFormatText? text,
@@ -203,25 +203,25 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             JsonSchema as object ??
             JsonObject as object ??
-            Text as object 
+            Text as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Text?.ToString() ??
             JsonObject?.ToString() ??
-            JsonSchema?.ToString() 
+            JsonSchema?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -229,7 +229,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Groq.ResponseFormatText, TResult>? text = null,
@@ -259,7 +259,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Groq.ResponseFormatText>? text = null,
@@ -289,7 +289,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Groq.ResponseFormatText>? text = null,
@@ -317,7 +317,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -340,19 +340,19 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ResponseFormatConfiguration other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Groq.ResponseFormatText?>.Default.Equals(Text, other.Text) &&
                 global::System.Collections.Generic.EqualityComparer<global::Groq.ResponseFormatJsonObject?>.Default.Equals(JsonObject, other.JsonObject) &&
-                global::System.Collections.Generic.EqualityComparer<global::Groq.TextResponseFormatJsonSchema?>.Default.Equals(JsonSchema, other.JsonSchema) 
+                global::System.Collections.Generic.EqualityComparer<global::Groq.TextResponseFormatJsonSchema?>.Default.Equals(JsonSchema, other.JsonSchema)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ResponseFormatConfiguration obj1, ResponseFormatConfiguration obj2)
         {
@@ -360,7 +360,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ResponseFormatConfiguration obj1, ResponseFormatConfiguration obj2)
         {
@@ -368,7 +368,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

@@ -9,7 +9,7 @@ namespace Groq
     public enum CreateResponseResponseObject
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Response,
     }

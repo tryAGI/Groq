@@ -4,12 +4,12 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ListModelsResponseObject
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         List,
     }

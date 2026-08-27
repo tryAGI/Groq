@@ -9,11 +9,11 @@ namespace Groq
     public enum CreateResponseResponseTruncation
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Auto,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Disabled,
     }
