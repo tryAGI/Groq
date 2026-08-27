@@ -18,13 +18,15 @@ fetch_spec() {
 # Groq spec is hosted on Stainless GCS with hash-based URLs that change each update.
 # We dynamically resolve the latest URL from groq/groq-python/.stats.yml.
 readonly stats_url="https://raw.githubusercontent.com/groq/groq-python/main/.stats.yml"
+readonly fallback_openapi_url="https://storage.googleapis.com/stainless-sdk-openapi-specs/groqcloud/groqcloud-debd965baa031e12228c41e538741fa6055bf2813bcd062840a19f84a17cea95.yml"
 
 echo "Fetching latest spec URL from .stats.yml..."
-openapi_url=$(fetch_spec --fail --silent --show-error --location "$stats_url" | grep 'openapi_spec_url:' | sed 's/openapi_spec_url: *//')
+stats=$(fetch_spec --fail --silent --show-error --location "$stats_url")
+openapi_url=$(printf '%s\n' "$stats" | sed -n 's/^openapi_spec_url: *//p')
 
 if [ -z "$openapi_url" ]; then
-  echo "ERROR: Could not extract openapi_spec_url from .stats.yml"
-  exit 1
+  echo "WARN: .stats.yml does not expose openapi_spec_url; using the last official Stainless URL."
+  openapi_url="$fallback_openapi_url"
 fi
 
 echo "Spec URL: $openapi_url"
