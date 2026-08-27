@@ -5,12 +5,12 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct ResponseAnnotation : global::System.IEquatable<ResponseAnnotation>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Groq.ResponseAnnotationDiscriminatorType? Type { get; }
 
@@ -24,7 +24,7 @@ namespace Groq
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(FileCitation))]
@@ -32,7 +32,7 @@ namespace Groq
         public bool IsFileCitation => FileCitation != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickFileCitation(
 #if NET6_0_OR_GREATER
@@ -45,7 +45,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Groq.ResponseFileCitation PickFileCitation() => IsFileCitation
             ? FileCitation!
@@ -61,7 +61,7 @@ namespace Groq
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(UrlCitation))]
@@ -69,7 +69,7 @@ namespace Groq
         public bool IsUrlCitation => UrlCitation != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickUrlCitation(
 #if NET6_0_OR_GREATER
@@ -82,23 +82,23 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Groq.ResponseUrlCitation PickUrlCitation() => IsUrlCitation
             ? UrlCitation!
             : throw new global::System.InvalidOperationException($"Expected union variant 'UrlCitation' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ResponseAnnotation(global::Groq.ResponseFileCitation value) => new ResponseAnnotation((global::Groq.ResponseFileCitation?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Groq.ResponseFileCitation?(ResponseAnnotation @this) => @this.FileCitation;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseAnnotation(global::Groq.ResponseFileCitation? value)
         {
@@ -106,22 +106,22 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ResponseAnnotation FromFileCitation(global::Groq.ResponseFileCitation? value) => new ResponseAnnotation(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ResponseAnnotation(global::Groq.ResponseUrlCitation value) => new ResponseAnnotation((global::Groq.ResponseUrlCitation?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Groq.ResponseUrlCitation?(ResponseAnnotation @this) => @this.UrlCitation;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseAnnotation(global::Groq.ResponseUrlCitation? value)
         {
@@ -129,12 +129,12 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ResponseAnnotation FromUrlCitation(global::Groq.ResponseUrlCitation? value) => new ResponseAnnotation(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseAnnotation(
             global::Groq.ResponseAnnotationDiscriminatorType? type,
@@ -149,23 +149,23 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             UrlCitation as object ??
-            FileCitation as object 
+            FileCitation as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             FileCitation?.ToString() ??
-            UrlCitation?.ToString() 
+            UrlCitation?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -173,7 +173,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Groq.ResponseFileCitation, TResult>? fileCitation = null,
@@ -198,7 +198,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Groq.ResponseFileCitation>? fileCitation = null,
@@ -222,7 +222,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Groq.ResponseFileCitation>? fileCitation = null,
@@ -245,7 +245,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -266,18 +266,18 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ResponseAnnotation other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Groq.ResponseFileCitation?>.Default.Equals(FileCitation, other.FileCitation) &&
-                global::System.Collections.Generic.EqualityComparer<global::Groq.ResponseUrlCitation?>.Default.Equals(UrlCitation, other.UrlCitation) 
+                global::System.Collections.Generic.EqualityComparer<global::Groq.ResponseUrlCitation?>.Default.Equals(UrlCitation, other.UrlCitation)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ResponseAnnotation obj1, ResponseAnnotation obj2)
         {
@@ -285,7 +285,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ResponseAnnotation obj1, ResponseAnnotation obj2)
         {
@@ -293,7 +293,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

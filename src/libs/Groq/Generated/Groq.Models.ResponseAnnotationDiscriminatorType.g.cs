@@ -4,16 +4,16 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ResponseAnnotationDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FileCitation,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UrlCitation,
     }

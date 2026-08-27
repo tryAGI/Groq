@@ -5,12 +5,12 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct ResponseOutputItem : global::System.IEquatable<ResponseOutputItem>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Groq.ResponseOutputItemDiscriminatorType? Type { get; }
 
@@ -24,7 +24,7 @@ namespace Groq
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Message))]
@@ -32,7 +32,7 @@ namespace Groq
         public bool IsMessage => Message != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickMessage(
 #if NET6_0_OR_GREATER
@@ -45,7 +45,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Groq.ResponseOutputMessage PickMessage() => IsMessage
             ? Message!
@@ -61,7 +61,7 @@ namespace Groq
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(FunctionCall))]
@@ -69,7 +69,7 @@ namespace Groq
         public bool IsFunctionCall => FunctionCall != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickFunctionCall(
 #if NET6_0_OR_GREATER
@@ -82,7 +82,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Groq.ResponseOutputFunctionCall PickFunctionCall() => IsFunctionCall
             ? FunctionCall!
@@ -98,7 +98,7 @@ namespace Groq
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Reasoning))]
@@ -106,7 +106,7 @@ namespace Groq
         public bool IsReasoning => Reasoning != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickReasoning(
 #if NET6_0_OR_GREATER
@@ -119,23 +119,23 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Groq.ResponseOutputReasoning PickReasoning() => IsReasoning
             ? Reasoning!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Reasoning' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ResponseOutputItem(global::Groq.ResponseOutputMessage value) => new ResponseOutputItem((global::Groq.ResponseOutputMessage?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Groq.ResponseOutputMessage?(ResponseOutputItem @this) => @this.Message;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseOutputItem(global::Groq.ResponseOutputMessage? value)
         {
@@ -143,22 +143,22 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ResponseOutputItem FromMessage(global::Groq.ResponseOutputMessage? value) => new ResponseOutputItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ResponseOutputItem(global::Groq.ResponseOutputFunctionCall value) => new ResponseOutputItem((global::Groq.ResponseOutputFunctionCall?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Groq.ResponseOutputFunctionCall?(ResponseOutputItem @this) => @this.FunctionCall;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseOutputItem(global::Groq.ResponseOutputFunctionCall? value)
         {
@@ -166,22 +166,22 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ResponseOutputItem FromFunctionCall(global::Groq.ResponseOutputFunctionCall? value) => new ResponseOutputItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ResponseOutputItem(global::Groq.ResponseOutputReasoning value) => new ResponseOutputItem((global::Groq.ResponseOutputReasoning?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Groq.ResponseOutputReasoning?(ResponseOutputItem @this) => @this.Reasoning;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseOutputItem(global::Groq.ResponseOutputReasoning? value)
         {
@@ -189,12 +189,12 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ResponseOutputItem FromReasoning(global::Groq.ResponseOutputReasoning? value) => new ResponseOutputItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseOutputItem(
             global::Groq.ResponseOutputItemDiscriminatorType? type,
@@ -211,25 +211,25 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Reasoning as object ??
             FunctionCall as object ??
-            Message as object 
+            Message as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Message?.ToString() ??
             FunctionCall?.ToString() ??
-            Reasoning?.ToString() 
+            Reasoning?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -237,7 +237,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Groq.ResponseOutputMessage, TResult>? message = null,
@@ -267,7 +267,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Groq.ResponseOutputMessage>? message = null,
@@ -297,7 +297,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Groq.ResponseOutputMessage>? message = null,
@@ -325,7 +325,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -348,19 +348,19 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ResponseOutputItem other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Groq.ResponseOutputMessage?>.Default.Equals(Message, other.Message) &&
                 global::System.Collections.Generic.EqualityComparer<global::Groq.ResponseOutputFunctionCall?>.Default.Equals(FunctionCall, other.FunctionCall) &&
-                global::System.Collections.Generic.EqualityComparer<global::Groq.ResponseOutputReasoning?>.Default.Equals(Reasoning, other.Reasoning) 
+                global::System.Collections.Generic.EqualityComparer<global::Groq.ResponseOutputReasoning?>.Default.Equals(Reasoning, other.Reasoning)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ResponseOutputItem obj1, ResponseOutputItem obj2)
         {
@@ -368,7 +368,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ResponseOutputItem obj1, ResponseOutputItem obj2)
         {
@@ -376,7 +376,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

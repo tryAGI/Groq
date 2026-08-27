@@ -4,12 +4,12 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ResponseOutputContentDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OutputText,
     }

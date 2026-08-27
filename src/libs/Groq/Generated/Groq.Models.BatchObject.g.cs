@@ -9,7 +9,7 @@ namespace Groq
     public enum BatchObject
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Batch,
     }

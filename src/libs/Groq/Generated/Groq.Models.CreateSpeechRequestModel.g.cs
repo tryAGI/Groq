@@ -4,16 +4,16 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateSpeechRequestModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PlayaiTts,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PlayaiTtsArabic,
     }

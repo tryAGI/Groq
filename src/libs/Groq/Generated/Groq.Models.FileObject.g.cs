@@ -9,7 +9,7 @@ namespace Groq
     public enum FileObject
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         File,
     }

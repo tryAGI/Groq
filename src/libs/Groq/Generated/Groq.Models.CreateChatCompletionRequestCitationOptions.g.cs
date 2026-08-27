@@ -10,11 +10,11 @@ namespace Groq
     public enum CreateChatCompletionRequestCitationOptions
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Disabled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Enabled,
     }

@@ -9,11 +9,11 @@ namespace Groq
     public enum ChatCompletionRequestSystemMessageRole
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Developer,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         System,
     }

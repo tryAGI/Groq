@@ -28,7 +28,7 @@ namespace Groq
         public global::Groq.XGroqNonStreamingUsage? Usage { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("debug")]
         public global::Groq.DebugData? Debug { get; set; }

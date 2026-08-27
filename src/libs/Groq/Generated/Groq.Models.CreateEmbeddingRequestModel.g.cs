@@ -4,12 +4,12 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateEmbeddingRequestModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NomicEmbedTextV15,
     }

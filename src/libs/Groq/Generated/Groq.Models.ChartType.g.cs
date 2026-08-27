@@ -9,31 +9,31 @@ namespace Groq
     public enum ChartType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Bar,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BoxAndWhisker,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Line,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pie,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Scatter,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Superchart,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Unknown,
     }

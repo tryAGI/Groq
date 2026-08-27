@@ -9,15 +9,15 @@ namespace Groq
     public enum CreateChatCompletionRequestFunctionCall
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Auto,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         None,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Required,
     }

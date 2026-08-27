@@ -4,12 +4,12 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ListFilesResponseObject
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         List,
     }

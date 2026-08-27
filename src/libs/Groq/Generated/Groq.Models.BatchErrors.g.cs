@@ -4,7 +4,7 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class BatchErrors
     {
@@ -15,7 +15,7 @@ namespace Groq
         public string? Object { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         public global::System.Collections.Generic.IList<global::Groq.BatchErrorsDataItem>? Data { get; set; }

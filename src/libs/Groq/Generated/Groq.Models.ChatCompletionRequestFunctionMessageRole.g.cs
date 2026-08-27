@@ -9,7 +9,7 @@ namespace Groq
     public enum ChatCompletionRequestFunctionMessageRole
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Function,
     }

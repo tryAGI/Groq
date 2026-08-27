@@ -9,7 +9,7 @@ namespace Groq
     public enum ChatCompletionDocumentSourceJSONType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Json,
     }

@@ -4,60 +4,60 @@
 namespace Groq
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateChatCompletionRequestModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CompoundBeta,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CompoundBetaMini,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gemma29bIt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Llama318bInstant,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Llama3370bVersatile,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MetaLlamaLlama4Maverick17b128eInstruct,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MetaLlamaLlama4Scout17b16eInstruct,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MetaLlamaLlamaGuard412b,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MoonshotaiKimiK2Instruct,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OpenaiGptOss120b,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OpenaiGptOss20b,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         QwenQwen332b,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         QwenQwen3627b,
     }

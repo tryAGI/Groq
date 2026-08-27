@@ -9,7 +9,7 @@ namespace Groq
     public sealed partial class CreateChatCompletionRequestCompoundCustom
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("models")]
         public global::Groq.CreateChatCompletionRequestCompoundCustomModels? Models { get; set; }

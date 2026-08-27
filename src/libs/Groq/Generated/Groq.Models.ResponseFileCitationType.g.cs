@@ -9,7 +9,7 @@ namespace Groq
     public enum ResponseFileCitationType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FileCitation,
     }

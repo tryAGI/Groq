@@ -9,7 +9,7 @@ namespace Groq
     public enum BatchRequestInputMethod
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Post,
     }

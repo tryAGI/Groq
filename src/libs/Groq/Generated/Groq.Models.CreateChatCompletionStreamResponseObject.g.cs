@@ -9,7 +9,7 @@ namespace Groq
     public enum CreateChatCompletionStreamResponseObject
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChatCompletionChunk,
     }

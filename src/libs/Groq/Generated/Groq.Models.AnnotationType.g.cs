@@ -9,11 +9,11 @@ namespace Groq
     public enum AnnotationType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DocumentCitation,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FunctionCitation,
     }

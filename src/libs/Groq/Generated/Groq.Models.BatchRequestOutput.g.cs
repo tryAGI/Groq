@@ -9,7 +9,7 @@ namespace Groq
     public sealed partial class BatchRequestOutput
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         public string? Id { get; set; }
@@ -21,7 +21,7 @@ namespace Groq
         public string? CustomId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("response")]
         public global::Groq.BatchRequestOutputResponse? Response { get; set; }

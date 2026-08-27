@@ -9,15 +9,15 @@ namespace Groq
     public enum CreateResponseResponseServiceTier
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Auto,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Default,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Flex,
     }

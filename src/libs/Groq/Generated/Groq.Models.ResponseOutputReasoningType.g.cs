@@ -9,7 +9,7 @@ namespace Groq
     public enum ResponseOutputReasoningType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Reasoning,
     }

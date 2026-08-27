@@ -9,7 +9,7 @@ namespace Groq
     public enum ChatCompletionMessageToolCallChunkType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Function,
     }

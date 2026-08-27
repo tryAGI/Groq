@@ -10,7 +10,7 @@ namespace Groq
     public readonly partial struct ChatCompletionDocumentSource : global::System.IEquatable<ChatCompletionDocumentSource>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Groq.ChatCompletionDocumentSourceDiscriminatorType? Type { get; }
 
@@ -24,7 +24,7 @@ namespace Groq
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Text))]
@@ -32,7 +32,7 @@ namespace Groq
         public bool IsText => Text != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickText(
 #if NET6_0_OR_GREATER
@@ -45,7 +45,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Groq.ChatCompletionDocumentSourceText PickText() => IsText
             ? Text!
@@ -61,7 +61,7 @@ namespace Groq
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Json))]
@@ -69,7 +69,7 @@ namespace Groq
         public bool IsJson => Json != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickJson(
 #if NET6_0_OR_GREATER
@@ -82,23 +82,23 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Groq.ChatCompletionDocumentSourceJSON PickJson() => IsJson
             ? Json!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Json' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ChatCompletionDocumentSource(global::Groq.ChatCompletionDocumentSourceText value) => new ChatCompletionDocumentSource((global::Groq.ChatCompletionDocumentSourceText?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Groq.ChatCompletionDocumentSourceText?(ChatCompletionDocumentSource @this) => @this.Text;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ChatCompletionDocumentSource(global::Groq.ChatCompletionDocumentSourceText? value)
         {
@@ -106,22 +106,22 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ChatCompletionDocumentSource FromText(global::Groq.ChatCompletionDocumentSourceText? value) => new ChatCompletionDocumentSource(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ChatCompletionDocumentSource(global::Groq.ChatCompletionDocumentSourceJSON value) => new ChatCompletionDocumentSource((global::Groq.ChatCompletionDocumentSourceJSON?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Groq.ChatCompletionDocumentSourceJSON?(ChatCompletionDocumentSource @this) => @this.Json;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ChatCompletionDocumentSource(global::Groq.ChatCompletionDocumentSourceJSON? value)
         {
@@ -129,12 +129,12 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ChatCompletionDocumentSource FromJson(global::Groq.ChatCompletionDocumentSourceJSON? value) => new ChatCompletionDocumentSource(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ChatCompletionDocumentSource(
             global::Groq.ChatCompletionDocumentSourceDiscriminatorType? type,
@@ -149,23 +149,23 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Json as object ??
-            Text as object 
+            Text as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Text?.ToString() ??
-            Json?.ToString() 
+            Json?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -173,7 +173,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Groq.ChatCompletionDocumentSourceText, TResult>? text = null,
@@ -198,7 +198,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Groq.ChatCompletionDocumentSourceText>? text = null,
@@ -222,7 +222,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Groq.ChatCompletionDocumentSourceText>? text = null,
@@ -245,7 +245,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -266,18 +266,18 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ChatCompletionDocumentSource other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Groq.ChatCompletionDocumentSourceText?>.Default.Equals(Text, other.Text) &&
-                global::System.Collections.Generic.EqualityComparer<global::Groq.ChatCompletionDocumentSourceJSON?>.Default.Equals(Json, other.Json) 
+                global::System.Collections.Generic.EqualityComparer<global::Groq.ChatCompletionDocumentSourceJSON?>.Default.Equals(Json, other.Json)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ChatCompletionDocumentSource obj1, ChatCompletionDocumentSource obj2)
         {
@@ -285,7 +285,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ChatCompletionDocumentSource obj1, ChatCompletionDocumentSource obj2)
         {
@@ -293,7 +293,7 @@ namespace Groq
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {
