@@ -34,7 +34,7 @@ namespace Groq
         /// <inheritdoc/>
         public global::Groq.AutoSDKClientOptions Options { get; }
 
-        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Groq.SourceGenerationContext.Default);
+        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Groq.AudioSourceGenerationContext.Default);
 
         /// <summary>
         ///
