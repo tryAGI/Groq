@@ -1,14 +1,12 @@
 
 #nullable enable
 
-#pragma warning disable CS0618 // Type or member is obsolete
-#pragma warning disable CS3016 // Arrays as attribute arguments is not CLS-compliant
-
 namespace Groq
 {
     /// <summary>
     ///
     /// </summary>
+    #pragma warning disable CS3016 // Converter type array in this attribute is not CLS-compliant.
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
         Converters = new global::System.Type[]
@@ -467,6 +465,7 @@ namespace Groq
 
             typeof(global::Groq.JsonConverters.UnixTimestampJsonConverter),
         })]
+    #pragma warning restore CS3016
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.JsonSerializerContextTypes))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>), TypeInfoPropertyName = "SystemCollectionsGeneric_ObjectList")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.Error))]
@@ -544,7 +543,9 @@ namespace Groq
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ChatCompletionRequestUserMessage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ChatCompletionRequestAssistantMessage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ChatCompletionRequestToolMessage))]
+    #pragma warning disable CS0618 // This registration names a deprecated API model.
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ChatCompletionRequestFunctionMessage))]
+    #pragma warning restore CS0618
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ChatCompletionRequestMessageDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ChatCompletionRequestMessageDiscriminatorRole), TypeInfoPropertyName = "ChatCompletionRequestMessageDiscriminatorRole2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessageContentPartText>>), TypeInfoPropertyName = "OneOfStringIListChatCompletionRequestMessageContentPartText2")]
@@ -555,11 +556,17 @@ namespace Groq
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ChatCompletionRequestUserMessageRole), TypeInfoPropertyName = "ChatCompletionRequestUserMessageRole2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ChatCompletionRequestAssistantMessageRole), TypeInfoPropertyName = "ChatCompletionRequestAssistantMessageRole2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Groq.ChatCompletionMessageToolCall>))]
+    #pragma warning disable CS0618 // This registration names a deprecated API model.
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ChatCompletionRequestAssistantMessageFunctionCall))]
+    #pragma warning restore CS0618
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ChatCompletionRequestToolMessageRole), TypeInfoPropertyName = "ChatCompletionRequestToolMessageRole2")]
+    #pragma warning disable CS0618 // This registration names a deprecated API model.
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ChatCompletionRequestFunctionMessageRole), TypeInfoPropertyName = "ChatCompletionRequestFunctionMessageRole2")]
+    #pragma warning restore CS0618
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.FunctionParameters))]
+    #pragma warning disable CS0618 // This registration names a deprecated API model.
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ChatCompletionFunctions))]
+    #pragma warning restore CS0618
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ChatCompletionFunctionCallOption))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ChatCompletionTool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.AnyOf<global::Groq.ChatCompletionToolType?, string>), TypeInfoPropertyName = "AnyOfChatCompletionToolTypeString2")]
@@ -582,7 +589,9 @@ namespace Groq
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ChatCompletionResponseMessage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Groq.ChatCompletionMessageExecutedTool>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ChatCompletionResponseMessageRole), TypeInfoPropertyName = "ChatCompletionResponseMessageRole2")]
+    #pragma warning disable CS0618 // This registration names a deprecated API model.
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ChatCompletionResponseMessageFunctionCall))]
+    #pragma warning restore CS0618
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Groq.Annotation>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.Annotation))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ChatCompletionMessageExecutedTool))]
@@ -594,7 +603,9 @@ namespace Groq
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Groq.BrowserResult>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.BrowserResult))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ChatCompletionStreamResponseDelta))]
+    #pragma warning disable CS0618 // This registration names a deprecated API model.
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ChatCompletionStreamResponseDeltaFunctionCall))]
+    #pragma warning restore CS0618
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Groq.ChatCompletionMessageToolCallChunk>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ChatCompletionStreamResponseDeltaRole), TypeInfoPropertyName = "ChatCompletionStreamResponseDeltaRole2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateChatCompletionRequest))]
@@ -611,9 +622,13 @@ namespace Groq
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateChatCompletionRequestReasoningEffort), TypeInfoPropertyName = "CreateChatCompletionRequestReasoningEffort2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateChatCompletionRequestReasoningFormat), TypeInfoPropertyName = "CreateChatCompletionRequestReasoningFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Groq.ChatCompletionTool>))]
+    #pragma warning disable CS0618 // This registration names a deprecated API model.
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.OneOf<global::Groq.CreateChatCompletionRequestFunctionCall?, global::Groq.ChatCompletionFunctionCallOption>), TypeInfoPropertyName = "OneOfCreateChatCompletionRequestFunctionCallChatCompletionFunctionCallOption2")]
+    #pragma warning restore CS0618
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateChatCompletionRequestFunctionCall), TypeInfoPropertyName = "CreateChatCompletionRequestFunctionCall2")]
+    #pragma warning disable CS0618 // This registration names a deprecated API model.
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Groq.ChatCompletionFunctions>))]
+    #pragma warning restore CS0618
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateChatCompletionRequestSearchSettings))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateChatCompletionRequestCompoundCustom))]
@@ -817,7 +832,9 @@ namespace Groq
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Groq.ChatCompletionRequestMessage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.OneOf<string, global::System.Collections.Generic.List<string>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Groq.ChatCompletionTool>))]
+    #pragma warning disable CS0618 // This registration names a deprecated API model.
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Groq.ChatCompletionFunctions>))]
+    #pragma warning restore CS0618
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Groq.ChatCompletionDocument>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Groq.CreateChatCompletionResponseChoice>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Groq.ChatCompletionTokenLogprob>))]
