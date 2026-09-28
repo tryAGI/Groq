@@ -42,8 +42,8 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
-        public global::Groq.ResponseEasyInputMessage PickEasyInputMessage() => IsEasyInputMessage
-            ? EasyInputMessage!
+        public global::Groq.ResponseEasyInputMessage PickEasyInputMessage() => EasyInputMessage is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'EasyInputMessage' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
-        public global::Groq.ResponseInputMessage PickMessage() => IsMessage
-            ? Message!
+        public global::Groq.ResponseInputMessage PickMessage() => Message is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Message' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
-        public global::Groq.ResponseItemReference PickItemReference() => IsItemReference
-            ? ItemReference!
+        public global::Groq.ResponseItemReference PickItemReference() => ItemReference is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ItemReference' but the value was {ToString()}.");
 
         /// <summary>
@@ -153,8 +153,8 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
-        public global::Groq.ResponseFunctionCall PickFunctionCall() => IsFunctionCall
-            ? FunctionCall!
+        public global::Groq.ResponseFunctionCall PickFunctionCall() => FunctionCall is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'FunctionCall' but the value was {ToString()}.");
 
         /// <summary>
@@ -190,8 +190,8 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
-        public global::Groq.ResponseFunctionCallOutput PickFunctionCallOutput() => IsFunctionCallOutput
-            ? FunctionCallOutput!
+        public global::Groq.ResponseFunctionCallOutput PickFunctionCallOutput() => FunctionCallOutput is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'FunctionCallOutput' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -372,25 +372,25 @@ namespace Groq
                 Validate();
             }
 
-            if (IsEasyInputMessage && easyInputMessage != null)
+            if (EasyInputMessage is { } __value0 && easyInputMessage != null)
             {
-                return easyInputMessage(EasyInputMessage!);
+                return easyInputMessage(__value0);
             }
-            else if (IsMessage && message != null)
+            else if (Message is { } __value1 && message != null)
             {
-                return message(Message!);
+                return message(__value1);
             }
-            else if (IsItemReference && itemReference != null)
+            else if (ItemReference is { } __value2 && itemReference != null)
             {
-                return itemReference(ItemReference!);
+                return itemReference(__value2);
             }
-            else if (IsFunctionCall && functionCall != null)
+            else if (FunctionCall is { } __value3 && functionCall != null)
             {
-                return functionCall(FunctionCall!);
+                return functionCall(__value3);
             }
-            else if (IsFunctionCallOutput && functionCallOutput != null)
+            else if (FunctionCallOutput is { } __value4 && functionCallOutput != null)
             {
-                return functionCallOutput(FunctionCallOutput!);
+                return functionCallOutput(__value4);
             }
 
             return default(TResult);
@@ -416,25 +416,25 @@ namespace Groq
                 Validate();
             }
 
-            if (IsEasyInputMessage)
+            if (EasyInputMessage is { } __value0)
             {
-                easyInputMessage?.Invoke(EasyInputMessage!);
+                easyInputMessage?.Invoke(__value0);
             }
-            else if (IsMessage)
+            else if (Message is { } __value1)
             {
-                message?.Invoke(Message!);
+                message?.Invoke(__value1);
             }
-            else if (IsItemReference)
+            else if (ItemReference is { } __value2)
             {
-                itemReference?.Invoke(ItemReference!);
+                itemReference?.Invoke(__value2);
             }
-            else if (IsFunctionCall)
+            else if (FunctionCall is { } __value3)
             {
-                functionCall?.Invoke(FunctionCall!);
+                functionCall?.Invoke(__value3);
             }
-            else if (IsFunctionCallOutput)
+            else if (FunctionCallOutput is { } __value4)
             {
-                functionCallOutput?.Invoke(FunctionCallOutput!);
+                functionCallOutput?.Invoke(__value4);
             }
         }
 
@@ -454,25 +454,25 @@ namespace Groq
                 Validate();
             }
 
-            if (IsEasyInputMessage)
+            if (EasyInputMessage is { } __value0)
             {
-                easyInputMessage?.Invoke(EasyInputMessage!);
+                easyInputMessage?.Invoke(__value0);
             }
-            else if (IsMessage)
+            else if (Message is { } __value1)
             {
-                message?.Invoke(Message!);
+                message?.Invoke(__value1);
             }
-            else if (IsItemReference)
+            else if (ItemReference is { } __value2)
             {
-                itemReference?.Invoke(ItemReference!);
+                itemReference?.Invoke(__value2);
             }
-            else if (IsFunctionCall)
+            else if (FunctionCall is { } __value3)
             {
-                functionCall?.Invoke(FunctionCall!);
+                functionCall?.Invoke(__value3);
             }
-            else if (IsFunctionCallOutput)
+            else if (FunctionCallOutput is { } __value4)
             {
-                functionCallOutput?.Invoke(FunctionCallOutput!);
+                functionCallOutput?.Invoke(__value4);
             }
         }
 
