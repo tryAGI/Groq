@@ -47,8 +47,8 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
-        public global::Groq.ResponseFileCitation PickFileCitation() => IsFileCitation
-            ? FileCitation!
+        public global::Groq.ResponseFileCitation PickFileCitation() => FileCitation is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'FileCitation' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
-        public global::Groq.ResponseUrlCitation PickUrlCitation() => IsUrlCitation
-            ? UrlCitation!
+        public global::Groq.ResponseUrlCitation PickUrlCitation() => UrlCitation is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'UrlCitation' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -185,13 +185,13 @@ namespace Groq
                 Validate();
             }
 
-            if (IsFileCitation && fileCitation != null)
+            if (FileCitation is { } __value0 && fileCitation != null)
             {
-                return fileCitation(FileCitation!);
+                return fileCitation(__value0);
             }
-            else if (IsUrlCitation && urlCitation != null)
+            else if (UrlCitation is { } __value1 && urlCitation != null)
             {
-                return urlCitation(UrlCitation!);
+                return urlCitation(__value1);
             }
 
             return default(TResult);
@@ -211,13 +211,13 @@ namespace Groq
                 Validate();
             }
 
-            if (IsFileCitation)
+            if (FileCitation is { } __value0)
             {
-                fileCitation?.Invoke(FileCitation!);
+                fileCitation?.Invoke(__value0);
             }
-            else if (IsUrlCitation)
+            else if (UrlCitation is { } __value1)
             {
-                urlCitation?.Invoke(UrlCitation!);
+                urlCitation?.Invoke(__value1);
             }
         }
 
@@ -234,13 +234,13 @@ namespace Groq
                 Validate();
             }
 
-            if (IsFileCitation)
+            if (FileCitation is { } __value0)
             {
-                fileCitation?.Invoke(FileCitation!);
+                fileCitation?.Invoke(__value0);
             }
-            else if (IsUrlCitation)
+            else if (UrlCitation is { } __value1)
             {
-                urlCitation?.Invoke(UrlCitation!);
+                urlCitation?.Invoke(__value1);
             }
         }
 

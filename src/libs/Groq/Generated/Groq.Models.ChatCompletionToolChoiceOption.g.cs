@@ -47,8 +47,8 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
-        public global::Groq.ChatCompletionToolChoiceOptionEnum PickEnum() => IsEnum
-            ? Enum!.Value
+        public global::Groq.ChatCompletionToolChoiceOptionEnum PickEnum() => Enum is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Enum' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
-        public global::Groq.ChatCompletionNamedToolChoice PickNamed() => IsNamed
-            ? Named!
+        public global::Groq.ChatCompletionNamedToolChoice PickNamed() => Named is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Named' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -182,13 +182,13 @@ namespace Groq
                 Validate();
             }
 
-            if (IsEnum && @enum != null)
+            if (Enum is { } __value0 && @enum != null)
             {
-                return @enum(Enum!);
+                return @enum(__value0);
             }
-            else if (IsNamed && named != null)
+            else if (Named is { } __value1 && named != null)
             {
-                return named(Named!);
+                return named(__value1);
             }
 
             return default(TResult);
@@ -208,13 +208,13 @@ namespace Groq
                 Validate();
             }
 
-            if (IsEnum)
+            if (Enum is { } __value0)
             {
-                @enum?.Invoke(Enum!);
+                @enum?.Invoke(__value0);
             }
-            else if (IsNamed)
+            else if (Named is { } __value1)
             {
-                named?.Invoke(Named!);
+                named?.Invoke(__value1);
             }
         }
 
@@ -231,13 +231,13 @@ namespace Groq
                 Validate();
             }
 
-            if (IsEnum)
+            if (Enum is { } __value0)
             {
-                @enum?.Invoke(Enum!);
+                @enum?.Invoke(__value0);
             }
-            else if (IsNamed)
+            else if (Named is { } __value1)
             {
-                named?.Invoke(Named!);
+                named?.Invoke(__value1);
             }
         }
 

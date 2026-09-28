@@ -47,8 +47,8 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
-        public global::Groq.ResponseInputTextContent PickInputText() => IsInputText
-            ? InputText!
+        public global::Groq.ResponseInputTextContent PickInputText() => InputText is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'InputText' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -120,9 +120,9 @@ namespace Groq
                 Validate();
             }
 
-            if (IsInputText && inputText != null)
+            if (InputText is { } __value0 && inputText != null)
             {
-                return inputText(InputText!);
+                return inputText(__value0);
             }
 
             return default(TResult);
@@ -140,9 +140,9 @@ namespace Groq
                 Validate();
             }
 
-            if (IsInputText)
+            if (InputText is { } __value0)
             {
-                inputText?.Invoke(InputText!);
+                inputText?.Invoke(__value0);
             }
         }
 
@@ -158,9 +158,9 @@ namespace Groq
                 Validate();
             }
 
-            if (IsInputText)
+            if (InputText is { } __value0)
             {
-                inputText?.Invoke(InputText!);
+                inputText?.Invoke(__value0);
             }
         }
 

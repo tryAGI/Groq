@@ -42,8 +42,8 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
-        public global::Groq.ResponseFormatText PickText() => IsText
-            ? Text!
+        public global::Groq.ResponseFormatText PickText() => Text is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Text' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
-        public global::Groq.ResponseFormatJsonObject PickJsonObject() => IsJsonObject
-            ? JsonObject!
+        public global::Groq.ResponseFormatJsonObject PickJsonObject() => JsonObject is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'JsonObject' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
-        public global::Groq.TextResponseFormatJsonSchema PickJsonSchema() => IsJsonSchema
-            ? JsonSchema!
+        public global::Groq.TextResponseFormatJsonSchema PickJsonSchema() => JsonSchema is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'JsonSchema' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -242,17 +242,17 @@ namespace Groq
                 Validate();
             }
 
-            if (IsText && text != null)
+            if (Text is { } __value0 && text != null)
             {
-                return text(Text!);
+                return text(__value0);
             }
-            else if (IsJsonObject && jsonObject != null)
+            else if (JsonObject is { } __value1 && jsonObject != null)
             {
-                return jsonObject(JsonObject!);
+                return jsonObject(__value1);
             }
-            else if (IsJsonSchema && jsonSchema != null)
+            else if (JsonSchema is { } __value2 && jsonSchema != null)
             {
-                return jsonSchema(JsonSchema!);
+                return jsonSchema(__value2);
             }
 
             return default(TResult);
@@ -274,17 +274,17 @@ namespace Groq
                 Validate();
             }
 
-            if (IsText)
+            if (Text is { } __value0)
             {
-                text?.Invoke(Text!);
+                text?.Invoke(__value0);
             }
-            else if (IsJsonObject)
+            else if (JsonObject is { } __value1)
             {
-                jsonObject?.Invoke(JsonObject!);
+                jsonObject?.Invoke(__value1);
             }
-            else if (IsJsonSchema)
+            else if (JsonSchema is { } __value2)
             {
-                jsonSchema?.Invoke(JsonSchema!);
+                jsonSchema?.Invoke(__value2);
             }
         }
 
@@ -302,17 +302,17 @@ namespace Groq
                 Validate();
             }
 
-            if (IsText)
+            if (Text is { } __value0)
             {
-                text?.Invoke(Text!);
+                text?.Invoke(__value0);
             }
-            else if (IsJsonObject)
+            else if (JsonObject is { } __value1)
             {
-                jsonObject?.Invoke(JsonObject!);
+                jsonObject?.Invoke(__value1);
             }
-            else if (IsJsonSchema)
+            else if (JsonSchema is { } __value2)
             {
-                jsonSchema?.Invoke(JsonSchema!);
+                jsonSchema?.Invoke(__value2);
             }
         }
 
