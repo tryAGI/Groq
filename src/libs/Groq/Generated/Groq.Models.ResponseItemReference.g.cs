@@ -9,18 +9,18 @@ namespace Groq
     public sealed partial class ResponseItemReference
     {
         /// <summary>
-        /// The type of item to reference. Always `item_reference`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseItemReferenceTypeJsonConverter))]
-        public global::Groq.ResponseItemReferenceType Type { get; set; }
-
-        /// <summary>
         /// The ID of the item to reference.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Id { get; set; }
+
+        /// <summary>
+        /// The type of item to reference. Always `item_reference`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseItemReferenceTypeJsonConverter))]
+        public global::Groq.ResponseItemReferenceType Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -44,8 +44,8 @@ namespace Groq
             string id,
             global::Groq.ResponseItemReferenceType type)
         {
-            this.Type = type;
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
+            this.Type = type;
         }
 
         /// <summary>

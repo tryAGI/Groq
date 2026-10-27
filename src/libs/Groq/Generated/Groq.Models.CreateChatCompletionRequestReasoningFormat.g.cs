@@ -5,8 +5,7 @@ namespace Groq
 {
     /// <summary>
     /// Specifies how to output reasoning tokens<br/>
-    /// This field is mutually exclusive with `include_reasoning`.<br/>
-    /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+    /// This field is mutually exclusive with `include_reasoning`.
     /// </summary>
     public enum CreateChatCompletionRequestReasoningFormat
     {

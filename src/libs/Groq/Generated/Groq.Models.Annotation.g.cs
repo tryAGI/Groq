@@ -9,14 +9,6 @@ namespace Groq
     public sealed partial class Annotation
     {
         /// <summary>
-        /// The type of annotation.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnnotationTypeJsonConverter))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Groq.AnnotationType Type { get; set; }
-
-        /// <summary>
         /// A citation referencing a specific document that was provided in the request.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("document_citation")]
@@ -27,6 +19,14 @@ namespace Groq
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("function_citation")]
         public global::Groq.FunctionCitation? FunctionCitation { get; set; }
+
+        /// <summary>
+        /// The type of annotation.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnnotationTypeJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Groq.AnnotationType Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -54,9 +54,9 @@ namespace Groq
             global::Groq.DocumentCitation? documentCitation,
             global::Groq.FunctionCitation? functionCitation)
         {
-            this.Type = type;
             this.DocumentCitation = documentCitation;
             this.FunctionCitation = functionCitation;
+            this.Type = type;
         }
 
         /// <summary>

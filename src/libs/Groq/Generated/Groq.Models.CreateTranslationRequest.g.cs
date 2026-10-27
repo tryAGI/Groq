@@ -21,13 +21,6 @@ namespace Groq
         public string? Filename { get; set; }
 
         /// <summary>
-        /// The audio URL to translate/transcribe (supports Base64URL). Either file or url must be provided.<br/>
-        /// When using the Batch API only url is supported.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
-        public string? Url { get; set; }
-
-        /// <summary>
         /// ID of the model to use. `whisper-large-v3` and `whisper-large-v3-turbo` are currently available.<br/>
         /// Example: whisper-large-v3-turbo
         /// </summary>
@@ -59,6 +52,13 @@ namespace Groq
         public double? Temperature { get; set; }
 
         /// <summary>
+        /// The audio URL to translate/transcribe (supports Base64URL). Either file or url must be provided.<br/>
+        /// When using the Batch API only url is supported.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        public string? Url { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -77,10 +77,6 @@ namespace Groq
         /// <param name="filename">
         /// The audio file object (not file name) translate, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
         /// </param>
-        /// <param name="url">
-        /// The audio URL to translate/transcribe (supports Base64URL). Either file or url must be provided.<br/>
-        /// When using the Batch API only url is supported.
-        /// </param>
         /// <param name="prompt">
         /// An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should be in English.
         /// </param>
@@ -92,6 +88,10 @@ namespace Groq
         /// The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.<br/>
         /// Default Value: 0
         /// </param>
+        /// <param name="url">
+        /// The audio URL to translate/transcribe (supports Base64URL). Either file or url must be provided.<br/>
+        /// When using the Batch API only url is supported.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -99,18 +99,18 @@ namespace Groq
             global::Groq.AnyOf<string, global::Groq.CreateTranslationRequestModel?> model,
             byte[]? file,
             string? filename,
-            string? url,
             string? prompt,
             global::Groq.CreateTranslationRequestResponseFormat? responseFormat,
-            double? temperature)
+            double? temperature,
+            string? url)
         {
             this.File = file;
             this.Filename = filename;
-            this.Url = url;
             this.Model = model;
             this.Prompt = prompt;
             this.ResponseFormat = responseFormat;
             this.Temperature = temperature;
+            this.Url = url;
         }
 
         /// <summary>

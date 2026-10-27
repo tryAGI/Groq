@@ -9,20 +9,6 @@ namespace Groq
     public sealed partial class ResponseOutputTextContent
     {
         /// <summary>
-        /// The type of the output text. Always `output_text`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseOutputTextContentTypeJsonConverter))]
-        public global::Groq.ResponseOutputTextContentType Type { get; set; }
-
-        /// <summary>
-        /// The text output from the model.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Text { get; set; }
-
-        /// <summary>
         /// The annotations of the text output.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("annotations")]
@@ -36,6 +22,20 @@ namespace Groq
         public global::System.Collections.Generic.IList<string>? Logprobs { get; set; }
 
         /// <summary>
+        /// The text output from the model.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Text { get; set; }
+
+        /// <summary>
+        /// The type of the output text. Always `output_text`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseOutputTextContentTypeJsonConverter))]
+        public global::Groq.ResponseOutputTextContentType Type { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -44,31 +44,31 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ResponseOutputTextContent" /> class.
         /// </summary>
-        /// <param name="text">
-        /// The text output from the model.
-        /// </param>
         /// <param name="annotations">
         /// The annotations of the text output.
         /// </param>
-        /// <param name="type">
-        /// The type of the output text. Always `output_text`.
+        /// <param name="text">
+        /// The text output from the model.
         /// </param>
         /// <param name="logprobs">
         /// Log probability information for the output.
+        /// </param>
+        /// <param name="type">
+        /// The type of the output text. Always `output_text`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ResponseOutputTextContent(
-            string text,
             global::System.Collections.Generic.IList<global::Groq.ResponseAnnotation> annotations,
-            global::Groq.ResponseOutputTextContentType type,
-            global::System.Collections.Generic.IList<string>? logprobs)
+            string text,
+            global::System.Collections.Generic.IList<string>? logprobs,
+            global::Groq.ResponseOutputTextContentType type)
         {
-            this.Type = type;
-            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Annotations = annotations ?? throw new global::System.ArgumentNullException(nameof(annotations));
             this.Logprobs = logprobs;
+            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
+            this.Type = type;
         }
 
         /// <summary>

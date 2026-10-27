@@ -9,6 +9,12 @@ namespace Groq
     public sealed partial class XGroqNonStreaming
     {
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("debug")]
+        public global::Groq.DebugData? Debug { get; set; }
+
+        /// <summary>
         /// A groq request ID which can be used to refer to a specific request to groq support.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -28,12 +34,6 @@ namespace Groq
         public global::Groq.XGroqNonStreamingUsage? Usage { get; set; }
 
         /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("debug")]
-        public global::Groq.DebugData? Debug { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -45,26 +45,26 @@ namespace Groq
         /// <param name="id">
         /// A groq request ID which can be used to refer to a specific request to groq support.
         /// </param>
+        /// <param name="debug"></param>
         /// <param name="seed">
         /// The seed used for the request. See the seed property on CreateChatCompletionRequest for more details.
         /// </param>
         /// <param name="usage">
         /// Additional Groq-specific usage metrics (hardware cache statistics).
         /// </param>
-        /// <param name="debug"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public XGroqNonStreaming(
             string id,
+            global::Groq.DebugData? debug,
             int? seed,
-            global::Groq.XGroqNonStreamingUsage? usage,
-            global::Groq.DebugData? debug)
+            global::Groq.XGroqNonStreamingUsage? usage)
         {
+            this.Debug = debug;
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Seed = seed;
             this.Usage = usage;
-            this.Debug = debug;
         }
 
         /// <summary>

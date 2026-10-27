@@ -6,15 +6,8 @@ namespace Groq
     /// <summary>
     /// Describes an OpenAI model offering that can be used with the API.
     /// </summary>
-    public sealed partial class Model6
+    public sealed partial class Model7
     {
-        /// <summary>
-        /// The model identifier, which can be referenced in the API endpoints.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Id { get; set; }
-
         /// <summary>
         /// The Unix timestamp (in seconds) when the model was created.
         /// </summary>
@@ -22,6 +15,13 @@ namespace Groq
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.UnixTimestampJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.DateTimeOffset Created { get; set; }
+
+        /// <summary>
+        /// The model identifier, which can be referenced in the API endpoints.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Id { get; set; }
 
         /// <summary>
         /// The object type, which is always "model".
@@ -44,13 +44,13 @@ namespace Groq
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Model6" /> class.
+        /// Initializes a new instance of the <see cref="Model7" /> class.
         /// </summary>
-        /// <param name="id">
-        /// The model identifier, which can be referenced in the API endpoints.
-        /// </param>
         /// <param name="created">
         /// The Unix timestamp (in seconds) when the model was created.
+        /// </param>
+        /// <param name="id">
+        /// The model identifier, which can be referenced in the API endpoints.
         /// </param>
         /// <param name="ownedBy">
         /// The organization that owns the model.
@@ -61,22 +61,22 @@ namespace Groq
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public Model6(
-            string id,
+        public Model7(
             global::System.DateTimeOffset created,
+            string id,
             string ownedBy,
             global::Groq.ModelObject @object)
         {
-            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Created = created;
+            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Object = @object;
             this.OwnedBy = ownedBy ?? throw new global::System.ArgumentNullException(nameof(ownedBy));
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Model6" /> class.
+        /// Initializes a new instance of the <see cref="Model7" /> class.
         /// </summary>
-        public Model6()
+        public Model7()
         {
         }
 

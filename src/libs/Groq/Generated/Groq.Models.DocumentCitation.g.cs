@@ -9,11 +9,11 @@ namespace Groq
     public sealed partial class DocumentCitation
     {
         /// <summary>
-        /// The character index in the message content where this citation begins.
+        /// The ID of the document being cited, corresponding to a document provided in the request.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("start_index")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("document_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int StartIndex { get; set; }
+        public required string DocumentId { get; set; }
 
         /// <summary>
         /// The character index in the message content where this citation ends.
@@ -23,11 +23,11 @@ namespace Groq
         public required int EndIndex { get; set; }
 
         /// <summary>
-        /// The ID of the document being cited, corresponding to a document provided in the request.
+        /// The character index in the message content where this citation begins.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("document_id")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("start_index")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string DocumentId { get; set; }
+        public required int StartIndex { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -38,26 +38,26 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="DocumentCitation" /> class.
         /// </summary>
-        /// <param name="startIndex">
-        /// The character index in the message content where this citation begins.
+        /// <param name="documentId">
+        /// The ID of the document being cited, corresponding to a document provided in the request.
         /// </param>
         /// <param name="endIndex">
         /// The character index in the message content where this citation ends.
         /// </param>
-        /// <param name="documentId">
-        /// The ID of the document being cited, corresponding to a document provided in the request.
+        /// <param name="startIndex">
+        /// The character index in the message content where this citation begins.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public DocumentCitation(
-            int startIndex,
+            string documentId,
             int endIndex,
-            string documentId)
+            int startIndex)
         {
-            this.StartIndex = startIndex;
-            this.EndIndex = endIndex;
             this.DocumentId = documentId ?? throw new global::System.ArgumentNullException(nameof(documentId));
+            this.EndIndex = endIndex;
+            this.StartIndex = startIndex;
         }
 
         /// <summary>

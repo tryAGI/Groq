@@ -15,37 +15,37 @@ namespace Groq
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(string[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Text.Json.JsonElement?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(object))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateSpeechRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.AnyOf<string, global::Groq.CreateSpeechRequestModel?>), TypeInfoPropertyName = "AnyOfStringCreateSpeechRequestModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateSpeechRequestModel), TypeInfoPropertyName = "CreateSpeechRequestModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateSpeechRequestResponseFormat), TypeInfoPropertyName = "CreateSpeechRequestResponseFormat2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateTranscriptionRequest))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.AnyOf<string, global::Groq.CreateTranscriptionRequestModel?>), TypeInfoPropertyName = "AnyOfStringCreateTranscriptionRequestModel2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateTranscriptionRequestModel), TypeInfoPropertyName = "CreateTranscriptionRequestModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.AnyOf<string, global::Groq.CreateTranscriptionRequestLanguage?>), TypeInfoPropertyName = "AnyOfStringCreateTranscriptionRequestLanguage2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateTranscriptionRequestLanguage), TypeInfoPropertyName = "CreateTranscriptionRequestLanguage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.AnyOf<string, global::Groq.CreateTranscriptionRequestModel?>), TypeInfoPropertyName = "AnyOfStringCreateTranscriptionRequestModel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateTranscriptionRequestModel), TypeInfoPropertyName = "CreateTranscriptionRequestModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateTranscriptionRequestResponseFormat), TypeInfoPropertyName = "CreateTranscriptionRequestResponseFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Groq.CreateTranscriptionRequestTimestampGranularitie>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateTranscriptionRequestTimestampGranularitie), TypeInfoPropertyName = "CreateTranscriptionRequestTimestampGranularitie2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(object))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateTranscriptionResponseJson))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateTranslationRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.AnyOf<string, global::Groq.CreateTranslationRequestModel?>), TypeInfoPropertyName = "AnyOfStringCreateTranslationRequestModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateTranslationRequestModel), TypeInfoPropertyName = "CreateTranslationRequestModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateTranslationRequestResponseFormat), TypeInfoPropertyName = "CreateTranslationRequestResponseFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateTranslationResponseJson))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(double?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.AnyOf<string, global::Groq.CreateSpeechRequestModel?>?), TypeInfoPropertyName = "NullableAnyOfStringCreateSpeechRequestModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateSpeechRequestModel?), TypeInfoPropertyName = "NullableCreateSpeechRequestModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateSpeechRequestResponseFormat?), TypeInfoPropertyName = "NullableCreateSpeechRequestResponseFormat2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(double?))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.AnyOf<string, global::Groq.CreateTranscriptionRequestModel?>?), TypeInfoPropertyName = "NullableAnyOfStringCreateTranscriptionRequestModel2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateTranscriptionRequestModel?), TypeInfoPropertyName = "NullableCreateTranscriptionRequestModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.AnyOf<string, global::Groq.CreateTranscriptionRequestLanguage?>?), TypeInfoPropertyName = "NullableAnyOfStringCreateTranscriptionRequestLanguage2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateTranscriptionRequestLanguage?), TypeInfoPropertyName = "NullableCreateTranscriptionRequestLanguage2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.AnyOf<string, global::Groq.CreateTranscriptionRequestModel?>?), TypeInfoPropertyName = "NullableAnyOfStringCreateTranscriptionRequestModel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateTranscriptionRequestModel?), TypeInfoPropertyName = "NullableCreateTranscriptionRequestModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateTranscriptionRequestResponseFormat?), TypeInfoPropertyName = "NullableCreateTranscriptionRequestResponseFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateTranscriptionRequestTimestampGranularitie?), TypeInfoPropertyName = "NullableCreateTranscriptionRequestTimestampGranularitie2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.AnyOf<string, global::Groq.CreateTranslationRequestModel?>?), TypeInfoPropertyName = "NullableAnyOfStringCreateTranslationRequestModel2")]
@@ -99,13 +99,13 @@ namespace Groq
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
         public static void AddConverters(global::System.Text.Json.JsonSerializerOptions options)
         {
+            options.Converters.Add(new global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
+            options.Converters.Add(new global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
             options.Converters.Add(new global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateSpeechRequestModel?>());
-            options.Converters.Add(new global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateTranscriptionRequestModel?>());
             options.Converters.Add(new global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateTranscriptionRequestLanguage?>());
+            options.Converters.Add(new global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateTranscriptionRequestModel?>());
             options.Converters.Add(new global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateTranslationRequestModel?>());
-            options.Converters.Add(new global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
             options.Converters.Add(new global::Groq.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<double>, string>());
-            options.Converters.Add(new global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
             options.Converters.Add(new global::Groq.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
         }
@@ -136,13 +136,13 @@ namespace Groq
 
                     || typeToConvert == typeof(global::Groq.CreateSpeechRequestResponseFormat?)
 
-                    || typeToConvert == typeof(global::Groq.CreateTranscriptionRequestModel)
-
-                    || typeToConvert == typeof(global::Groq.CreateTranscriptionRequestModel?)
-
                     || typeToConvert == typeof(global::Groq.CreateTranscriptionRequestLanguage)
 
                     || typeToConvert == typeof(global::Groq.CreateTranscriptionRequestLanguage?)
+
+                    || typeToConvert == typeof(global::Groq.CreateTranscriptionRequestModel)
+
+                    || typeToConvert == typeof(global::Groq.CreateTranscriptionRequestModel?)
 
                     || typeToConvert == typeof(global::Groq.CreateTranscriptionRequestResponseFormat)
 
@@ -185,16 +185,6 @@ namespace Groq
                     return new global::Groq.JsonConverters.CreateSpeechRequestResponseFormatNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Groq.CreateTranscriptionRequestModel))
-                {
-                    return new global::Groq.JsonConverters.CreateTranscriptionRequestModelJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Groq.CreateTranscriptionRequestModel?))
-                {
-                    return new global::Groq.JsonConverters.CreateTranscriptionRequestModelNullableJsonConverter();
-                }
-
                 if (typeToConvert == typeof(global::Groq.CreateTranscriptionRequestLanguage))
                 {
                     return new global::Groq.JsonConverters.CreateTranscriptionRequestLanguageJsonConverter();
@@ -203,6 +193,16 @@ namespace Groq
                 if (typeToConvert == typeof(global::Groq.CreateTranscriptionRequestLanguage?))
                 {
                     return new global::Groq.JsonConverters.CreateTranscriptionRequestLanguageNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Groq.CreateTranscriptionRequestModel))
+                {
+                    return new global::Groq.JsonConverters.CreateTranscriptionRequestModelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Groq.CreateTranscriptionRequestModel?))
+                {
+                    return new global::Groq.JsonConverters.CreateTranscriptionRequestModelNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Groq.CreateTranscriptionRequestResponseFormat))

@@ -9,13 +9,6 @@ namespace Groq
     public sealed partial class CreateChatCompletionStreamResponse
     {
         /// <summary>
-        /// A unique identifier for the chat completion. Each chunk has the same ID.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Id { get; set; }
-
-        /// <summary>
         /// A list of chat completion choices. Can contain more than one elements if `n` is greater than 1.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("choices")]
@@ -31,11 +24,38 @@ namespace Groq
         public required global::System.DateTimeOffset Created { get; set; }
 
         /// <summary>
+        /// A unique identifier for the chat completion. Each chunk has the same ID.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Id { get; set; }
+
+        /// <summary>
         /// The model to generate the completion.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Model { get; set; }
+
+        /// <summary>
+        /// Random padding that normalizes chunk sizes as a mitigation against side-channel attacks. Present on deployments that stream obfuscation unless `stream_options.include_obfuscation` is false.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("obfuscation")]
+        public string? Obfuscation { get; set; }
+
+        /// <summary>
+        /// The object type, which is always `chat.completion.chunk`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("object")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateChatCompletionStreamResponseObjectJsonConverter))]
+        public global::Groq.CreateChatCompletionStreamResponseObject Object { get; set; }
+
+        /// <summary>
+        /// The service tier used for the request. Deployments running in strict OpenAI compatibility report Groq-specific tiers as `default`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("service_tier")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateChatCompletionStreamResponseServiceTierJsonConverter))]
+        public global::Groq.CreateChatCompletionStreamResponseServiceTier? ServiceTier { get; set; }
 
         /// <summary>
         /// This fingerprint represents the backend configuration that the model runs with.<br/>
@@ -45,11 +65,10 @@ namespace Groq
         public string? SystemFingerprint { get; set; }
 
         /// <summary>
-        /// The object type, which is always `chat.completion.chunk`.
+        /// Present when `stream_options.include_usage` is set - null on every chunk except the final usage chunk, which carries the totals for the request.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("object")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateChatCompletionStreamResponseObjectJsonConverter))]
-        public global::Groq.CreateChatCompletionStreamResponseObject Object { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
+        public global::Groq.CompletionUsage? Usage { get; set; }
 
         /// <summary>
         /// Groq-specific metadata for streaming responses. Different fields appear in different chunks.
@@ -66,24 +85,33 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateChatCompletionStreamResponse" /> class.
         /// </summary>
-        /// <param name="id">
-        /// A unique identifier for the chat completion. Each chunk has the same ID.
-        /// </param>
         /// <param name="choices">
         /// A list of chat completion choices. Can contain more than one elements if `n` is greater than 1.
         /// </param>
         /// <param name="created">
         /// The Unix timestamp (in seconds) of when the chat completion was created. Each chunk has the same timestamp.
         /// </param>
+        /// <param name="id">
+        /// A unique identifier for the chat completion. Each chunk has the same ID.
+        /// </param>
         /// <param name="model">
         /// The model to generate the completion.
+        /// </param>
+        /// <param name="obfuscation">
+        /// Random padding that normalizes chunk sizes as a mitigation against side-channel attacks. Present on deployments that stream obfuscation unless `stream_options.include_obfuscation` is false.
+        /// </param>
+        /// <param name="object">
+        /// The object type, which is always `chat.completion.chunk`.
+        /// </param>
+        /// <param name="serviceTier">
+        /// The service tier used for the request. Deployments running in strict OpenAI compatibility report Groq-specific tiers as `default`.
         /// </param>
         /// <param name="systemFingerprint">
         /// This fingerprint represents the backend configuration that the model runs with.<br/>
         /// Can be used in conjunction with the `seed` request parameter to understand when backend changes have been made that might impact determinism.
         /// </param>
-        /// <param name="object">
-        /// The object type, which is always `chat.completion.chunk`.
+        /// <param name="usage">
+        /// Present when `stream_options.include_usage` is set - null on every chunk except the final usage chunk, which carries the totals for the request.
         /// </param>
         /// <param name="xGroq">
         /// Groq-specific metadata for streaming responses. Different fields appear in different chunks.
@@ -92,20 +120,26 @@ namespace Groq
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateChatCompletionStreamResponse(
-            string id,
             global::System.Collections.Generic.IList<global::Groq.CreateChatCompletionStreamResponseChoice> choices,
             global::System.DateTimeOffset created,
+            string id,
             string model,
-            string? systemFingerprint,
+            string? obfuscation,
             global::Groq.CreateChatCompletionStreamResponseObject @object,
+            global::Groq.CreateChatCompletionStreamResponseServiceTier? serviceTier,
+            string? systemFingerprint,
+            global::Groq.CompletionUsage? usage,
             global::Groq.XGroq? xGroq)
         {
-            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Choices = choices ?? throw new global::System.ArgumentNullException(nameof(choices));
             this.Created = created;
+            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
-            this.SystemFingerprint = systemFingerprint;
+            this.Obfuscation = obfuscation;
             this.Object = @object;
+            this.ServiceTier = serviceTier;
+            this.SystemFingerprint = systemFingerprint;
+            this.Usage = usage;
             this.XGroq = xGroq;
         }
 

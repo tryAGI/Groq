@@ -9,18 +9,18 @@ namespace Groq
     public sealed partial class ResponseInputTextContent
     {
         /// <summary>
-        /// The type of the input item. Always `input_text`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseInputTextContentTypeJsonConverter))]
-        public global::Groq.ResponseInputTextContentType Type { get; set; }
-
-        /// <summary>
         /// The text input to the model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Text { get; set; }
+
+        /// <summary>
+        /// The type of the input item. Always `input_text`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseInputTextContentTypeJsonConverter))]
+        public global::Groq.ResponseInputTextContentType Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -44,8 +44,8 @@ namespace Groq
             string text,
             global::Groq.ResponseInputTextContentType type)
         {
-            this.Type = type;
             this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
+            this.Type = type;
         }
 
         /// <summary>

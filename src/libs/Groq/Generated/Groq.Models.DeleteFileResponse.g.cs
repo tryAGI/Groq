@@ -11,6 +11,13 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("deleted")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool Deleted { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Id { get; set; }
@@ -23,13 +30,6 @@ namespace Groq
         public global::Groq.DeleteFileResponseObject Object { get; set; }
 
         /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("deleted")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required bool Deleted { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -38,20 +38,20 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="DeleteFileResponse" /> class.
         /// </summary>
-        /// <param name="id"></param>
         /// <param name="deleted"></param>
+        /// <param name="id"></param>
         /// <param name="object"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public DeleteFileResponse(
-            string id,
             bool deleted,
+            string id,
             global::Groq.DeleteFileResponseObject @object)
         {
+            this.Deleted = deleted;
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Object = @object;
-            this.Deleted = deleted;
         }
 
         /// <summary>

@@ -4,11 +4,16 @@
 namespace Groq
 {
     /// <summary>
-    /// Options for streaming response. Only set this when you set `stream: true`.<br/>
-    /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+    /// Options for streaming response. Only set this when you set `stream: true`.
     /// </summary>
     public sealed partial class ChatCompletionStreamOptions
     {
+        /// <summary>
+        /// When true (the default), streamed chunks carry an `obfuscation` field of random padding that normalizes chunk sizes as a mitigation against side-channel attacks. Set to false to reduce bandwidth. Only supported on deployments that stream the obfuscation field.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("include_obfuscation")]
+        public bool? IncludeObfuscation { get; set; }
+
         /// <summary>
         /// If set, an additional chunk will be streamed before the `data: [DONE]` message. The `usage` field on this chunk shows the token usage statistics for the entire request, and the `choices` field will always be an empty array. All other chunks will also include a `usage` field, but with a null value.
         /// </summary>
@@ -24,6 +29,9 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ChatCompletionStreamOptions" /> class.
         /// </summary>
+        /// <param name="includeObfuscation">
+        /// When true (the default), streamed chunks carry an `obfuscation` field of random padding that normalizes chunk sizes as a mitigation against side-channel attacks. Set to false to reduce bandwidth. Only supported on deployments that stream the obfuscation field.
+        /// </param>
         /// <param name="includeUsage">
         /// If set, an additional chunk will be streamed before the `data: [DONE]` message. The `usage` field on this chunk shows the token usage statistics for the entire request, and the `choices` field will always be an empty array. All other chunks will also include a `usage` field, but with a null value.
         /// </param>
@@ -31,8 +39,10 @@ namespace Groq
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ChatCompletionStreamOptions(
+            bool? includeObfuscation,
             bool? includeUsage)
         {
+            this.IncludeObfuscation = includeObfuscation;
             this.IncludeUsage = includeUsage;
         }
 

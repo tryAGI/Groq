@@ -434,16 +434,16 @@ namespace Groq
         /// <summary>
         /// Creates and executes a batch from an uploaded file of requests. [Learn more](/docs/batch).
         /// </summary>
-        /// <param name="inputFileId">
-        /// The ID of an uploaded file that contains requests for the new batch.<br/>
-        /// See [upload file](/docs/api-reference#files-upload) for how to upload a file.<br/>
-        /// Your input file must be formatted as a [JSONL file](/docs/batch), and must be uploaded with the purpose `batch`. The file can be up to 100 MB in size.
+        /// <param name="completionWindow">
+        /// The time frame within which the batch should be processed. Durations from `24h` to `7d` are supported.
         /// </param>
         /// <param name="endpoint">
         /// The endpoint to be used for all requests in the batch. Currently `/v1/chat/completions` is supported.
         /// </param>
-        /// <param name="completionWindow">
-        /// The time frame within which the batch should be processed. Durations from `24h` to `7d` are supported.
+        /// <param name="inputFileId">
+        /// The ID of an uploaded file that contains requests for the new batch.<br/>
+        /// See [upload file](/docs/api-reference#files-upload) for how to upload a file.<br/>
+        /// Your input file must be formatted as a [JSONL file](/docs/batch), and must be uploaded with the purpose `batch`. The file can be up to 100 MB in size.
         /// </param>
         /// <param name="metadata">
         /// Optional custom metadata for the batch.
@@ -452,8 +452,8 @@ namespace Groq
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Groq.Batch> CreateBatchAsync(
-            string inputFileId,
             string completionWindow,
+            string inputFileId,
             global::Groq.CreateBatchRequestEndpoint endpoint = default,
             global::System.Collections.Generic.Dictionary<string, string>? metadata = default,
             global::Groq.AutoSDKRequestOptions? requestOptions = default,
@@ -461,9 +461,9 @@ namespace Groq
         {
             var __request = new global::Groq.CreateBatchRequest
             {
-                InputFileId = inputFileId,
-                Endpoint = endpoint,
                 CompletionWindow = completionWindow,
+                Endpoint = endpoint,
+                InputFileId = inputFileId,
                 Metadata = metadata,
             };
 

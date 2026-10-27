@@ -16,12 +16,6 @@ namespace Groq
         public required global::Groq.ChatCompletionStreamResponseDelta Delta { get; set; }
 
         /// <summary>
-        /// Log probability information for the choice.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("logprobs")]
-        public global::Groq.CreateChatCompletionStreamResponseChoiceLogprobs? Logprobs { get; set; }
-
-        /// <summary>
         /// The reason the model stopped generating tokens. This will be `stop` if the model hit a natural stop point or a provided stop sequence,<br/>
         /// `length` if the maximum number of tokens specified in the request was reached,<br/>
         /// `tool_calls` if the model called a tool, or `function_call` (deprecated) if the model called a function.
@@ -38,6 +32,12 @@ namespace Groq
         public required int Index { get; set; }
 
         /// <summary>
+        /// Log probability information for the choice.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("logprobs")]
+        public global::Groq.CreateChatCompletionStreamResponseChoiceLogprobs? Logprobs { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -52,13 +52,13 @@ namespace Groq
         /// <param name="index">
         /// The index of the choice in the list of choices.
         /// </param>
-        /// <param name="logprobs">
-        /// Log probability information for the choice.
-        /// </param>
         /// <param name="finishReason">
         /// The reason the model stopped generating tokens. This will be `stop` if the model hit a natural stop point or a provided stop sequence,<br/>
         /// `length` if the maximum number of tokens specified in the request was reached,<br/>
         /// `tool_calls` if the model called a tool, or `function_call` (deprecated) if the model called a function.
+        /// </param>
+        /// <param name="logprobs">
+        /// Log probability information for the choice.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -66,13 +66,13 @@ namespace Groq
         public CreateChatCompletionStreamResponseChoice(
             global::Groq.ChatCompletionStreamResponseDelta delta,
             int index,
-            global::Groq.CreateChatCompletionStreamResponseChoiceLogprobs? logprobs,
-            global::Groq.CreateChatCompletionStreamResponseChoiceFinishReason? finishReason)
+            global::Groq.CreateChatCompletionStreamResponseChoiceFinishReason? finishReason,
+            global::Groq.CreateChatCompletionStreamResponseChoiceLogprobs? logprobs)
         {
             this.Delta = delta ?? throw new global::System.ArgumentNullException(nameof(delta));
-            this.Logprobs = logprobs;
             this.FinishReason = finishReason;
             this.Index = index;
+            this.Logprobs = logprobs;
         }
 
         /// <summary>

@@ -14,26 +14,26 @@ namespace Groq
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>), TypeInfoPropertyName = "SystemCollectionsGeneric_ObjectList")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(string[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Text.Json.JsonElement?))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(object))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.Batch))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.BatchObject), TypeInfoPropertyName = "BatchObject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTimeOffset))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.BatchErrors))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Groq.BatchErrorsDataItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.BatchErrorsDataItem))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.BatchStatus), TypeInfoPropertyName = "BatchStatus2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTimeOffset))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(object))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.BatchObject), TypeInfoPropertyName = "BatchObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.BatchRequestCounts))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.BatchStatus), TypeInfoPropertyName = "BatchStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ListBatchesResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Groq.Batch>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ListBatchesResponseObject), TypeInfoPropertyName = "ListBatchesResponseObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateBatchRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateBatchRequestEndpoint), TypeInfoPropertyName = "CreateBatchRequestEndpoint2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTimeOffset?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.BatchObject?), TypeInfoPropertyName = "NullableBatchObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.BatchStatus?), TypeInfoPropertyName = "NullableBatchStatus2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTimeOffset?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ListBatchesResponseObject?), TypeInfoPropertyName = "NullableListBatchesResponseObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateBatchRequestEndpoint?), TypeInfoPropertyName = "NullableCreateBatchRequestEndpoint2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Groq.BatchErrorsDataItem>))]
@@ -86,8 +86,8 @@ namespace Groq
         public static void AddConverters(global::System.Text.Json.JsonSerializerOptions options)
         {
             options.Converters.Add(new global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
-            options.Converters.Add(new global::Groq.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<double>, string>());
             options.Converters.Add(new global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
+            options.Converters.Add(new global::Groq.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<double>, string>());
             options.Converters.Add(new global::Groq.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
         }

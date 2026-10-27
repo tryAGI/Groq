@@ -9,18 +9,18 @@ namespace Groq
     public sealed partial class ChatCompletionRequestMessageContentPartText
     {
         /// <summary>
-        /// The type of the content part.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ChatCompletionRequestMessageContentPartTextTypeJsonConverter))]
-        public global::Groq.ChatCompletionRequestMessageContentPartTextType Type { get; set; }
-
-        /// <summary>
         /// The text content.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Text { get; set; }
+
+        /// <summary>
+        /// The type of the content part.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ChatCompletionRequestMessageContentPartTextTypeJsonConverter))]
+        public global::Groq.ChatCompletionRequestMessageContentPartTextType Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -44,8 +44,8 @@ namespace Groq
             string text,
             global::Groq.ChatCompletionRequestMessageContentPartTextType type)
         {
-            this.Type = type;
             this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
+            this.Type = type;
         }
 
         /// <summary>

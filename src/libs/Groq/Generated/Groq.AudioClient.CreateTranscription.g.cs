@@ -183,18 +183,6 @@ namespace Groq
                                 }
 
                             }
-                            if (request.Url != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(request.Url ?? string.Empty),
-                                    name: "\"url\"");
-
-                            }
-                            __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent(request.Model.ToString() ?? string.Empty),
-                                name: "\"model\"");
-
                             if (request.Language != default)
                             {
 
@@ -203,6 +191,10 @@ namespace Groq
                                     name: "\"language\"");
 
                             }
+                            __httpRequestContent.Add(
+                                content: new global::System.Net.Http.StringContent(request.Model.ToString() ?? string.Empty),
+                                name: "\"model\"");
+
                             if (request.Prompt != default)
                             {
 
@@ -232,7 +224,15 @@ namespace Groq
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.TimestampGranularities!, x => x.ToValueString()))}]"),
-                                    name: "\"timestamp_granularities\"");
+                                    name: "\"timestamp_granularities[]\"");
+
+                            }
+                            if (request.Url != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(request.Url ?? string.Empty),
+                                    name: "\"url\"");
 
                             }
 
@@ -535,16 +535,12 @@ namespace Groq
         /// The audio file object (not file name) to transcribe, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.<br/>
         /// Either a file or a URL must be provided. Note that the file field is not supported in Batch API requests.
         /// </param>
-        /// <param name="url">
-        /// The audio URL to translate/transcribe (supports Base64URL).<br/>
-        /// Either a file or a URL must be provided. For Batch API requests, the URL field is required since the file field is not supported.
+        /// <param name="language">
+        /// The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.
         /// </param>
         /// <param name="model">
         /// ID of the model to use. `whisper-large-v3` and `whisper-large-v3-turbo` are currently available.<br/>
         /// Example: whisper-large-v3-turbo
-        /// </param>
-        /// <param name="language">
-        /// The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.
         /// </param>
         /// <param name="prompt">
         /// An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/speech-text) should match the audio language.
@@ -561,6 +557,10 @@ namespace Groq
         /// The timestamp granularities to populate for this transcription. `response_format` must be set `verbose_json` to use timestamp granularities. Either or both of these options are supported: `word`, or `segment`. Note: There is no additional latency for segment timestamps, but generating word timestamps incurs additional latency.<br/>
         /// Default Value: [segment]
         /// </param>
+        /// <param name="url">
+        /// The audio URL to translate/transcribe (supports Base64URL).<br/>
+        /// Either a file or a URL must be provided. For Batch API requests, the URL field is required since the file field is not supported.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -568,12 +568,12 @@ namespace Groq
             global::Groq.AnyOf<string, global::Groq.CreateTranscriptionRequestModel?> model,
             byte[]? file = default,
             string? filename = default,
-            string? url = default,
             global::Groq.AnyOf<string, global::Groq.CreateTranscriptionRequestLanguage?>? language = default,
             string? prompt = default,
             global::Groq.CreateTranscriptionRequestResponseFormat? responseFormat = default,
             double? temperature = default,
             global::System.Collections.Generic.IList<global::Groq.CreateTranscriptionRequestTimestampGranularitie>? timestampGranularities = default,
+            string? url = default,
             global::Groq.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -581,13 +581,13 @@ namespace Groq
             {
                 File = file,
                 Filename = filename,
-                Url = url,
-                Model = model,
                 Language = language,
+                Model = model,
                 Prompt = prompt,
                 ResponseFormat = responseFormat,
                 Temperature = temperature,
                 TimestampGranularities = timestampGranularities,
+                Url = url,
             };
 
             return await CreateTranscriptionAsync(

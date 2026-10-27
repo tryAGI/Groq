@@ -21,12 +21,12 @@ namespace Groq.JsonConverters
                             throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Groq.ChatCompletionRequestMessageDiscriminator)}");
             var discriminator = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, discriminatorTypeInfo);
 
-            global::Groq.ChatCompletionRequestSystemMessage? system = default;
-            if (discriminator?.Role == global::Groq.ChatCompletionRequestMessageDiscriminatorRole.System)
+            global::Groq.ChatCompletionRequestSystemMessage? developer = default;
+            if (discriminator?.Role == global::Groq.ChatCompletionRequestMessageDiscriminatorRole.Developer)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ChatCompletionRequestSystemMessage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ChatCompletionRequestSystemMessage> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Groq.ChatCompletionRequestSystemMessage)}");
-                system = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+                developer = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
             global::Groq.ChatCompletionRequestUserMessage? user = default;
             if (discriminator?.Role == global::Groq.ChatCompletionRequestMessageDiscriminatorRole.User)
@@ -59,7 +59,7 @@ namespace Groq.JsonConverters
 
             var __value = new global::Groq.ChatCompletionRequestMessage(
                 discriminator?.Role,
-                system,
+                developer,
 
                 user,
 
@@ -82,11 +82,11 @@ namespace Groq.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            if (value.IsSystem)
+            if (value.IsDeveloper)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Groq.ChatCompletionRequestSystemMessage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Groq.ChatCompletionRequestSystemMessage?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Groq.ChatCompletionRequestSystemMessage).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSystem(), typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickDeveloper(), typeInfo);
             }
             else if (value.IsUser)
             {

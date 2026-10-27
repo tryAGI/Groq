@@ -10,14 +10,6 @@ namespace Groq
     public sealed partial class ChatCompletionRequestFunctionMessage
     {
         /// <summary>
-        /// The role of the messages author, in this case `function`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("role")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ChatCompletionRequestFunctionMessageRoleJsonConverter))]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public global::Groq.ChatCompletionRequestFunctionMessageRole Role { get; set; }
-
-        /// <summary>
         /// The contents of the function message.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content")]
@@ -33,6 +25,21 @@ namespace Groq
         public required string Name { get; set; }
 
         /// <summary>
+        /// The role of the messages author, in this case `function`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("role")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ChatCompletionRequestFunctionMessageRoleJsonConverter))]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public global::Groq.ChatCompletionRequestFunctionMessageRole Role { get; set; }
+
+        /// <summary>
+        /// DO NOT USE.  This field is present because OpenAI allows it and users send it.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tool_call_id")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public string? ToolCallId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -44,23 +51,28 @@ namespace Groq
         /// <param name="name">
         /// The name of the function to call.
         /// </param>
+        /// <param name="content">
+        /// The contents of the function message.
+        /// </param>
         /// <param name="role">
         /// The role of the messages author, in this case `function`.
         /// </param>
-        /// <param name="content">
-        /// The contents of the function message.
+        /// <param name="toolCallId">
+        /// DO NOT USE.  This field is present because OpenAI allows it and users send it.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ChatCompletionRequestFunctionMessage(
             string name,
+            string? content,
             global::Groq.ChatCompletionRequestFunctionMessageRole role,
-            string? content)
+            string? toolCallId)
         {
-            this.Role = role;
             this.Content = content;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.Role = role;
+            this.ToolCallId = toolCallId;
         }
 
         /// <summary>

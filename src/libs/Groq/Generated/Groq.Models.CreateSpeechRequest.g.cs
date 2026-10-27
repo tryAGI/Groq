@@ -9,16 +9,6 @@ namespace Groq
     public sealed partial class CreateSpeechRequest
     {
         /// <summary>
-        /// One of the [available TTS models](/docs/text-to-speech).<br/>
-        /// Example: playai-tts
-        /// </summary>
-        /// <example>playai-tts</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateSpeechRequestModel?>))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Groq.AnyOf<string, global::Groq.CreateSpeechRequestModel?> Model { get; set; }
-
-        /// <summary>
         /// The text to generate audio for.<br/>
         /// Example: The quick brown fox jumped over the lazy dog
         /// </summary>
@@ -28,13 +18,14 @@ namespace Groq
         public required string Input { get; set; }
 
         /// <summary>
-        /// The voice to use when generating the audio. List of voices can be found [here](/docs/text-to-speech).<br/>
-        /// Example: Fritz-PlayAI
+        /// One of the [available TTS models](/docs/text-to-speech).<br/>
+        /// Example: playai-tts
         /// </summary>
-        /// <example>Fritz-PlayAI</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
+        /// <example>playai-tts</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateSpeechRequestModel?>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Voice { get; set; }
+        public required global::Groq.AnyOf<string, global::Groq.CreateSpeechRequestModel?> Model { get; set; }
 
         /// <summary>
         /// The format of the generated audio. Supported formats are `flac, mp3, mulaw, ogg, wav`.<br/>
@@ -63,6 +54,15 @@ namespace Groq
         public double? Speed { get; set; }
 
         /// <summary>
+        /// The voice to use when generating the audio. List of voices can be found [here](/docs/text-to-speech).<br/>
+        /// Example: Fritz-PlayAI
+        /// </summary>
+        /// <example>Fritz-PlayAI</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Voice { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -71,13 +71,13 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateSpeechRequest" /> class.
         /// </summary>
-        /// <param name="model">
-        /// One of the [available TTS models](/docs/text-to-speech).<br/>
-        /// Example: playai-tts
-        /// </param>
         /// <param name="input">
         /// The text to generate audio for.<br/>
         /// Example: The quick brown fox jumped over the lazy dog
+        /// </param>
+        /// <param name="model">
+        /// One of the [available TTS models](/docs/text-to-speech).<br/>
+        /// Example: playai-tts
         /// </param>
         /// <param name="voice">
         /// The voice to use when generating the audio. List of voices can be found [here](/docs/text-to-speech).<br/>
@@ -101,19 +101,19 @@ namespace Groq
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateSpeechRequest(
-            global::Groq.AnyOf<string, global::Groq.CreateSpeechRequestModel?> model,
             string input,
+            global::Groq.AnyOf<string, global::Groq.CreateSpeechRequestModel?> model,
             string voice,
             global::Groq.CreateSpeechRequestResponseFormat? responseFormat,
             int? sampleRate,
             double? speed)
         {
-            this.Model = model;
             this.Input = input ?? throw new global::System.ArgumentNullException(nameof(input));
-            this.Voice = voice ?? throw new global::System.ArgumentNullException(nameof(voice));
+            this.Model = model;
             this.ResponseFormat = responseFormat;
             this.SampleRate = sampleRate;
             this.Speed = speed;
+            this.Voice = voice ?? throw new global::System.ArgumentNullException(nameof(voice));
         }
 
         /// <summary>

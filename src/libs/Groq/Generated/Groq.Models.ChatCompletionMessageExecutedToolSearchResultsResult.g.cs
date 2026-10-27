@@ -9,18 +9,6 @@ namespace Groq
     public sealed partial class ChatCompletionMessageExecutedToolSearchResultsResult
     {
         /// <summary>
-        /// The title of the search result
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
-        public string? Title { get; set; }
-
-        /// <summary>
-        /// The URL of the search result
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
-        public string? Url { get; set; }
-
-        /// <summary>
         /// The content of the search result
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content")]
@@ -33,6 +21,18 @@ namespace Groq
         public float? Score { get; set; }
 
         /// <summary>
+        /// The title of the search result
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
+        /// The URL of the search result
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        public string? Url { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -41,31 +41,31 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ChatCompletionMessageExecutedToolSearchResultsResult" /> class.
         /// </summary>
-        /// <param name="title">
-        /// The title of the search result
-        /// </param>
-        /// <param name="url">
-        /// The URL of the search result
-        /// </param>
         /// <param name="content">
         /// The content of the search result
         /// </param>
         /// <param name="score">
         /// The relevance score of the search result
         /// </param>
+        /// <param name="title">
+        /// The title of the search result
+        /// </param>
+        /// <param name="url">
+        /// The URL of the search result
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ChatCompletionMessageExecutedToolSearchResultsResult(
-            string? title,
-            string? url,
             string? content,
-            float? score)
+            float? score,
+            string? title,
+            string? url)
         {
-            this.Title = title;
-            this.Url = url;
             this.Content = content;
             this.Score = score;
+            this.Title = title;
+            this.Url = url;
         }
 
         /// <summary>

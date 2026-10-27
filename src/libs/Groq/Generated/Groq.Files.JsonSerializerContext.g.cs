@@ -14,28 +14,28 @@ namespace Groq
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>), TypeInfoPropertyName = "SystemCollectionsGeneric_ObjectList")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(string[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Text.Json.JsonElement?))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTimeOffset))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.File))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.FileObject), TypeInfoPropertyName = "FileObject2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.FilePurpose), TypeInfoPropertyName = "FilePurpose2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateFileRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateFileRequestPurpose), TypeInfoPropertyName = "CreateFileRequestPurpose2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.DeleteFileResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.DeleteFileResponseObject), TypeInfoPropertyName = "DeleteFileResponseObject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.File))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.FileObject), TypeInfoPropertyName = "FileObject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.FilePurpose), TypeInfoPropertyName = "FilePurpose2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ListFilesResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ListFilesResponseObject), TypeInfoPropertyName = "ListFilesResponseObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Groq.File>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ListFilesResponseObject), TypeInfoPropertyName = "ListFilesResponseObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTimeOffset?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long?))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.FileObject?), TypeInfoPropertyName = "NullableFileObject2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.FilePurpose?), TypeInfoPropertyName = "NullableFilePurpose2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateFileRequestPurpose?), TypeInfoPropertyName = "NullableCreateFileRequestPurpose2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.DeleteFileResponseObject?), TypeInfoPropertyName = "NullableDeleteFileResponseObject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.FileObject?), TypeInfoPropertyName = "NullableFileObject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.FilePurpose?), TypeInfoPropertyName = "NullableFilePurpose2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ListFilesResponseObject?), TypeInfoPropertyName = "NullableListFilesResponseObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Groq.File>))]
     internal sealed partial class FilesSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
@@ -86,8 +86,8 @@ namespace Groq
         public static void AddConverters(global::System.Text.Json.JsonSerializerOptions options)
         {
             options.Converters.Add(new global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
-            options.Converters.Add(new global::Groq.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<double>, string>());
             options.Converters.Add(new global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
+            options.Converters.Add(new global::Groq.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<double>, string>());
             options.Converters.Add(new global::Groq.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
         }
@@ -110,21 +110,21 @@ namespace Groq
             public override bool CanConvert(global::System.Type typeToConvert)
             {
                 return
-                    typeToConvert == typeof(global::Groq.FileObject)
-
-                    || typeToConvert == typeof(global::Groq.FileObject?)
-
-                    || typeToConvert == typeof(global::Groq.FilePurpose)
-
-                    || typeToConvert == typeof(global::Groq.FilePurpose?)
-
-                    || typeToConvert == typeof(global::Groq.CreateFileRequestPurpose)
+                    typeToConvert == typeof(global::Groq.CreateFileRequestPurpose)
 
                     || typeToConvert == typeof(global::Groq.CreateFileRequestPurpose?)
 
                     || typeToConvert == typeof(global::Groq.DeleteFileResponseObject)
 
                     || typeToConvert == typeof(global::Groq.DeleteFileResponseObject?)
+
+                    || typeToConvert == typeof(global::Groq.FileObject)
+
+                    || typeToConvert == typeof(global::Groq.FileObject?)
+
+                    || typeToConvert == typeof(global::Groq.FilePurpose)
+
+                    || typeToConvert == typeof(global::Groq.FilePurpose?)
 
                     || typeToConvert == typeof(global::Groq.ListFilesResponseObject)
 
@@ -135,26 +135,6 @@ namespace Groq
                 global::System.Type typeToConvert,
                 global::System.Text.Json.JsonSerializerOptions options)
             {
-                if (typeToConvert == typeof(global::Groq.FileObject))
-                {
-                    return new global::Groq.JsonConverters.FileObjectJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Groq.FileObject?))
-                {
-                    return new global::Groq.JsonConverters.FileObjectNullableJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Groq.FilePurpose))
-                {
-                    return new global::Groq.JsonConverters.FilePurposeJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Groq.FilePurpose?))
-                {
-                    return new global::Groq.JsonConverters.FilePurposeNullableJsonConverter();
-                }
-
                 if (typeToConvert == typeof(global::Groq.CreateFileRequestPurpose))
                 {
                     return new global::Groq.JsonConverters.CreateFileRequestPurposeJsonConverter();
@@ -173,6 +153,26 @@ namespace Groq
                 if (typeToConvert == typeof(global::Groq.DeleteFileResponseObject?))
                 {
                     return new global::Groq.JsonConverters.DeleteFileResponseObjectNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Groq.FileObject))
+                {
+                    return new global::Groq.JsonConverters.FileObjectJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Groq.FileObject?))
+                {
+                    return new global::Groq.JsonConverters.FileObjectNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Groq.FilePurpose))
+                {
+                    return new global::Groq.JsonConverters.FilePurposeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Groq.FilePurpose?))
+                {
+                    return new global::Groq.JsonConverters.FilePurposeNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Groq.ListFilesResponseObject))

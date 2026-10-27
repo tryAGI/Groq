@@ -9,13 +9,6 @@ namespace Groq
     public sealed partial class ResponseFileCitation
     {
         /// <summary>
-        /// The type of the annotation. Always `file_citation`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseFileCitationTypeJsonConverter))]
-        public global::Groq.ResponseFileCitationType Type { get; set; }
-
-        /// <summary>
         /// The ID of the file.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("file_id")]
@@ -29,6 +22,13 @@ namespace Groq
         public int? Index { get; set; }
 
         /// <summary>
+        /// The type of the annotation. Always `file_citation`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseFileCitationTypeJsonConverter))]
+        public global::Groq.ResponseFileCitationType Type { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -40,23 +40,23 @@ namespace Groq
         /// <param name="fileId">
         /// The ID of the file.
         /// </param>
-        /// <param name="type">
-        /// The type of the annotation. Always `file_citation`.
-        /// </param>
         /// <param name="index">
         /// The index of the citation in the text.
+        /// </param>
+        /// <param name="type">
+        /// The type of the annotation. Always `file_citation`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ResponseFileCitation(
             string fileId,
-            global::Groq.ResponseFileCitationType type,
-            int? index)
+            int? index,
+            global::Groq.ResponseFileCitationType type)
         {
-            this.Type = type;
             this.FileId = fileId ?? throw new global::System.ArgumentNullException(nameof(fileId));
             this.Index = index;
+            this.Type = type;
         }
 
         /// <summary>

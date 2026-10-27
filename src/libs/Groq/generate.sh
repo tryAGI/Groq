@@ -13,26 +13,20 @@ fetch_spec() {
     --connect-timeout 30 --max-time 300
 }
 
-# OpenAPI spec: resolved from groq/groq-python/.stats.yml (Stainless-hosted)
-
-# Groq spec is hosted on Stainless GCS with hash-based URLs that change each update.
-# We dynamically resolve the latest URL from groq/groq-python/.stats.yml.
-readonly stats_url="https://raw.githubusercontent.com/groq/groq-python/main/.stats.yml"
-readonly fallback_openapi_url="https://storage.googleapis.com/stainless-sdk-openapi-specs/groqcloud/groqcloud-debd965baa031e12228c41e538741fa6055bf2813bcd062840a19f84a17cea95.yml"
-
-echo "Fetching latest spec URL from .stats.yml..."
-stats=$(fetch_spec --fail --silent --show-error --location "$stats_url")
-openapi_url=$(printf '%s\n' "$stats" | sed -n 's/^openapi_spec_url: *//p')
-
-if [ -z "$openapi_url" ]; then
-  echo "WARN: .stats.yml does not expose openapi_spec_url; using the last official Stainless URL."
-  openapi_url="$fallback_openapi_url"
+# Groq no longer publishes a spec URL in .stats.yml. The public API reference
+# embeds the official OpenAPI document; parse it as data without executing scripts.
+html_tmp="$(mktemp)"
+spec_tmp="$(mktemp)"
+trap 'rm -f "$html_tmp" "$spec_tmp"' EXIT
+fetch_spec https://console.groq.com/docs/api-reference -o "$html_tmp"
+python3 extract-openapi.py "$html_tmp" "$spec_tmp"
+if [[ -n "${AUTOSDK_EXECUTABLE:-}" ]]; then
+  autosdk() { "$AUTOSDK_EXECUTABLE" "$@"; }
+else
+  install_autosdk_cli
 fi
-
-echo "Spec URL: $openapi_url"
-install_autosdk_cli
+mv "$spec_tmp" openapi.yaml
 rm -rf Generated
-fetch_spec --fail --silent --show-error --location "$openapi_url" -o openapi.yaml
 
 # Note: The Groq spec already uses standard HTTP bearer auth and top-level security,
 # so no FixOpenApiSpec step is needed.

@@ -20,9 +20,9 @@ namespace Groq
         /// <summary>
         /// Relevance score between 0.0 and 1.0, where higher scores indicate <br/>
         /// greater relevance to the query.<br/>
-        /// Example: 0.92
+        /// Example: 0.92F
         /// </summary>
-        /// <example>0.92</example>
+        /// <example>0.92F</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("score")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required float Score { get; set; }
@@ -43,7 +43,7 @@ namespace Groq
         /// <param name="score">
         /// Relevance score between 0.0 and 1.0, where higher scores indicate <br/>
         /// greater relevance to the query.<br/>
-        /// Example: 0.92
+        /// Example: 0.92F
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

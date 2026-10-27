@@ -17,6 +17,12 @@ namespace Groq
         public required global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessageContentPart>> Content { get; set; }
 
         /// <summary>
+        /// An optional name for the participant. Provides the model information to differentiate between participants of the same role.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
         /// The role of the messages author, in this case `user`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("role")]
@@ -24,10 +30,10 @@ namespace Groq
         public global::Groq.ChatCompletionRequestUserMessageRole Role { get; set; }
 
         /// <summary>
-        /// An optional name for the participant. Provides the model information to differentiate between participants of the same role.
+        /// DO NOT USE.  This field is present because OpenAI allows it and users send it.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("tool_call_id")]
+        public string? ToolCallId { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -41,23 +47,28 @@ namespace Groq
         /// <param name="content">
         /// The contents of the user message.
         /// </param>
+        /// <param name="name">
+        /// An optional name for the participant. Provides the model information to differentiate between participants of the same role.
+        /// </param>
         /// <param name="role">
         /// The role of the messages author, in this case `user`.
         /// </param>
-        /// <param name="name">
-        /// An optional name for the participant. Provides the model information to differentiate between participants of the same role.
+        /// <param name="toolCallId">
+        /// DO NOT USE.  This field is present because OpenAI allows it and users send it.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ChatCompletionRequestUserMessage(
             global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessageContentPart>> content,
+            string? name,
             global::Groq.ChatCompletionRequestUserMessageRole role,
-            string? name)
+            string? toolCallId)
         {
             this.Content = content;
-            this.Role = role;
             this.Name = name;
+            this.Role = role;
+            this.ToolCallId = toolCallId;
         }
 
         /// <summary>

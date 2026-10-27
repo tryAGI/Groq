@@ -9,11 +9,11 @@ namespace Groq
     public sealed partial class ResponseOutputMessage
     {
         /// <summary>
-        /// The type of the output message. Always `message`.
+        /// The content of the output message.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseOutputMessageTypeJsonConverter))]
-        public global::Groq.ResponseOutputMessageType Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<global::Groq.ResponseOutputContent> Content { get; set; }
 
         /// <summary>
         /// The unique ID of the output message.
@@ -23,13 +23,6 @@ namespace Groq
         public required string Id { get; set; }
 
         /// <summary>
-        /// The status of the message.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseOutputMessageStatusJsonConverter))]
-        public global::Groq.ResponseOutputMessageStatus? Status { get; set; }
-
-        /// <summary>
         /// The role of the output message. Always `assistant`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("role")]
@@ -37,11 +30,18 @@ namespace Groq
         public global::Groq.ResponseOutputMessageRole Role { get; set; }
 
         /// <summary>
-        /// The content of the output message.
+        /// The status of the message.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Groq.ResponseOutputContent> Content { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseOutputMessageStatusJsonConverter))]
+        public global::Groq.ResponseOutputMessageStatus? Status { get; set; }
+
+        /// <summary>
+        /// The type of the output message. Always `message`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseOutputMessageTypeJsonConverter))]
+        public global::Groq.ResponseOutputMessageType Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -52,36 +52,36 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ResponseOutputMessage" /> class.
         /// </summary>
-        /// <param name="id">
-        /// The unique ID of the output message.
-        /// </param>
         /// <param name="content">
         /// The content of the output message.
         /// </param>
-        /// <param name="type">
-        /// The type of the output message. Always `message`.
+        /// <param name="id">
+        /// The unique ID of the output message.
+        /// </param>
+        /// <param name="role">
+        /// The role of the output message. Always `assistant`.
         /// </param>
         /// <param name="status">
         /// The status of the message.
         /// </param>
-        /// <param name="role">
-        /// The role of the output message. Always `assistant`.
+        /// <param name="type">
+        /// The type of the output message. Always `message`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ResponseOutputMessage(
-            string id,
             global::System.Collections.Generic.IList<global::Groq.ResponseOutputContent> content,
-            global::Groq.ResponseOutputMessageType type,
+            string id,
+            global::Groq.ResponseOutputMessageRole role,
             global::Groq.ResponseOutputMessageStatus? status,
-            global::Groq.ResponseOutputMessageRole role)
+            global::Groq.ResponseOutputMessageType type)
         {
-            this.Type = type;
-            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
-            this.Status = status;
-            this.Role = role;
             this.Content = content ?? throw new global::System.ArgumentNullException(nameof(content));
+            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
+            this.Role = role;
+            this.Status = status;
+            this.Type = type;
         }
 
         /// <summary>

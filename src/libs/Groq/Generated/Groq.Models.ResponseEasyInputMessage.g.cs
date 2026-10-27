@@ -9,20 +9,20 @@ namespace Groq
     public sealed partial class ResponseEasyInputMessage
     {
         /// <summary>
-        /// The role of the message input. One of `user`, `assistant`, `system`, or `developer`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("role")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseEasyInputMessageRoleJsonConverter))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Groq.ResponseEasyInputMessageRole Role { get; set; }
-
-        /// <summary>
         /// Text input to the model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<global::Groq.ResponseInputContent>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ResponseInputContent>> Content { get; set; }
+
+        /// <summary>
+        /// The role of the message input. One of `user`, `assistant`, `system`, or `developer`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("role")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseEasyInputMessageRoleJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Groq.ResponseEasyInputMessageRole Role { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -33,21 +33,21 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ResponseEasyInputMessage" /> class.
         /// </summary>
-        /// <param name="role">
-        /// The role of the message input. One of `user`, `assistant`, `system`, or `developer`.
-        /// </param>
         /// <param name="content">
         /// Text input to the model.
+        /// </param>
+        /// <param name="role">
+        /// The role of the message input. One of `user`, `assistant`, `system`, or `developer`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ResponseEasyInputMessage(
-            global::Groq.ResponseEasyInputMessageRole role,
-            global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ResponseInputContent>> content)
+            global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ResponseInputContent>> content,
+            global::Groq.ResponseEasyInputMessageRole role)
         {
-            this.Role = role;
             this.Content = content;
+            this.Role = role;
         }
 
         /// <summary>

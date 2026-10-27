@@ -9,13 +9,6 @@ namespace Groq
     public sealed partial class ResponseOutputReasoning
     {
         /// <summary>
-        /// The type of the reasoning output. Always `reasoning`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseOutputReasoningTypeJsonConverter))]
-        public global::Groq.ResponseOutputReasoningType Type { get; set; }
-
-        /// <summary>
         /// The unique ID of the reasoning output.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -28,6 +21,13 @@ namespace Groq
         [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<object> Summary { get; set; }
+
+        /// <summary>
+        /// The type of the reasoning output. Always `reasoning`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseOutputReasoningTypeJsonConverter))]
+        public global::Groq.ResponseOutputReasoningType Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -55,9 +55,9 @@ namespace Groq
             global::System.Collections.Generic.IList<object> summary,
             global::Groq.ResponseOutputReasoningType type)
         {
-            this.Type = type;
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Summary = summary ?? throw new global::System.ArgumentNullException(nameof(summary));
+            this.Type = type;
         }
 
         /// <summary>

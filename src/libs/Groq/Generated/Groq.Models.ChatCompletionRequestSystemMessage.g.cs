@@ -17,6 +17,12 @@ namespace Groq
         public required global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessageContentPartText>> Content { get; set; }
 
         /// <summary>
+        /// An optional name for the participant. Provides the model information to differentiate between participants of the same role.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
         /// The role of the messages author, in this case `system`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("role")]
@@ -25,10 +31,10 @@ namespace Groq
         public required global::Groq.ChatCompletionRequestSystemMessageRole Role { get; set; }
 
         /// <summary>
-        /// An optional name for the participant. Provides the model information to differentiate between participants of the same role.
+        /// DO NOT USE.  This field is present because OpenAI allows it and users send it.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("tool_call_id")]
+        public string? ToolCallId { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -48,17 +54,22 @@ namespace Groq
         /// <param name="name">
         /// An optional name for the participant. Provides the model information to differentiate between participants of the same role.
         /// </param>
+        /// <param name="toolCallId">
+        /// DO NOT USE.  This field is present because OpenAI allows it and users send it.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ChatCompletionRequestSystemMessage(
             global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessageContentPartText>> content,
             global::Groq.ChatCompletionRequestSystemMessageRole role,
-            string? name)
+            string? name,
+            string? toolCallId)
         {
             this.Content = content;
-            this.Role = role;
             this.Name = name;
+            this.Role = role;
+            this.ToolCallId = toolCallId;
         }
 
         /// <summary>

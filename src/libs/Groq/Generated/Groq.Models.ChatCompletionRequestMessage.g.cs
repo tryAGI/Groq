@@ -18,38 +18,38 @@ namespace Groq
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Groq.ChatCompletionRequestSystemMessage? System { get; init; }
+        public global::Groq.ChatCompletionRequestSystemMessage? Developer { get; init; }
 #else
-        public global::Groq.ChatCompletionRequestSystemMessage? System { get; }
+        public global::Groq.ChatCompletionRequestSystemMessage? Developer { get; }
 #endif
 
         /// <summary>
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(System))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Developer))]
 #endif
-        public bool IsSystem => System != null;
+        public bool IsDeveloper => Developer != null;
 
         /// <summary>
         ///
         /// </summary>
-        public bool TryPickSystem(
+        public bool TryPickDeveloper(
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
             out global::Groq.ChatCompletionRequestSystemMessage? value)
         {
-            value = System;
-            return IsSystem;
+            value = Developer;
+            return IsDeveloper;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public global::Groq.ChatCompletionRequestSystemMessage PickSystem() => System is { } value
+        public global::Groq.ChatCompletionRequestSystemMessage PickDeveloper() => Developer is { } value
             ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'System' but the value was {ToString()}.");
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Developer' but the value was {ToString()}.");
 
         /// <summary>
         ///
@@ -206,20 +206,20 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Groq.ChatCompletionRequestSystemMessage?(ChatCompletionRequestMessage @this) => @this.System;
+        public static implicit operator global::Groq.ChatCompletionRequestSystemMessage?(ChatCompletionRequestMessage @this) => @this.Developer;
 
         /// <summary>
         ///
         /// </summary>
         public ChatCompletionRequestMessage(global::Groq.ChatCompletionRequestSystemMessage? value)
         {
-            System = value;
+            Developer = value;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public static ChatCompletionRequestMessage FromSystem(global::Groq.ChatCompletionRequestSystemMessage? value) => new ChatCompletionRequestMessage(value);
+        public static ChatCompletionRequestMessage FromDeveloper(global::Groq.ChatCompletionRequestSystemMessage? value) => new ChatCompletionRequestMessage(value);
 
         /// <summary>
         ///
@@ -318,7 +318,7 @@ namespace Groq
         /// </summary>
         public ChatCompletionRequestMessage(
             global::Groq.ChatCompletionRequestMessageDiscriminatorRole? role,
-            global::Groq.ChatCompletionRequestSystemMessage? system,
+            global::Groq.ChatCompletionRequestSystemMessage? developer,
             global::Groq.ChatCompletionRequestUserMessage? user,
             global::Groq.ChatCompletionRequestAssistantMessage? assistant,
             global::Groq.ChatCompletionRequestToolMessage? tool,
@@ -327,7 +327,7 @@ namespace Groq
         {
             Role = role;
 
-            System = system;
+            Developer = developer;
             User = user;
             Assistant = assistant;
             Tool = tool;
@@ -342,14 +342,14 @@ namespace Groq
             Tool as object ??
             Assistant as object ??
             User as object ??
-            System as object
+            Developer as object
             ;
 
         /// <summary>
         ///
         /// </summary>
         public override string? ToString() =>
-            System?.ToString() ??
+            Developer?.ToString() ??
             User?.ToString() ??
             Assistant?.ToString() ??
             Tool?.ToString() ??
@@ -361,14 +361,14 @@ namespace Groq
         /// </summary>
         public bool Validate()
         {
-            return IsSystem && !IsUser && !IsAssistant && !IsTool && !IsFunction || !IsSystem && IsUser && !IsAssistant && !IsTool && !IsFunction || !IsSystem && !IsUser && IsAssistant && !IsTool && !IsFunction || !IsSystem && !IsUser && !IsAssistant && IsTool && !IsFunction || !IsSystem && !IsUser && !IsAssistant && !IsTool && IsFunction;
+            return IsDeveloper && !IsUser && !IsAssistant && !IsTool && !IsFunction || !IsDeveloper && IsUser && !IsAssistant && !IsTool && !IsFunction || !IsDeveloper && !IsUser && IsAssistant && !IsTool && !IsFunction || !IsDeveloper && !IsUser && !IsAssistant && IsTool && !IsFunction || !IsDeveloper && !IsUser && !IsAssistant && !IsTool && IsFunction;
         }
 
         /// <summary>
         ///
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Groq.ChatCompletionRequestSystemMessage, TResult>? system = null,
+            global::System.Func<global::Groq.ChatCompletionRequestSystemMessage, TResult>? developer = null,
             global::System.Func<global::Groq.ChatCompletionRequestUserMessage, TResult>? user = null,
             global::System.Func<global::Groq.ChatCompletionRequestAssistantMessage, TResult>? assistant = null,
             global::System.Func<global::Groq.ChatCompletionRequestToolMessage, TResult>? tool = null,
@@ -380,9 +380,9 @@ namespace Groq
                 Validate();
             }
 
-            if (System is { } __value0 && system != null)
+            if (Developer is { } __value0 && developer != null)
             {
-                return system(__value0);
+                return developer(__value0);
             }
             else if (User is { } __value1 && user != null)
             {
@@ -408,7 +408,7 @@ namespace Groq
         ///
         /// </summary>
         public void Match(
-            global::System.Action<global::Groq.ChatCompletionRequestSystemMessage>? system = null,
+            global::System.Action<global::Groq.ChatCompletionRequestSystemMessage>? developer = null,
 
             global::System.Action<global::Groq.ChatCompletionRequestUserMessage>? user = null,
 
@@ -424,9 +424,9 @@ namespace Groq
                 Validate();
             }
 
-            if (System is { } __value0)
+            if (Developer is { } __value0)
             {
-                system?.Invoke(__value0);
+                developer?.Invoke(__value0);
             }
             else if (User is { } __value1)
             {
@@ -450,7 +450,7 @@ namespace Groq
         ///
         /// </summary>
         public void Switch(
-            global::System.Action<global::Groq.ChatCompletionRequestSystemMessage>? system = null,
+            global::System.Action<global::Groq.ChatCompletionRequestSystemMessage>? developer = null,
             global::System.Action<global::Groq.ChatCompletionRequestUserMessage>? user = null,
             global::System.Action<global::Groq.ChatCompletionRequestAssistantMessage>? assistant = null,
             global::System.Action<global::Groq.ChatCompletionRequestToolMessage>? tool = null,
@@ -462,9 +462,9 @@ namespace Groq
                 Validate();
             }
 
-            if (System is { } __value0)
+            if (Developer is { } __value0)
             {
-                system?.Invoke(__value0);
+                developer?.Invoke(__value0);
             }
             else if (User is { } __value1)
             {
@@ -491,7 +491,7 @@ namespace Groq
         {
             var fields = new object?[]
             {
-                System,
+                Developer,
                 typeof(global::Groq.ChatCompletionRequestSystemMessage),
                 User,
                 typeof(global::Groq.ChatCompletionRequestUserMessage),
@@ -517,7 +517,7 @@ namespace Groq
         public bool Equals(ChatCompletionRequestMessage other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Groq.ChatCompletionRequestSystemMessage?>.Default.Equals(System, other.System) &&
+                global::System.Collections.Generic.EqualityComparer<global::Groq.ChatCompletionRequestSystemMessage?>.Default.Equals(Developer, other.Developer) &&
                 global::System.Collections.Generic.EqualityComparer<global::Groq.ChatCompletionRequestUserMessage?>.Default.Equals(User, other.User) &&
                 global::System.Collections.Generic.EqualityComparer<global::Groq.ChatCompletionRequestAssistantMessage?>.Default.Equals(Assistant, other.Assistant) &&
                 global::System.Collections.Generic.EqualityComparer<global::Groq.ChatCompletionRequestToolMessage?>.Default.Equals(Tool, other.Tool) &&

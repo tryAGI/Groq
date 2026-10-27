@@ -4,7 +4,7 @@
 namespace Groq
 {
     /// <summary>
-    /// The service tier used for the request.
+    /// The service tier used for the request. Deployments running in strict OpenAI compatibility report Groq-specific tiers as `default`.
     /// </summary>
     public enum CreateChatCompletionResponseServiceTier
     {
@@ -15,15 +15,15 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
+        Default,
+        /// <summary>
+        ///
+        /// </summary>
         Flex,
         /// <summary>
         ///
         /// </summary>
         OnDemand,
-        /// <summary>
-        ///
-        /// </summary>
-        OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
         /// <summary>
         ///
         /// </summary>
@@ -43,9 +43,9 @@ namespace Groq
             return value switch
             {
                 CreateChatCompletionResponseServiceTier.Auto => "auto",
+                CreateChatCompletionResponseServiceTier.Default => "default",
                 CreateChatCompletionResponseServiceTier.Flex => "flex",
                 CreateChatCompletionResponseServiceTier.OnDemand => "on_demand",
-                CreateChatCompletionResponseServiceTier.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464 => "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464",
                 CreateChatCompletionResponseServiceTier.Performance => "performance",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -58,9 +58,9 @@ namespace Groq
             return value switch
             {
                 "auto" => CreateChatCompletionResponseServiceTier.Auto,
+                "default" => CreateChatCompletionResponseServiceTier.Default,
                 "flex" => CreateChatCompletionResponseServiceTier.Flex,
                 "on_demand" => CreateChatCompletionResponseServiceTier.OnDemand,
-                "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464" => CreateChatCompletionResponseServiceTier.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
                 "performance" => CreateChatCompletionResponseServiceTier.Performance,
                 _ => null,
             };

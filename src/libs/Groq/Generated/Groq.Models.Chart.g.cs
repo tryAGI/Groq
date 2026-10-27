@@ -9,12 +9,11 @@ namespace Groq
     public sealed partial class Chart
     {
         /// <summary>
-        /// The type of chart
+        /// The chart elements (data series, points, etc.)
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ChartTypeJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonPropertyName("elements")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Groq.ChartType Type { get; set; }
+        public required global::System.Collections.Generic.IList<global::Groq.ChartElement> Elements { get; set; }
 
         /// <summary>
         /// The title of the chart
@@ -23,52 +22,18 @@ namespace Groq
         public string? Title { get; set; }
 
         /// <summary>
+        /// The type of chart
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ChartTypeJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Groq.ChartType Type { get; set; }
+
+        /// <summary>
         /// The label for the x-axis
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("x_label")]
         public string? XLabel { get; set; }
-
-        /// <summary>
-        /// The label for the y-axis
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("y_label")]
-        public string? YLabel { get; set; }
-
-        /// <summary>
-        /// The unit for the x-axis
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("x_unit")]
-        public string? XUnit { get; set; }
-
-        /// <summary>
-        /// The unit for the y-axis
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("y_unit")]
-        public string? YUnit { get; set; }
-
-        /// <summary>
-        /// The tick values for the x-axis
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("x_ticks")]
-        public global::System.Collections.Generic.IList<double>? XTicks { get; set; }
-
-        /// <summary>
-        /// The tick values for the y-axis
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("y_ticks")]
-        public global::System.Collections.Generic.IList<double>? YTicks { get; set; }
-
-        /// <summary>
-        /// The labels for the x-axis ticks
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("x_tick_labels")]
-        public global::System.Collections.Generic.IList<string>? XTickLabels { get; set; }
-
-        /// <summary>
-        /// The labels for the y-axis ticks
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("y_tick_labels")]
-        public global::System.Collections.Generic.IList<string>? YTickLabels { get; set; }
 
         /// <summary>
         /// The scale type for the x-axis
@@ -77,17 +42,52 @@ namespace Groq
         public string? XScale { get; set; }
 
         /// <summary>
+        /// The labels for the x-axis ticks
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("x_tick_labels")]
+        public global::System.Collections.Generic.IList<string>? XTickLabels { get; set; }
+
+        /// <summary>
+        /// The tick values for the x-axis
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("x_ticks")]
+        public global::System.Collections.Generic.IList<double>? XTicks { get; set; }
+
+        /// <summary>
+        /// The unit for the x-axis
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("x_unit")]
+        public string? XUnit { get; set; }
+
+        /// <summary>
+        /// The label for the y-axis
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("y_label")]
+        public string? YLabel { get; set; }
+
+        /// <summary>
         /// The scale type for the y-axis
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("y_scale")]
         public string? YScale { get; set; }
 
         /// <summary>
-        /// The chart elements (data series, points, etc.)
+        /// The labels for the y-axis ticks
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("elements")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Groq.ChartElement> Elements { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("y_tick_labels")]
+        public global::System.Collections.Generic.IList<string>? YTickLabels { get; set; }
+
+        /// <summary>
+        /// The tick values for the y-axis
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("y_ticks")]
+        public global::System.Collections.Generic.IList<double>? YTicks { get; set; }
+
+        /// <summary>
+        /// The unit for the y-axis
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("y_unit")]
+        public string? YUnit { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -98,11 +98,11 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="Chart" /> class.
         /// </summary>
-        /// <param name="type">
-        /// The type of chart
-        /// </param>
         /// <param name="elements">
         /// The chart elements (data series, points, etc.)
+        /// </param>
+        /// <param name="type">
+        /// The type of chart
         /// </param>
         /// <param name="title">
         /// The title of the chart
@@ -110,64 +110,64 @@ namespace Groq
         /// <param name="xLabel">
         /// The label for the x-axis
         /// </param>
-        /// <param name="yLabel">
-        /// The label for the y-axis
-        /// </param>
-        /// <param name="xUnit">
-        /// The unit for the x-axis
-        /// </param>
-        /// <param name="yUnit">
-        /// The unit for the y-axis
-        /// </param>
-        /// <param name="xTicks">
-        /// The tick values for the x-axis
-        /// </param>
-        /// <param name="yTicks">
-        /// The tick values for the y-axis
+        /// <param name="xScale">
+        /// The scale type for the x-axis
         /// </param>
         /// <param name="xTickLabels">
         /// The labels for the x-axis ticks
         /// </param>
-        /// <param name="yTickLabels">
-        /// The labels for the y-axis ticks
+        /// <param name="xTicks">
+        /// The tick values for the x-axis
         /// </param>
-        /// <param name="xScale">
-        /// The scale type for the x-axis
+        /// <param name="xUnit">
+        /// The unit for the x-axis
+        /// </param>
+        /// <param name="yLabel">
+        /// The label for the y-axis
         /// </param>
         /// <param name="yScale">
         /// The scale type for the y-axis
+        /// </param>
+        /// <param name="yTickLabels">
+        /// The labels for the y-axis ticks
+        /// </param>
+        /// <param name="yTicks">
+        /// The tick values for the y-axis
+        /// </param>
+        /// <param name="yUnit">
+        /// The unit for the y-axis
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Chart(
-            global::Groq.ChartType type,
             global::System.Collections.Generic.IList<global::Groq.ChartElement> elements,
+            global::Groq.ChartType type,
             string? title,
             string? xLabel,
-            string? yLabel,
-            string? xUnit,
-            string? yUnit,
-            global::System.Collections.Generic.IList<double>? xTicks,
-            global::System.Collections.Generic.IList<double>? yTicks,
-            global::System.Collections.Generic.IList<string>? xTickLabels,
-            global::System.Collections.Generic.IList<string>? yTickLabels,
             string? xScale,
-            string? yScale)
+            global::System.Collections.Generic.IList<string>? xTickLabels,
+            global::System.Collections.Generic.IList<double>? xTicks,
+            string? xUnit,
+            string? yLabel,
+            string? yScale,
+            global::System.Collections.Generic.IList<string>? yTickLabels,
+            global::System.Collections.Generic.IList<double>? yTicks,
+            string? yUnit)
         {
-            this.Type = type;
-            this.Title = title;
-            this.XLabel = xLabel;
-            this.YLabel = yLabel;
-            this.XUnit = xUnit;
-            this.YUnit = yUnit;
-            this.XTicks = xTicks;
-            this.YTicks = yTicks;
-            this.XTickLabels = xTickLabels;
-            this.YTickLabels = yTickLabels;
-            this.XScale = xScale;
-            this.YScale = yScale;
             this.Elements = elements ?? throw new global::System.ArgumentNullException(nameof(elements));
+            this.Title = title;
+            this.Type = type;
+            this.XLabel = xLabel;
+            this.XScale = xScale;
+            this.XTickLabels = xTickLabels;
+            this.XTicks = xTicks;
+            this.XUnit = xUnit;
+            this.YLabel = yLabel;
+            this.YScale = yScale;
+            this.YTickLabels = yTickLabels;
+            this.YTicks = yTicks;
+            this.YUnit = yUnit;
         }
 
         /// <summary>

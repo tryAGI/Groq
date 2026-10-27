@@ -9,19 +9,25 @@ namespace Groq
     public sealed partial class ChatCompletionRequestToolMessage
     {
         /// <summary>
-        /// The role of the messages author, in this case `tool`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("role")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ChatCompletionRequestToolMessageRoleJsonConverter))]
-        public global::Groq.ChatCompletionRequestToolMessageRole Role { get; set; }
-
-        /// <summary>
         /// The contents of the tool message.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessageContentPart>>))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessageContentPart>> Content { get; set; }
+
+        /// <summary>
+        /// DO NOT USE.  This field is present because OpenAI allows it and users send it.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// The role of the messages author, in this case `tool`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("role")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ChatCompletionRequestToolMessageRoleJsonConverter))]
+        public global::Groq.ChatCompletionRequestToolMessageRole Role { get; set; }
 
         /// <summary>
         /// Tool call that this message is responding to.
@@ -45,6 +51,9 @@ namespace Groq
         /// <param name="toolCallId">
         /// Tool call that this message is responding to.
         /// </param>
+        /// <param name="name">
+        /// DO NOT USE.  This field is present because OpenAI allows it and users send it.
+        /// </param>
         /// <param name="role">
         /// The role of the messages author, in this case `tool`.
         /// </param>
@@ -54,10 +63,12 @@ namespace Groq
         public ChatCompletionRequestToolMessage(
             global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessageContentPart>> content,
             string toolCallId,
+            string? name,
             global::Groq.ChatCompletionRequestToolMessageRole role)
         {
-            this.Role = role;
             this.Content = content;
+            this.Name = name;
+            this.Role = role;
             this.ToolCallId = toolCallId ?? throw new global::System.ArgumentNullException(nameof(toolCallId));
         }
 

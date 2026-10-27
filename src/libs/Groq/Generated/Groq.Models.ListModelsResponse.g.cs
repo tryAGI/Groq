@@ -11,16 +11,16 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("object")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ListModelsResponseObjectJsonConverter))]
-        public global::Groq.ListModelsResponseObject Object { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<global::Groq.Model7> Data { get; set; }
 
         /// <summary>
         ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Groq.Model6> Data { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("object")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ListModelsResponseObjectJsonConverter))]
+        public global::Groq.ListModelsResponseObject Object { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -37,11 +37,11 @@ namespace Groq
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListModelsResponse(
-            global::System.Collections.Generic.IList<global::Groq.Model6> data,
+            global::System.Collections.Generic.IList<global::Groq.Model7> data,
             global::Groq.ListModelsResponseObject @object)
         {
-            this.Object = @object;
             this.Data = data ?? throw new global::System.ArgumentNullException(nameof(data));
+            this.Object = @object;
         }
 
         /// <summary>

@@ -11,21 +11,39 @@ namespace Groq
     public sealed partial class CreateChatCompletionRequest
     {
         /// <summary>
-        /// A list of messages comprising the conversation so far.
+        /// Chat-template parameters forwarded to Dynamo deployments unchanged.<br/>
+        /// The serving runtime validates parameter names, values, and model support.<br/>
+        /// Rejected for deployments that do not use Dynamo.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("messages")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessage> Messages { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("chat_template_args")]
+        public object? ChatTemplateArgs { get; set; }
 
         /// <summary>
-        /// ID of the model to use. For details on which models are compatible with the Chat API, see available [models](https://console.groq.com/docs/models)<br/>
-        /// Example: meta-llama/llama-4-scout-17b-16e-instruct
+        /// Whether to enable citations in the response. When enabled, the model will include citations for information retrieved from provided documents or web searches.<br/>
+        /// Default Value: enabled
         /// </summary>
-        /// <example>meta-llama/llama-4-scout-17b-16e-instruct</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateChatCompletionRequestModel?>))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Groq.AnyOf<string, global::Groq.CreateChatCompletionRequestModel?> Model { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("citation_options")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateChatCompletionRequestCitationOptionsJsonConverter))]
+        public global::Groq.CreateChatCompletionRequestCitationOptions? CitationOptions { get; set; }
+
+        /// <summary>
+        /// Custom configuration of models and tools for Compound.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("compound_custom")]
+        public global::Groq.CreateChatCompletionRequestCompoundCustom? CompoundCustom { get; set; }
+
+        /// <summary>
+        /// Custom template configuration for message formatting.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("custom_template")]
+        public global::Groq.CreateChatCompletionRequestCustomTemplate? CustomTemplate { get; set; }
+
+        /// <summary>
+        /// output input and output token IDs in xgroq debug field<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("debug")]
+        public bool? Debug { get; set; }
 
         /// <summary>
         /// If set to true, groq will return called tools without validating that the tool is present in request.tools. tool_choice=required/none will still be enforced, but the request cannot require a specific tool be used.<br/>
@@ -35,179 +53,31 @@ namespace Groq
         public bool? DisableToolValidation { get; set; }
 
         /// <summary>
+        /// A list of documents to provide context for the conversation. Each document contains text that can be referenced by the model.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("documents")]
+        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionDocument>? Documents { get; set; }
+
+        /// <summary>
+        /// Deprecated: Use search_settings.exclude_domains instead.<br/>
+        /// A list of domains to exclude from the search results when the model uses a web search tool.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("exclude_domains")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public global::System.Collections.Generic.IList<string>? ExcludeDomains { get; set; }
+
+        /// <summary>
+        /// For internal use only
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("exclude_instance_ids")]
+        public global::System.Collections.Generic.IList<string>? ExcludeInstanceIds { get; set; }
+
+        /// <summary>
         /// This is not yet supported by any of our models. Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.<br/>
         /// Default Value: 0
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("frequency_penalty")]
         public double? FrequencyPenalty { get; set; }
-
-        /// <summary>
-        /// Whether to include reasoning in the response.  If true, the response will include a `reasoning` field. If false, the model's reasoning will not be included in the response.<br/>
-        /// This field is mutually exclusive with `reasoning_format`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("include_reasoning")]
-        public bool? IncludeReasoning { get; set; }
-
-        /// <summary>
-        /// This is not yet supported by any of our models.<br/>
-        /// Modify the likelihood of specified tokens appearing in the completion.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("logit_bias")]
-        public global::System.Collections.Generic.Dictionary<string, int>? LogitBias { get; set; }
-
-        /// <summary>
-        /// This is not yet supported by any of our models.<br/>
-        /// Whether to return log probabilities of the output tokens or not. If true, returns the log probabilities of each output token returned in the `content` of `message`.<br/>
-        /// Default Value: false
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("logprobs")]
-        public bool? Logprobs { get; set; }
-
-        /// <summary>
-        /// This is not yet supported by any of our models.<br/>
-        /// An integer between 0 and 20 specifying the number of most likely tokens to return at each token position, each with an associated log probability. `logprobs` must be set to `true` if this parameter is used.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("top_logprobs")]
-        public int? TopLogprobs { get; set; }
-
-        /// <summary>
-        /// Deprecated in favor of `max_completion_tokens`.<br/>
-        /// The maximum number of tokens that can be generated in the chat completion. The total length of input tokens and generated tokens is limited by the model's context length.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("max_tokens")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public int? MaxTokens { get; set; }
-
-        /// <summary>
-        /// The maximum number of tokens that can be generated in the chat completion. The total length of input tokens and generated tokens is limited by the model's context length.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("max_completion_tokens")]
-        public int? MaxCompletionTokens { get; set; }
-
-        /// <summary>
-        /// How many chat completion choices to generate for each input message. Note that the current moment, only n=1 is supported. Other values will result in a 400 response.<br/>
-        /// Default Value: 1<br/>
-        /// Example: 1
-        /// </summary>
-        /// <example>1</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("n")]
-        public int? N { get; set; }
-
-        /// <summary>
-        /// This is not yet supported by any of our models. Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.<br/>
-        /// Default Value: 0
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("presence_penalty")]
-        public double? PresencePenalty { get; set; }
-
-        /// <summary>
-        /// An object specifying the format that the model must output. Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. `json_schema` response format is only available on [supported models](https://console.groq.com/docs/structured-outputs#supported-models). Setting to `{ "type": "json_object" }` enables the older JSON mode, which ensures the message the model generates is valid JSON. Using `json_schema` is preferred for models that support it.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("response_format")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.OneOfJsonConverter<global::Groq.ResponseFormatText, global::Groq.ResponseFormatJsonSchema, global::Groq.ResponseFormatJsonObject>))]
-        public global::Groq.OneOf<global::Groq.ResponseFormatText, global::Groq.ResponseFormatJsonSchema, global::Groq.ResponseFormatJsonObject>? ResponseFormat { get; set; }
-
-        /// <summary>
-        /// If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same `seed` and parameters should return the same result.<br/>
-        /// Determinism is not guaranteed, and you should refer to the `system_fingerprint` response parameter to monitor changes in the backend.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("seed")]
-        public int? Seed { get; set; }
-
-        /// <summary>
-        /// The service tier to use for the request. Defaults to `on_demand`.<br/>
-        /// - `auto` will automatically select the highest tier available within the rate limits of your organization.<br/>
-        /// - `flex` uses the flex tier, which will succeed or fail quickly.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("service_tier")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateChatCompletionRequestServiceTierJsonConverter))]
-        public global::Groq.CreateChatCompletionRequestServiceTier? ServiceTier { get; set; }
-
-        /// <summary>
-        /// Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("stop")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>))]
-        public global::Groq.OneOf<string, global::System.Collections.Generic.IList<string>>? Stop { get; set; }
-
-        /// <summary>
-        /// qwen3 models support the following values<br/>
-        /// Set to 'none' to disable reasoning.<br/>
-        /// Set to 'default' or null to let Qwen reason.<br/>
-        /// openai/gpt-oss-20b and openai/gpt-oss-120b support 'low', 'medium', or 'high'.<br/>
-        /// 'medium' is the default value.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("reasoning_effort")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateChatCompletionRequestReasoningEffortJsonConverter))]
-        public global::Groq.CreateChatCompletionRequestReasoningEffort? ReasoningEffort { get; set; }
-
-        /// <summary>
-        /// Specifies how to output reasoning tokens<br/>
-        /// This field is mutually exclusive with `include_reasoning`.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("reasoning_format")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateChatCompletionRequestReasoningFormatJsonConverter))]
-        public global::Groq.CreateChatCompletionRequestReasoningFormat? ReasoningFormat { get; set; }
-
-        /// <summary>
-        /// If set, partial message deltas will be sent. Tokens will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available, with the stream terminated by a `data: [DONE]` message. [Example code](/docs/text-chat#streaming-a-chat-completion).<br/>
-        /// Default Value: false
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("stream")]
-        public bool? Stream { get; set; }
-
-        /// <summary>
-        /// What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both.<br/>
-        /// Default Value: 1<br/>
-        /// Example: 1
-        /// </summary>
-        /// <example>1</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("temperature")]
-        public double? Temperature { get; set; }
-
-        /// <summary>
-        /// An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. We generally recommend altering this or temperature but not both.<br/>
-        /// Default Value: 1<br/>
-        /// Example: 1
-        /// </summary>
-        /// <example>1</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("top_p")]
-        public double? TopP { get; set; }
-
-        /// <summary>
-        /// A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tools")]
-        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionTool>? Tools { get; set; }
-
-        /// <summary>
-        /// Controls which (if any) tool is called by the model.<br/>
-        /// `none` means the model will not call any tool and instead generates a message.<br/>
-        /// `auto` means the model can pick between generating a message or calling one or more tools.<br/>
-        /// `required` means the model must call one or more tools.<br/>
-        /// Specifying a particular tool via `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.<br/>
-        /// `none` is the default when no tools are present. `auto` is the default if tools are present.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tool_choice")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ChatCompletionToolChoiceOptionJsonConverter))]
-        public global::Groq.ChatCompletionToolChoiceOption? ToolChoice { get; set; }
-
-        /// <summary>
-        /// Whether to enable parallel function calling during tool use.<br/>
-        /// Default Value: true
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("parallel_tool_calls")]
-        public bool? ParallelToolCalls { get; set; }
-
-        /// <summary>
-        /// A unique identifier representing your end-user, which can help us monitor and detect abuse.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("user")]
-        public string? User { get; set; }
 
         /// <summary>
         /// Deprecated in favor of `tool_choice`.<br/>
@@ -230,18 +100,6 @@ namespace Groq
         public global::System.Collections.Generic.IList<global::Groq.ChatCompletionFunctions>? Functions { get; set; }
 
         /// <summary>
-        /// This parameter is not currently supported.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
-        public global::System.Collections.Generic.Dictionary<string, string>? Metadata { get; set; }
-
-        /// <summary>
-        /// This parameter is not currently supported.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("store")]
-        public bool? Store { get; set; }
-
-        /// <summary>
         /// Deprecated: Use search_settings.include_domains instead.<br/>
         /// A list of domains to include in the search results when the model uses a web search tool.
         /// </summary>
@@ -250,12 +108,121 @@ namespace Groq
         public global::System.Collections.Generic.IList<string>? IncludeDomains { get; set; }
 
         /// <summary>
-        /// Deprecated: Use search_settings.exclude_domains instead.<br/>
-        /// A list of domains to exclude from the search results when the model uses a web search tool.
+        /// Whether to include reasoning in the response.  If true, the response will include a `reasoning` field. If false, the model's reasoning will not be included in the response.<br/>
+        /// This field is mutually exclusive with `reasoning_format`.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("exclude_domains")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("include_reasoning")]
+        public bool? IncludeReasoning { get; set; }
+
+        /// <summary>
+        /// This is not yet supported by any of our models.<br/>
+        /// Modify the likelihood of specified tokens appearing in the completion.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("logit_bias")]
+        public global::System.Collections.Generic.Dictionary<string, int>? LogitBias { get; set; }
+
+        /// <summary>
+        /// This is not yet supported by any of our models.<br/>
+        /// Whether to return log probabilities of the output tokens or not. If true, returns the log probabilities of each output token returned in the `content` of `message`.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("logprobs")]
+        public bool? Logprobs { get; set; }
+
+        /// <summary>
+        /// The maximum number of tokens that can be generated in the chat completion. The total length of input tokens and generated tokens is limited by the model's context length.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_completion_tokens")]
+        public int? MaxCompletionTokens { get; set; }
+
+        /// <summary>
+        /// Deprecated in favor of `max_completion_tokens`.<br/>
+        /// The maximum number of tokens that can be generated in the chat completion. The total length of input tokens and generated tokens is limited by the model's context length.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_tokens")]
         [global::System.Obsolete("This property marked as deprecated.")]
-        public global::System.Collections.Generic.IList<string>? ExcludeDomains { get; set; }
+        public int? MaxTokens { get; set; }
+
+        /// <summary>
+        /// A list of messages comprising the conversation so far.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("messages")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessage> Messages { get; set; }
+
+        /// <summary>
+        /// This parameter is not currently supported.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Metadata { get; set; }
+
+        /// <summary>
+        /// ID of the model to use. For details on which models are compatible with the Chat API, see available [models](https://console.groq.com/docs/models)<br/>
+        /// Example: meta-llama/llama-4-scout-17b-16e-instruct
+        /// </summary>
+        /// <example>meta-llama/llama-4-scout-17b-16e-instruct</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateChatCompletionRequestModel?>))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Groq.AnyOf<string, global::Groq.CreateChatCompletionRequestModel?> Model { get; set; }
+
+        /// <summary>
+        /// How many chat completion choices to generate for each input message. Note that the current moment, only n=1 is supported. Other values will result in a 400 response.<br/>
+        /// Default Value: 1<br/>
+        /// Example: 1
+        /// </summary>
+        /// <example>1</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("n")]
+        public int? N { get; set; }
+
+        /// <summary>
+        /// Whether to enable parallel function calling during tool use.<br/>
+        /// Default Value: true
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("parallel_tool_calls")]
+        public bool? ParallelToolCalls { get; set; }
+
+        /// <summary>
+        /// This is not yet supported by any of our models. Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.<br/>
+        /// Default Value: 0
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("presence_penalty")]
+        public double? PresencePenalty { get; set; }
+
+        /// <summary>
+        /// Skip output post-processing such as stop-sequence trimming, special-token dropping, reasoning parsing, tool parsing, and JSON validation. Engine generation controls, including requested stop sequences and response_format constraints, still apply. Only available to allowlisted or Groq-internal organizations on Gemma 4 models served through Sombrero; rejected on Dynamo endpoints.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("raw")]
+        public bool? Raw { get; set; }
+
+        /// <summary>
+        /// qwen3 models support `none` to disable reasoning and `default` or null<br/>
+        /// to use the model default.<br/>
+        /// qwen/qwen3.8-27b additionally supports `low`, `medium`, and `high`.<br/>
+        /// Its default is `none`; `high` selects the model's native `xhigh` mode.<br/>
+        /// openai/gpt-oss-20b and openai/gpt-oss-120b support 'low', 'medium', or 'high'.<br/>
+        /// 'medium' is the default value.<br/>
+        /// Values outside a model's supported set are rejected with a 400.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reasoning_effort")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateChatCompletionRequestReasoningEffortJsonConverter))]
+        public global::Groq.CreateChatCompletionRequestReasoningEffort? ReasoningEffort { get; set; }
+
+        /// <summary>
+        /// Specifies how to output reasoning tokens<br/>
+        /// This field is mutually exclusive with `include_reasoning`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reasoning_format")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateChatCompletionRequestReasoningFormatJsonConverter))]
+        public global::Groq.CreateChatCompletionRequestReasoningFormat? ReasoningFormat { get; set; }
+
+        /// <summary>
+        /// An object specifying the format that the model must output. Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. `json_schema` response format is only available on [supported models](https://console.groq.com/docs/structured-outputs#supported-models). Setting to `{ "type": "json_object" }` enables the older JSON mode, which ensures the message the model generates is valid JSON. Using `json_schema` is preferred for models that support it.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("response_format")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.OneOfJsonConverter<global::Groq.ResponseFormatText, global::Groq.ResponseFormatJsonSchema, global::Groq.ResponseFormatJsonObject>))]
+        public global::Groq.OneOf<global::Groq.ResponseFormatText, global::Groq.ResponseFormatJsonSchema, global::Groq.ResponseFormatJsonObject>? ResponseFormat { get; set; }
 
         /// <summary>
         /// Settings for web search functionality when the model uses a web search tool.
@@ -264,24 +231,95 @@ namespace Groq
         public global::Groq.CreateChatCompletionRequestSearchSettings? SearchSettings { get; set; }
 
         /// <summary>
-        /// Custom configuration of models and tools for Compound.
+        /// If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same `seed` and parameters should return the same result.<br/>
+        /// Determinism is not guaranteed, and you should refer to the `system_fingerprint` response parameter to monitor changes in the backend.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("compound_custom")]
-        public global::Groq.CreateChatCompletionRequestCompoundCustom? CompoundCustom { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("seed")]
+        public int? Seed { get; set; }
 
         /// <summary>
-        /// A list of documents to provide context for the conversation. Each document contains text that can be referenced by the model.
+        /// The service tier to use for the request. Defaults to `on_demand`.<br/>
+        /// - `auto` will automatically select the highest tier available within the rate limits of your organization.<br/>
+        /// - `flex` uses the flex tier, which will succeed or fail quickly.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("documents")]
-        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionDocument>? Documents { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("service_tier")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateChatCompletionRequestServiceTierJsonConverter))]
+        public global::Groq.CreateChatCompletionRequestServiceTier? ServiceTier { get; set; }
 
         /// <summary>
-        /// Whether to enable citations in the response. When enabled, the model will include citations for information retrieved from provided documents or web searches.<br/>
-        /// Default Value: enabled
+        /// Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("citation_options")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateChatCompletionRequestCitationOptionsJsonConverter))]
-        public global::Groq.CreateChatCompletionRequestCitationOptions? CitationOptions { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("stop")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>))]
+        public global::Groq.OneOf<string, global::System.Collections.Generic.IList<string>>? Stop { get; set; }
+
+        /// <summary>
+        /// This parameter is not currently supported.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("store")]
+        public bool? Store { get; set; }
+
+        /// <summary>
+        /// If set, partial message deltas will be sent. Tokens will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available, with the stream terminated by a `data: [DONE]` message. [Example code](/docs/text-chat#streaming-a-chat-completion).<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("stream")]
+        public bool? Stream { get; set; }
+
+        /// <summary>
+        /// Options for streaming response. Only set this when you set `stream: true`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("stream_options")]
+        public global::Groq.ChatCompletionStreamOptions? StreamOptions { get; set; }
+
+        /// <summary>
+        /// What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both.<br/>
+        /// Default Value: 1<br/>
+        /// Example: 1
+        /// </summary>
+        /// <example>1</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("temperature")]
+        public double? Temperature { get; set; }
+
+        /// <summary>
+        /// Controls which (if any) tool is called by the model.<br/>
+        /// `none` means the model will not call any tool and instead generates a message.<br/>
+        /// `auto` means the model can pick between generating a message or calling one or more tools.<br/>
+        /// `required` means the model must call one or more tools.<br/>
+        /// Specifying a particular tool via `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.<br/>
+        /// `none` is the default when no tools are present. `auto` is the default if tools are present.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tool_choice")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ChatCompletionToolChoiceOptionJsonConverter))]
+        public global::Groq.ChatCompletionToolChoiceOption? ToolChoice { get; set; }
+
+        /// <summary>
+        /// A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tools")]
+        public global::System.Collections.Generic.IList<global::Groq.ChatCompletionTool>? Tools { get; set; }
+
+        /// <summary>
+        /// This is not yet supported by any of our models.<br/>
+        /// An integer between 0 and 20 specifying the number of most likely tokens to return at each token position, each with an associated log probability. `logprobs` must be set to `true` if this parameter is used.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("top_logprobs")]
+        public int? TopLogprobs { get; set; }
+
+        /// <summary>
+        /// An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. We generally recommend altering this or temperature but not both.<br/>
+        /// Default Value: 1<br/>
+        /// Example: 1
+        /// </summary>
+        /// <example>1</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("top_p")]
+        public double? TopP { get; set; }
+
+        /// <summary>
+        /// A unique identifier representing your end-user, which can help us monitor and detect abuse.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("user")]
+        public string? User { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -299,9 +337,34 @@ namespace Groq
         /// ID of the model to use. For details on which models are compatible with the Chat API, see available [models](https://console.groq.com/docs/models)<br/>
         /// Example: meta-llama/llama-4-scout-17b-16e-instruct
         /// </param>
+        /// <param name="chatTemplateArgs">
+        /// Chat-template parameters forwarded to Dynamo deployments unchanged.<br/>
+        /// The serving runtime validates parameter names, values, and model support.<br/>
+        /// Rejected for deployments that do not use Dynamo.
+        /// </param>
+        /// <param name="citationOptions">
+        /// Whether to enable citations in the response. When enabled, the model will include citations for information retrieved from provided documents or web searches.<br/>
+        /// Default Value: enabled
+        /// </param>
+        /// <param name="compoundCustom">
+        /// Custom configuration of models and tools for Compound.
+        /// </param>
+        /// <param name="customTemplate">
+        /// Custom template configuration for message formatting.
+        /// </param>
+        /// <param name="debug">
+        /// output input and output token IDs in xgroq debug field<br/>
+        /// Default Value: false
+        /// </param>
         /// <param name="disableToolValidation">
         /// If set to true, groq will return called tools without validating that the tool is present in request.tools. tool_choice=required/none will still be enforced, but the request cannot require a specific tool be used.<br/>
         /// Default Value: false
+        /// </param>
+        /// <param name="documents">
+        /// A list of documents to provide context for the conversation. Each document contains text that can be referenced by the model.
+        /// </param>
+        /// <param name="excludeInstanceIds">
+        /// For internal use only
         /// </param>
         /// <param name="frequencyPenalty">
         /// This is not yet supported by any of our models. Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.<br/>
@@ -313,32 +376,54 @@ namespace Groq
         /// </param>
         /// <param name="logitBias">
         /// This is not yet supported by any of our models.<br/>
-        /// Modify the likelihood of specified tokens appearing in the completion.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// Modify the likelihood of specified tokens appearing in the completion.
         /// </param>
         /// <param name="logprobs">
         /// This is not yet supported by any of our models.<br/>
         /// Whether to return log probabilities of the output tokens or not. If true, returns the log probabilities of each output token returned in the `content` of `message`.<br/>
         /// Default Value: false
         /// </param>
-        /// <param name="topLogprobs">
-        /// This is not yet supported by any of our models.<br/>
-        /// An integer between 0 and 20 specifying the number of most likely tokens to return at each token position, each with an associated log probability. `logprobs` must be set to `true` if this parameter is used.
-        /// </param>
         /// <param name="maxCompletionTokens">
         /// The maximum number of tokens that can be generated in the chat completion. The total length of input tokens and generated tokens is limited by the model's context length.
+        /// </param>
+        /// <param name="metadata">
+        /// This parameter is not currently supported.
         /// </param>
         /// <param name="n">
         /// How many chat completion choices to generate for each input message. Note that the current moment, only n=1 is supported. Other values will result in a 400 response.<br/>
         /// Default Value: 1<br/>
         /// Example: 1
         /// </param>
+        /// <param name="parallelToolCalls">
+        /// Whether to enable parallel function calling during tool use.<br/>
+        /// Default Value: true
+        /// </param>
         /// <param name="presencePenalty">
         /// This is not yet supported by any of our models. Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.<br/>
         /// Default Value: 0
         /// </param>
+        /// <param name="raw">
+        /// Skip output post-processing such as stop-sequence trimming, special-token dropping, reasoning parsing, tool parsing, and JSON validation. Engine generation controls, including requested stop sequences and response_format constraints, still apply. Only available to allowlisted or Groq-internal organizations on Gemma 4 models served through Sombrero; rejected on Dynamo endpoints.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="reasoningEffort">
+        /// qwen3 models support `none` to disable reasoning and `default` or null<br/>
+        /// to use the model default.<br/>
+        /// qwen/qwen3.8-27b additionally supports `low`, `medium`, and `high`.<br/>
+        /// Its default is `none`; `high` selects the model's native `xhigh` mode.<br/>
+        /// openai/gpt-oss-20b and openai/gpt-oss-120b support 'low', 'medium', or 'high'.<br/>
+        /// 'medium' is the default value.<br/>
+        /// Values outside a model's supported set are rejected with a 400.
+        /// </param>
+        /// <param name="reasoningFormat">
+        /// Specifies how to output reasoning tokens<br/>
+        /// This field is mutually exclusive with `include_reasoning`.
+        /// </param>
         /// <param name="responseFormat">
         /// An object specifying the format that the model must output. Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. `json_schema` response format is only available on [supported models](https://console.groq.com/docs/structured-outputs#supported-models). Setting to `{ "type": "json_object" }` enables the older JSON mode, which ensures the message the model generates is valid JSON. Using `json_schema` is preferred for models that support it.
+        /// </param>
+        /// <param name="searchSettings">
+        /// Settings for web search functionality when the model uses a web search tool.
         /// </param>
         /// <param name="seed">
         /// If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same `seed` and parameters should return the same result.<br/>
@@ -350,38 +435,22 @@ namespace Groq
         /// - `flex` uses the flex tier, which will succeed or fail quickly.
         /// </param>
         /// <param name="stop">
-        /// Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence.
         /// </param>
-        /// <param name="reasoningEffort">
-        /// qwen3 models support the following values<br/>
-        /// Set to 'none' to disable reasoning.<br/>
-        /// Set to 'default' or null to let Qwen reason.<br/>
-        /// openai/gpt-oss-20b and openai/gpt-oss-120b support 'low', 'medium', or 'high'.<br/>
-        /// 'medium' is the default value.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="reasoningFormat">
-        /// Specifies how to output reasoning tokens<br/>
-        /// This field is mutually exclusive with `include_reasoning`.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// <param name="store">
+        /// This parameter is not currently supported.
         /// </param>
         /// <param name="stream">
         /// If set, partial message deltas will be sent. Tokens will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available, with the stream terminated by a `data: [DONE]` message. [Example code](/docs/text-chat#streaming-a-chat-completion).<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="streamOptions">
+        /// Options for streaming response. Only set this when you set `stream: true`.
+        /// </param>
         /// <param name="temperature">
         /// What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both.<br/>
         /// Default Value: 1<br/>
         /// Example: 1
-        /// </param>
-        /// <param name="topP">
-        /// An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. We generally recommend altering this or temperature but not both.<br/>
-        /// Default Value: 1<br/>
-        /// Example: 1
-        /// </param>
-        /// <param name="tools">
-        /// A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.
         /// </param>
         /// <param name="toolChoice">
         /// Controls which (if any) tool is called by the model.<br/>
@@ -391,31 +460,20 @@ namespace Groq
         /// Specifying a particular tool via `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.<br/>
         /// `none` is the default when no tools are present. `auto` is the default if tools are present.
         /// </param>
-        /// <param name="parallelToolCalls">
-        /// Whether to enable parallel function calling during tool use.<br/>
-        /// Default Value: true
+        /// <param name="tools">
+        /// A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.
+        /// </param>
+        /// <param name="topLogprobs">
+        /// This is not yet supported by any of our models.<br/>
+        /// An integer between 0 and 20 specifying the number of most likely tokens to return at each token position, each with an associated log probability. `logprobs` must be set to `true` if this parameter is used.
+        /// </param>
+        /// <param name="topP">
+        /// An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. We generally recommend altering this or temperature but not both.<br/>
+        /// Default Value: 1<br/>
+        /// Example: 1
         /// </param>
         /// <param name="user">
         /// A unique identifier representing your end-user, which can help us monitor and detect abuse.
-        /// </param>
-        /// <param name="metadata">
-        /// This parameter is not currently supported.
-        /// </param>
-        /// <param name="store">
-        /// This parameter is not currently supported.
-        /// </param>
-        /// <param name="searchSettings">
-        /// Settings for web search functionality when the model uses a web search tool.
-        /// </param>
-        /// <param name="compoundCustom">
-        /// Custom configuration of models and tools for Compound.
-        /// </param>
-        /// <param name="documents">
-        /// A list of documents to provide context for the conversation. Each document contains text that can be referenced by the model.
-        /// </param>
-        /// <param name="citationOptions">
-        /// Whether to enable citations in the response. When enabled, the model will include citations for information retrieved from provided documents or web searches.<br/>
-        /// Default Value: enabled
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -423,65 +481,77 @@ namespace Groq
         public CreateChatCompletionRequest(
             global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessage> messages,
             global::Groq.AnyOf<string, global::Groq.CreateChatCompletionRequestModel?> model,
+            object? chatTemplateArgs,
+            global::Groq.CreateChatCompletionRequestCitationOptions? citationOptions,
+            global::Groq.CreateChatCompletionRequestCompoundCustom? compoundCustom,
+            global::Groq.CreateChatCompletionRequestCustomTemplate? customTemplate,
+            bool? debug,
             bool? disableToolValidation,
+            global::System.Collections.Generic.IList<global::Groq.ChatCompletionDocument>? documents,
+            global::System.Collections.Generic.IList<string>? excludeInstanceIds,
             double? frequencyPenalty,
             bool? includeReasoning,
             global::System.Collections.Generic.Dictionary<string, int>? logitBias,
             bool? logprobs,
-            int? topLogprobs,
             int? maxCompletionTokens,
+            global::System.Collections.Generic.Dictionary<string, string>? metadata,
             int? n,
+            bool? parallelToolCalls,
             double? presencePenalty,
+            bool? raw,
+            global::Groq.CreateChatCompletionRequestReasoningEffort? reasoningEffort,
+            global::Groq.CreateChatCompletionRequestReasoningFormat? reasoningFormat,
             global::Groq.OneOf<global::Groq.ResponseFormatText, global::Groq.ResponseFormatJsonSchema, global::Groq.ResponseFormatJsonObject>? responseFormat,
+            global::Groq.CreateChatCompletionRequestSearchSettings? searchSettings,
             int? seed,
             global::Groq.CreateChatCompletionRequestServiceTier? serviceTier,
             global::Groq.OneOf<string, global::System.Collections.Generic.IList<string>>? stop,
-            global::Groq.CreateChatCompletionRequestReasoningEffort? reasoningEffort,
-            global::Groq.CreateChatCompletionRequestReasoningFormat? reasoningFormat,
-            bool? stream,
-            double? temperature,
-            double? topP,
-            global::System.Collections.Generic.IList<global::Groq.ChatCompletionTool>? tools,
-            global::Groq.ChatCompletionToolChoiceOption? toolChoice,
-            bool? parallelToolCalls,
-            string? user,
-            global::System.Collections.Generic.Dictionary<string, string>? metadata,
             bool? store,
-            global::Groq.CreateChatCompletionRequestSearchSettings? searchSettings,
-            global::Groq.CreateChatCompletionRequestCompoundCustom? compoundCustom,
-            global::System.Collections.Generic.IList<global::Groq.ChatCompletionDocument>? documents,
-            global::Groq.CreateChatCompletionRequestCitationOptions? citationOptions)
+            bool? stream,
+            global::Groq.ChatCompletionStreamOptions? streamOptions,
+            double? temperature,
+            global::Groq.ChatCompletionToolChoiceOption? toolChoice,
+            global::System.Collections.Generic.IList<global::Groq.ChatCompletionTool>? tools,
+            int? topLogprobs,
+            double? topP,
+            string? user)
         {
-            this.Messages = messages ?? throw new global::System.ArgumentNullException(nameof(messages));
-            this.Model = model;
+            this.ChatTemplateArgs = chatTemplateArgs;
+            this.CitationOptions = citationOptions;
+            this.CompoundCustom = compoundCustom;
+            this.CustomTemplate = customTemplate;
+            this.Debug = debug;
             this.DisableToolValidation = disableToolValidation;
+            this.Documents = documents;
+            this.ExcludeInstanceIds = excludeInstanceIds;
             this.FrequencyPenalty = frequencyPenalty;
             this.IncludeReasoning = includeReasoning;
             this.LogitBias = logitBias;
             this.Logprobs = logprobs;
-            this.TopLogprobs = topLogprobs;
             this.MaxCompletionTokens = maxCompletionTokens;
+            this.Messages = messages ?? throw new global::System.ArgumentNullException(nameof(messages));
+            this.Metadata = metadata;
+            this.Model = model;
             this.N = n;
+            this.ParallelToolCalls = parallelToolCalls;
             this.PresencePenalty = presencePenalty;
+            this.Raw = raw;
+            this.ReasoningEffort = reasoningEffort;
+            this.ReasoningFormat = reasoningFormat;
             this.ResponseFormat = responseFormat;
+            this.SearchSettings = searchSettings;
             this.Seed = seed;
             this.ServiceTier = serviceTier;
             this.Stop = stop;
-            this.ReasoningEffort = reasoningEffort;
-            this.ReasoningFormat = reasoningFormat;
-            this.Stream = stream;
-            this.Temperature = temperature;
-            this.TopP = topP;
-            this.Tools = tools;
-            this.ToolChoice = toolChoice;
-            this.ParallelToolCalls = parallelToolCalls;
-            this.User = user;
-            this.Metadata = metadata;
             this.Store = store;
-            this.SearchSettings = searchSettings;
-            this.CompoundCustom = compoundCustom;
-            this.Documents = documents;
-            this.CitationOptions = citationOptions;
+            this.Stream = stream;
+            this.StreamOptions = streamOptions;
+            this.Temperature = temperature;
+            this.ToolChoice = toolChoice;
+            this.Tools = tools;
+            this.TopLogprobs = topLogprobs;
+            this.TopP = topP;
+            this.User = user;
         }
 
         /// <summary>

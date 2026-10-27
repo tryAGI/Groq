@@ -4,12 +4,13 @@
 namespace Groq
 {
     /// <summary>
-    /// qwen3 models support the following values<br/>
-    /// Set to 'none' to disable reasoning.<br/>
-    /// Set to 'default' or null to let Qwen reason.<br/>
+    /// qwen3 models support `none` to disable reasoning and `default` or null<br/>
+    /// to use the model default.<br/>
+    /// qwen/qwen3.8-27b additionally supports `low`, `medium`, and `high`.<br/>
+    /// Its default is `none`; `high` selects the model's native `xhigh` mode.<br/>
     /// openai/gpt-oss-20b and openai/gpt-oss-120b support 'low', 'medium', or 'high'.<br/>
     /// 'medium' is the default value.<br/>
-    /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+    /// Values outside a model's supported set are rejected with a 400.
     /// </summary>
     public enum CreateChatCompletionRequestReasoningEffort
     {
@@ -28,11 +29,23 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
+        Max,
+        /// <summary>
+        ///
+        /// </summary>
         Medium,
         /// <summary>
         ///
         /// </summary>
+        Minimal,
+        /// <summary>
+        ///
+        /// </summary>
         None,
+        /// <summary>
+        ///
+        /// </summary>
+        Xhigh,
     }
 
     /// <summary>
@@ -50,8 +63,11 @@ namespace Groq
                 CreateChatCompletionRequestReasoningEffort.Default => "default",
                 CreateChatCompletionRequestReasoningEffort.High => "high",
                 CreateChatCompletionRequestReasoningEffort.Low => "low",
+                CreateChatCompletionRequestReasoningEffort.Max => "max",
                 CreateChatCompletionRequestReasoningEffort.Medium => "medium",
+                CreateChatCompletionRequestReasoningEffort.Minimal => "minimal",
                 CreateChatCompletionRequestReasoningEffort.None => "none",
+                CreateChatCompletionRequestReasoningEffort.Xhigh => "xhigh",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -65,8 +81,11 @@ namespace Groq
                 "default" => CreateChatCompletionRequestReasoningEffort.Default,
                 "high" => CreateChatCompletionRequestReasoningEffort.High,
                 "low" => CreateChatCompletionRequestReasoningEffort.Low,
+                "max" => CreateChatCompletionRequestReasoningEffort.Max,
                 "medium" => CreateChatCompletionRequestReasoningEffort.Medium,
+                "minimal" => CreateChatCompletionRequestReasoningEffort.Minimal,
                 "none" => CreateChatCompletionRequestReasoningEffort.None,
+                "xhigh" => CreateChatCompletionRequestReasoningEffort.Xhigh,
                 _ => null,
             };
         }

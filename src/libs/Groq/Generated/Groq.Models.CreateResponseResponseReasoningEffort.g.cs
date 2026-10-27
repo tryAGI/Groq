@@ -4,7 +4,8 @@
 namespace Groq
 {
     /// <summary>
-    /// The reasoning effort level used.
+    /// The reasoning effort level used. When omitted from the request, this is `none`<br/>
+    /// for Qwen3.8 and `medium` for GPT-OSS models.
     /// </summary>
     public enum CreateResponseResponseReasoningEffort
     {
@@ -20,6 +21,10 @@ namespace Groq
         ///
         /// </summary>
         Medium,
+        /// <summary>
+        ///
+        /// </summary>
+        None,
     }
 
     /// <summary>
@@ -37,6 +42,7 @@ namespace Groq
                 CreateResponseResponseReasoningEffort.High => "high",
                 CreateResponseResponseReasoningEffort.Low => "low",
                 CreateResponseResponseReasoningEffort.Medium => "medium",
+                CreateResponseResponseReasoningEffort.None => "none",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -50,6 +56,7 @@ namespace Groq
                 "high" => CreateResponseResponseReasoningEffort.High,
                 "low" => CreateResponseResponseReasoningEffort.Low,
                 "medium" => CreateResponseResponseReasoningEffort.Medium,
+                "none" => CreateResponseResponseReasoningEffort.None,
                 _ => null,
             };
         }

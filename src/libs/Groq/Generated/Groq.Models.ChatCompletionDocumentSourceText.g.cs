@@ -9,18 +9,18 @@ namespace Groq
     public sealed partial class ChatCompletionDocumentSourceText
     {
         /// <summary>
-        /// Identifies this document source as inline text.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ChatCompletionDocumentSourceTextTypeJsonConverter))]
-        public global::Groq.ChatCompletionDocumentSourceTextType Type { get; set; }
-
-        /// <summary>
         /// The document contents.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Text { get; set; }
+
+        /// <summary>
+        /// Identifies this document source as inline text.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ChatCompletionDocumentSourceTextTypeJsonConverter))]
+        public global::Groq.ChatCompletionDocumentSourceTextType Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -44,8 +44,8 @@ namespace Groq
             string text,
             global::Groq.ChatCompletionDocumentSourceTextType type)
         {
-            this.Type = type;
             this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
+            this.Type = type;
         }
 
         /// <summary>

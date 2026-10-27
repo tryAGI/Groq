@@ -49,7 +49,7 @@ namespace Groq
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Groq.Model6> RetrieveModelAsync(
+        public async global::System.Threading.Tasks.Task<global::Groq.Model7> RetrieveModelAsync(
             string model,
             global::Groq.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -70,7 +70,7 @@ namespace Groq
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Groq.AutoSDKHttpResponse<global::Groq.Model6>> RetrieveModelAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Groq.AutoSDKHttpResponse<global::Groq.Model7>> RetrieveModelAsResponseAsync(
             string model,
             global::Groq.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -348,9 +348,9 @@ namespace Groq
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Groq.Model6.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Groq.Model7.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Groq.AutoSDKHttpResponse<global::Groq.Model6>(
+                                    return new global::Groq.AutoSDKHttpResponse<global::Groq.Model7>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Groq.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -380,9 +380,9 @@ namespace Groq
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Groq.Model6.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Groq.Model7.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Groq.AutoSDKHttpResponse<global::Groq.Model6>(
+                                    return new global::Groq.AutoSDKHttpResponse<global::Groq.Model7>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Groq.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,

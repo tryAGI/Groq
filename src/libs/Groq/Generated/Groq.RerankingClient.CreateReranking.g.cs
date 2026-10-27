@@ -440,14 +440,6 @@ namespace Groq
         /// Given a query and a list of documents, returns the documents ranked by their relevance to the query.<br/>
         /// The documents are scored and sorted in descending order of relevance.
         /// </summary>
-        /// <param name="model">
-        /// ID of the reranking model to use.<br/>
-        /// Example: qwen3-reranker-4b
-        /// </param>
-        /// <param name="query">
-        /// The search query to rank documents against.<br/>
-        /// Example: artificial intelligence research
-        /// </param>
         /// <param name="docs">
         /// An array of documents to rank. Each document is a string containing the text content.<br/>
         /// Maximum of 100 documents per request.<br/>
@@ -458,23 +450,31 @@ namespace Groq
         /// a default instruction will be used.<br/>
         /// Example: Find the most relevant document about AI research
         /// </param>
+        /// <param name="model">
+        /// ID of the reranking model to use.<br/>
+        /// Example: qwen3-reranker-4b
+        /// </param>
+        /// <param name="query">
+        /// The search query to rank documents against.<br/>
+        /// Example: artificial intelligence research
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Groq.RerankingResponse> CreateRerankingAsync(
+            global::System.Collections.Generic.IList<string> docs,
             string model,
             string query,
-            global::System.Collections.Generic.IList<string> docs,
             string? instruction = default,
             global::Groq.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Groq.RerankingRequest
             {
-                Model = model,
-                Query = query,
                 Docs = docs,
                 Instruction = instruction,
+                Model = model,
+                Query = query,
             };
 
             return await CreateRerankingAsync(

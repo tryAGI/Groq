@@ -15,36 +15,36 @@ namespace Groq
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(string[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Text.Json.JsonElement?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<double>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.OneOf<string, global::System.Collections.Generic.IList<string>>), TypeInfoPropertyName = "OneOfStringIListString2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<double>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.Embedding))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.OneOf<global::System.Collections.Generic.IList<double>, string>), TypeInfoPropertyName = "OneOfIListDoubleString2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.EmbeddingObject), TypeInfoPropertyName = "EmbeddingObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateEmbeddingRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateEmbeddingRequestEncodingFormat), TypeInfoPropertyName = "CreateEmbeddingRequestEncodingFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.AnyOf<string, global::Groq.CreateEmbeddingRequestModel?>), TypeInfoPropertyName = "AnyOfStringCreateEmbeddingRequestModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateEmbeddingRequestModel), TypeInfoPropertyName = "CreateEmbeddingRequestModel2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateEmbeddingRequestEncodingFormat), TypeInfoPropertyName = "CreateEmbeddingRequestEncodingFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateEmbeddingResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Groq.Embedding>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.Embedding))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateEmbeddingResponseObject), TypeInfoPropertyName = "CreateEmbeddingResponseObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateEmbeddingResponseUsage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.OneOf<global::System.Collections.Generic.IList<double>, string>), TypeInfoPropertyName = "OneOfIListDoubleString2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.EmbeddingObject), TypeInfoPropertyName = "EmbeddingObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.OneOf<string, global::System.Collections.Generic.IList<string>>?), TypeInfoPropertyName = "NullableOneOfStringIListString2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.OneOf<global::System.Collections.Generic.IList<double>, string>?), TypeInfoPropertyName = "NullableOneOfIListDoubleString2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.EmbeddingObject?), TypeInfoPropertyName = "NullableEmbeddingObject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateEmbeddingRequestEncodingFormat?), TypeInfoPropertyName = "NullableCreateEmbeddingRequestEncodingFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.AnyOf<string, global::Groq.CreateEmbeddingRequestModel?>?), TypeInfoPropertyName = "NullableAnyOfStringCreateEmbeddingRequestModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateEmbeddingRequestModel?), TypeInfoPropertyName = "NullableCreateEmbeddingRequestModel2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateEmbeddingRequestEncodingFormat?), TypeInfoPropertyName = "NullableCreateEmbeddingRequestEncodingFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.CreateEmbeddingResponseObject?), TypeInfoPropertyName = "NullableCreateEmbeddingResponseObject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.OneOf<global::System.Collections.Generic.IList<double>, string>?), TypeInfoPropertyName = "NullableOneOfIListDoubleString2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.EmbeddingObject?), TypeInfoPropertyName = "NullableEmbeddingObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.OneOf<string, global::System.Collections.Generic.List<string>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.OneOf<global::System.Collections.Generic.List<double>, string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.OneOf<string, global::System.Collections.Generic.List<string>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Groq.Embedding>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.OneOf<global::System.Collections.Generic.List<double>, string>))]
     internal sealed partial class EmbeddingsSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -93,9 +93,9 @@ namespace Groq
         public static void AddConverters(global::System.Text.Json.JsonSerializerOptions options)
         {
             options.Converters.Add(new global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
-            options.Converters.Add(new global::Groq.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<double>, string>());
             options.Converters.Add(new global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
             options.Converters.Add(new global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateEmbeddingRequestModel?>());
+            options.Converters.Add(new global::Groq.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<double>, string>());
             options.Converters.Add(new global::Groq.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
         }
@@ -118,35 +118,35 @@ namespace Groq
             public override bool CanConvert(global::System.Type typeToConvert)
             {
                 return
-                    typeToConvert == typeof(global::Groq.EmbeddingObject)
+                    typeToConvert == typeof(global::Groq.CreateEmbeddingRequestEncodingFormat)
 
-                    || typeToConvert == typeof(global::Groq.EmbeddingObject?)
+                    || typeToConvert == typeof(global::Groq.CreateEmbeddingRequestEncodingFormat?)
 
                     || typeToConvert == typeof(global::Groq.CreateEmbeddingRequestModel)
 
                     || typeToConvert == typeof(global::Groq.CreateEmbeddingRequestModel?)
 
-                    || typeToConvert == typeof(global::Groq.CreateEmbeddingRequestEncodingFormat)
-
-                    || typeToConvert == typeof(global::Groq.CreateEmbeddingRequestEncodingFormat?)
-
                     || typeToConvert == typeof(global::Groq.CreateEmbeddingResponseObject)
 
-                    || typeToConvert == typeof(global::Groq.CreateEmbeddingResponseObject?);
+                    || typeToConvert == typeof(global::Groq.CreateEmbeddingResponseObject?)
+
+                    || typeToConvert == typeof(global::Groq.EmbeddingObject)
+
+                    || typeToConvert == typeof(global::Groq.EmbeddingObject?);
             }
 
             public override global::System.Text.Json.Serialization.JsonConverter CreateConverter(
                 global::System.Type typeToConvert,
                 global::System.Text.Json.JsonSerializerOptions options)
             {
-                if (typeToConvert == typeof(global::Groq.EmbeddingObject))
+                if (typeToConvert == typeof(global::Groq.CreateEmbeddingRequestEncodingFormat))
                 {
-                    return new global::Groq.JsonConverters.EmbeddingObjectJsonConverter();
+                    return new global::Groq.JsonConverters.CreateEmbeddingRequestEncodingFormatJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Groq.EmbeddingObject?))
+                if (typeToConvert == typeof(global::Groq.CreateEmbeddingRequestEncodingFormat?))
                 {
-                    return new global::Groq.JsonConverters.EmbeddingObjectNullableJsonConverter();
+                    return new global::Groq.JsonConverters.CreateEmbeddingRequestEncodingFormatNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Groq.CreateEmbeddingRequestModel))
@@ -159,16 +159,6 @@ namespace Groq
                     return new global::Groq.JsonConverters.CreateEmbeddingRequestModelNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Groq.CreateEmbeddingRequestEncodingFormat))
-                {
-                    return new global::Groq.JsonConverters.CreateEmbeddingRequestEncodingFormatJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Groq.CreateEmbeddingRequestEncodingFormat?))
-                {
-                    return new global::Groq.JsonConverters.CreateEmbeddingRequestEncodingFormatNullableJsonConverter();
-                }
-
                 if (typeToConvert == typeof(global::Groq.CreateEmbeddingResponseObject))
                 {
                     return new global::Groq.JsonConverters.CreateEmbeddingResponseObjectJsonConverter();
@@ -177,6 +167,16 @@ namespace Groq
                 if (typeToConvert == typeof(global::Groq.CreateEmbeddingResponseObject?))
                 {
                     return new global::Groq.JsonConverters.CreateEmbeddingResponseObjectNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Groq.EmbeddingObject))
+                {
+                    return new global::Groq.JsonConverters.EmbeddingObjectJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Groq.EmbeddingObject?))
+                {
+                    return new global::Groq.JsonConverters.EmbeddingObjectNullableJsonConverter();
                 }
                 throw new global::System.NotSupportedException($"No generated enum converter is registered for '{typeToConvert}'.");
             }

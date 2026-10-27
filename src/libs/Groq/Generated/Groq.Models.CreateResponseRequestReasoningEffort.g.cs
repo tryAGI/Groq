@@ -4,23 +4,29 @@
 namespace Groq
 {
     /// <summary>
-    /// Level of reasoning effort. Supported values: `low`, `medium`, `high`. Lower values provide faster responses with less reasoning depth.<br/>
-    /// Default Value: medium
+    /// Level of reasoning effort. Supported values: `none`, `low`, `medium`, `high`.<br/>
+    /// `none` disables reasoning and is supported only by Qwen3.8 models. Lower graded<br/>
+    /// values provide faster responses with less reasoning depth. When omitted, the<br/>
+    /// default is `none` for Qwen3.8 and `medium` for GPT-OSS models.
     /// </summary>
     public enum CreateResponseRequestReasoningEffort
     {
         /// <summary>
-        /// `low`, `medium`, `high`. Lower values provide faster responses with less reasoning depth.
+        /// `none`, `low`, `medium`, `high`.
         /// </summary>
         High,
         /// <summary>
-        /// `low`, `medium`, `high`. Lower values provide faster responses with less reasoning depth.
+        /// `none`, `low`, `medium`, `high`.
         /// </summary>
         Low,
         /// <summary>
-        /// `low`, `medium`, `high`. Lower values provide faster responses with less reasoning depth.
+        /// `none`, `low`, `medium`, `high`.
         /// </summary>
         Medium,
+        /// <summary>
+        /// `none`, `low`, `medium`, `high`.
+        /// </summary>
+        None,
     }
 
     /// <summary>
@@ -38,6 +44,7 @@ namespace Groq
                 CreateResponseRequestReasoningEffort.High => "high",
                 CreateResponseRequestReasoningEffort.Low => "low",
                 CreateResponseRequestReasoningEffort.Medium => "medium",
+                CreateResponseRequestReasoningEffort.None => "none",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -51,6 +58,7 @@ namespace Groq
                 "high" => CreateResponseRequestReasoningEffort.High,
                 "low" => CreateResponseRequestReasoningEffort.Low,
                 "medium" => CreateResponseRequestReasoningEffort.Medium,
+                "none" => CreateResponseRequestReasoningEffort.None,
                 _ => null,
             };
         }

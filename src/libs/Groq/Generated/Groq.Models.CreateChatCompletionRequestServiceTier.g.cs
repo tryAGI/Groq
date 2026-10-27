@@ -25,10 +25,6 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
-        OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
-        /// <summary>
-        ///
-        /// </summary>
         Performance,
     }
 
@@ -47,7 +43,6 @@ namespace Groq
                 CreateChatCompletionRequestServiceTier.Auto => "auto",
                 CreateChatCompletionRequestServiceTier.Flex => "flex",
                 CreateChatCompletionRequestServiceTier.OnDemand => "on_demand",
-                CreateChatCompletionRequestServiceTier.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464 => "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464",
                 CreateChatCompletionRequestServiceTier.Performance => "performance",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -62,7 +57,6 @@ namespace Groq
                 "auto" => CreateChatCompletionRequestServiceTier.Auto,
                 "flex" => CreateChatCompletionRequestServiceTier.Flex,
                 "on_demand" => CreateChatCompletionRequestServiceTier.OnDemand,
-                "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464" => CreateChatCompletionRequestServiceTier.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
                 "performance" => CreateChatCompletionRequestServiceTier.Performance,
                 _ => null,
             };

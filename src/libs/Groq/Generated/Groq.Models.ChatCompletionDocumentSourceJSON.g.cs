@@ -9,18 +9,18 @@ namespace Groq
     public sealed partial class ChatCompletionDocumentSourceJSON
     {
         /// <summary>
-        /// Identifies this document source as JSON data.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ChatCompletionDocumentSourceJSONTypeJsonConverter))]
-        public global::Groq.ChatCompletionDocumentSourceJSONType Type { get; set; }
-
-        /// <summary>
         /// The JSON payload associated with the document.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required object Data { get; set; }
+
+        /// <summary>
+        /// Identifies this document source as JSON data.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ChatCompletionDocumentSourceJSONTypeJsonConverter))]
+        public global::Groq.ChatCompletionDocumentSourceJSONType Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -44,8 +44,8 @@ namespace Groq
             object data,
             global::Groq.ChatCompletionDocumentSourceJSONType type)
         {
-            this.Type = type;
             this.Data = data ?? throw new global::System.ArgumentNullException(nameof(data));
+            this.Type = type;
         }
 
         /// <summary>

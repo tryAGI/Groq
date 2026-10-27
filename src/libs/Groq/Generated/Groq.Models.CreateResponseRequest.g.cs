@@ -9,16 +9,6 @@ namespace Groq
     public sealed partial class CreateResponseRequest
     {
         /// <summary>
-        /// ID of the model to use. For details on which models are compatible with the Responses API, see available [models](https://console.groq.com/docs/models)<br/>
-        /// Example: llama-3.3-70b-versatile
-        /// </summary>
-        /// <example>llama-3.3-70b-versatile</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateResponseRequestModel?>))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Groq.AnyOf<string, global::Groq.CreateResponseRequestModel?> Model { get; set; }
-
-        /// <summary>
         /// Text input to the model, used to generate a response.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
@@ -39,46 +29,27 @@ namespace Groq
         public int? MaxOutputTokens { get; set; }
 
         /// <summary>
-        /// Controls randomness in the response generation. Range: 0 to 2. Lower values produce more deterministic outputs, higher values increase variety and creativity.<br/>
-        /// Default Value: 1<br/>
-        /// Example: 1
+        /// Custom key-value pairs for storing additional information. Maximum of 16 pairs.
         /// </summary>
-        /// <example>1</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("temperature")]
-        public double? Temperature { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Metadata { get; set; }
 
         /// <summary>
-        /// Nucleus sampling parameter that controls the cumulative probability cutoff. Range: 0 to 1. A value of 0.1 restricts sampling to tokens within the top 10% probability mass.<br/>
-        /// Default Value: 1<br/>
-        /// Example: 1
+        /// ID of the model to use. For details on which models are compatible with the Responses API, see available [models](https://console.groq.com/docs/models)<br/>
+        /// Example: llama-3.3-70b-versatile
         /// </summary>
-        /// <example>1</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("top_p")]
-        public double? TopP { get; set; }
+        /// <example>llama-3.3-70b-versatile</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateResponseRequestModel?>))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Groq.AnyOf<string, global::Groq.CreateResponseRequestModel?> Model { get; set; }
 
         /// <summary>
-        /// List of tools available to the model. Currently supports function definitions only. Maximum of 128 functions.
+        /// Enable parallel execution of multiple tool calls.<br/>
+        /// Default Value: true
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tools")]
-        public global::System.Collections.Generic.IList<global::Groq.ResponseTool>? Tools { get; set; }
-
-        /// <summary>
-        /// Controls which (if any) tool is called by the model.<br/>
-        /// `none` means the model will not call any tool and instead generates a message.<br/>
-        /// `auto` means the model can pick between generating a message or calling one or more tools.<br/>
-        /// `required` means the model must call one or more tools.<br/>
-        /// Specifying a particular tool via `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.<br/>
-        /// `none` is the default when no tools are present. `auto` is the default if tools are present.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tool_choice")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseToolChoiceOptionJsonConverter))]
-        public global::Groq.ResponseToolChoiceOption? ToolChoice { get; set; }
-
-        /// <summary>
-        /// Response format configuration. Supports plain text or structured JSON output.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
-        public global::Groq.CreateResponseRequestText? Text { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("parallel_tool_calls")]
+        public bool? ParallelToolCalls { get; set; }
 
         /// <summary>
         /// Configuration for reasoning capabilities when using [models that support reasoning](https://console.groq.com/docs/reasoning).
@@ -87,17 +58,12 @@ namespace Groq
         public global::Groq.CreateResponseRequestReasoning? Reasoning { get; set; }
 
         /// <summary>
-        /// Custom key-value pairs for storing additional information. Maximum of 16 pairs.
+        /// Specifies the latency tier to use for processing the request.<br/>
+        /// Default Value: auto
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
-        public global::System.Collections.Generic.Dictionary<string, string>? Metadata { get; set; }
-
-        /// <summary>
-        /// Enable parallel execution of multiple tool calls.<br/>
-        /// Default Value: true
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("parallel_tool_calls")]
-        public bool? ParallelToolCalls { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("service_tier")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateResponseRequestServiceTierJsonConverter))]
+        public global::Groq.CreateResponseRequestServiceTier? ServiceTier { get; set; }
 
         /// <summary>
         /// Response storage flag. Note: Currently only supports false or null values.<br/>
@@ -114,20 +80,46 @@ namespace Groq
         public bool? Stream { get; set; }
 
         /// <summary>
-        /// Optional identifier for tracking end-user requests. Useful for usage monitoring and compliance.<br/>
-        /// Example: user-1234
+        /// Controls randomness in the response generation. Range: 0 to 2. Lower values produce more deterministic outputs, higher values increase variety and creativity.<br/>
+        /// Default Value: 1<br/>
+        /// Example: 1
         /// </summary>
-        /// <example>user-1234</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("user")]
-        public string? User { get; set; }
+        /// <example>1</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("temperature")]
+        public double? Temperature { get; set; }
 
         /// <summary>
-        /// Specifies the latency tier to use for processing the request.<br/>
-        /// Default Value: auto
+        /// Response format configuration. Supports plain text or structured JSON output.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("service_tier")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateResponseRequestServiceTierJsonConverter))]
-        public global::Groq.CreateResponseRequestServiceTier? ServiceTier { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        public global::Groq.CreateResponseRequestText? Text { get; set; }
+
+        /// <summary>
+        /// Controls which (if any) tool is called by the model.<br/>
+        /// `none` means the model will not call any tool and instead generates a message.<br/>
+        /// `auto` means the model can pick between generating a message or calling one or more tools.<br/>
+        /// `required` means the model must call one or more tools.<br/>
+        /// Specifying a particular tool via `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.<br/>
+        /// `none` is the default when no tools are present. `auto` is the default if tools are present.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tool_choice")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseToolChoiceOptionJsonConverter))]
+        public global::Groq.ResponseToolChoiceOption? ToolChoice { get; set; }
+
+        /// <summary>
+        /// List of tools available to the model. Currently supports function definitions only. Maximum of 128 functions.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tools")]
+        public global::System.Collections.Generic.IList<global::Groq.ResponseTool>? Tools { get; set; }
+
+        /// <summary>
+        /// Nucleus sampling parameter that controls the cumulative probability cutoff. Range: 0 to 1. A value of 0.1 restricts sampling to tokens within the top 10% probability mass.<br/>
+        /// Default Value: 1<br/>
+        /// Example: 1
+        /// </summary>
+        /// <example>1</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("top_p")]
+        public double? TopP { get; set; }
 
         /// <summary>
         /// Context truncation strategy. Supported values: `auto` or `disabled`.<br/>
@@ -138,6 +130,14 @@ namespace Groq
         public global::Groq.CreateResponseRequestTruncation? Truncation { get; set; }
 
         /// <summary>
+        /// Optional identifier for tracking end-user requests. Useful for usage monitoring and compliance.<br/>
+        /// Example: user-1234
+        /// </summary>
+        /// <example>user-1234</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("user")]
+        public string? User { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -146,12 +146,12 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateResponseRequest" /> class.
         /// </summary>
+        /// <param name="input">
+        /// Text input to the model, used to generate a response.
+        /// </param>
         /// <param name="model">
         /// ID of the model to use. For details on which models are compatible with the Responses API, see available [models](https://console.groq.com/docs/models)<br/>
         /// Example: llama-3.3-70b-versatile
-        /// </param>
-        /// <param name="input">
-        /// Text input to the model, used to generate a response.
         /// </param>
         /// <param name="instructions">
         /// Inserts a system (or developer) message as the first item in the model's context.
@@ -159,39 +159,19 @@ namespace Groq
         /// <param name="maxOutputTokens">
         /// An upper bound for the number of tokens that can be generated for a response, including visible output tokens and reasoning tokens.
         /// </param>
-        /// <param name="temperature">
-        /// Controls randomness in the response generation. Range: 0 to 2. Lower values produce more deterministic outputs, higher values increase variety and creativity.<br/>
-        /// Default Value: 1<br/>
-        /// Example: 1
-        /// </param>
-        /// <param name="topP">
-        /// Nucleus sampling parameter that controls the cumulative probability cutoff. Range: 0 to 1. A value of 0.1 restricts sampling to tokens within the top 10% probability mass.<br/>
-        /// Default Value: 1<br/>
-        /// Example: 1
-        /// </param>
-        /// <param name="tools">
-        /// List of tools available to the model. Currently supports function definitions only. Maximum of 128 functions.
-        /// </param>
-        /// <param name="toolChoice">
-        /// Controls which (if any) tool is called by the model.<br/>
-        /// `none` means the model will not call any tool and instead generates a message.<br/>
-        /// `auto` means the model can pick between generating a message or calling one or more tools.<br/>
-        /// `required` means the model must call one or more tools.<br/>
-        /// Specifying a particular tool via `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.<br/>
-        /// `none` is the default when no tools are present. `auto` is the default if tools are present.
-        /// </param>
-        /// <param name="text">
-        /// Response format configuration. Supports plain text or structured JSON output.
-        /// </param>
-        /// <param name="reasoning">
-        /// Configuration for reasoning capabilities when using [models that support reasoning](https://console.groq.com/docs/reasoning).
-        /// </param>
         /// <param name="metadata">
         /// Custom key-value pairs for storing additional information. Maximum of 16 pairs.
         /// </param>
         /// <param name="parallelToolCalls">
         /// Enable parallel execution of multiple tool calls.<br/>
         /// Default Value: true
+        /// </param>
+        /// <param name="reasoning">
+        /// Configuration for reasoning capabilities when using [models that support reasoning](https://console.groq.com/docs/reasoning).
+        /// </param>
+        /// <param name="serviceTier">
+        /// Specifies the latency tier to use for processing the request.<br/>
+        /// Default Value: auto
         /// </param>
         /// <param name="store">
         /// Response storage flag. Note: Currently only supports false or null values.<br/>
@@ -201,57 +181,77 @@ namespace Groq
         /// Enable streaming mode to receive response data as server-sent events.<br/>
         /// Default Value: false
         /// </param>
-        /// <param name="user">
-        /// Optional identifier for tracking end-user requests. Useful for usage monitoring and compliance.<br/>
-        /// Example: user-1234
+        /// <param name="temperature">
+        /// Controls randomness in the response generation. Range: 0 to 2. Lower values produce more deterministic outputs, higher values increase variety and creativity.<br/>
+        /// Default Value: 1<br/>
+        /// Example: 1
         /// </param>
-        /// <param name="serviceTier">
-        /// Specifies the latency tier to use for processing the request.<br/>
-        /// Default Value: auto
+        /// <param name="text">
+        /// Response format configuration. Supports plain text or structured JSON output.
+        /// </param>
+        /// <param name="toolChoice">
+        /// Controls which (if any) tool is called by the model.<br/>
+        /// `none` means the model will not call any tool and instead generates a message.<br/>
+        /// `auto` means the model can pick between generating a message or calling one or more tools.<br/>
+        /// `required` means the model must call one or more tools.<br/>
+        /// Specifying a particular tool via `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.<br/>
+        /// `none` is the default when no tools are present. `auto` is the default if tools are present.
+        /// </param>
+        /// <param name="tools">
+        /// List of tools available to the model. Currently supports function definitions only. Maximum of 128 functions.
+        /// </param>
+        /// <param name="topP">
+        /// Nucleus sampling parameter that controls the cumulative probability cutoff. Range: 0 to 1. A value of 0.1 restricts sampling to tokens within the top 10% probability mass.<br/>
+        /// Default Value: 1<br/>
+        /// Example: 1
         /// </param>
         /// <param name="truncation">
         /// Context truncation strategy. Supported values: `auto` or `disabled`.<br/>
         /// Default Value: disabled
         /// </param>
+        /// <param name="user">
+        /// Optional identifier for tracking end-user requests. Useful for usage monitoring and compliance.<br/>
+        /// Example: user-1234
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateResponseRequest(
-            global::Groq.AnyOf<string, global::Groq.CreateResponseRequestModel?> model,
             global::Groq.OneOf<string, global::System.Collections.Generic.IList<global::Groq.ResponseInputItem>> input,
+            global::Groq.AnyOf<string, global::Groq.CreateResponseRequestModel?> model,
             string? instructions,
             int? maxOutputTokens,
-            double? temperature,
-            double? topP,
-            global::System.Collections.Generic.IList<global::Groq.ResponseTool>? tools,
-            global::Groq.ResponseToolChoiceOption? toolChoice,
-            global::Groq.CreateResponseRequestText? text,
-            global::Groq.CreateResponseRequestReasoning? reasoning,
             global::System.Collections.Generic.Dictionary<string, string>? metadata,
             bool? parallelToolCalls,
+            global::Groq.CreateResponseRequestReasoning? reasoning,
+            global::Groq.CreateResponseRequestServiceTier? serviceTier,
             bool? store,
             bool? stream,
-            string? user,
-            global::Groq.CreateResponseRequestServiceTier? serviceTier,
-            global::Groq.CreateResponseRequestTruncation? truncation)
+            double? temperature,
+            global::Groq.CreateResponseRequestText? text,
+            global::Groq.ResponseToolChoiceOption? toolChoice,
+            global::System.Collections.Generic.IList<global::Groq.ResponseTool>? tools,
+            double? topP,
+            global::Groq.CreateResponseRequestTruncation? truncation,
+            string? user)
         {
-            this.Model = model;
             this.Input = input;
             this.Instructions = instructions;
             this.MaxOutputTokens = maxOutputTokens;
-            this.Temperature = temperature;
-            this.TopP = topP;
-            this.Tools = tools;
-            this.ToolChoice = toolChoice;
-            this.Text = text;
-            this.Reasoning = reasoning;
             this.Metadata = metadata;
+            this.Model = model;
             this.ParallelToolCalls = parallelToolCalls;
+            this.Reasoning = reasoning;
+            this.ServiceTier = serviceTier;
             this.Store = store;
             this.Stream = stream;
-            this.User = user;
-            this.ServiceTier = serviceTier;
+            this.Temperature = temperature;
+            this.Text = text;
+            this.ToolChoice = toolChoice;
+            this.Tools = tools;
+            this.TopP = topP;
             this.Truncation = truncation;
+            this.User = user;
         }
 
         /// <summary>

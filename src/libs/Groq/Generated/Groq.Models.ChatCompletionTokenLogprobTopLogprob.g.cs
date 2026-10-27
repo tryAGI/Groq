@@ -9,11 +9,10 @@ namespace Groq
     public sealed partial class ChatCompletionTokenLogprobTopLogprob
     {
         /// <summary>
-        /// The token.
+        /// A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be `null` if there is no bytes representation for the token.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("token")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Token { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("bytes")]
+        public global::System.Collections.Generic.IList<long>? Bytes { get; set; }
 
         /// <summary>
         /// The log probability of this token, if it is within the top 20 most likely tokens. Otherwise, the value `-9999.0` is used to signify that the token is very unlikely.
@@ -23,10 +22,11 @@ namespace Groq
         public required double Logprob { get; set; }
 
         /// <summary>
-        /// A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be `null` if there is no bytes representation for the token.
+        /// The token.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("bytes")]
-        public global::System.Collections.Generic.IList<long>? Bytes { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("token")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Token { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -37,11 +37,11 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="ChatCompletionTokenLogprobTopLogprob" /> class.
         /// </summary>
-        /// <param name="token">
-        /// The token.
-        /// </param>
         /// <param name="logprob">
         /// The log probability of this token, if it is within the top 20 most likely tokens. Otherwise, the value `-9999.0` is used to signify that the token is very unlikely.
+        /// </param>
+        /// <param name="token">
+        /// The token.
         /// </param>
         /// <param name="bytes">
         /// A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be `null` if there is no bytes representation for the token.
@@ -50,13 +50,13 @@ namespace Groq
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ChatCompletionTokenLogprobTopLogprob(
-            string token,
             double logprob,
+            string token,
             global::System.Collections.Generic.IList<long>? bytes)
         {
-            this.Token = token ?? throw new global::System.ArgumentNullException(nameof(token));
-            this.Logprob = logprob;
             this.Bytes = bytes;
+            this.Logprob = logprob;
+            this.Token = token ?? throw new global::System.ArgumentNullException(nameof(token));
         }
 
         /// <summary>

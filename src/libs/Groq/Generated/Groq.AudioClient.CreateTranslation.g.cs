@@ -187,14 +187,6 @@ namespace Groq
                                 }
 
                             }
-                            if (request.Url != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(request.Url ?? string.Empty),
-                                    name: "\"url\"");
-
-                            }
                             __httpRequestContent.Add(
                                 content: new global::System.Net.Http.StringContent(request.Model.ToString() ?? string.Empty),
                                 name: "\"model\"");
@@ -221,6 +213,14 @@ namespace Groq
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.Temperature, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
                                     name: "\"temperature\"");
+
+                            }
+                            if (request.Url != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(request.Url ?? string.Empty),
+                                    name: "\"url\"");
 
                             }
 
@@ -521,10 +521,6 @@ namespace Groq
         /// <param name="filename">
         /// The audio file object (not file name) translate, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
         /// </param>
-        /// <param name="url">
-        /// The audio URL to translate/transcribe (supports Base64URL). Either file or url must be provided.<br/>
-        /// When using the Batch API only url is supported.
-        /// </param>
         /// <param name="model">
         /// ID of the model to use. `whisper-large-v3` and `whisper-large-v3-turbo` are currently available.<br/>
         /// Example: whisper-large-v3-turbo
@@ -540,6 +536,10 @@ namespace Groq
         /// The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.<br/>
         /// Default Value: 0
         /// </param>
+        /// <param name="url">
+        /// The audio URL to translate/transcribe (supports Base64URL). Either file or url must be provided.<br/>
+        /// When using the Batch API only url is supported.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -547,10 +547,10 @@ namespace Groq
             global::Groq.AnyOf<string, global::Groq.CreateTranslationRequestModel?> model,
             byte[]? file = default,
             string? filename = default,
-            string? url = default,
             string? prompt = default,
             global::Groq.CreateTranslationRequestResponseFormat? responseFormat = default,
             double? temperature = default,
+            string? url = default,
             global::Groq.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -558,11 +558,11 @@ namespace Groq
             {
                 File = file,
                 Filename = filename,
-                Url = url,
                 Model = model,
                 Prompt = prompt,
                 ResponseFormat = responseFormat,
                 Temperature = temperature,
+                Url = url,
             };
 
             return await CreateTranslationAsync(

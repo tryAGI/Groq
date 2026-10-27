@@ -9,12 +9,6 @@ namespace Groq
     public sealed partial class File
     {
         /// <summary>
-        /// The file identifier, which can be referenced in the API endpoints.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string? Id { get; set; }
-
-        /// <summary>
         /// The size of the file, in bytes.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("bytes")]
@@ -32,6 +26,12 @@ namespace Groq
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("filename")]
         public string? Filename { get; set; }
+
+        /// <summary>
+        /// The file identifier, which can be referenced in the API endpoints.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
 
         /// <summary>
         /// The object type, which is always `file`.
@@ -56,9 +56,6 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="File" /> class.
         /// </summary>
-        /// <param name="id">
-        /// The file identifier, which can be referenced in the API endpoints.
-        /// </param>
         /// <param name="bytes">
         /// The size of the file, in bytes.
         /// </param>
@@ -67,6 +64,9 @@ namespace Groq
         /// </param>
         /// <param name="filename">
         /// The name of the file.
+        /// </param>
+        /// <param name="id">
+        /// The file identifier, which can be referenced in the API endpoints.
         /// </param>
         /// <param name="object">
         /// The object type, which is always `file`.
@@ -78,17 +78,17 @@ namespace Groq
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public File(
-            string? id,
             long? bytes,
             global::System.DateTimeOffset? createdAt,
             string? filename,
+            string? id,
             global::Groq.FileObject? @object,
             global::Groq.FilePurpose? purpose)
         {
-            this.Id = id;
             this.Bytes = bytes;
             this.CreatedAt = createdAt;
             this.Filename = filename;
+            this.Id = id;
             this.Object = @object;
             this.Purpose = purpose;
         }

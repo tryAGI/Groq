@@ -9,6 +9,16 @@ namespace Groq
     public sealed partial class CreateEmbeddingRequest
     {
         /// <summary>
+        /// The format to return the embeddings in. Can only be `float` or `base64`.<br/>
+        /// Default Value: float<br/>
+        /// Example: float
+        /// </summary>
+        /// <example>float</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("encoding_format")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateEmbeddingRequestEncodingFormatJsonConverter))]
+        public global::Groq.CreateEmbeddingRequestEncodingFormat? EncodingFormat { get; set; }
+
+        /// <summary>
         /// Input text to embed, encoded as a string or array of tokens. To embed multiple inputs in a single request, pass an array of strings or array of token arrays. The input must not exceed the max input tokens for the model, cannot be an empty string, and any array must be 2048 dimensions or less.<br/>
         /// Example: The quick brown fox jumped over the lazy dog
         /// </summary>
@@ -27,16 +37,6 @@ namespace Groq
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.AnyOfJsonConverter<string, global::Groq.CreateEmbeddingRequestModel?>))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Groq.AnyOf<string, global::Groq.CreateEmbeddingRequestModel?> Model { get; set; }
-
-        /// <summary>
-        /// The format to return the embeddings in. Can only be `float` or `base64`.<br/>
-        /// Default Value: float<br/>
-        /// Example: float
-        /// </summary>
-        /// <example>float</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("encoding_format")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateEmbeddingRequestEncodingFormatJsonConverter))]
-        public global::Groq.CreateEmbeddingRequestEncodingFormat? EncodingFormat { get; set; }
 
         /// <summary>
         /// A unique identifier representing your end-user, which can help us monitor and detect abuse.
@@ -78,9 +78,9 @@ namespace Groq
             global::Groq.CreateEmbeddingRequestEncodingFormat? encodingFormat,
             string? user)
         {
+            this.EncodingFormat = encodingFormat;
             this.Input = input;
             this.Model = model;
-            this.EncodingFormat = encodingFormat;
             this.User = user;
         }
 

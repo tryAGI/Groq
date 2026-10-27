@@ -11,16 +11,27 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("message")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Message { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("code")]
+        public string? Code { get; set; }
+
+        /// <summary>
+        /// Debug information including input and output token IDs and strings. Only present when debug=true in the request.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("debug")]
+        public global::Groq.DebugData? Debug { get; set; }
 
         /// <summary>
         ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("failed_generation")]
+        public string? FailedGeneration { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("message")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Type { get; set; }
+        public required string Message { get; set; }
 
         /// <summary>
         ///
@@ -31,14 +42,14 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("code")]
-        public string? Code { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("schema_code")]
+        public string? SchemaCode { get; set; }
 
         /// <summary>
         ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("failed_generation")]
-        public string? FailedGeneration { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("schema_kind")]
+        public string? SchemaKind { get; set; }
 
         /// <summary>
         ///
@@ -55,20 +66,9 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("schema_kind")]
-        public string? SchemaKind { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("schema_code")]
-        public string? SchemaCode { get; set; }
-
-        /// <summary>
-        /// Debug information including input and output token IDs and strings. Only present when debug=true in the request.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("debug")]
-        public global::Groq.DebugData? Debug { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -81,17 +81,17 @@ namespace Groq
         /// </summary>
         /// <param name="message"></param>
         /// <param name="type"></param>
-        /// <param name="param"></param>
         /// <param name="code"></param>
+        /// <param name="debug">
+        /// Debug information including input and output token IDs and strings. Only present when debug=true in the request.
+        /// </param>
         /// <param name="failedGeneration"></param>
+        /// <param name="param"></param>
+        /// <param name="schemaCode"></param>
+        /// <param name="schemaKind"></param>
         /// <param name="schemaPath"></param>
         /// <param name="schemaPathSegments">
         /// Segments of the schema path relevant to validation errors.
-        /// </param>
-        /// <param name="schemaKind"></param>
-        /// <param name="schemaCode"></param>
-        /// <param name="debug">
-        /// Debug information including input and output token IDs and strings. Only present when debug=true in the request.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -99,25 +99,25 @@ namespace Groq
         public Error(
             string message,
             string type,
-            string? param,
             string? code,
+            global::Groq.DebugData? debug,
             string? failedGeneration,
-            string? schemaPath,
-            global::System.Collections.Generic.IList<string>? schemaPathSegments,
-            string? schemaKind,
+            string? param,
             string? schemaCode,
-            global::Groq.DebugData? debug)
+            string? schemaKind,
+            string? schemaPath,
+            global::System.Collections.Generic.IList<string>? schemaPathSegments)
         {
-            this.Message = message ?? throw new global::System.ArgumentNullException(nameof(message));
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
-            this.Param = param;
             this.Code = code;
+            this.Debug = debug;
             this.FailedGeneration = failedGeneration;
+            this.Message = message ?? throw new global::System.ArgumentNullException(nameof(message));
+            this.Param = param;
+            this.SchemaCode = schemaCode;
+            this.SchemaKind = schemaKind;
             this.SchemaPath = schemaPath;
             this.SchemaPathSegments = schemaPathSegments;
-            this.SchemaKind = schemaKind;
-            this.SchemaCode = schemaCode;
-            this.Debug = debug;
+            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
         }
 
         /// <summary>

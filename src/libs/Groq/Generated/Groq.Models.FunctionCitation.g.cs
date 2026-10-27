@@ -9,18 +9,18 @@ namespace Groq
     public sealed partial class FunctionCitation
     {
         /// <summary>
-        /// The character index in the message content where this citation begins.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("start_index")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int StartIndex { get; set; }
-
-        /// <summary>
         /// The character index in the message content where this citation ends.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("end_index")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int EndIndex { get; set; }
+
+        /// <summary>
+        /// The character index in the message content where this citation begins.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("start_index")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required int StartIndex { get; set; }
 
         /// <summary>
         /// The ID of the tool call being cited, corresponding to a tool call made during the conversation.
@@ -38,11 +38,11 @@ namespace Groq
         /// <summary>
         /// Initializes a new instance of the <see cref="FunctionCitation" /> class.
         /// </summary>
-        /// <param name="startIndex">
-        /// The character index in the message content where this citation begins.
-        /// </param>
         /// <param name="endIndex">
         /// The character index in the message content where this citation ends.
+        /// </param>
+        /// <param name="startIndex">
+        /// The character index in the message content where this citation begins.
         /// </param>
         /// <param name="toolCallId">
         /// The ID of the tool call being cited, corresponding to a tool call made during the conversation.
@@ -51,12 +51,12 @@ namespace Groq
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FunctionCitation(
-            int startIndex,
             int endIndex,
+            int startIndex,
             string toolCallId)
         {
-            this.StartIndex = startIndex;
             this.EndIndex = endIndex;
+            this.StartIndex = startIndex;
             this.ToolCallId = toolCallId ?? throw new global::System.ArgumentNullException(nameof(toolCallId));
         }
 

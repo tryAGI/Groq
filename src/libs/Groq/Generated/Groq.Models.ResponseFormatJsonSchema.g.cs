@@ -9,18 +9,18 @@ namespace Groq
     public sealed partial class ResponseFormatJsonSchema
     {
         /// <summary>
-        /// The type of response format being defined. Always `json_schema`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseFormatJsonSchemaTypeJsonConverter))]
-        public global::Groq.ResponseFormatJsonSchemaType Type { get; set; }
-
-        /// <summary>
         /// Structured Outputs configuration options, including a JSON Schema.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("json_schema")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Groq.ResponseFormatJsonSchemaJsonSchema JsonSchema { get; set; }
+
+        /// <summary>
+        /// The type of response format being defined. Always `json_schema`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseFormatJsonSchemaTypeJsonConverter))]
+        public global::Groq.ResponseFormatJsonSchemaType Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -44,8 +44,8 @@ namespace Groq
             global::Groq.ResponseFormatJsonSchemaJsonSchema jsonSchema,
             global::Groq.ResponseFormatJsonSchemaType type)
         {
-            this.Type = type;
             this.JsonSchema = jsonSchema ?? throw new global::System.ArgumentNullException(nameof(jsonSchema));
+            this.Type = type;
         }
 
         /// <summary>

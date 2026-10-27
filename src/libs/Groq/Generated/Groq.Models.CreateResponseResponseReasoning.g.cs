@@ -9,7 +9,8 @@ namespace Groq
     public sealed partial class CreateResponseResponseReasoning
     {
         /// <summary>
-        /// The reasoning effort level used.
+        /// The reasoning effort level used. When omitted from the request, this is `none`<br/>
+        /// for Qwen3.8 and `medium` for GPT-OSS models.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("effort")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateResponseResponseReasoningEffortJsonConverter))]
@@ -31,7 +32,8 @@ namespace Groq
         /// Initializes a new instance of the <see cref="CreateResponseResponseReasoning" /> class.
         /// </summary>
         /// <param name="effort">
-        /// The reasoning effort level used.
+        /// The reasoning effort level used. When omitted from the request, this is `none`<br/>
+        /// for Qwen3.8 and `medium` for GPT-OSS models.
         /// </param>
         /// <param name="summary">
         /// Not supported. Always null.

@@ -14,20 +14,20 @@ namespace Groq
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>), TypeInfoPropertyName = "SystemCollectionsGeneric_ObjectList")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(string[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Text.Json.JsonElement?))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTimeOffset))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.Model6))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ModelObject), TypeInfoPropertyName = "ModelObject2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ListModelsResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ListModelsResponseObject), TypeInfoPropertyName = "ListModelsResponseObject2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Groq.Model6>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.DeleteModelResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ListModelsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Groq.Model7>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.Model7))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ListModelsResponseObject), TypeInfoPropertyName = "ListModelsResponseObject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ModelObject), TypeInfoPropertyName = "ModelObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTimeOffset?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ModelObject?), TypeInfoPropertyName = "NullableModelObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ListModelsResponseObject?), TypeInfoPropertyName = "NullableListModelsResponseObject2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Groq.Model6>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ModelObject?), TypeInfoPropertyName = "NullableModelObject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Groq.Model7>))]
     internal sealed partial class ModelsSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -76,8 +76,8 @@ namespace Groq
         public static void AddConverters(global::System.Text.Json.JsonSerializerOptions options)
         {
             options.Converters.Add(new global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
-            options.Converters.Add(new global::Groq.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<double>, string>());
             options.Converters.Add(new global::Groq.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
+            options.Converters.Add(new global::Groq.JsonConverters.OneOfJsonConverter<global::System.Collections.Generic.IList<double>, string>());
             options.Converters.Add(new global::Groq.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
         }
@@ -100,29 +100,19 @@ namespace Groq
             public override bool CanConvert(global::System.Type typeToConvert)
             {
                 return
-                    typeToConvert == typeof(global::Groq.ModelObject)
+                    typeToConvert == typeof(global::Groq.ListModelsResponseObject)
 
-                    || typeToConvert == typeof(global::Groq.ModelObject?)
+                    || typeToConvert == typeof(global::Groq.ListModelsResponseObject?)
 
-                    || typeToConvert == typeof(global::Groq.ListModelsResponseObject)
+                    || typeToConvert == typeof(global::Groq.ModelObject)
 
-                    || typeToConvert == typeof(global::Groq.ListModelsResponseObject?);
+                    || typeToConvert == typeof(global::Groq.ModelObject?);
             }
 
             public override global::System.Text.Json.Serialization.JsonConverter CreateConverter(
                 global::System.Type typeToConvert,
                 global::System.Text.Json.JsonSerializerOptions options)
             {
-                if (typeToConvert == typeof(global::Groq.ModelObject))
-                {
-                    return new global::Groq.JsonConverters.ModelObjectJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Groq.ModelObject?))
-                {
-                    return new global::Groq.JsonConverters.ModelObjectNullableJsonConverter();
-                }
-
                 if (typeToConvert == typeof(global::Groq.ListModelsResponseObject))
                 {
                     return new global::Groq.JsonConverters.ListModelsResponseObjectJsonConverter();
@@ -131,6 +121,16 @@ namespace Groq
                 if (typeToConvert == typeof(global::Groq.ListModelsResponseObject?))
                 {
                     return new global::Groq.JsonConverters.ListModelsResponseObjectNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Groq.ModelObject))
+                {
+                    return new global::Groq.JsonConverters.ModelObjectJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Groq.ModelObject?))
+                {
+                    return new global::Groq.JsonConverters.ModelObjectNullableJsonConverter();
                 }
                 throw new global::System.NotSupportedException($"No generated enum converter is registered for '{typeToConvert}'.");
             }

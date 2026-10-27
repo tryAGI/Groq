@@ -9,8 +9,10 @@ namespace Groq
     public sealed partial class CreateResponseRequestReasoning
     {
         /// <summary>
-        /// Level of reasoning effort. Supported values: `low`, `medium`, `high`. Lower values provide faster responses with less reasoning depth.<br/>
-        /// Default Value: medium
+        /// Level of reasoning effort. Supported values: `none`, `low`, `medium`, `high`.<br/>
+        /// `none` disables reasoning and is supported only by Qwen3.8 models. Lower graded<br/>
+        /// values provide faster responses with less reasoning depth. When omitted, the<br/>
+        /// default is `none` for Qwen3.8 and `medium` for GPT-OSS models.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("effort")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.CreateResponseRequestReasoningEffortJsonConverter))]
@@ -26,8 +28,10 @@ namespace Groq
         /// Initializes a new instance of the <see cref="CreateResponseRequestReasoning" /> class.
         /// </summary>
         /// <param name="effort">
-        /// Level of reasoning effort. Supported values: `low`, `medium`, `high`. Lower values provide faster responses with less reasoning depth.<br/>
-        /// Default Value: medium
+        /// Level of reasoning effort. Supported values: `none`, `low`, `medium`, `high`.<br/>
+        /// `none` disables reasoning and is supported only by Qwen3.8 models. Lower graded<br/>
+        /// values provide faster responses with less reasoning depth. When omitted, the<br/>
+        /// default is `none` for Qwen3.8 and `medium` for GPT-OSS models.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
