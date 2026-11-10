@@ -152,7 +152,8 @@ namespace Groq
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tool_choice")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Groq.JsonConverters.ResponseToolChoiceOptionJsonConverter))]
-        public global::Groq.ResponseToolChoiceOption? ToolChoice { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Groq.ResponseToolChoiceOption ToolChoice { get; set; }
 
         /// <summary>
         /// The tools that were available to the model.
@@ -231,6 +232,14 @@ namespace Groq
         /// <param name="temperature">
         /// The sampling temperature used.
         /// </param>
+        /// <param name="toolChoice">
+        /// Controls which (if any) tool is called by the model.<br/>
+        /// `none` means the model will not call any tool and instead generates a message.<br/>
+        /// `auto` means the model can pick between generating a message or calling one or more tools.<br/>
+        /// `required` means the model must call one or more tools.<br/>
+        /// Specifying a particular tool via `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.<br/>
+        /// `none` is the default when no tools are present. `auto` is the default if tools are present.
+        /// </param>
         /// <param name="tools">
         /// The tools that were available to the model.
         /// </param>
@@ -274,14 +283,6 @@ namespace Groq
         /// <param name="text">
         /// Text format configuration used for the response.
         /// </param>
-        /// <param name="toolChoice">
-        /// Controls which (if any) tool is called by the model.<br/>
-        /// `none` means the model will not call any tool and instead generates a message.<br/>
-        /// `auto` means the model can pick between generating a message or calling one or more tools.<br/>
-        /// `required` means the model must call one or more tools.<br/>
-        /// Specifying a particular tool via `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.<br/>
-        /// `none` is the default when no tools are present. `auto` is the default if tools are present.
-        /// </param>
         /// <param name="topLogprobs">
         /// The number of top log probabilities returned.<br/>
         /// Default Value: 0
@@ -305,6 +306,7 @@ namespace Groq
             global::Groq.CreateResponseResponseStatus status,
             bool store,
             double temperature,
+            global::Groq.ResponseToolChoiceOption toolChoice,
             global::System.Collections.Generic.IList<global::Groq.ResponseTool> tools,
             double topP,
             global::Groq.CreateResponseResponseTruncation truncation,
@@ -319,7 +321,6 @@ namespace Groq
             string? previousResponseId,
             global::Groq.CreateResponseResponseReasoning? reasoning,
             global::Groq.CreateResponseResponseText? text,
-            global::Groq.ResponseToolChoiceOption? toolChoice,
             int? topLogprobs,
             global::Groq.ResponseUsage? usage,
             string? user)

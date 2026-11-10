@@ -143,10 +143,6 @@ namespace Groq
         /// <param name="store">
         /// This parameter is not currently supported.
         /// </param>
-        /// <param name="stream">
-        /// If set, partial message deltas will be sent. Tokens will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available, with the stream terminated by a `data: [DONE]` message. [Example code](/docs/text-chat#streaming-a-chat-completion).<br/>
-        /// Default Value: false
-        /// </param>
         /// <param name="streamOptions">
         /// Options for streaming response. Only set this when you set `stream: true`.
         /// </param>
@@ -210,7 +206,6 @@ namespace Groq
             global::Groq.CreateChatCompletionRequestServiceTier? serviceTier = default,
             global::Groq.OneOf<string, global::System.Collections.Generic.IList<string>>? stop = default,
             bool? store = default,
-            bool? stream = default,
             global::Groq.ChatCompletionStreamOptions? streamOptions = default,
             double? temperature = default,
             global::Groq.ChatCompletionToolChoiceOption? toolChoice = default,

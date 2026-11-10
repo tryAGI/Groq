@@ -1,0 +1,660 @@
+
+#nullable enable
+
+#pragma warning disable CS0618 // Type or member is obsolete
+
+namespace Groq
+{
+    public partial class ChatClient
+    {
+
+
+        private static readonly global::Groq.EndPointSecurityRequirement s_CreateChatCompletionAsStreamSecurityRequirement0 =
+            new global::Groq.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Groq.EndPointAuthorizationRequirement[]
+                {                    new global::Groq.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        SchemeId = "ApiKey",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Groq.EndPointSecurityRequirement[] s_CreateChatCompletionAsStreamSecurityRequirements =
+            new global::Groq.EndPointSecurityRequirement[]
+            {                s_CreateChatCompletionAsStreamSecurityRequirement0,
+            };
+        partial void PrepareCreateChatCompletionAsStreamArguments(
+            global::System.Net.Http.HttpClient httpClient,
+            global::Groq.CreateChatCompletionRequest request);
+        partial void PrepareCreateChatCompletionAsStreamRequest(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            global::Groq.CreateChatCompletionRequest request);
+        partial void ProcessCreateChatCompletionAsStreamResponse(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+        /// <summary>
+        /// Creates a model response for the given chat conversation.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Groq.ApiException"></exception>
+        public async global::System.Collections.Generic.IAsyncEnumerable<global::Groq.CreateChatCompletionStreamResponse> CreateChatCompletionAsStreamAsync(
+
+            global::Groq.CreateChatCompletionRequest request,
+            global::Groq.AutoSDKRequestOptions? requestOptions = default,
+            [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
+
+            request = new global::Groq.CreateChatCompletionRequest
+            {
+                ChatTemplateArgs = request.ChatTemplateArgs,
+                CitationOptions = request.CitationOptions,
+                CompoundCustom = request.CompoundCustom,
+                CustomTemplate = request.CustomTemplate,
+                Debug = request.Debug,
+                DisableToolValidation = request.DisableToolValidation,
+                Documents = request.Documents,
+                ExcludeInstanceIds = request.ExcludeInstanceIds,
+                FrequencyPenalty = request.FrequencyPenalty,
+                IncludeReasoning = request.IncludeReasoning,
+                LogitBias = request.LogitBias,
+                Logprobs = request.Logprobs,
+                MaxCompletionTokens = request.MaxCompletionTokens,
+                Messages = request.Messages,
+                Metadata = request.Metadata,
+                Model = request.Model,
+                N = request.N,
+                ParallelToolCalls = request.ParallelToolCalls,
+                PresencePenalty = request.PresencePenalty,
+                Raw = request.Raw,
+                ReasoningEffort = request.ReasoningEffort,
+                ReasoningFormat = request.ReasoningFormat,
+                ResponseFormat = request.ResponseFormat,
+                SearchSettings = request.SearchSettings,
+                Seed = request.Seed,
+                ServiceTier = request.ServiceTier,
+                Stop = request.Stop,
+                Store = request.Store,
+                Stream = true,
+                StreamOptions = request.StreamOptions,
+                Temperature = request.Temperature,
+                ToolChoice = request.ToolChoice,
+                Tools = request.Tools,
+                TopLogprobs = request.TopLogprobs,
+                TopP = request.TopP,
+                User = request.User,
+            };
+            PrepareArguments(
+                client: HttpClient);
+            PrepareCreateChatCompletionAsStreamArguments(
+                httpClient: HttpClient,
+                request: request);
+
+
+            var __authorizations = global::Groq.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_CreateChatCompletionAsStreamSecurityRequirements,
+                operationName: "CreateChatCompletionAsStreamAsync");
+
+            using var __timeoutCancellationTokenSource = global::Groq.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
+                clientOptions: Options,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken);
+            var __effectiveCancellationToken = __timeoutCancellationTokenSource?.Token ?? cancellationToken;
+            var __effectiveReadResponseAsString = global::Groq.AutoSDKRequestOptionsSupport.GetReadResponseAsString(
+                clientOptions: Options,
+                requestOptions: requestOptions,
+                fallbackValue: ReadResponseAsString);
+            var __maxAttempts = global::Groq.AutoSDKRequestOptionsSupport.GetMaxAttempts(
+                clientOptions: Options,
+                requestOptions: requestOptions,
+                supportsRetry: false);
+
+            global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
+            {
+
+                            var __pathBuilder = new global::Groq.PathBuilder(
+                                path: "/openai/v1/chat/completions",
+                                baseUri: HttpClient.BaseAddress);
+                            var __path = __pathBuilder.ToString();
+                __path = global::Groq.AutoSDKRequestOptionsSupport.AppendQueryParameters(
+                    path: __path,
+                    clientParameters: Options.QueryParameters,
+                    requestParameters: requestOptions?.QueryParameters);
+                var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
+                    method: global::System.Net.Http.HttpMethod.Post,
+                    requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
+#if NET6_0_OR_GREATER
+                __httpRequest.Version = global::System.Net.HttpVersion.Version11;
+                __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
+#endif
+
+                __httpRequest.Headers.TryAddWithoutValidation(
+                    "Accept",
+                    "text/event-stream");
+
+            foreach (var __authorization in __authorizations)
+            {
+                if (__authorization.Type == "Http" ||
+                    __authorization.Type == "OAuth2" ||
+                    __authorization.Type == "OpenIdConnect")
+                {
+                    __httpRequest.Headers.Authorization = new global::System.Net.Http.Headers.AuthenticationHeaderValue(
+                        scheme: __authorization.Name,
+                        parameter: __authorization.Value);
+                }
+                else if (__authorization.Type == "ApiKey" &&
+                         __authorization.Location == "Header")
+                {
+                    __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
+                }
+            }
+                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
+                            var __httpRequestContent = new global::System.Net.Http.StringContent(
+                                content: __httpRequestContentBody,
+                                encoding: global::System.Text.Encoding.UTF8,
+                                mediaType: "application/json");
+                            __httpRequest.Content = __httpRequestContent;
+                global::Groq.AutoSDKRequestOptionsSupport.ApplyHeaders(
+                    request: __httpRequest,
+                    clientHeaders: Options.Headers,
+                    requestHeaders: requestOptions?.Headers);
+
+                PrepareRequest(
+                    client: HttpClient,
+                    request: __httpRequest);
+                PrepareCreateChatCompletionAsStreamRequest(
+                    httpClient: HttpClient,
+                    httpRequestMessage: __httpRequest,
+                    request: request);
+
+                return __httpRequest;
+            }
+
+            global::System.Net.Http.HttpRequestMessage? __httpRequest = null;
+            global::System.Net.Http.HttpResponseMessage? __response = null;
+            var __attemptNumber = 0;
+            try
+            {
+                for (var __attempt = 1; __attempt <= __maxAttempts; __attempt++)
+                {
+                    __attemptNumber = __attempt;
+                    __httpRequest = __CreateHttpRequest();
+                    await global::Groq.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
+                            clientOptions: Options,
+                            context: global::Groq.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "CreateChatCompletionAsStream",
+                                methodName: "CreateChatCompletionAsStreamAsync",
+                                pathTemplate: "\"/openai/v1/chat/completions\"",
+                                httpMethod: "POST",
+                                baseUri: BaseUri,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
+                                response: null,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attempt,
+                                maxAttempts: __maxAttempts,
+                                willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                    try
+                    {
+                        __response = await HttpClient.SendAsync(
+                request: __httpRequest,
+                completionOption: global::System.Net.Http.HttpCompletionOption.ResponseHeadersRead,
+                cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
+                    }
+                    catch (global::System.Net.Http.HttpRequestException __exception)
+                    {
+                        var __retryDelay = global::Groq.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
+                        var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
+                        await global::Groq.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
+                            clientOptions: Options,
+                            context: global::Groq.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "CreateChatCompletionAsStream",
+                                methodName: "CreateChatCompletionAsStreamAsync",
+                                pathTemplate: "\"/openai/v1/chat/completions\"",
+                                httpMethod: "POST",
+                                baseUri: BaseUri,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
+                                response: null,
+                                exception: __exception,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attempt,
+                                maxAttempts: __maxAttempts,
+                                willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                        if (!__willRetry)
+                        {
+                            throw;
+                        }
+
+                        __httpRequest.Dispose();
+                        __httpRequest = null;
+                        await global::Groq.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
+                            retryDelay: __retryDelay,
+                            cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
+                        continue;
+                    }
+
+                    if (__response != null &&
+                        __attempt < __maxAttempts &&
+                        global::Groq.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
+                    {
+                        var __retryDelay = global::Groq.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
+                        await global::Groq.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
+                            clientOptions: Options,
+                            context: global::Groq.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "CreateChatCompletionAsStream",
+                                methodName: "CreateChatCompletionAsStreamAsync",
+                                pathTemplate: "\"/openai/v1/chat/completions\"",
+                                httpMethod: "POST",
+                                baseUri: BaseUri,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
+                                response: __response,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attempt,
+                                maxAttempts: __maxAttempts,
+                                willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                        __response.Dispose();
+                        __response = null;
+                        __httpRequest.Dispose();
+                        __httpRequest = null;
+                        await global::Groq.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
+                            retryDelay: __retryDelay,
+                            cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
+                        continue;
+                    }
+
+                    break;
+                }
+
+                if (__response == null)
+                {
+                    throw new global::System.InvalidOperationException("No response received.");
+                }
+
+                using (__response)
+                {
+
+                ProcessResponse(
+                    client: HttpClient,
+                    response: __response);
+                ProcessCreateChatCompletionAsStreamResponse(
+                    httpClient: HttpClient,
+                    httpResponseMessage: __response);
+                if (__response.IsSuccessStatusCode)
+                {
+                    await global::Groq.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
+                            clientOptions: Options,
+                            context: global::Groq.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "CreateChatCompletionAsStream",
+                                methodName: "CreateChatCompletionAsStreamAsync",
+                                pathTemplate: "\"/openai/v1/chat/completions\"",
+                                httpMethod: "POST",
+                                baseUri: BaseUri,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
+                                response: __response,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attemptNumber,
+                                maxAttempts: __maxAttempts,
+                                willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                }
+                else
+                {
+                    await global::Groq.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
+                            clientOptions: Options,
+                            context: global::Groq.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "CreateChatCompletionAsStream",
+                                methodName: "CreateChatCompletionAsStreamAsync",
+                                pathTemplate: "\"/openai/v1/chat/completions\"",
+                                httpMethod: "POST",
+                                baseUri: BaseUri,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
+                                response: __response,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attemptNumber,
+                                maxAttempts: __maxAttempts,
+                                willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                }
+
+                            try
+                            {
+                                __response.EnsureSuccessStatusCode();
+                            }
+                            catch (global::System.Net.Http.HttpRequestException __ex)
+                            {
+                                string? __content = null;
+                                try
+                                {
+                                    __content = await __response.Content.ReadAsStringAsync(
+                #if NET5_0_OR_GREATER
+                                        __effectiveCancellationToken
+                #endif
+                                    ).ConfigureAwait(false);
+                                }
+                                catch (global::System.Exception)
+                                {
+                                }
+
+                                throw global::Groq.ApiException.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __ex,
+                                    responseBody: __content,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+
+                            using var __stream = await __response.Content.ReadAsStreamAsync(
+                #if NET5_0_OR_GREATER
+                                __effectiveCancellationToken
+                #endif
+                            ).ConfigureAwait(false);
+
+                            await foreach (var __sseEvent in global::System.Net.ServerSentEvents.SseParser
+                                .Create(__stream).EnumerateAsync(__effectiveCancellationToken))
+                            {
+                                var __content = __sseEvent.Data;
+                                if (__content == "[DONE]")
+                                {
+                                    yield break;
+                                }
+
+                                var __streamedResponse = global::Groq.CreateChatCompletionStreamResponse.FromJson(__content, JsonSerializerContext) ??
+                                                       throw global::Groq.ApiException.Create(
+                                                           statusCode: __response.StatusCode,
+                                                           message: $"Response deserialization failed for \"{__content}\" ",
+                                                           innerException: null,
+                                                           responseBody: __content,
+                                                           responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                                               __response.Headers,
+                                                               h => h.Key,
+                                                               h => h.Value));
+
+                                yield return __streamedResponse;
+                            }
+
+                }
+            }
+            finally
+            {
+                __httpRequest?.Dispose();
+            }
+        }
+        /// <summary>
+        /// Creates a model response for the given chat conversation.
+        /// </summary>
+        /// <param name="chatTemplateArgs">
+        /// Chat-template parameters forwarded to Dynamo deployments unchanged.<br/>
+        /// The serving runtime validates parameter names, values, and model support.<br/>
+        /// Rejected for deployments that do not use Dynamo.
+        /// </param>
+        /// <param name="citationOptions">
+        /// Whether to enable citations in the response. When enabled, the model will include citations for information retrieved from provided documents or web searches.<br/>
+        /// Default Value: enabled
+        /// </param>
+        /// <param name="compoundCustom">
+        /// Custom configuration of models and tools for Compound.
+        /// </param>
+        /// <param name="customTemplate">
+        /// Custom template configuration for message formatting.
+        /// </param>
+        /// <param name="debug">
+        /// output input and output token IDs in xgroq debug field<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="disableToolValidation">
+        /// If set to true, groq will return called tools without validating that the tool is present in request.tools. tool_choice=required/none will still be enforced, but the request cannot require a specific tool be used.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="documents">
+        /// A list of documents to provide context for the conversation. Each document contains text that can be referenced by the model.
+        /// </param>
+        /// <param name="excludeInstanceIds">
+        /// For internal use only
+        /// </param>
+        /// <param name="frequencyPenalty">
+        /// This is not yet supported by any of our models. Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.<br/>
+        /// Default Value: 0
+        /// </param>
+        /// <param name="includeReasoning">
+        /// Whether to include reasoning in the response.  If true, the response will include a `reasoning` field. If false, the model's reasoning will not be included in the response.<br/>
+        /// This field is mutually exclusive with `reasoning_format`.
+        /// </param>
+        /// <param name="logitBias">
+        /// This is not yet supported by any of our models.<br/>
+        /// Modify the likelihood of specified tokens appearing in the completion.
+        /// </param>
+        /// <param name="logprobs">
+        /// This is not yet supported by any of our models.<br/>
+        /// Whether to return log probabilities of the output tokens or not. If true, returns the log probabilities of each output token returned in the `content` of `message`.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="maxCompletionTokens">
+        /// The maximum number of tokens that can be generated in the chat completion. The total length of input tokens and generated tokens is limited by the model's context length.
+        /// </param>
+        /// <param name="messages">
+        /// A list of messages comprising the conversation so far.
+        /// </param>
+        /// <param name="metadata">
+        /// This parameter is not currently supported.
+        /// </param>
+        /// <param name="model">
+        /// ID of the model to use. For details on which models are compatible with the Chat API, see available [models](https://console.groq.com/docs/models)<br/>
+        /// Example: meta-llama/llama-4-scout-17b-16e-instruct
+        /// </param>
+        /// <param name="n">
+        /// How many chat completion choices to generate for each input message. Note that the current moment, only n=1 is supported. Other values will result in a 400 response.<br/>
+        /// Default Value: 1<br/>
+        /// Example: 1
+        /// </param>
+        /// <param name="parallelToolCalls">
+        /// Whether to enable parallel function calling during tool use.<br/>
+        /// Default Value: true
+        /// </param>
+        /// <param name="presencePenalty">
+        /// This is not yet supported by any of our models. Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.<br/>
+        /// Default Value: 0
+        /// </param>
+        /// <param name="raw">
+        /// Skip output post-processing such as stop-sequence trimming, special-token dropping, reasoning parsing, tool parsing, and JSON validation. Engine generation controls, including requested stop sequences and response_format constraints, still apply. Only available to allowlisted or Groq-internal organizations on Gemma 4 models served through Sombrero; rejected on Dynamo endpoints.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="reasoningEffort">
+        /// qwen3 models support `none` to disable reasoning and `default` or null<br/>
+        /// to use the model default.<br/>
+        /// qwen/qwen3.8-27b additionally supports `low`, `medium`, and `high`.<br/>
+        /// Its default is `none`; `high` selects the model's native `xhigh` mode.<br/>
+        /// openai/gpt-oss-20b and openai/gpt-oss-120b support 'low', 'medium', or 'high'.<br/>
+        /// 'medium' is the default value.<br/>
+        /// Values outside a model's supported set are rejected with a 400.
+        /// </param>
+        /// <param name="reasoningFormat">
+        /// Specifies how to output reasoning tokens<br/>
+        /// This field is mutually exclusive with `include_reasoning`.
+        /// </param>
+        /// <param name="responseFormat">
+        /// An object specifying the format that the model must output. Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. `json_schema` response format is only available on [supported models](https://console.groq.com/docs/structured-outputs#supported-models). Setting to `{ "type": "json_object" }` enables the older JSON mode, which ensures the message the model generates is valid JSON. Using `json_schema` is preferred for models that support it.
+        /// </param>
+        /// <param name="searchSettings">
+        /// Settings for web search functionality when the model uses a web search tool.
+        /// </param>
+        /// <param name="seed">
+        /// If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same `seed` and parameters should return the same result.<br/>
+        /// Determinism is not guaranteed, and you should refer to the `system_fingerprint` response parameter to monitor changes in the backend.
+        /// </param>
+        /// <param name="serviceTier">
+        /// The service tier to use for the request. Defaults to `on_demand`.<br/>
+        /// - `auto` will automatically select the highest tier available within the rate limits of your organization.<br/>
+        /// - `flex` uses the flex tier, which will succeed or fail quickly.
+        /// </param>
+        /// <param name="stop">
+        /// Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence.
+        /// </param>
+        /// <param name="store">
+        /// This parameter is not currently supported.
+        /// </param>
+        /// <param name="streamOptions">
+        /// Options for streaming response. Only set this when you set `stream: true`.
+        /// </param>
+        /// <param name="temperature">
+        /// What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both.<br/>
+        /// Default Value: 1<br/>
+        /// Example: 1
+        /// </param>
+        /// <param name="toolChoice">
+        /// Controls which (if any) tool is called by the model.<br/>
+        /// `none` means the model will not call any tool and instead generates a message.<br/>
+        /// `auto` means the model can pick between generating a message or calling one or more tools.<br/>
+        /// `required` means the model must call one or more tools.<br/>
+        /// Specifying a particular tool via `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.<br/>
+        /// `none` is the default when no tools are present. `auto` is the default if tools are present.
+        /// </param>
+        /// <param name="tools">
+        /// A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.
+        /// </param>
+        /// <param name="topLogprobs">
+        /// This is not yet supported by any of our models.<br/>
+        /// An integer between 0 and 20 specifying the number of most likely tokens to return at each token position, each with an associated log probability. `logprobs` must be set to `true` if this parameter is used.
+        /// </param>
+        /// <param name="topP">
+        /// An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. We generally recommend altering this or temperature but not both.<br/>
+        /// Default Value: 1<br/>
+        /// Example: 1
+        /// </param>
+        /// <param name="user">
+        /// A unique identifier representing your end-user, which can help us monitor and detect abuse.
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        public async global::System.Collections.Generic.IAsyncEnumerable<global::Groq.CreateChatCompletionStreamResponse> CreateChatCompletionAsStreamAsync(
+            global::System.Collections.Generic.IList<global::Groq.ChatCompletionRequestMessage> messages,
+            global::Groq.AnyOf<string, global::Groq.CreateChatCompletionRequestModel?> model,
+            object? chatTemplateArgs = default,
+            global::Groq.CreateChatCompletionRequestCitationOptions? citationOptions = default,
+            global::Groq.CreateChatCompletionRequestCompoundCustom? compoundCustom = default,
+            global::Groq.CreateChatCompletionRequestCustomTemplate? customTemplate = default,
+            bool? debug = default,
+            bool? disableToolValidation = default,
+            global::System.Collections.Generic.IList<global::Groq.ChatCompletionDocument>? documents = default,
+            global::System.Collections.Generic.IList<string>? excludeInstanceIds = default,
+            double? frequencyPenalty = default,
+            bool? includeReasoning = default,
+            global::System.Collections.Generic.Dictionary<string, int>? logitBias = default,
+            bool? logprobs = default,
+            int? maxCompletionTokens = default,
+            global::System.Collections.Generic.Dictionary<string, string>? metadata = default,
+            int? n = default,
+            bool? parallelToolCalls = default,
+            double? presencePenalty = default,
+            bool? raw = default,
+            global::Groq.CreateChatCompletionRequestReasoningEffort? reasoningEffort = default,
+            global::Groq.CreateChatCompletionRequestReasoningFormat? reasoningFormat = default,
+            global::Groq.OneOf<global::Groq.ResponseFormatText, global::Groq.ResponseFormatJsonSchema, global::Groq.ResponseFormatJsonObject>? responseFormat = default,
+            global::Groq.CreateChatCompletionRequestSearchSettings? searchSettings = default,
+            int? seed = default,
+            global::Groq.CreateChatCompletionRequestServiceTier? serviceTier = default,
+            global::Groq.OneOf<string, global::System.Collections.Generic.IList<string>>? stop = default,
+            bool? store = default,
+            global::Groq.ChatCompletionStreamOptions? streamOptions = default,
+            double? temperature = default,
+            global::Groq.ChatCompletionToolChoiceOption? toolChoice = default,
+            global::System.Collections.Generic.IList<global::Groq.ChatCompletionTool>? tools = default,
+            int? topLogprobs = default,
+            double? topP = default,
+            string? user = default,
+            global::Groq.AutoSDKRequestOptions? requestOptions = default,
+            [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::Groq.CreateChatCompletionRequest
+            {
+                ChatTemplateArgs = chatTemplateArgs,
+                CitationOptions = citationOptions,
+                CompoundCustom = compoundCustom,
+                CustomTemplate = customTemplate,
+                Debug = debug,
+                DisableToolValidation = disableToolValidation,
+                Documents = documents,
+                ExcludeInstanceIds = excludeInstanceIds,
+                FrequencyPenalty = frequencyPenalty,
+                IncludeReasoning = includeReasoning,
+                LogitBias = logitBias,
+                Logprobs = logprobs,
+                MaxCompletionTokens = maxCompletionTokens,
+                Messages = messages,
+                Metadata = metadata,
+                Model = model,
+                N = n,
+                ParallelToolCalls = parallelToolCalls,
+                PresencePenalty = presencePenalty,
+                Raw = raw,
+                ReasoningEffort = reasoningEffort,
+                ReasoningFormat = reasoningFormat,
+                ResponseFormat = responseFormat,
+                SearchSettings = searchSettings,
+                Seed = seed,
+                ServiceTier = serviceTier,
+                Stop = stop,
+                Store = store,
+                Stream = true,
+                StreamOptions = streamOptions,
+                Temperature = temperature,
+                ToolChoice = toolChoice,
+                Tools = tools,
+                TopLogprobs = topLogprobs,
+                TopP = topP,
+                User = user,
+            };
+
+            var __enumerable = CreateChatCompletionAsStreamAsync(
+                request: __request,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken);
+
+            await foreach (var __response in __enumerable)
+            {
+                yield return __response;
+            }
+        }
+    }
+}

@@ -31,6 +31,18 @@ rm -rf Generated
 # Note: The Groq spec already uses standard HTTP bearer auth and top-level security,
 # so no FixOpenApiSpec step is needed.
 
+# `stream: true` on chat completions returns server-sent events, and the spec says only
+# `application/json` - so the generator has no reason to emit a streaming method and a caller who
+# sets the flag gets a parse failure instead of a stream. The spec already carries the event schema
+# (`CreateChatCompletionStreamResponse`); declaring the content type is all that is missing.
+yq -i '.paths."/openai/v1/chat/completions".post.responses."200".content."text/event-stream".schema."$ref" = "#/components/schemas/CreateChatCompletionStreamResponse"' openapi.yaml
+
+# yq exits 0 when its expression fails to parse, so verify the effect rather than the exit code.
+if ! yq -e '.paths."/openai/v1/chat/completions".post.responses."200".content | has("text/event-stream")' openapi.yaml >/dev/null; then
+  echo "error: the streaming content-type patch did not apply to openapi.yaml." >&2
+  exit 1
+fi
+
 autosdk generate openapi.yaml \
   --namespace Groq \
   --clientClassName GroqClient \

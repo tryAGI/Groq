@@ -80,6 +80,45 @@ namespace Groq
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
+            request = new global::Groq.CreateChatCompletionRequest
+            {
+                ChatTemplateArgs = request.ChatTemplateArgs,
+                CitationOptions = request.CitationOptions,
+                CompoundCustom = request.CompoundCustom,
+                CustomTemplate = request.CustomTemplate,
+                Debug = request.Debug,
+                DisableToolValidation = request.DisableToolValidation,
+                Documents = request.Documents,
+                ExcludeInstanceIds = request.ExcludeInstanceIds,
+                FrequencyPenalty = request.FrequencyPenalty,
+                IncludeReasoning = request.IncludeReasoning,
+                LogitBias = request.LogitBias,
+                Logprobs = request.Logprobs,
+                MaxCompletionTokens = request.MaxCompletionTokens,
+                Messages = request.Messages,
+                Metadata = request.Metadata,
+                Model = request.Model,
+                N = request.N,
+                ParallelToolCalls = request.ParallelToolCalls,
+                PresencePenalty = request.PresencePenalty,
+                Raw = request.Raw,
+                ReasoningEffort = request.ReasoningEffort,
+                ReasoningFormat = request.ReasoningFormat,
+                ResponseFormat = request.ResponseFormat,
+                SearchSettings = request.SearchSettings,
+                Seed = request.Seed,
+                ServiceTier = request.ServiceTier,
+                Stop = request.Stop,
+                Store = request.Store,
+                Stream = false,
+                StreamOptions = request.StreamOptions,
+                Temperature = request.Temperature,
+                ToolChoice = request.ToolChoice,
+                Tools = request.Tools,
+                TopLogprobs = request.TopLogprobs,
+                TopP = request.TopP,
+                User = request.User,
+            };
             PrepareArguments(
                 client: HttpClient);
             PrepareCreateChatCompletionArguments(
@@ -124,6 +163,10 @@ namespace Groq
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
                 __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
+
+                __httpRequest.Headers.TryAddWithoutValidation(
+                    "Accept",
+                    "application/json");
 
             foreach (var __authorization in __authorizations)
             {
@@ -546,10 +589,6 @@ namespace Groq
         /// <param name="store">
         /// This parameter is not currently supported.
         /// </param>
-        /// <param name="stream">
-        /// If set, partial message deltas will be sent. Tokens will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available, with the stream terminated by a `data: [DONE]` message. [Example code](/docs/text-chat#streaming-a-chat-completion).<br/>
-        /// Default Value: false
-        /// </param>
         /// <param name="streamOptions">
         /// Options for streaming response. Only set this when you set `stream: true`.
         /// </param>
@@ -613,7 +652,6 @@ namespace Groq
             global::Groq.CreateChatCompletionRequestServiceTier? serviceTier = default,
             global::Groq.OneOf<string, global::System.Collections.Generic.IList<string>>? stop = default,
             bool? store = default,
-            bool? stream = default,
             global::Groq.ChatCompletionStreamOptions? streamOptions = default,
             double? temperature = default,
             global::Groq.ChatCompletionToolChoiceOption? toolChoice = default,
@@ -654,7 +692,7 @@ namespace Groq
                 ServiceTier = serviceTier,
                 Stop = stop,
                 Store = store,
-                Stream = stream,
+                Stream = false,
                 StreamOptions = streamOptions,
                 Temperature = temperature,
                 ToolChoice = toolChoice,
