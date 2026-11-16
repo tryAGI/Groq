@@ -6,7 +6,7 @@ namespace Groq
     /// <summary>
     /// Describes an OpenAI model offering that can be used with the API.
     /// </summary>
-    public sealed partial class Model7
+    public sealed partial class Model
     {
         /// <summary>
         /// The Unix timestamp (in seconds) when the model was created.
@@ -44,7 +44,7 @@ namespace Groq
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Model7" /> class.
+        /// Initializes a new instance of the <see cref="Model" /> class.
         /// </summary>
         /// <param name="created">
         /// The Unix timestamp (in seconds) when the model was created.
@@ -61,7 +61,7 @@ namespace Groq
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public Model7(
+        public Model(
             global::System.DateTimeOffset created,
             string id,
             string ownedBy,
@@ -74,9 +74,9 @@ namespace Groq
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Model7" /> class.
+        /// Initializes a new instance of the <see cref="Model" /> class.
         /// </summary>
-        public Model7()
+        public Model()
         {
         }
 

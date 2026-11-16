@@ -1042,11 +1042,11 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Groq.Model7>? Type251 { get; set; }
+        public global::System.Collections.Generic.IList<global::Groq.Model>? Type251 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Groq.Model7? Type252 { get; set; }
+        public global::Groq.Model? Type252 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -1523,7 +1523,7 @@ namespace Groq
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Groq.Model7>? ListType43 { get; set; }
+        public global::System.Collections.Generic.List<global::Groq.Model>? ListType43 { get; set; }
         /// <summary>
         ///
         /// </summary>

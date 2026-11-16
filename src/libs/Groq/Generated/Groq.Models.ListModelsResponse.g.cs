@@ -13,7 +13,7 @@ namespace Groq
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Groq.Model7> Data { get; set; }
+        public required global::System.Collections.Generic.IList<global::Groq.Model> Data { get; set; }
 
         /// <summary>
         ///
@@ -37,7 +37,7 @@ namespace Groq
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListModelsResponse(
-            global::System.Collections.Generic.IList<global::Groq.Model7> data,
+            global::System.Collections.Generic.IList<global::Groq.Model> data,
             global::Groq.ListModelsResponseObject @object)
         {
             this.Data = data ?? throw new global::System.ArgumentNullException(nameof(data));

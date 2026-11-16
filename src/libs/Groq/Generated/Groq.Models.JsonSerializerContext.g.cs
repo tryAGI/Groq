@@ -19,15 +19,15 @@ namespace Groq
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.DeleteModelResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ListModelsResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Groq.Model7>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.Model7))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Groq.Model>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.Model))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ListModelsResponseObject), TypeInfoPropertyName = "ListModelsResponseObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ModelObject), TypeInfoPropertyName = "ModelObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTimeOffset?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ListModelsResponseObject?), TypeInfoPropertyName = "NullableListModelsResponseObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Groq.ModelObject?), TypeInfoPropertyName = "NullableModelObject2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Groq.Model7>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Groq.Model>))]
     internal sealed partial class ModelsSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
