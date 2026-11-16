@@ -12,7 +12,7 @@ namespace Groq
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Groq.Model7> RetrieveModelAsync(
+        global::System.Threading.Tasks.Task<global::Groq.Model> RetrieveModelAsync(
             string model,
             global::Groq.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -24,7 +24,7 @@ namespace Groq
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Groq.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Groq.AutoSDKHttpResponse<global::Groq.Model7>> RetrieveModelAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Groq.AutoSDKHttpResponse<global::Groq.Model>> RetrieveModelAsResponseAsync(
             string model,
             global::Groq.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
